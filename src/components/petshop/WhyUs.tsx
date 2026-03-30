@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Bath, Heart, Star } from "lucide-react";
 import Icon3D from "./Icon3D";
+import { useInView } from "@/hooks/useInView";
 
 const stats = [
   { number: 5000, suffix: "+", label: "banhos por ano", icon: Bath, color: "green" as const },
@@ -38,20 +39,10 @@ const AnimatedNumber = ({ target, suffix, active }: { target: number; suffix: st
 };
 
 const WhyUs = () => {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.3 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, visible } = useInView(0.3);
 
   return (
-    <section className="py-14 bg-background" ref={ref}>
+    <section className="py-14 bg-primary/5" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-3">
@@ -64,12 +55,12 @@ const WhyUs = () => {
           {stats.map((s, i) => (
             <div key={s.label} className="flex-1 text-center p-6 relative">
               <div className="flex justify-center mb-4">
-                <Icon3D icon={s.icon} size="lg" color={s.color} animate="float" />
+                <Icon3D icon={s.icon} size="lg" color={s.color} animate={visible ? "float" : "none"} />
               </div>
               <AnimatedNumber target={s.number} suffix={s.suffix} active={visible} />
               <p className="text-muted-foreground font-semibold mt-2">{s.label}</p>
               {i < stats.length - 1 && (
-                <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-16 bg-border" />
+                <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-16 bg-primary/20" />
               )}
             </div>
           ))}

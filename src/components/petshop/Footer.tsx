@@ -1,4 +1,4 @@
-import { PawPrint, Camera, Dog, Cat, Bird, Fish, Heart } from "lucide-react";
+import { PawPrint, Dog, Cat, Bird, Fish, Heart } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Icon3D from "./Icon3D";
@@ -14,8 +14,9 @@ const instagramIcons = [
 
 const Footer = () => {
   return (
-    <footer className="bg-petshop-teal text-primary-foreground py-12">
-      <div className="container mx-auto px-4">
+    <footer className="bg-petshop-teal text-primary-foreground">
+      <div className="h-1 bg-primary" />
+      <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
@@ -39,7 +40,7 @@ const Footer = () => {
                 <a
                   key={l}
                   href={`#${l.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}
-                  className="block text-primary-foreground/50 text-sm hover:text-accent transition-colors"
+                  className="block text-primary-foreground/50 text-sm hover:text-accent transition-colors duration-200"
                 >
                   {l}
                 </a>
@@ -64,7 +65,7 @@ const Footer = () => {
               {instagramIcons.map((item, i) => (
                 <div
                   key={i}
-                  className="w-full aspect-square rounded-lg bg-petshop-teal-light flex items-center justify-center cursor-pointer hover:bg-primary/20 transition-colors"
+                  className="w-full aspect-square rounded-lg bg-petshop-teal-light flex items-center justify-center cursor-pointer hover:bg-primary/20 transition-colors duration-200"
                 >
                   <Icon3D icon={item.icon} size="sm" color={item.color} animate="none" className="!rounded-lg !shadow-none" />
                 </div>

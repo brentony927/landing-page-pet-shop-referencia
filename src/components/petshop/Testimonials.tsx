@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, User } from "lucide-react";
 import Icon3D from "./Icon3D";
 
+const borderColors = ["border-l-primary", "border-l-secondary", "border-l-petshop-teal", "border-l-accent"];
+
 const testimonials = [
   {
     name: "Mariana Silva",
@@ -38,7 +40,7 @@ const Testimonials = () => {
     setTimeout(() => {
       setIdx(newIdx);
       setIsTransitioning(false);
-    }, 250);
+    }, 200);
   }, []);
 
   const next = useCallback(() => goTo((idx + 1) % testimonials.length), [idx, goTo]);
@@ -52,7 +54,7 @@ const Testimonials = () => {
   const t = testimonials[idx];
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-16 bg-petshop-cream">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
@@ -61,7 +63,7 @@ const Testimonials = () => {
         </div>
 
         <div className="max-w-2xl mx-auto relative">
-          <div className={`bg-card rounded-lg p-8 md:p-10 shadow-sm text-center transition-all duration-400 relative ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
+          <div className={`bg-card rounded-lg p-8 md:p-10 shadow-sm text-center transition-all duration-200 relative border-l-4 ${borderColors[idx]} ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
             <p className="text-foreground text-lg md:text-xl italic mb-6 leading-relaxed relative z-10">
               "{t.text}"
             </p>
@@ -74,13 +76,13 @@ const Testimonials = () => {
 
           <button
             onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-petshop-teal rounded-lg p-2 shadow hover:bg-petshop-teal-light hover:scale-110 transition-all"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 hover:scale-110 transition-all duration-200"
           >
             <ChevronLeft className="w-5 h-5 text-primary-foreground" />
           </button>
           <button
             onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-petshop-teal rounded-lg p-2 shadow hover:bg-petshop-teal-light hover:scale-110 transition-all"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 hover:scale-110 transition-all duration-200"
           >
             <ChevronRight className="w-5 h-5 text-primary-foreground" />
           </button>
@@ -90,7 +92,7 @@ const Testimonials = () => {
               <button
                 key={i}
                 onClick={() => goTo(i)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
+                className={`h-2.5 rounded-full transition-all duration-200 ${
                   i === idx ? "bg-primary w-7" : "bg-border w-2.5"
                 }`}
               />

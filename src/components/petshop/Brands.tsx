@@ -14,8 +14,8 @@ const brands = [
 
 const Brands = () => {
   return (
-    <section className="py-12 bg-petshop-cream overflow-hidden">
-      <div className="container mx-auto px-4 mb-8">
+    <section className="py-10 bg-petshop-cream overflow-hidden">
+      <div className="container mx-auto px-4 mb-6">
         <p className="text-center text-muted-foreground font-bold text-sm">
           Marcas que a gente confia e indica
         </p>

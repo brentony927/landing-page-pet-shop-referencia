@@ -5,7 +5,7 @@ import Icon3D from "./Icon3D";
 
 const Contact = () => {
   return (
-    <section id="contato" className="py-16 bg-secondary/5">
+    <section id="contato" className="py-16 bg-secondary/10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
@@ -40,13 +40,13 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="w-full h-48 rounded-lg bg-secondary/8 flex items-center justify-center gap-3">
+            <div className="w-full h-48 rounded-lg bg-secondary/15 flex items-center justify-center gap-3">
               <Icon3D icon={MapPin} size="lg" color="green" animate="float" />
-              <span className="font-heading font-bold text-secondary/40 text-sm">MAPA AQUI</span>
+              <span className="font-heading font-bold text-secondary/60 text-sm">MAPA AQUI</span>
             </div>
           </div>
 
-          <div className="bg-card rounded-lg p-8 shadow-sm">
+          <div className="bg-card rounded-lg p-8 shadow-sm border-t-4 border-t-primary">
             <h3 className="font-heading text-xl font-bold text-foreground mb-6 flex items-center gap-2">
               Fale com a gente <Icon3D icon={PawPrint} size="sm" color="green" animate="none" />
             </h3>
@@ -70,7 +70,7 @@ const Contact = () => {
                   <option>Day Care</option>
                 </select>
               </div>
-              <Button className="w-full bg-petshop-teal text-primary-foreground font-bold rounded-lg text-sm uppercase tracking-wider py-5 hover:bg-petshop-teal-light">
+              <Button className="w-full bg-primary text-primary-foreground font-bold rounded-lg text-sm uppercase tracking-wider py-5 hover:bg-primary/90 glow-orange">
                 Enviar mensagem
               </Button>
             </form>
