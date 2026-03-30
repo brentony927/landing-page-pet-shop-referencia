@@ -5,29 +5,29 @@ import ImagePlaceholder from "./ImagePlaceholder";
 
 const slides = [
   {
-    title: "ESTAMOS SEMPRE AQUI PARA A SAÚDE DO SEU PET",
-    subtitle: "Cuidado completo, profissional e cheio de carinho pro seu melhor amigo",
+    title: "SEU PET MERECE O MELHOR, E A GENTE ENTREGA!",
+    subtitle: "Banho, ração, veterinário — tudo num só lugar, com gente que ama bicho de verdade",
     cta1: "COMPRAR AGORA",
     cta2: "Agendar ligação",
   },
   {
-    title: "BANHO & TOSA COM CARINHO DE VERDADE",
-    subtitle: "Profissionais que tratam seu pet como parte da família",
+    title: "BANHO & TOSA QUE SEU PET VAI AMAR",
+    subtitle: "Ele entra precisando, e sai desfilando. Pode confiar!",
     cta1: "AGENDAR AGORA",
     cta2: "Ver serviços",
   },
   {
-    title: "RAÇÕES SELECIONADAS PRA CADA FASE DA VIDA",
-    subtitle: "Do filhote ao sênior, só o que há de melhor na tigela",
+    title: "RAÇÃO BOA DE VERDADE, SEM ENROLAÇÃO",
+    subtitle: "Do filhote ao velhinho, só o que tem qualidade vai pra tigela",
     cta1: "VER RAÇÕES",
     cta2: "Fale conosco",
   },
 ];
 
 const stats = [
-  { value: "200K+", label: "Nutrição Completa" },
-  { value: "R$4", label: "Menor Preço" },
-  { value: "97%", label: "Satisfação" },
+  { value: "5.000+", label: "Pets Felizes" },
+  { value: "12", label: "Anos de Estrada" },
+  { value: "4.8★", label: "No Google" },
 ];
 
 const SLIDE_DURATION = 5000;
@@ -72,7 +72,6 @@ const HeroCarousel = () => {
   return (
     <section id="inicio" className="pt-16">
       <div className="bg-petshop-teal relative overflow-hidden min-h-[600px] md:min-h-[650px]">
-        {/* Floating 3D elements */}
         <div className="absolute top-10 left-10 opacity-20">
           <Icon3D icon={PawPrint} size="lg" color="green" animate="float" />
         </div>
@@ -81,9 +80,6 @@ const HeroCarousel = () => {
         </div>
         <div className="absolute top-1/3 right-20 opacity-10 hidden md:block">
           <Icon3D icon={PawPrint} size="md" color="yellow" animate="float" />
-        </div>
-        <div className="absolute bottom-32 left-1/4 opacity-10 hidden md:block">
-          <Icon3D icon={ShoppingBag} size="sm" color="green" animate="float" />
         </div>
 
         <div className={`container mx-auto px-4 py-16 md:py-24 relative z-10 transition-all duration-500 ${isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
@@ -116,7 +112,7 @@ const HeroCarousel = () => {
 
             <div className="flex items-center justify-center">
               <div className="relative w-72 h-72 md:w-96 md:h-96">
-                <ImagePlaceholder className="w-full h-full" />
+                <ImagePlaceholder className="w-full h-full" variant="neutral" />
                 <div className="absolute -bottom-3 -right-3">
                   <Icon3D icon={Heart} size="md" color="orange" animate="pulse" />
                 </div>

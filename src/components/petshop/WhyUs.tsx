@@ -55,19 +55,22 @@ const WhyUs = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Por que nos escolher?
+            A gente não é de se gabar, mas...
           </h2>
-          <p className="text-muted-foreground text-lg">Números que falam por si</p>
+          <p className="text-muted-foreground text-lg">Os números falam por si 😉</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center p-6">
+        <div className="flex flex-col md:flex-row items-center justify-center max-w-3xl mx-auto">
+          {stats.map((s, i) => (
+            <div key={s.label} className="flex-1 text-center p-6 relative">
               <div className="flex justify-center mb-4">
                 <Icon3D icon={s.icon} size="lg" color={s.color} animate="float" />
               </div>
               <AnimatedNumber target={s.number} suffix={s.suffix} active={visible} />
               <p className="text-muted-foreground font-semibold mt-2">{s.label}</p>
+              {i < stats.length - 1 && (
+                <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-16 bg-border" />
+              )}
             </div>
           ))}
         </div>

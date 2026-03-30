@@ -5,12 +5,12 @@ import Icon3D from "./Icon3D";
 
 const Contact = () => {
   return (
-    <section id="contato" className="py-20 bg-card">
+    <section id="contato" className="py-20 bg-secondary/5">
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
           <p className="text-primary font-bold text-sm uppercase tracking-wider mb-2">Contato</p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground uppercase">
-            VENHA NOS VISITAR
+            BORA MARCAR? A GENTE TE ESPERA!
           </h2>
         </div>
 
@@ -19,7 +19,7 @@ const Contact = () => {
             <div className="flex items-start gap-4">
               <Icon3D icon={MapPin} size="md" color="teal" animate="none" />
               <div>
-                <h3 className="font-heading font-bold text-foreground mb-1">Endereço</h3>
+                <h3 className="font-heading font-bold text-foreground mb-1">Onde estamos</h3>
                 <p className="text-muted-foreground text-sm">Rua dos Pets Felizes, 123 — Centro, São Paulo - SP</p>
               </div>
             </div>
@@ -36,20 +36,20 @@ const Contact = () => {
             <div className="flex items-start gap-4">
               <Icon3D icon={Phone} size="md" color="orange" animate="none" />
               <div>
-                <h3 className="font-heading font-bold text-foreground mb-1">Telefone</h3>
+                <h3 className="font-heading font-bold text-foreground mb-1">WhatsApp</h3>
                 <p className="text-muted-foreground text-sm">(11) 99999-1234</p>
               </div>
             </div>
 
-            <div className="w-full h-48 rounded-2xl bg-secondary/10 border-2 border-dashed border-secondary/30 flex items-center justify-center gap-3">
+            <div className="w-full h-48 rounded-2xl bg-secondary/8 flex items-center justify-center gap-3">
               <Icon3D icon={MapPin} size="lg" color="green" animate="float" />
-              <span className="font-heading font-bold text-secondary/50 text-sm">MAPA AQUI</span>
+              <span className="font-heading font-bold text-secondary/40 text-sm">MAPA AQUI</span>
             </div>
           </div>
 
-          <div className="bg-background rounded-2xl p-8 shadow-sm border border-border">
+          <div className="bg-card rounded-2xl p-8 shadow-sm">
             <h3 className="font-heading text-xl font-bold text-foreground mb-6 uppercase flex items-center gap-2">
-              Fale conosco <Icon3D icon={PawPrint} size="sm" color="green" animate="none" />
+              Manda um oi! <Icon3D icon={PawPrint} size="sm" color="green" animate="none" />
             </h3>
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
               <div>

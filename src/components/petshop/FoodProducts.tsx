@@ -12,36 +12,36 @@ const categories = [
   { label: "Peixes", icon: Fish, key: "fish", color: "green" as const },
 ];
 
-const products: Record<string, Array<{ name: string; price: string; rating: number; popular?: boolean; bg: string }>> = {
+const products: Record<string, Array<{ name: string; price: string; rating: number; popular?: boolean }>> = {
   dogs: [
-    { name: "Ração Natural Frango & Arroz", price: "R$ 189,90", rating: 4.8, popular: true, bg: "bg-primary/10" },
-    { name: "Ração Cordeiro & Vegetais", price: "R$ 159,90", rating: 4.5, bg: "bg-secondary/10" },
-    { name: "Petiscos Dental Stick", price: "R$ 34,90", rating: 4.7, bg: "bg-accent/20" },
-    { name: "Ração Salmão & Batata Doce", price: "R$ 179,90", rating: 4.9, popular: true, bg: "bg-primary/10" },
+    { name: "Ração Natural Frango & Arroz", price: "R$ 189,90", rating: 4.8, popular: true },
+    { name: "Ração Cordeiro & Vegetais", price: "R$ 159,90", rating: 4.5 },
+    { name: "Petiscos Dental Stick", price: "R$ 34,90", rating: 4.7 },
+    { name: "Ração Salmão & Batata Doce", price: "R$ 179,90", rating: 4.9, popular: true },
   ],
   cats: [
-    { name: "Ração Frango & Salmão Indoor", price: "R$ 169,90", rating: 4.8, popular: true, bg: "bg-primary/10" },
-    { name: "Sachê Mix Sabores (12un)", price: "R$ 49,90", rating: 4.3, bg: "bg-secondary/10" },
-    { name: "Petiscos Anti Bola de Pelo", price: "R$ 29,90", rating: 4.6, bg: "bg-accent/20" },
-    { name: "Ração Atum & Arroz", price: "R$ 139,90", rating: 4.4, bg: "bg-primary/10" },
+    { name: "Ração Frango & Salmão Indoor", price: "R$ 169,90", rating: 4.8, popular: true },
+    { name: "Sachê Mix Sabores (12un)", price: "R$ 49,90", rating: 4.3 },
+    { name: "Petiscos Anti Bola de Pelo", price: "R$ 29,90", rating: 4.6 },
+    { name: "Ração Atum & Arroz", price: "R$ 139,90", rating: 4.4 },
   ],
   puppies: [
-    { name: "Ração Filhotes Frango", price: "R$ 149,90", rating: 4.9, popular: true, bg: "bg-primary/10" },
-    { name: "Sachê Filhotes Carne (8un)", price: "R$ 39,90", rating: 4.5, bg: "bg-secondary/10" },
-    { name: "Ração Raças Pequenas", price: "R$ 119,90", rating: 4.7, bg: "bg-accent/20" },
-    { name: "Suplemento Crescimento", price: "R$ 59,90", rating: 4.6, popular: true, bg: "bg-primary/10" },
+    { name: "Ração Filhotes Frango", price: "R$ 149,90", rating: 4.9, popular: true },
+    { name: "Sachê Filhotes Carne (8un)", price: "R$ 39,90", rating: 4.5 },
+    { name: "Ração Raças Pequenas", price: "R$ 119,90", rating: 4.7 },
+    { name: "Suplemento Crescimento", price: "R$ 59,90", rating: 4.6, popular: true },
   ],
   birds: [
-    { name: "Mix Sementes Canário", price: "R$ 24,90", rating: 4.5, bg: "bg-accent/20" },
-    { name: "Ração Calopsita", price: "R$ 32,90", rating: 4.7, popular: true, bg: "bg-primary/10" },
-    { name: "Farinhada com Ovo", price: "R$ 19,90", rating: 4.3, bg: "bg-secondary/10" },
-    { name: "Petiscos Frutas Secas", price: "R$ 15,90", rating: 4.4, bg: "bg-accent/20" },
+    { name: "Mix Sementes Canário", price: "R$ 24,90", rating: 4.5 },
+    { name: "Ração Calopsita", price: "R$ 32,90", rating: 4.7, popular: true },
+    { name: "Farinhada com Ovo", price: "R$ 19,90", rating: 4.3 },
+    { name: "Petiscos Frutas Secas", price: "R$ 15,90", rating: 4.4 },
   ],
   fish: [
-    { name: "Ração Flocos Tropical", price: "R$ 18,90", rating: 4.6, popular: true, bg: "bg-secondary/10" },
-    { name: "Ração Betta Premium", price: "R$ 14,90", rating: 4.8, bg: "bg-primary/10" },
-    { name: "Algas Spirulina", price: "R$ 22,90", rating: 4.5, bg: "bg-primary/10" },
-    { name: "Ração Kinguio Gold", price: "R$ 16,90", rating: 4.3, bg: "bg-accent/20" },
+    { name: "Ração Flocos Tropical", price: "R$ 18,90", rating: 4.6, popular: true },
+    { name: "Ração Betta", price: "R$ 14,90", rating: 4.8 },
+    { name: "Algas Spirulina", price: "R$ 22,90", rating: 4.5 },
+    { name: "Ração Kinguio Gold", price: "R$ 16,90", rating: 4.3 },
   ],
 };
 
@@ -71,20 +71,20 @@ const FoodProducts = () => {
   const activeCat = categories.find(c => c.key === activeTab);
 
   return (
-    <section id="racoes" className="py-20 bg-card" ref={ref}>
+    <section id="racoes" className="py-20 bg-background" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-8 mb-12">
           <div className="flex-1 text-center lg:text-left">
-            <p className="text-primary font-bold text-sm uppercase tracking-wider mb-2">Categorias</p>
+            <p className="text-primary font-bold text-sm uppercase tracking-wider mb-2">Rações & Produtos</p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground uppercase">
-              RAÇÕES & PRODUTOS
+              SÓ O MELHOR VAI PRA TIGELA
             </h2>
             <p className="text-muted-foreground mt-3 max-w-md">
-              Selecionamos as melhores marcas do mercado para cada fase da vida do seu pet.
+              A gente escolhe cada marca com cuidado. Nada de encher prateleira com qualquer coisa.
             </p>
           </div>
           <div className={`flex-shrink-0 transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>
-            <ImagePlaceholder className="w-48 h-48 md:w-56 md:h-56" />
+            <ImagePlaceholder className="w-48 h-48 md:w-56 md:h-56" variant="orange" />
           </div>
         </div>
 
@@ -109,9 +109,9 @@ const FoodProducts = () => {
           {products[activeTab].map((p, i) => (
             <div
               key={p.name}
-              className={`bg-background rounded-2xl overflow-hidden shadow-sm border border-border transition-all duration-500 relative group cursor-pointer hover:-translate-y-2 hover:shadow-lg ${
-                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`bg-card rounded-2xl overflow-hidden shadow-sm transition-all duration-500 relative group cursor-pointer hover:-translate-y-2 hover:shadow-lg ${
+                p.popular ? "border-l-4 border-l-primary" : ""
+              } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               {p.popular && (
@@ -119,7 +119,7 @@ const FoodProducts = () => {
                   Destaque
                 </Badge>
               )}
-              <div className={`${p.bg} w-full h-40 flex items-center justify-center`}>
+              <div className="bg-muted/50 w-full h-40 flex items-center justify-center">
                 {activeCat && (
                   <Icon3D icon={activeCat.icon} size="lg" color={activeCat.color} animate="float" />
                 )}
@@ -148,7 +148,7 @@ const FoodProducts = () => {
 
         <div className="text-center mt-10">
           <button className="bg-petshop-teal text-primary-foreground font-bold px-8 py-3 rounded-full text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 transition-transform duration-300">
-            VER TODOS OS PRODUTOS →
+            VER TUDO →
           </button>
         </div>
       </div>

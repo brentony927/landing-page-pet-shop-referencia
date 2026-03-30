@@ -52,19 +52,20 @@ const Testimonials = () => {
   const t = testimonials[idx];
 
   return (
-    <section className="py-20 bg-accent">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <p className="text-accent-foreground/60 font-bold text-sm uppercase tracking-wider mb-2">Depoimentos</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-accent-foreground uppercase">
-            O QUE DIZEM SOBRE NÓS
+          <p className="text-primary font-bold text-sm uppercase tracking-wider mb-2">Depoimentos</p>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground uppercase">
+            QUEM TROUXE O PET, VOLTOU!
           </h2>
         </div>
 
         <div className="max-w-2xl mx-auto relative">
-          <div className={`bg-card rounded-2xl p-8 md:p-10 shadow-lg text-center transition-all duration-400 ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
-            <Quote className="w-10 h-10 text-primary mx-auto mb-4" />
-            <p className="text-foreground text-lg md:text-xl italic mb-6 leading-relaxed">
+          <Quote className="w-16 h-16 text-primary/15 absolute -top-4 left-4 -rotate-6" />
+
+          <div className={`bg-card rounded-2xl p-8 md:p-10 shadow-sm text-center transition-all duration-400 relative ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
+            <p className="text-foreground text-lg md:text-xl italic mb-6 leading-relaxed relative z-10">
               "{t.text}"
             </p>
             <div className="flex justify-center mb-3">
@@ -93,7 +94,7 @@ const Testimonials = () => {
                 key={i}
                 onClick={() => goTo(i)}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
-                  i === idx ? "bg-petshop-teal w-7" : "bg-accent-foreground/20 w-2.5"
+                  i === idx ? "bg-primary w-7" : "bg-border w-2.5"
                 }`}
               />
             ))}
