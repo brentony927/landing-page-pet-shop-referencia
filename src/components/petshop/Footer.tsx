@@ -19,7 +19,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <Icon3D icon={PawPrint} size="sm" color="yellow" animate="none" className="!rounded-full" />
+              <Icon3D icon={PawPrint} size="sm" color="yellow" animate="none" />
               <span className="font-heading text-lg font-bold">Patinhas & Cia</span>
             </div>
             <p className="text-primary-foreground/50 text-sm leading-relaxed mb-4">
@@ -51,8 +51,8 @@ const Footer = () => {
             <h4 className="font-heading font-bold mb-3 text-accent">Newsletter</h4>
             <p className="text-primary-foreground/50 text-sm mb-3">Dicas, promos e fofura na sua caixa</p>
             <div className="flex gap-2">
-              <Input placeholder="Seu e-mail" className="rounded-full bg-petshop-teal-light border-petshop-teal-light text-primary-foreground placeholder:text-primary-foreground/30 text-sm" />
-              <Button className="rounded-full bg-accent text-accent-foreground font-bold text-xs px-4 hover:bg-accent/90">
+              <Input placeholder="Seu e-mail" className="rounded-lg bg-petshop-teal-light border-petshop-teal-light text-primary-foreground placeholder:text-primary-foreground/30 text-sm" />
+              <Button className="rounded-lg bg-accent text-accent-foreground font-bold text-xs px-4 hover:bg-accent/90">
                 OK
               </Button>
             </div>
@@ -75,7 +75,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-primary-foreground/30 text-sm">
-            © 2024 Patinhas & Cia — Todos os direitos reservados
+            © 2025 Patinhas & Cia — Todos os direitos reservados
           </p>
           <p className="text-primary-foreground/30 text-sm flex items-center gap-1">
             Feito com <PawPrint className="inline w-4 h-4 text-accent" /> pra quem ama pets

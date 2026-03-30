@@ -77,7 +77,7 @@ const Header = () => {
               {link.label}
             </a>
           ))}
-          <Button className="w-full bg-primary text-primary-foreground font-bold rounded-full text-xs tracking-wider">
+          <Button className="w-full bg-primary text-primary-foreground font-bold rounded-lg text-xs tracking-wider">
             AGENDAR
           </Button>
         </div>

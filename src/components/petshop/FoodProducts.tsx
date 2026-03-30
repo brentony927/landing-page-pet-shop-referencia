@@ -75,9 +75,8 @@ const FoodProducts = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-8 mb-12">
           <div className="flex-1 text-center lg:text-left">
-            <p className="text-primary font-bold text-sm uppercase tracking-wider mb-2">Rações & Produtos</p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground uppercase">
-              SÓ O MELHOR VAI PRA TIGELA
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+              Só o melhor vai pra tigela
             </h2>
             <p className="text-muted-foreground mt-3 max-w-md">
               A gente escolhe cada marca com cuidado. Nada de encher prateleira com qualquer coisa.
@@ -93,7 +92,7 @@ const FoodProducts = () => {
             <button
               key={cat.key}
               onClick={() => handleTabChange(cat.key)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 ${
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 ${
                 activeTab === cat.key
                   ? "bg-petshop-teal text-primary-foreground shadow-md scale-105"
                   : "bg-muted text-muted-foreground hover:bg-border"
@@ -109,7 +108,7 @@ const FoodProducts = () => {
           {products[activeTab].map((p, i) => (
             <div
               key={p.name}
-              className={`bg-card rounded-2xl overflow-hidden shadow-sm transition-all duration-500 relative group cursor-pointer hover:-translate-y-2 hover:shadow-lg ${
+              className={`bg-card rounded-lg overflow-hidden shadow-sm transition-all duration-500 relative group cursor-pointer hover:-translate-y-2 hover:shadow-lg ${
                 p.popular ? "border-l-4 border-l-primary" : ""
               } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${i * 100}ms` }}
@@ -137,7 +136,7 @@ const FoodProducts = () => {
                 <h3 className="font-heading font-bold text-foreground text-sm mb-2 leading-tight">{p.name}</h3>
                 <div className="flex items-center justify-between">
                   <p className="font-heading text-xl font-bold text-primary">{p.price}</p>
-                  <button className="w-8 h-8 rounded-full bg-petshop-teal flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-petshop-teal-light hover:scale-110 transition-all">
+                  <button className="w-8 h-8 rounded-lg bg-petshop-teal flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-petshop-teal-light hover:scale-110 transition-all">
                     +
                   </button>
                 </div>
@@ -147,8 +146,8 @@ const FoodProducts = () => {
         </div>
 
         <div className="text-center mt-10">
-          <button className="bg-petshop-teal text-primary-foreground font-bold px-8 py-3 rounded-full text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 transition-transform duration-300">
-            VER TUDO →
+          <button className="bg-petshop-teal text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 transition-transform duration-300">
+            Ver tudo →
           </button>
         </div>
       </div>

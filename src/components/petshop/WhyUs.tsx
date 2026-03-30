@@ -51,13 +51,13 @@ const WhyUs = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-background" ref={ref}>
+    <section className="py-14 bg-background" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-3">
             A gente não é de se gabar, mas...
           </h2>
-          <p className="text-muted-foreground text-lg">Os números falam por si 😉</p>
+          <p className="text-muted-foreground text-lg">Os números falam por si</p>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center max-w-3xl mx-auto">
