@@ -1,6 +1,5 @@
 import { Check } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import banhoTosaImg from "@/assets/banho-tosa.png";
 
 const benefits = [
   { text: "Mais de 10 anos de experiência", color: "text-secondary" },
@@ -27,11 +26,10 @@ const AboutUs = () => {
     <section id="sobre" className="py-20 bg-petshop-cream overflow-hidden" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-          {/* Left — image with slide-in */}
           <div className={`flex items-center justify-center transition-all duration-700 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"}`}>
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 bg-accent rounded-3xl flex items-center justify-center shadow-lg overflow-hidden">
-                <img src={banhoTosaImg} alt="Pet feliz" className="w-full h-full object-cover" />
+                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop" alt="Pet feliz" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-primary rounded-2xl flex items-center justify-center shadow-md animate-float">
                 <span className="text-4xl">❤️</span>
@@ -42,7 +40,6 @@ const AboutUs = () => {
             </div>
           </div>
 
-          {/* Right — text with slide-in */}
           <div className={`transition-all duration-700 delay-200 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-16"}`}>
             <p className="text-primary font-bold text-sm uppercase tracking-wider mb-2">Sobre Nós</p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">

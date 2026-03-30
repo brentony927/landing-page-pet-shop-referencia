@@ -1,28 +1,23 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import banhoTosaImg from "@/assets/banho-tosa.png";
-import racaoPetImg from "@/assets/racao-pet.png";
 
 const slides = [
   {
-    image: null,
-    emoji: "🐕",
+    image: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&auto=format&fit=crop",
     title: "ESTAMOS SEMPRE AQUI PARA A SAÚDE DO SEU PET",
     subtitle: "Cuidado completo, profissional e cheio de carinho pro seu melhor amigo",
     cta1: "COMPRAR AGORA",
     cta2: "Agendar ligação",
   },
   {
-    image: banhoTosaImg,
-    emoji: "🛁",
+    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=800&auto=format&fit=crop",
     title: "BANHO & TOSA COM CARINHO DE VERDADE",
     subtitle: "Profissionais que tratam seu pet como parte da família",
     cta1: "AGENDAR AGORA",
     cta2: "Ver serviços",
   },
   {
-    image: racaoPetImg,
-    emoji: "🥣",
+    image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&auto=format&fit=crop",
     title: "RAÇÕES SELECIONADAS PRA CADA FASE DA VIDA",
     subtitle: "Do filhote ao sênior, só o que há de melhor na tigela",
     cta1: "VER RAÇÕES",
@@ -42,7 +37,6 @@ const HeroCarousel = () => {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [progress, setProgress] = useState(0);
-  const progressRef = useRef<number>(0);
   const rafRef = useRef<number>(0);
   const startTimeRef = useRef<number>(Date.now());
 
@@ -59,7 +53,6 @@ const HeroCarousel = () => {
   const next = useCallback(() => goTo((current + 1) % slides.length), [current, goTo]);
   const prev = useCallback(() => goTo((current - 1 + slides.length) % slides.length), [current, goTo]);
 
-  // Progress bar animation
   useEffect(() => {
     const animate = () => {
       const elapsed = Date.now() - startTimeRef.current;
@@ -85,7 +78,6 @@ const HeroCarousel = () => {
         <div className="absolute bottom-10 right-10 text-6xl opacity-10 animate-float-delayed">🐾</div>
         <div className="absolute top-1/3 right-20 text-4xl opacity-5 animate-float hidden md:block">🐾</div>
         <div className="absolute bottom-32 left-1/4 text-3xl opacity-5 animate-float-delayed hidden md:block">🐾</div>
-        <div className="absolute top-20 right-1/3 text-3xl opacity-5 animate-float hidden lg:block">🐾</div>
 
         <div className={`container mx-auto px-4 py-16 md:py-24 relative z-10 transition-all duration-500 ${isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -106,7 +98,6 @@ const HeroCarousel = () => {
                 </button>
               </div>
 
-              {/* Stats */}
               <div className="flex flex-wrap gap-8 md:gap-12 mt-12 justify-center lg:justify-start">
                 {stats.map((s) => (
                   <div key={s.label} className="text-center lg:text-left">
@@ -120,18 +111,11 @@ const HeroCarousel = () => {
             {/* Right — image */}
             <div className="flex items-center justify-center">
               <div className="relative w-72 h-72 md:w-96 md:h-96">
-                {slide.image ? (
-                  <img
-                    src={slide.image}
-                    alt={slide.title}
-                    className="w-full h-full object-contain drop-shadow-2xl animate-hero-image"
-                  />
-                ) : (
-                  <div className="w-full h-full rounded-3xl bg-petshop-teal-light flex items-center justify-center">
-                    <span className="text-[8rem] md:text-[10rem] animate-hero-image">{slide.emoji}</span>
-                  </div>
-                )}
-                {/* Decorative ring */}
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="w-full h-full object-cover rounded-3xl drop-shadow-2xl animate-hero-image"
+                />
                 <div className="absolute inset-0 border-4 border-accent/20 rounded-full animate-spin-slow pointer-events-none" />
               </div>
             </div>
@@ -139,16 +123,10 @@ const HeroCarousel = () => {
         </div>
 
         {/* Nav arrows */}
-        <button
-          onClick={prev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-full p-3 transition-all z-20 hover:scale-110 backdrop-blur-sm"
-        >
+        <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-full p-3 transition-all z-20 hover:scale-110 backdrop-blur-sm">
           <ChevronLeft className="w-6 h-6 text-primary-foreground" />
         </button>
-        <button
-          onClick={next}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-full p-3 transition-all z-20 hover:scale-110 backdrop-blur-sm"
-        >
+        <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-full p-3 transition-all z-20 hover:scale-110 backdrop-blur-sm">
           <ChevronRight className="w-6 h-6 text-primary-foreground" />
         </button>
       </div>
