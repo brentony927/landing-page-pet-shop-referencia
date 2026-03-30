@@ -17,13 +17,18 @@ const Footer = () => {
     <footer className="bg-petshop-teal text-primary-foreground py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
-          <div>
+          <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <Icon3D icon={PawPrint} size="sm" color="yellow" animate="none" className="!rounded-full" />
               <span className="font-heading text-lg font-bold">Patinhas & Cia</span>
             </div>
-            <p className="text-primary-foreground/50 text-sm leading-relaxed">
-              Cuidando do seu melhor amigo com carinho, respeito e profissionalismo desde 2012.
+            <p className="text-primary-foreground/50 text-sm leading-relaxed mb-4">
+              Desde 2012 cuidando do seu melhor amigo com carinho de verdade.
+            </p>
+            <p className="text-primary-foreground/40 text-sm">
+              Seg a Sex: 8h – 19h<br />
+              Sáb: 8h – 16h<br />
+              <span className="text-accent font-semibold">(11) 99999-1234</span>
             </p>
           </div>
 
@@ -44,21 +49,17 @@ const Footer = () => {
 
           <div>
             <h4 className="font-heading font-bold mb-3 text-accent">Newsletter</h4>
-            <p className="text-primary-foreground/50 text-sm mb-3">Receba dicas e promoções</p>
+            <p className="text-primary-foreground/50 text-sm mb-3">Dicas, promos e fofura na sua caixa</p>
             <div className="flex gap-2">
               <Input placeholder="Seu e-mail" className="rounded-full bg-petshop-teal-light border-petshop-teal-light text-primary-foreground placeholder:text-primary-foreground/30 text-sm" />
               <Button className="rounded-full bg-accent text-accent-foreground font-bold text-xs px-4 hover:bg-accent/90">
                 OK
               </Button>
             </div>
-            <p className="text-primary-foreground/40 text-sm mt-4">
-              Seg a Sex: 8h – 19h<br />
-              Sáb: 8h – 16h
-            </p>
           </div>
 
           <div>
-            <h4 className="font-heading font-bold mb-3 text-accent">Instagram</h4>
+            <h4 className="font-heading font-bold mb-3 text-accent">@patinhasecia</h4>
             <div className="grid grid-cols-3 gap-2">
               {instagramIcons.map((item, i) => (
                 <div
@@ -72,9 +73,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/10 pt-6 text-center">
+        <div className="border-t border-primary-foreground/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-primary-foreground/30 text-sm">
-            Feito com <PawPrint className="inline w-4 h-4 text-accent" /> para quem ama pets — © 2024 Patinhas & Cia
+            © 2024 Patinhas & Cia — Todos os direitos reservados
+          </p>
+          <p className="text-primary-foreground/30 text-sm flex items-center gap-1">
+            Feito com <PawPrint className="inline w-4 h-4 text-accent" /> pra quem ama pets
           </p>
         </div>
       </div>

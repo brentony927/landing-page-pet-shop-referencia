@@ -1,36 +1,32 @@
-import { Bone, Heart, Leaf, PawPrint, Cat, Droplets, Star, ShoppingBag } from "lucide-react";
+import { Dog, Cat, PawPrint, Heart, Bird, Fish, Star, Bone } from "lucide-react";
 import Icon3D from "./Icon3D";
 
 const brands = [
-  { name: "PetNutri", icon: Bone, color: "orange" as const },
-  { name: "VitaPet", icon: Heart, color: "green" as const },
-  { name: "NaturDog", icon: Leaf, color: "teal" as const },
-  { name: "FreshPaws", icon: PawPrint, color: "yellow" as const },
-  { name: "CatLife", icon: Cat, color: "green" as const },
-  { name: "BioVet", icon: Droplets, color: "orange" as const },
-  { name: "AquaPet", icon: Droplets, color: "teal" as const },
-  { name: "PetMax", icon: Star, color: "yellow" as const },
+  { name: "PremieRpet", icon: Dog, color: "orange" as const },
+  { name: "Royal Canin", icon: Cat, color: "green" as const },
+  { name: "GranPlus", icon: PawPrint, color: "yellow" as const },
+  { name: "Golden", icon: Heart, color: "orange" as const },
+  { name: "Pedigree", icon: Bone, color: "teal" as const },
+  { name: "Whiskas", icon: Fish, color: "green" as const },
+  { name: "Farmina", icon: Star, color: "yellow" as const },
+  { name: "Guabi", icon: Bird, color: "orange" as const },
 ];
 
 const Brands = () => {
   return (
-    <section className="py-16 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-10">
-          <p className="text-muted-foreground font-bold text-sm uppercase tracking-wider mb-2">Parceiros</p>
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground">
-            MARCAS QUE CONFIAMOS
-          </h2>
-        </div>
+    <section className="py-16 bg-petshop-cream overflow-hidden">
+      <div className="container mx-auto px-4 mb-8">
+        <p className="text-center text-muted-foreground font-bold text-sm uppercase tracking-wider">
+          Marcas que a gente confia e indica
+        </p>
+      </div>
 
-        <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-          {brands.map((b) => (
-            <div
-              key={b.name}
-              className="flex items-center gap-2 px-6 py-3 bg-card rounded-xl border border-border hover-scale cursor-pointer transition-all hover:border-primary hover:shadow-md"
-            >
-              <Icon3D icon={b.icon} size="sm" color={b.color} animate="none" className="!rounded-lg !shadow-none" />
-              <span className="font-heading font-bold text-foreground text-sm">{b.name}</span>
+      <div className="relative">
+        <div className="flex animate-marquee gap-10 w-max">
+          {[...brands, ...brands].map((b, i) => (
+            <div key={i} className="flex flex-col items-center gap-2 px-4">
+              <Icon3D icon={b.icon} size="md" color={b.color} animate="none" />
+              <span className="text-muted-foreground font-bold text-xs uppercase tracking-wider">{b.name}</span>
             </div>
           ))}
         </div>
