@@ -52,7 +52,7 @@ const Header = () => {
           <button className="text-primary-foreground/70 hover:text-accent transition-colors">
             <ShoppingBag className="w-5 h-5" />
           </button>
-          <Button className="bg-primary text-primary-foreground font-bold rounded-full px-6 text-xs tracking-wider hover:bg-primary/90">
+          <Button className="bg-primary text-primary-foreground font-bold rounded-lg px-6 text-xs tracking-wider hover:bg-primary/90">
             AGENDAR
           </Button>
         </div>
