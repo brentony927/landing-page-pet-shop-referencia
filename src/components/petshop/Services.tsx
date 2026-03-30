@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Scissors, Stethoscope, Hotel, Dog, Car, Sun, ChevronLeft, ChevronRight } from "lucide-react";
-import banhoTosaImg from "@/assets/banho-tosa.png";
 
 const services = [
   { icon: Scissors, title: "Banho & Tosa", desc: "Limpeza completa com produtos naturais", price: "R$ 79", duration: "1h30", color: "bg-secondary" },
@@ -33,7 +32,7 @@ const Services = () => {
     <section id="servicos" className="py-20 bg-background relative overflow-hidden" ref={ref}>
       {/* Decorative background image */}
       <div className="absolute top-0 right-0 w-64 h-64 opacity-5 pointer-events-none">
-        <img src={banhoTosaImg} alt="" className="w-full h-full object-contain" />
+        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=400&auto=format&fit=crop" alt="" className="w-full h-full object-contain" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

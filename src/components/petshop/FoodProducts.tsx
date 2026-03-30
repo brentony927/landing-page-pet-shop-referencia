@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import racaoPetImg from "@/assets/racao-pet.png";
 
 const categories = [
   { label: "Cães", emoji: "🐕", key: "dogs" },
@@ -81,8 +80,8 @@ const FoodProducts = () => {
               Selecionamos as melhores marcas do mercado para cada fase da vida do seu pet.
             </p>
           </div>
-          <div className={`w-48 h-48 md:w-56 md:h-56 flex-shrink-0 transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>
-            <img src={racaoPetImg} alt="Ração pet" className="w-full h-full object-contain drop-shadow-xl" />
+          <div className={`w-48 h-48 md:w-56 md:h-56 flex-shrink-0 rounded-2xl overflow-hidden transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&auto=format&fit=crop" alt="Golden retriever feliz" className="w-full h-full object-cover" />
           </div>
         </div>
 
