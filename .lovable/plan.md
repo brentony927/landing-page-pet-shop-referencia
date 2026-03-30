@@ -1,49 +1,54 @@
 
 
-# Faixa Vermelha + Menos Arredondado + Tirar Aspecto de IA
+# Performance + Vida Visual — Cores Vibrantes e Estímulos
 
-## 1. Faixa do topo em VERMELHO
-A barra com horário e telefone no Header passa de `bg-petshop-teal` para um vermelho vivo (`bg-red-600`). Texto branco.
+## Problema
+O site está lento (animações pesadas com RAF no carrossel, muitos re-renders) e visualmente "morto" — tudo cinza/neutro demais, falta cor e contraste nas seções.
 
-**Arquivo**: `Header.tsx` — linha 19, trocar classe de bg
+## Mudanças
 
-## 2. Reduzir arredondamento geral (menos "bolha")
-O site usa `rounded-2xl` e `rounded-full` em excesso — visual de template.
+### 1. Performance — Site mais rápido
+- **HeroCarousel**: Trocar o `requestAnimationFrame` loop (causa re-render contínuo ~60fps) por CSS animation puro no progress bar. Autoplay via `setInterval` simples
+- **Brands marquee**: Usar CSS `animation` pura ao invés de JS
+- **IntersectionObserver**: Criar hook reutilizável `useInView` para evitar repetição e garantir `disconnect` correto
+- **Icon3D**: Adicionar `will-change: transform` para GPU acceleration nas animações
 
-- `--radius` de `0.75rem` → `0.5rem` (index.css)
-- Cards: `rounded-2xl` → `rounded-lg` em todos os componentes
-- Botões CTA: `rounded-full` → `rounded-lg` (mais profissional, menos infantil)
-- Icon3D: `rounded-2xl` → `rounded-xl`
-- ImagePlaceholder: `rounded-2xl` → `rounded-lg`
-- Inputs e selects: `rounded-xl` → `rounded-lg`
-- Carousel indicators e dots: manter `rounded-full` (são pequenos)
-- Nav arrows: `rounded-full` → `rounded-lg`
+### 2. Cores VIVAS nas seções (sem gradiente)
+Cada seção ganha identidade visual forte:
 
-## 3. Tirar aspecto de IA — ajustes finos
-- **Remover "UPPERCASE" excessivo**: títulos de seção em capitalização normal (só CTAs ficam uppercase)
-- **Remover "tracking-wider" dos títulos**: tracking excessivo = AI template
-- **Variar espaçamento entre seções**: nem tudo `py-20`. Alternar entre `py-14`, `py-20`, `py-16`
-- **Subtítulos genéricos**: remover labels "O que a gente faz", "Quem somos", "Depoimentos" — ir direto ao título
-- **WhyUs**: remover o emoji 😉 que ficou (linha 60)
-- **Stats do hero**: texto menos padronizado
-- **Testimonials**: aspas menos "template" — remover o ícone Quote gigante decorativo
-- **Contact**: frase do form mais natural
-- **Footer**: copyright "2024" → "2025"
+- **Hero**: Manter teal escuro, mas CTAs mais vibrantes (laranja saturado, hover com escala maior)
+- **AboutUs** (`bg-petshop-cream`): Adicionar detalhes em **laranja** — borda lateral colorida, ícones de check em laranja ao invés de verde apagado
+- **Services**: Cards com **fundo colorido sutil** por serviço (verde-claro, laranja-claro) ao invés de todos brancos iguais. Card hover com borda colorida
+- **FoodProducts**: Tabs ativas com **laranja vibrante** ao invés de teal escuro. Cards com sombra colorida no hover
+- **WhyUs**: Fundo com **bloco laranja** atrás dos números. Números em **laranja** ao invés de primary genérico
+- **Testimonials**: Borda lateral **colorida** no card ativo (muda de cor por depoimento). Fundo levemente **creme**
+- **Contact**: Fundo **verde-claro vibrante** ao invés de `secondary/5` quase invisível. Botão de envio **laranja**
+- **Footer**: Adicionar faixa **laranja** fina no topo do footer como separador visual
+
+### 3. Mais estímulos visuais e movimento
+- **Botões CTA**: Adicionar `box-shadow` colorido (laranja glow) no hover
+- **Cards**: Sombra colorida no hover (não cinza genérica)
+- **Separadores entre seções**: Linhas finas coloridas (alternando verde/laranja)
+- **Stats (WhyUs)**: Pulse sutil no ícone quando o número termina de contar
+- **Service cards**: Ícone anima ao hover (`animate="float"` on hover)
+- **Testimonials**: Transição mais rápida e suave
+
+### 4. CSS — Novas variáveis e utilidades
+- Adicionar sombras coloridas: `shadow-primary/20`, `shadow-secondary/20`
+- Keyframe `glow` para botões hover
+- Reduzir `transition-duration` global de 500ms para 300ms (tudo mais snappy)
 
 ## Arquivos modificados
 | Arquivo | Mudança |
 |---------|---------|
-| `index.css` | `--radius: 0.5rem` |
-| `Header.tsx` | Faixa topo vermelha |
-| `Icon3D.tsx` | `rounded-2xl` → `rounded-xl` |
-| `ImagePlaceholder.tsx` | `rounded-2xl` → `rounded-lg` |
-| `HeroCarousel.tsx` | Menos rounded, títulos sem uppercase forçado, arrows `rounded-lg` |
-| `AboutUs.tsx` | Sem label genérico, rounded menor, título normal case |
-| `Services.tsx` | Rounded menor, sem label, py variado |
-| `FoodProducts.tsx` | Rounded menor, sem label, botões `rounded-lg` |
-| `Testimonials.tsx` | Rounded menor, sem Quote decorativo, sem label |
-| `WhyUs.tsx` | Sem emoji, título normal case |
-| `Brands.tsx` | py diferente |
-| `Contact.tsx` | Rounded menor, botão `rounded-lg`, frase natural |
-| `Footer.tsx` | Copyright 2025, rounded menor |
+| `index.css` | Sombras coloridas, keyframe glow, transitions mais rápidas |
+| `HeroCarousel.tsx` | RAF → CSS animation + setInterval, CTAs com glow |
+| `AboutUs.tsx` | Mais cor nos detalhes, borda lateral |
+| `Services.tsx` | Cards com bg colorido por serviço, hover animado |
+| `FoodProducts.tsx` | Tabs laranja, sombras coloridas |
+| `WhyUs.tsx` | Fundo colorido, números laranja, pulse no ícone |
+| `Testimonials.tsx` | Borda colorida, fundo creme, transição rápida |
+| `Contact.tsx` | Fundo verde vibrante, botão laranja |
+| `Footer.tsx` | Faixa laranja no topo |
+| `Icon3D.tsx` | `will-change: transform` para GPU |
 
