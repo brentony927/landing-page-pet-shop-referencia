@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -41,36 +41,37 @@ const Testimonials = () => {
   const t = testimonials[idx];
 
   return (
-    <section className="py-20 bg-petshop-mint-light">
+    <section className="py-20 bg-accent">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <span className="text-4xl mb-3 block">💬</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-3">
-            O que dizem sobre nós
+          <p className="text-accent-foreground/60 font-bold text-sm uppercase tracking-wider mb-2">Depoimentos</p>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-accent-foreground uppercase">
+            O QUE DIZEM SOBRE NÓS
           </h2>
         </div>
 
         <div className="max-w-2xl mx-auto relative">
-          <div className="bg-card rounded-2xl p-8 md:p-10 shadow-sm border border-border text-center transition-all duration-500">
-            <span className="text-5xl mb-4 block">{t.avatar}</span>
+          <div className="bg-card rounded-2xl p-8 md:p-10 shadow-lg text-center transition-all duration-500">
+            <Quote className="w-10 h-10 text-primary mx-auto mb-4" />
             <p className="text-foreground text-lg md:text-xl italic mb-6 leading-relaxed">
               "{t.text}"
             </p>
+            <span className="text-5xl mb-3 block">{t.avatar}</span>
             <p className="font-heading font-bold text-foreground">{t.name}</p>
-            <p className="text-secondary text-sm font-semibold">{t.pet}</p>
+            <p className="text-primary text-sm font-semibold">{t.pet}</p>
           </div>
 
           <button
             onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-card border border-border rounded-full p-2 shadow hover:bg-muted transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-petshop-teal rounded-full p-2 shadow hover:bg-petshop-teal-light transition-colors"
           >
-            <ChevronLeft className="w-5 h-5 text-foreground" />
+            <ChevronLeft className="w-5 h-5 text-primary-foreground" />
           </button>
           <button
             onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-card border border-border rounded-full p-2 shadow hover:bg-muted transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-petshop-teal rounded-full p-2 shadow hover:bg-petshop-teal-light transition-colors"
           >
-            <ChevronRight className="w-5 h-5 text-foreground" />
+            <ChevronRight className="w-5 h-5 text-primary-foreground" />
           </button>
 
           <div className="flex justify-center gap-2 mt-6">
@@ -79,7 +80,7 @@ const Testimonials = () => {
                 key={i}
                 onClick={() => setIdx(i)}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  i === idx ? "bg-secondary w-7" : "bg-border"
+                  i === idx ? "bg-petshop-teal w-7" : "bg-accent-foreground/20"
                 }`}
               />
             ))}
