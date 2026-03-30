@@ -1,58 +1,62 @@
 
 
-# Upgrade: Placeholders, Transparência, Elementos 3D e Paleta Verde/Laranja
+# Tirar o Aspecto de IA — Site Mais Vivo e Claro
 
-## 1. Fotos reais → Placeholder "A SUA IMAGEM AQUI"
-Onde existem URLs do Unsplash (HeroCarousel, AboutUs, Services, FoodProducts), substituir por divs estilizadas com texto "A SUA IMAGEM AQUI" em fundo claro com borda tracejada.
+## Problema atual
+O site tem cara de "template gerado por IA": todas as seções seguem o mesmo padrão (subtítulo + título + grid), textos genéricos, espaçamento uniforme demais, placeholders com borda tracejada fria, e tudo muito "certinho". Falta personalidade.
 
-**Arquivos**: `HeroCarousel.tsx`, `AboutUs.tsx`, `Services.tsx`, `FoodProducts.tsx`
+## Mudanças
 
-## 2. Header semi-transparente
-Adicionar `bg-petshop-teal/90 backdrop-blur-md` no header para efeito de vidro fosco.
+### 1. Copys com personalidade (menos robô, mais humano)
+Reescrever textos para soar como um pet shop real brasileiro — informal, carinhoso, com expressões naturais. Exemplos:
+- "Cuidado completo pro seu melhor amigo" → "Seu pet merece o melhor, e a gente entrega!"
+- "Números que falam por si" → "A gente não é de se gabar, mas..."
+- "O que dizem sobre nós" → "Quem trouxe o pet, voltou!"
+- Descrições dos serviços mais curtas e diretas
 
-**Arquivo**: `Header.tsx`
+### 2. Fundo mais claro e limpo
+- Background principal de `130 30% 98%` → `0 0% 100%` (branco puro)
+- Seção cream de `130 30% 95%` → `45 100% 97%` (amarelo-claro bem sutil)
+- Muted mais leve para cards e separadores
+- Remover bordas desnecessárias dos cards — usar sombra suave
 
-## 3. Emojis → Elementos 3D animados (CSS)
-Substituir todos os emojis por elementos visuais 3D feitos com CSS: esferas coloridas com sombras, ícones Lucide dentro de formas com `perspective`, `rotateX/Y` e animações de flutuação. Sem Three.js — apenas CSS transforms 3D com sombras e profundidade.
+### 3. Quebrar a repetição visual
+- **AboutUs**: Layout assimétrico — texto maior, imagem menor e deslocada
+- **Services**: Cards com tamanhos variados (1 card featured maior)
+- **Testimonials**: Fundo branco com aspas coloridas grandes ao invés de bg amarelo inteiro
+- **Brands**: Marquee/scroll horizontal infinito ao invés de grid estático
+- **WhyUs**: Layout horizontal (3 colunas lado a lado) com separadores visuais
 
-Exemplos:
-- 🐾 → esfera verde com ícone PawPrint flutuante
-- ❤️ → esfera laranja com ícone Heart pulsante
-- 🛁 → cubo arredondado com ícone Droplets
-- Patinhas decorativas → formas 3D com rotate e float
+### 4. ImagePlaceholder menos "template"
+- Remover borda tracejada fria
+- Fundo colorido sólido (verde-claro ou laranja-claro)
+- Ícone maior e mais vibrante
+- Texto menor e mais discreto
 
-**Arquivos afetados**: `HeroCarousel.tsx`, `AboutUs.tsx`, `WhyUs.tsx`, `Testimonials.tsx`, `Footer.tsx`, `Contact.tsx`, `WhatsAppButton.tsx`, `FoodProducts.tsx`, `Brands.tsx`
+### 5. Mais cor e contraste
+- Cards de produto com borda lateral colorida ao invés de borda cinza uniforme
+- Badges mais vibrantes
+- Botões com cores mais saturadas
+- Seção de contato com fundo levemente verde ao invés de cinza
 
-## 4. Paleta mais clara, foco verde/laranja
-- Background principal: mais claro (`#FAFDF8` — verde-claro quase branco)
-- Reduzir uso de roxo/coral, focar em verde (`#2EC4B6` → `#22A66E` mais verde) e laranja (`#FF6B2C`)
-- Teal do header/footer mantido mas levemente mais verde
-- Seções alternando entre branco, verde-claro-claro e branco
-- Accent amarelo mantido para badges
-- SEM gradientes
+### 6. Micro-detalhes que tiram o aspecto de template
+- Adicionar um "banner" ou faixa colorida entre seções (tipo uma barra laranja fina)
+- Números de WhatsApp e telefone com formatação real
+- Adicionar horário de funcionamento no header
+- Footer menos simétrico
 
-**Arquivos**: `index.css` (variáveis CSS), `tailwind.config.ts`
-
-## 5. Novo componente utilitário: `Icon3D`
-Componente reutilizável que renderiza um ícone Lucide dentro de uma esfera/forma com CSS 3D (perspective, box-shadow inset, animação float).
-
-**Novo arquivo**: `src/components/petshop/Icon3D.tsx`
-
-## Resumo de arquivos
+## Arquivos modificados
 | Arquivo | Mudança |
 |---------|---------|
-| `index.css` | Variáveis de cor mais claras e verdes |
-| `tailwind.config.ts` | Tokens atualizados |
-| `Icon3D.tsx` | Novo componente 3D CSS |
-| `Header.tsx` | Transparência + backdrop-blur |
-| `HeroCarousel.tsx` | Placeholder imagem + Icon3D |
-| `AboutUs.tsx` | Placeholder imagem + Icon3D |
-| `Services.tsx` | Remover imagem bg + Icon3D |
-| `FoodProducts.tsx` | Placeholder banner + Icon3D nas abas |
-| `Testimonials.tsx` | Icon3D nos avatares |
-| `WhyUs.tsx` | Icon3D nos stats |
-| `Brands.tsx` | Icon3D nos logos |
-| `Footer.tsx` | Icon3D no instagram grid |
-| `Contact.tsx` | Icon3D no mapa e form |
-| `WhatsAppButton.tsx` | Icon3D no botão |
+| `index.css` | Fundo mais claro, muted mais suave |
+| `ImagePlaceholder.tsx` | Visual mais quente, sem borda tracejada |
+| `HeroCarousel.tsx` | Copys reescritas, layout ajustado |
+| `AboutUs.tsx` | Copy humana, layout assimétrico |
+| `Services.tsx` | Card featured, textos diretos |
+| `FoodProducts.tsx` | Cards sem borda, mais cor |
+| `Testimonials.tsx` | Fundo branco, aspas grandes coloridas |
+| `WhyUs.tsx` | Layout horizontal, copy divertida |
+| `Brands.tsx` | Scroll horizontal animado |
+| `Contact.tsx` | Fundo levemente verde, copy informal |
+| `Footer.tsx` | Mais personalidade no texto |
 
