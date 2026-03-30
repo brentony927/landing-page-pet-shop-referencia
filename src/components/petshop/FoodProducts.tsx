@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Star, Dog, Cat, PawPrint, Bird, Fish } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Icon3D from "./Icon3D";
 import ImagePlaceholder from "./ImagePlaceholder";
+import { useInView } from "@/hooks/useInView";
 
 const categories = [
   { label: "Cães", icon: Dog, key: "dogs", color: "orange" as const },
@@ -47,18 +48,8 @@ const products: Record<string, Array<{ name: string; price: string; rating: numb
 
 const FoodProducts = () => {
   const [activeTab, setActiveTab] = useState("dogs");
-  const [visible, setVisible] = useState(false);
   const [tabChanged, setTabChanged] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, visible } = useInView(0.1);
 
   const handleTabChange = (key: string) => {
     setTabChanged(true);
@@ -71,7 +62,7 @@ const FoodProducts = () => {
   const activeCat = categories.find(c => c.key === activeTab);
 
   return (
-    <section id="racoes" className="py-20 bg-background" ref={ref}>
+    <section id="racoes" className="py-16 bg-background" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-8 mb-12">
           <div className="flex-1 text-center lg:text-left">
@@ -82,7 +73,7 @@ const FoodProducts = () => {
               A gente escolhe cada marca com cuidado. Nada de encher prateleira com qualquer coisa.
             </p>
           </div>
-          <div className={`flex-shrink-0 transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>
+          <div className={`flex-shrink-0 transition-all duration-500 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>
             <ImagePlaceholder className="w-48 h-48 md:w-56 md:h-56" variant="orange" />
           </div>
         </div>
@@ -92,9 +83,9 @@ const FoodProducts = () => {
             <button
               key={cat.key}
               onClick={() => handleTabChange(cat.key)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 ${
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 ${
                 activeTab === cat.key
-                  ? "bg-petshop-teal text-primary-foreground shadow-md scale-105"
+                  ? "bg-primary text-primary-foreground shadow-orange scale-105"
                   : "bg-muted text-muted-foreground hover:bg-border"
               }`}
             >
@@ -104,14 +95,14 @@ const FoodProducts = () => {
           ))}
         </div>
 
-        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 transition-all duration-300 ${tabChanged ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
+        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 transition-all duration-200 ${tabChanged ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
           {products[activeTab].map((p, i) => (
             <div
               key={p.name}
-              className={`bg-card rounded-lg overflow-hidden shadow-sm transition-all duration-500 relative group cursor-pointer hover:-translate-y-2 hover:shadow-lg ${
+              className={`bg-card rounded-lg overflow-hidden shadow-sm transition-all duration-300 relative group cursor-pointer hover:-translate-y-2 hover:shadow-orange ${
                 p.popular ? "border-l-4 border-l-primary" : ""
               } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: `${i * 100}ms` }}
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
               {p.popular && (
                 <Badge className="absolute top-3 left-3 bg-accent text-accent-foreground border-0 font-bold text-xs z-10">
@@ -136,7 +127,7 @@ const FoodProducts = () => {
                 <h3 className="font-heading font-bold text-foreground text-sm mb-2 leading-tight">{p.name}</h3>
                 <div className="flex items-center justify-between">
                   <p className="font-heading text-xl font-bold text-primary">{p.price}</p>
-                  <button className="w-8 h-8 rounded-lg bg-petshop-teal flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-petshop-teal-light hover:scale-110 transition-all">
+                  <button className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-primary/90 hover:scale-110 transition-all duration-200">
                     +
                   </button>
                 </div>
@@ -146,7 +137,7 @@ const FoodProducts = () => {
         </div>
 
         <div className="text-center mt-10">
-          <button className="bg-petshop-teal text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 transition-transform duration-300">
+          <button className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 glow-orange transition-all duration-300">
             Ver tudo →
           </button>
         </div>
