@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, User } from "lucide-react";
+import { ChevronLeft, ChevronRight, User, Star } from "lucide-react";
 import Icon3D from "./Icon3D";
 
 const borderColors = ["border-l-primary", "border-l-secondary", "border-l-petshop-teal", "border-l-accent"];
@@ -47,15 +47,26 @@ const Testimonials = () => {
   const prev = useCallback(() => goTo((idx - 1 + testimonials.length) % testimonials.length), [idx, goTo]);
 
   useEffect(() => {
-    const timer = setInterval(next, 6000);
+    const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
   }, [next]);
 
   const t = testimonials[idx];
 
   return (
-    <section className="py-16 bg-petshop-cream">
-      <div className="container mx-auto px-4">
+    <section className="py-16 bg-petshop-cream relative overflow-hidden">
+      {/* Floating star decorations */}
+      <div className="absolute top-8 left-8 opacity-10 animate-float">
+        <Star className="w-12 h-12 text-accent fill-accent" />
+      </div>
+      <div className="absolute bottom-8 right-12 opacity-10 animate-float-delayed">
+        <Star className="w-8 h-8 text-primary fill-primary" />
+      </div>
+      <div className="absolute top-1/3 right-8 opacity-8 hidden md:block animate-float">
+        <Star className="w-6 h-6 text-secondary fill-secondary" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
             Quem trouxe o pet, voltou!

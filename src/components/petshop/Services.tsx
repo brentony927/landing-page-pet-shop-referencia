@@ -4,12 +4,12 @@ import Icon3D from "./Icon3D";
 import { useInView } from "@/hooks/useInView";
 
 const cardBgColors = [
-  "bg-secondary/8 hover:border-secondary",
-  "bg-primary/8 hover:border-primary",
-  "bg-petshop-teal/8 hover:border-petshop-teal",
-  "bg-accent/10 hover:border-accent",
-  "bg-primary/8 hover:border-primary",
-  "bg-secondary/8 hover:border-secondary",
+  "bg-secondary/10 hover:border-secondary",
+  "bg-primary/10 hover:border-primary",
+  "bg-petshop-teal/10 hover:border-petshop-teal",
+  "bg-accent/12 hover:border-accent",
+  "bg-primary/10 hover:border-primary",
+  "bg-secondary/10 hover:border-secondary",
 ];
 
 const services = [
@@ -52,12 +52,12 @@ const Services = () => {
           {services.map((s, i) => (
             <div
               key={s.title}
-              className={`${s.featured ? "min-w-[320px] border-l-4 border-l-primary" : "min-w-[280px]"} ${cardBgColors[i]} border border-transparent rounded-lg p-6 cursor-pointer snap-start transition-all duration-300 hover:-translate-y-2 hover:shadow-lg group ${
+              className={`${s.featured ? "min-w-[320px] border-l-4 border-l-primary" : "min-w-[280px]"} ${cardBgColors[i]} border border-transparent rounded-lg p-6 cursor-pointer snap-start transition-all duration-200 hover:-translate-y-2 hover:shadow-orange group ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="group-hover:animate-float">
+              <div className="animate-spin-icon">
                 <Icon3D icon={s.icon} size="md" color={s.color} animate="none" className="mb-4" />
               </div>
               <h3 className="font-heading text-lg font-bold text-foreground mb-1">{s.title}</h3>
@@ -68,6 +68,16 @@ const Services = () => {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* CTA Strip */}
+      <div className="bg-primary mt-12 py-4">
+        <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+          <span className="text-primary-foreground font-bold text-lg">Agende o banho do seu pet agora</span>
+          <a href="#contato" className="bg-primary-foreground text-primary font-bold px-6 py-2 rounded-lg text-sm uppercase tracking-wider hover:scale-105 transition-transform duration-200">
+            WhatsApp →
+          </a>
         </div>
       </div>
     </section>
