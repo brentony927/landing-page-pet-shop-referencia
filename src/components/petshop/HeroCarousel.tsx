@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, useRef } from "react";
-import { ChevronLeft, ChevronRight, PawPrint, Heart, ShoppingBag } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { ChevronLeft, ChevronRight, PawPrint, Heart } from "lucide-react";
 import Icon3D from "./Icon3D";
 import ImagePlaceholder from "./ImagePlaceholder";
 
@@ -35,36 +35,26 @@ const SLIDE_DURATION = 5000;
 const HeroCarousel = () => {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const rafRef = useRef<number>(0);
-  const startTimeRef = useRef<number>(Date.now());
+  const [progressKey, setProgressKey] = useState(0);
 
   const goTo = useCallback((idx: number) => {
     setIsTransitioning(true);
     setTimeout(() => {
       setCurrent(idx);
       setIsTransitioning(false);
-      setProgress(0);
-      startTimeRef.current = Date.now();
+      setProgressKey(k => k + 1);
     }, 300);
   }, []);
 
   const next = useCallback(() => goTo((current + 1) % slides.length), [current, goTo]);
   const prev = useCallback(() => goTo((current - 1 + slides.length) % slides.length), [current, goTo]);
 
+  // Autoplay with simple setInterval — no RAF
   useEffect(() => {
-    const animate = () => {
-      const elapsed = Date.now() - startTimeRef.current;
-      const pct = Math.min(elapsed / SLIDE_DURATION, 1);
-      setProgress(pct);
-      if (pct >= 1) {
-        goTo((current + 1) % slides.length);
-        return;
-      }
-      rafRef.current = requestAnimationFrame(animate);
-    };
-    rafRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafRef.current);
+    const timer = setInterval(() => {
+      goTo((current + 1) % slides.length);
+    }, SLIDE_DURATION);
+    return () => clearInterval(timer);
   }, [current, goTo]);
 
   const slide = slides[current];
@@ -82,7 +72,7 @@ const HeroCarousel = () => {
           <Icon3D icon={PawPrint} size="md" color="yellow" animate="float" />
         </div>
 
-        <div className={`container mx-auto px-4 py-16 md:py-24 relative z-10 transition-all duration-500 ${isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
+        <div className={`container mx-auto px-4 py-16 md:py-24 relative z-10 transition-all duration-300 ${isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="text-center lg:text-left">
               <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold text-primary-foreground max-w-2xl leading-tight mb-4" style={{ textShadow: "0 2px 20px rgba(0,0,0,0.2)" }}>
@@ -92,7 +82,7 @@ const HeroCarousel = () => {
                 {slide.subtitle}
               </p>
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <button className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm tracking-wider shadow-lg uppercase hover:-translate-y-1 transition-transform duration-300">
+                <button className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm tracking-wider uppercase shadow-lg hover:-translate-y-1 hover:shadow-[0_0_24px_hsl(18_100%_59%/0.5)] transition-all duration-300">
                   {slide.cta1}
                 </button>
                 <button className="border-2 border-primary-foreground/30 text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm tracking-wider hover:border-accent hover:text-accent hover:-translate-y-1 transition-all duration-300">
@@ -124,10 +114,10 @@ const HeroCarousel = () => {
           </div>
         </div>
 
-        <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg p-3 transition-all z-20 hover:scale-110 backdrop-blur-sm">
+        <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg p-3 transition-all duration-200 z-20 hover:scale-110 backdrop-blur-sm">
           <ChevronLeft className="w-6 h-6 text-primary-foreground" />
         </button>
-        <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg p-3 transition-all z-20 hover:scale-110 backdrop-blur-sm">
+        <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg p-3 transition-all duration-200 z-20 hover:scale-110 backdrop-blur-sm">
           <ChevronRight className="w-6 h-6 text-primary-foreground" />
         </button>
       </div>
@@ -142,8 +132,9 @@ const HeroCarousel = () => {
           >
             {i === current && (
               <div
-                className="absolute inset-0 bg-accent rounded-full"
-                style={{ width: `${progress * 100}%`, transition: "width 0.1s linear" }}
+                key={progressKey}
+                className="absolute inset-0 bg-accent rounded-full animate-progress"
+                style={{ "--duration": `${SLIDE_DURATION}ms` } as React.CSSProperties}
               />
             )}
           </button>

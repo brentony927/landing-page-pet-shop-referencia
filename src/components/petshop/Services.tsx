@@ -1,6 +1,16 @@
-import { useEffect, useRef, useState } from "react";
 import { Scissors, Stethoscope, Hotel, Dog, Car, Sun, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
 import Icon3D from "./Icon3D";
+import { useInView } from "@/hooks/useInView";
+
+const cardBgColors = [
+  "bg-secondary/8 hover:border-secondary",
+  "bg-primary/8 hover:border-primary",
+  "bg-petshop-teal/8 hover:border-petshop-teal",
+  "bg-accent/10 hover:border-accent",
+  "bg-primary/8 hover:border-primary",
+  "bg-secondary/8 hover:border-secondary",
+];
 
 const services = [
   { icon: Scissors, title: "Banho & Tosa", desc: "Sai cheiroso e desfilando", price: "R$ 79", duration: "1h30", color: "green" as const, featured: true },
@@ -12,25 +22,15 @@ const services = [
 ];
 
 const Services = () => {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const { ref, visible } = useInView(0.15);
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.15 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
 
   const scroll = (dir: number) => {
     scrollRef.current?.scrollBy({ left: dir * 320, behavior: "smooth" });
   };
 
   return (
-    <section id="servicos" className="py-14 bg-background relative overflow-hidden" ref={ref}>
+    <section id="servicos" className="py-20 bg-background relative overflow-hidden" ref={ref}>
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-end justify-between mb-12">
           <div>
@@ -39,10 +39,10 @@ const Services = () => {
             </h2>
           </div>
           <div className="hidden md:flex gap-2">
-            <button onClick={() => scroll(-1)} className="w-10 h-10 rounded-lg border-2 border-border flex items-center justify-center hover:border-primary hover:text-primary hover:scale-110 transition-all">
+            <button onClick={() => scroll(-1)} className="w-10 h-10 rounded-lg border-2 border-border flex items-center justify-center hover:border-primary hover:text-primary hover:scale-110 transition-all duration-200">
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <button onClick={() => scroll(1)} className="w-10 h-10 rounded-lg border-2 border-border flex items-center justify-center hover:border-primary hover:text-primary hover:scale-110 transition-all">
+            <button onClick={() => scroll(1)} className="w-10 h-10 rounded-lg border-2 border-border flex items-center justify-center hover:border-primary hover:text-primary hover:scale-110 transition-all duration-200">
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
@@ -52,12 +52,14 @@ const Services = () => {
           {services.map((s, i) => (
             <div
               key={s.title}
-              className={`${s.featured ? "min-w-[320px] border-l-4 border-l-primary" : "min-w-[280px]"} bg-card rounded-lg p-6 shadow-sm cursor-pointer snap-start transition-all duration-500 hover:-translate-y-2 hover:shadow-lg ${
+              className={`${s.featured ? "min-w-[320px] border-l-4 border-l-primary" : "min-w-[280px]"} ${cardBgColors[i]} border border-transparent rounded-lg p-6 cursor-pointer snap-start transition-all duration-300 hover:-translate-y-2 hover:shadow-lg group ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
-              style={{ transitionDelay: `${i * 100}ms` }}
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <Icon3D icon={s.icon} size="md" color={s.color} animate="none" className="mb-4" />
+              <div className="group-hover:animate-float">
+                <Icon3D icon={s.icon} size="md" color={s.color} animate="none" className="mb-4" />
+              </div>
               <h3 className="font-heading text-lg font-bold text-foreground mb-1">{s.title}</h3>
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{s.desc}</p>
               <div className="flex items-center justify-between border-t border-border/50 pt-3">

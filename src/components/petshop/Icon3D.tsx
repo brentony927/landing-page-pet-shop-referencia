@@ -53,7 +53,7 @@ const Icon3D = ({ icon: IconComponent, size = "md", color = "green", animate = "
   return (
     <div
       className={`${s.container} rounded-xl ${c.bg} ${c.shadow} border ${c.border} flex items-center justify-center ${a} ${className}`}
-      style={{ perspective: "200px", transform: "rotateX(5deg) rotateY(-5deg)" }}
+      style={{ perspective: "200px", transform: "rotateX(5deg) rotateY(-5deg)", willChange: "transform" }}
     >
       <IconComponent className="text-primary-foreground drop-shadow-md" size={s.icon} strokeWidth={2.5} />
     </div>
