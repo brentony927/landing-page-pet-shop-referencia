@@ -15,17 +15,17 @@ const AboutUs = () => {
   const { ref, visible } = useInView(0.2);
 
   return (
-    <section id="sobre" className="py-16 bg-petshop-cream overflow-hidden" ref={ref}>
+    <section id="sobre" className="py-16 bg-primary/8 overflow-hidden" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center max-w-5xl mx-auto">
           <div className={`lg:col-span-2 flex items-center justify-center transition-all duration-500 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"}`}>
             <div className="relative">
               <ImagePlaceholder className="w-56 h-56 md:w-72 md:h-72" variant="orange" />
-              <div className="absolute -bottom-4 -right-4">
-                <Icon3D icon={Heart} size="md" color="orange" animate="float" />
+              <div className="absolute -bottom-4 -right-4 animate-bounce-small">
+                <Icon3D icon={Heart} size="md" color="orange" animate="none" />
               </div>
-              <div className="absolute -top-4 -left-4">
-                <Icon3D icon={PawPrint} size="sm" color="green" animate="float" />
+              <div className="absolute -top-4 -left-4 animate-float">
+                <Icon3D icon={PawPrint} size="sm" color="green" animate="none" />
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@ const AboutUs = () => {
                   className={`flex items-center gap-3 transition-all duration-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                   style={{ transitionDelay: `${400 + i * 80}ms` }}
                 >
-                  <div className="w-6 h-6 rounded-md bg-primary/15 flex items-center justify-center flex-shrink-0">
+                  <div className="w-6 h-6 rounded-md bg-primary/20 flex items-center justify-center flex-shrink-0">
                     <Check className="w-4 h-4 text-primary" />
                   </div>
                   <span className="text-foreground font-semibold text-sm">{b}</span>
@@ -55,7 +55,7 @@ const AboutUs = () => {
               ))}
             </ul>
 
-            <button className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 glow-orange transition-all duration-300">
+            <button className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 glow-orange transition-all duration-200">
               Conhecer mais →
             </button>
           </div>

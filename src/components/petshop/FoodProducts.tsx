@@ -63,6 +63,13 @@ const FoodProducts = () => {
 
   return (
     <section id="racoes" className="py-16 bg-background" ref={ref}>
+      {/* Promo banner */}
+      <div className="bg-accent py-3 mb-10">
+        <p className="text-center font-bold text-accent-foreground text-sm animate-bounce-small">
+          Frete grátis acima de R$150 — Aproveite!
+        </p>
+      </div>
+
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-8 mb-12">
           <div className="flex-1 text-center lg:text-left">
@@ -99,13 +106,13 @@ const FoodProducts = () => {
           {products[activeTab].map((p, i) => (
             <div
               key={p.name}
-              className={`bg-card rounded-lg overflow-hidden shadow-sm transition-all duration-300 relative group cursor-pointer hover:-translate-y-2 hover:shadow-orange ${
+              className={`bg-card rounded-lg overflow-hidden shadow-sm transition-all duration-200 relative group cursor-pointer hover:-translate-y-2 hover:shadow-orange ${
                 p.popular ? "border-l-4 border-l-primary" : ""
               } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${i * 80}ms` }}
             >
               {p.popular && (
-                <Badge className="absolute top-3 left-3 bg-accent text-accent-foreground border-0 font-bold text-xs z-10">
+                <Badge className="absolute top-3 left-3 bg-accent text-accent-foreground border-0 font-bold text-xs z-10 animate-bounce-small">
                   Destaque
                 </Badge>
               )}
@@ -127,7 +134,7 @@ const FoodProducts = () => {
                 <h3 className="font-heading font-bold text-foreground text-sm mb-2 leading-tight">{p.name}</h3>
                 <div className="flex items-center justify-between">
                   <p className="font-heading text-xl font-bold text-primary">{p.price}</p>
-                  <button className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-primary/90 hover:scale-110 transition-all duration-200">
+                  <button className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-primary/90 hover:scale-125 transition-all duration-200">
                     +
                   </button>
                 </div>
@@ -137,7 +144,7 @@ const FoodProducts = () => {
         </div>
 
         <div className="text-center mt-10">
-          <button className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 glow-orange transition-all duration-300">
+          <button className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 glow-orange transition-all duration-200">
             Ver tudo →
           </button>
         </div>
