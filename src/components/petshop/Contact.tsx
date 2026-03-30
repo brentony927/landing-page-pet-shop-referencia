@@ -1,6 +1,7 @@
-import { MapPin, Clock, Phone } from "lucide-react";
+import { MapPin, Clock, Phone, PawPrint } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Icon3D from "./Icon3D";
 
 const Contact = () => {
   return (
@@ -14,12 +15,9 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
-          {/* Info */}
           <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-petshop-teal flex items-center justify-center shrink-0">
-                <MapPin className="w-6 h-6 text-primary-foreground" />
-              </div>
+              <Icon3D icon={MapPin} size="md" color="teal" animate="none" />
               <div>
                 <h3 className="font-heading font-bold text-foreground mb-1">Endereço</h3>
                 <p className="text-muted-foreground text-sm">Rua dos Pets Felizes, 123 — Centro, São Paulo - SP</p>
@@ -27,9 +25,7 @@ const Contact = () => {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center shrink-0">
-                <Clock className="w-6 h-6 text-accent-foreground" />
-              </div>
+              <Icon3D icon={Clock} size="md" color="yellow" animate="none" />
               <div>
                 <h3 className="font-heading font-bold text-foreground mb-1">Horário</h3>
                 <p className="text-muted-foreground text-sm">Seg a Sex: 8h às 19h</p>
@@ -38,24 +34,22 @@ const Contact = () => {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center shrink-0">
-                <Phone className="w-6 h-6 text-primary-foreground" />
-              </div>
+              <Icon3D icon={Phone} size="md" color="orange" animate="none" />
               <div>
                 <h3 className="font-heading font-bold text-foreground mb-1">Telefone</h3>
                 <p className="text-muted-foreground text-sm">(11) 99999-1234</p>
               </div>
             </div>
 
-            <div className="w-full h-48 rounded-2xl bg-petshop-teal flex items-center justify-center">
-              <span className="text-6xl">🗺️</span>
+            <div className="w-full h-48 rounded-2xl bg-secondary/10 border-2 border-dashed border-secondary/30 flex items-center justify-center gap-3">
+              <Icon3D icon={MapPin} size="lg" color="green" animate="float" />
+              <span className="font-heading font-bold text-secondary/50 text-sm">MAPA AQUI</span>
             </div>
           </div>
 
-          {/* Form */}
           <div className="bg-background rounded-2xl p-8 shadow-sm border border-border">
-            <h3 className="font-heading text-xl font-bold text-foreground mb-6 uppercase">
-              Fale conosco 🐾
+            <h3 className="font-heading text-xl font-bold text-foreground mb-6 uppercase flex items-center gap-2">
+              Fale conosco <Icon3D icon={PawPrint} size="sm" color="green" animate="none" />
             </h3>
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
               <div>
@@ -78,7 +72,7 @@ const Contact = () => {
                 </select>
               </div>
               <Button className="w-full bg-petshop-teal text-primary-foreground font-bold rounded-full text-sm uppercase tracking-wider py-5 hover:bg-petshop-teal-light">
-                ENVIAR MENSAGEM 🐾
+                ENVIAR MENSAGEM
               </Button>
             </form>
           </div>

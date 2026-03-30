@@ -1,10 +1,12 @@
-import { Check } from "lucide-react";
+import { Check, Heart, PawPrint } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import Icon3D from "./Icon3D";
+import ImagePlaceholder from "./ImagePlaceholder";
 
 const benefits = [
   { text: "Mais de 10 anos de experiência", color: "text-secondary" },
   { text: "20 veterinários especializados", color: "text-primary" },
-  { text: "Produtos de alta qualidade", color: "text-petshop-purple" },
+  { text: "Produtos de alta qualidade", color: "text-secondary" },
   { text: "Atendimento humanizado", color: "text-secondary" },
   { text: "Entrega rápida na sua casa", color: "text-primary" },
 ];
@@ -28,14 +30,12 @@ const AboutUs = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
           <div className={`flex items-center justify-center transition-all duration-700 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"}`}>
             <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 bg-accent rounded-3xl flex items-center justify-center shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop" alt="Pet feliz" className="w-full h-full object-cover" />
+              <ImagePlaceholder className="w-64 h-64 md:w-80 md:h-80" />
+              <div className="absolute -bottom-4 -right-4">
+                <Icon3D icon={Heart} size="md" color="orange" animate="float" />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-primary rounded-2xl flex items-center justify-center shadow-md animate-float">
-                <span className="text-4xl">❤️</span>
-              </div>
-              <div className="absolute -top-4 -left-4 w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center shadow-md animate-float-delayed">
-                <span className="text-3xl">🐾</span>
+              <div className="absolute -top-4 -left-4">
+                <Icon3D icon={PawPrint} size="sm" color="green" animate="float" />
               </div>
             </div>
           </div>

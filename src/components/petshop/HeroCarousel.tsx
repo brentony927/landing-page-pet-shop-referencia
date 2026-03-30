@@ -1,23 +1,22 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, PawPrint, Heart, ShoppingBag } from "lucide-react";
+import Icon3D from "./Icon3D";
+import ImagePlaceholder from "./ImagePlaceholder";
 
 const slides = [
   {
-    image: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&auto=format&fit=crop",
     title: "ESTAMOS SEMPRE AQUI PARA A SAÚDE DO SEU PET",
     subtitle: "Cuidado completo, profissional e cheio de carinho pro seu melhor amigo",
     cta1: "COMPRAR AGORA",
     cta2: "Agendar ligação",
   },
   {
-    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=800&auto=format&fit=crop",
     title: "BANHO & TOSA COM CARINHO DE VERDADE",
     subtitle: "Profissionais que tratam seu pet como parte da família",
     cta1: "AGENDAR AGORA",
     cta2: "Ver serviços",
   },
   {
-    image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&auto=format&fit=crop",
     title: "RAÇÕES SELECIONADAS PRA CADA FASE DA VIDA",
     subtitle: "Do filhote ao sênior, só o que há de melhor na tigela",
     cta1: "VER RAÇÕES",
@@ -73,15 +72,22 @@ const HeroCarousel = () => {
   return (
     <section id="inicio" className="pt-16">
       <div className="bg-petshop-teal relative overflow-hidden min-h-[600px] md:min-h-[650px]">
-        {/* Floating paws */}
-        <div className="absolute top-10 left-10 text-5xl opacity-10 animate-float">🐾</div>
-        <div className="absolute bottom-10 right-10 text-6xl opacity-10 animate-float-delayed">🐾</div>
-        <div className="absolute top-1/3 right-20 text-4xl opacity-5 animate-float hidden md:block">🐾</div>
-        <div className="absolute bottom-32 left-1/4 text-3xl opacity-5 animate-float-delayed hidden md:block">🐾</div>
+        {/* Floating 3D elements */}
+        <div className="absolute top-10 left-10 opacity-20">
+          <Icon3D icon={PawPrint} size="lg" color="green" animate="float" />
+        </div>
+        <div className="absolute bottom-10 right-10 opacity-20">
+          <Icon3D icon={Heart} size="xl" color="orange" animate="float" />
+        </div>
+        <div className="absolute top-1/3 right-20 opacity-10 hidden md:block">
+          <Icon3D icon={PawPrint} size="md" color="yellow" animate="float" />
+        </div>
+        <div className="absolute bottom-32 left-1/4 opacity-10 hidden md:block">
+          <Icon3D icon={ShoppingBag} size="sm" color="green" animate="float" />
+        </div>
 
         <div className={`container mx-auto px-4 py-16 md:py-24 relative z-10 transition-all duration-500 ${isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left — text */}
             <div className="text-center lg:text-left">
               <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold text-primary-foreground max-w-2xl leading-tight mb-4 uppercase tracking-tight" style={{ textShadow: "0 2px 20px rgba(0,0,0,0.2)" }}>
                 {slide.title}
@@ -90,7 +96,7 @@ const HeroCarousel = () => {
                 {slide.subtitle}
               </p>
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <button className="bg-accent-foreground text-primary-foreground font-bold px-8 py-3 rounded-full text-sm tracking-wider shadow-lg uppercase hover:-translate-y-1 transition-transform duration-300">
+                <button className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full text-sm tracking-wider shadow-lg uppercase hover:-translate-y-1 transition-transform duration-300">
                   {slide.cta1}
                 </button>
                 <button className="border-2 border-primary-foreground/30 text-primary-foreground font-bold px-8 py-3 rounded-full text-sm tracking-wider hover:border-accent hover:text-accent hover:-translate-y-1 transition-all duration-300">
@@ -108,21 +114,20 @@ const HeroCarousel = () => {
               </div>
             </div>
 
-            {/* Right — image */}
             <div className="flex items-center justify-center">
               <div className="relative w-72 h-72 md:w-96 md:h-96">
-                <img
-                  src={slide.image}
-                  alt={slide.title}
-                  className="w-full h-full object-cover rounded-3xl drop-shadow-2xl animate-hero-image"
-                />
-                <div className="absolute inset-0 border-4 border-accent/20 rounded-full animate-spin-slow pointer-events-none" />
+                <ImagePlaceholder className="w-full h-full" />
+                <div className="absolute -bottom-3 -right-3">
+                  <Icon3D icon={Heart} size="md" color="orange" animate="pulse" />
+                </div>
+                <div className="absolute -top-3 -left-3">
+                  <Icon3D icon={PawPrint} size="sm" color="green" animate="float" />
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Nav arrows */}
         <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-full p-3 transition-all z-20 hover:scale-110 backdrop-blur-sm">
           <ChevronLeft className="w-6 h-6 text-primary-foreground" />
         </button>
@@ -131,7 +136,6 @@ const HeroCarousel = () => {
         </button>
       </div>
 
-      {/* Progress indicators */}
       <div className="flex justify-center gap-3 -mt-5 relative z-20">
         {slides.map((_, i) => (
           <button

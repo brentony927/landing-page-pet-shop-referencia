@@ -1,45 +1,47 @@
 import { useState, useEffect, useRef } from "react";
-import { Star } from "lucide-react";
+import { Star, Dog, Cat, PawPrint, Bird, Fish } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import Icon3D from "./Icon3D";
+import ImagePlaceholder from "./ImagePlaceholder";
 
 const categories = [
-  { label: "Cães", emoji: "🐕", key: "dogs" },
-  { label: "Gatos", emoji: "🐈", key: "cats" },
-  { label: "Filhotes", emoji: "🐾", key: "puppies" },
-  { label: "Pássaros", emoji: "🐦", key: "birds" },
-  { label: "Peixes", emoji: "🐟", key: "fish" },
+  { label: "Cães", icon: Dog, key: "dogs", color: "orange" as const },
+  { label: "Gatos", icon: Cat, key: "cats", color: "green" as const },
+  { label: "Filhotes", icon: PawPrint, key: "puppies", color: "yellow" as const },
+  { label: "Pássaros", icon: Bird, key: "birds", color: "teal" as const },
+  { label: "Peixes", icon: Fish, key: "fish", color: "green" as const },
 ];
 
 const products: Record<string, Array<{ name: string; price: string; rating: number; popular?: boolean; bg: string }>> = {
   dogs: [
-    { name: "Ração Natural Frango & Arroz", price: "R$ 189,90", rating: 4.8, popular: true, bg: "bg-petshop-coral" },
-    { name: "Ração Cordeiro & Vegetais", price: "R$ 159,90", rating: 4.5, bg: "bg-secondary" },
-    { name: "Petiscos Dental Stick", price: "R$ 34,90", rating: 4.7, bg: "bg-petshop-purple" },
-    { name: "Ração Salmão & Batata Doce", price: "R$ 179,90", rating: 4.9, popular: true, bg: "bg-primary" },
+    { name: "Ração Natural Frango & Arroz", price: "R$ 189,90", rating: 4.8, popular: true, bg: "bg-primary/10" },
+    { name: "Ração Cordeiro & Vegetais", price: "R$ 159,90", rating: 4.5, bg: "bg-secondary/10" },
+    { name: "Petiscos Dental Stick", price: "R$ 34,90", rating: 4.7, bg: "bg-accent/20" },
+    { name: "Ração Salmão & Batata Doce", price: "R$ 179,90", rating: 4.9, popular: true, bg: "bg-primary/10" },
   ],
   cats: [
-    { name: "Ração Frango & Salmão Indoor", price: "R$ 169,90", rating: 4.8, popular: true, bg: "bg-petshop-coral" },
-    { name: "Sachê Mix Sabores (12un)", price: "R$ 49,90", rating: 4.3, bg: "bg-secondary" },
-    { name: "Petiscos Anti Bola de Pelo", price: "R$ 29,90", rating: 4.6, bg: "bg-petshop-purple" },
-    { name: "Ração Atum & Arroz", price: "R$ 139,90", rating: 4.4, bg: "bg-primary" },
+    { name: "Ração Frango & Salmão Indoor", price: "R$ 169,90", rating: 4.8, popular: true, bg: "bg-primary/10" },
+    { name: "Sachê Mix Sabores (12un)", price: "R$ 49,90", rating: 4.3, bg: "bg-secondary/10" },
+    { name: "Petiscos Anti Bola de Pelo", price: "R$ 29,90", rating: 4.6, bg: "bg-accent/20" },
+    { name: "Ração Atum & Arroz", price: "R$ 139,90", rating: 4.4, bg: "bg-primary/10" },
   ],
   puppies: [
-    { name: "Ração Filhotes Frango", price: "R$ 149,90", rating: 4.9, popular: true, bg: "bg-petshop-coral" },
-    { name: "Sachê Filhotes Carne (8un)", price: "R$ 39,90", rating: 4.5, bg: "bg-secondary" },
-    { name: "Ração Raças Pequenas", price: "R$ 119,90", rating: 4.7, bg: "bg-petshop-purple" },
-    { name: "Suplemento Crescimento", price: "R$ 59,90", rating: 4.6, popular: true, bg: "bg-primary" },
+    { name: "Ração Filhotes Frango", price: "R$ 149,90", rating: 4.9, popular: true, bg: "bg-primary/10" },
+    { name: "Sachê Filhotes Carne (8un)", price: "R$ 39,90", rating: 4.5, bg: "bg-secondary/10" },
+    { name: "Ração Raças Pequenas", price: "R$ 119,90", rating: 4.7, bg: "bg-accent/20" },
+    { name: "Suplemento Crescimento", price: "R$ 59,90", rating: 4.6, popular: true, bg: "bg-primary/10" },
   ],
   birds: [
-    { name: "Mix Sementes Canário", price: "R$ 24,90", rating: 4.5, bg: "bg-accent" },
-    { name: "Ração Calopsita", price: "R$ 32,90", rating: 4.7, popular: true, bg: "bg-petshop-coral" },
-    { name: "Farinhada com Ovo", price: "R$ 19,90", rating: 4.3, bg: "bg-secondary" },
-    { name: "Petiscos Frutas Secas", price: "R$ 15,90", rating: 4.4, bg: "bg-petshop-purple" },
+    { name: "Mix Sementes Canário", price: "R$ 24,90", rating: 4.5, bg: "bg-accent/20" },
+    { name: "Ração Calopsita", price: "R$ 32,90", rating: 4.7, popular: true, bg: "bg-primary/10" },
+    { name: "Farinhada com Ovo", price: "R$ 19,90", rating: 4.3, bg: "bg-secondary/10" },
+    { name: "Petiscos Frutas Secas", price: "R$ 15,90", rating: 4.4, bg: "bg-accent/20" },
   ],
   fish: [
-    { name: "Ração Flocos Tropical", price: "R$ 18,90", rating: 4.6, popular: true, bg: "bg-secondary" },
-    { name: "Ração Betta Premium", price: "R$ 14,90", rating: 4.8, bg: "bg-petshop-coral" },
-    { name: "Algas Spirulina", price: "R$ 22,90", rating: 4.5, bg: "bg-primary" },
-    { name: "Ração Kinguio Gold", price: "R$ 16,90", rating: 4.3, bg: "bg-petshop-purple" },
+    { name: "Ração Flocos Tropical", price: "R$ 18,90", rating: 4.6, popular: true, bg: "bg-secondary/10" },
+    { name: "Ração Betta Premium", price: "R$ 14,90", rating: 4.8, bg: "bg-primary/10" },
+    { name: "Algas Spirulina", price: "R$ 22,90", rating: 4.5, bg: "bg-primary/10" },
+    { name: "Ração Kinguio Gold", price: "R$ 16,90", rating: 4.3, bg: "bg-accent/20" },
   ],
 };
 
@@ -66,10 +68,11 @@ const FoodProducts = () => {
     }, 200);
   };
 
+  const activeCat = categories.find(c => c.key === activeTab);
+
   return (
     <section id="racoes" className="py-20 bg-card" ref={ref}>
       <div className="container mx-auto px-4">
-        {/* Header with image */}
         <div className="flex flex-col lg:flex-row items-center gap-8 mb-12">
           <div className="flex-1 text-center lg:text-left">
             <p className="text-primary font-bold text-sm uppercase tracking-wider mb-2">Categorias</p>
@@ -80,12 +83,11 @@ const FoodProducts = () => {
               Selecionamos as melhores marcas do mercado para cada fase da vida do seu pet.
             </p>
           </div>
-          <div className={`w-48 h-48 md:w-56 md:h-56 flex-shrink-0 rounded-2xl overflow-hidden transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>
-            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&auto=format&fit=crop" alt="Golden retriever feliz" className="w-full h-full object-cover" />
+          <div className={`flex-shrink-0 transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>
+            <ImagePlaceholder className="w-48 h-48 md:w-56 md:h-56" />
           </div>
         </div>
 
-        {/* Category tabs */}
         <div className="flex justify-center gap-3 mb-12 flex-wrap">
           {categories.map((cat) => (
             <button
@@ -97,13 +99,12 @@ const FoodProducts = () => {
                   : "bg-muted text-muted-foreground hover:bg-border"
               }`}
             >
-              <span className="text-lg">{cat.emoji}</span>
+              <Icon3D icon={cat.icon} size="sm" color={cat.color} animate="none" className="!w-6 !h-6 !rounded-lg" />
               {cat.label}
             </button>
           ))}
         </div>
 
-        {/* Products grid */}
         <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 transition-all duration-300 ${tabChanged ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
           {products[activeTab].map((p, i) => (
             <div
@@ -115,13 +116,13 @@ const FoodProducts = () => {
             >
               {p.popular && (
                 <Badge className="absolute top-3 left-3 bg-accent text-accent-foreground border-0 font-bold text-xs z-10">
-                  🔥 Destaque
+                  Destaque
                 </Badge>
               )}
               <div className={`${p.bg} w-full h-40 flex items-center justify-center`}>
-                <span className="text-6xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
-                  {categories.find(c => c.key === activeTab)?.emoji}
-                </span>
+                {activeCat && (
+                  <Icon3D icon={activeCat.icon} size="lg" color={activeCat.color} animate="float" />
+                )}
               </div>
               <div className="p-4">
                 <div className="flex items-center gap-1 mb-2">
