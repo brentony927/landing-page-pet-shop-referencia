@@ -1,87 +1,45 @@
 
 
-# Redesign Pet Shop — Estilo da Referência
+# Upgrade Profissional — Imagens + Animações + Carrossel
 
-O objetivo é reformular a landing page para seguir o estilo visual da imagem de referência: hero escuro (verde-escuro/teal), tipografia bold uppercase, destaque em amarelo/laranja, seções com fundos alternados (escuro/claro/amarelo), cards com imagens de produtos, e layout mais sofisticado.
+## O que muda
 
-## Mudanças na Paleta e Tema
+### 1. Adicionar as imagens no site
+- **image-2.png** (Banho & Tosa, roxo/laranja com cachorro) → Usada no slide 2 do carrossel (Banho & Tosa) como imagem de fundo/destaque
+- **image-3.png** (Ração, teal/amarelo com golden) → Usada na seção de Rações (`FoodProducts.tsx`) como banner visual ao lado do título, ou no slide 3 do carrossel (Rações)
 
-- **Hero/Header**: fundo escuro teal `#1A3C34` (como na referência)
-- **Accent principal**: amarelo quente `#FFB800` para CTAs e badges
-- **Laranja**: `#FF6B2C` mantido para destaques secundários
-- **Seções alternadas**: fundo escuro, branco, amarelo claro `#FFF8E1`
-- Atualizar variáveis CSS no `index.css`
+Copiar ambas para `src/assets/` e importar nos componentes.
 
-## Componentes a Alterar
+### 2. Melhorar o Carrossel (`HeroCarousel.tsx`)
+- Substituir emojis por imagens reais nos slides (image-2 para banho, image-3 para rações)
+- Adicionar transição com fade/slide animado entre slides (CSS transitions com opacity + transform)
+- Layout split: texto à esquerda, imagem à direita no desktop
+- Adicionar progress bar animada nos indicadores (barra que preenche durante os 5s de autoplay)
+- Melhorar tipografia: texto com text-shadow sutil para profundidade
+- Adicionar efeito parallax leve nos elementos decorativos
 
-### 1. Header (`Header.tsx`)
-- Fundo escuro teal, texto branco
-- Links claros com hover amarelo
-- Botão CTA "SHOP NOW" em preto sólido
-- Adicionar ícones de busca e carrinho (decorativos)
+### 3. Animações mais profissionais
+- **Staggered fade-in**: cards e seções aparecem com delay escalonado ao entrar na viewport
+- **Slide-in lateral**: seção AboutUs com imagem entrando da esquerda e texto da direita
+- **Scale-up suave** nos cards de produto ao hover (já existe, refinar)
+- **Floating animation**: elementos decorativos (patinhas) com animação flutuante contínua ao invés de estáticos
+- **Smooth number count**: melhorar animação dos números na seção stats
+- Adicionar novas keyframes no `index.css`: `float`, `slideInLeft`, `slideInRight`, `progressBar`
 
-### 2. Hero (`HeroCarousel.tsx`)
-- Fundo escuro teal (não colorido vibrante)
-- Tipografia grande, bold, uppercase — "ESTAMOS SEMPRE AQUI PARA A SAÚDE DO SEU PET"
-- Botões "COMPRAR AGORA" (preto) + "Agendar ligação" (outline)
-- Stats no hero: "200K+ Nutrição Completa", "R$4 Menor Preço", "97% Satisfação"
-- Emojis de patinhas decorativos mantidos
-- Slides com transição mais suave
+### 4. Toques profissionais
+- Adicionar sombras mais elaboradas nos cards (shadow com cor)
+- Botões com micro-interação: slight translateY no hover
+- Indicadores do carrossel com barra de progresso ao invés de bolinhas simples
+- Seção de serviços: adicionar uma imagem decorativa (image-2) como background sutil
 
-### 3. Sobre Nós (nova seção `AboutUs.tsx`)
-- Layout 2 colunas: imagem/emoji à esquerda, texto à direita
-- Fundo amarelo claro
-- Lista com checks coloridos: "Mais de 10 anos de experiência", "20 veterinários", "Produtos de alta qualidade"
-- Botão "Saiba mais" em laranja arredondado
-
-### 4. Serviços (`Services.tsx`)
-- Redesenho como cards horizontais com preço e duração
-- Ex: "Visita Pet Cão — R$ 99 — 1hr"
-- Navegação com setas laterais
-- Fundo branco
-
-### 5. Rações / Top Categories (`FoodProducts.tsx`)
-- Abas por tipo de animal: Coelho, Gato, **Cão**, Pássaro, Peixe
-- Cards de produto com fundo laranja/coral, nome, preço, avaliação (estrelas)
-- Carrossel horizontal com setas
-
-### 6. Depoimentos (`Testimonials.tsx`)
-- Fundo amarelo quente
-- Card grande com aspas, foto, nome e descrição
-- Setas de navegação laterais laranja/coral
-
-### 7. Marcas Parceiras (nova seção `Brands.tsx`)
-- Faixa com logos de marcas fictícias em fundo branco
-- Layout horizontal scrollável
-
-### 8. Footer (`Footer.tsx`)
-- Fundo escuro teal (igual header)
-- Logo, menu, contato, newsletter
-- Seção Instagram com grid de fotos (emojis/placeholders)
-
-## Arquivos Modificados
-- `src/index.css` — novas variáveis de cor (teal escuro, amarelo claro)
-- `tailwind.config.ts` — novos tokens de cor
-- `src/components/petshop/Header.tsx` — redesign escuro
-- `src/components/petshop/HeroCarousel.tsx` — hero escuro, uppercase, stats
-- `src/components/petshop/Services.tsx` — cards horizontais com preço
-- `src/components/petshop/FoodProducts.tsx` — abas por animal, cards com avaliação
-- `src/components/petshop/WhyUs.tsx` — integrado no hero ou removido (stats vão pro hero)
-- `src/components/petshop/Testimonials.tsx` — fundo amarelo, layout maior
-- `src/components/petshop/Contact.tsx` — mantido com ajustes de cor
-- `src/components/petshop/Footer.tsx` — fundo escuro teal, grid instagram
-- **Novo**: `src/components/petshop/AboutUs.tsx` — seção sobre nós
-- **Novo**: `src/components/petshop/Brands.tsx` — marcas parceiras
-- `src/pages/Index.tsx` — adicionar novas seções na ordem correta
-
-## Ordem das Seções
-1. Header (escuro)
-2. Hero com carrossel + stats (escuro)
-3. Sobre Nós (amarelo claro)
-4. Top Categories / Rações (branco)
-5. Serviços (branco)
-6. Depoimentos (amarelo)
-7. Marcas Parceiras (branco)
-8. Contato (branco)
-9. Footer (escuro)
+## Arquivos modificados
+- `src/assets/banho-tosa.png` — copiar image-2.png
+- `src/assets/racao-pet.png` — copiar image-3.png
+- `src/components/petshop/HeroCarousel.tsx` — layout split com imagens, fade transitions, progress indicators
+- `src/components/petshop/FoodProducts.tsx` — adicionar image-3 como visual na seção
+- `src/components/petshop/Services.tsx` — animações staggered melhoradas
+- `src/components/petshop/AboutUs.tsx` — slide-in animations
+- `src/components/petshop/Testimonials.tsx` — transição fade entre depoimentos
+- `src/index.css` — novas keyframes (float, slideIn, progressBar)
+- `tailwind.config.ts` — registrar novas animações
 
