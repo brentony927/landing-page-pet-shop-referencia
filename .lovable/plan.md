@@ -1,74 +1,87 @@
 
 
-# 🐾 Landing Page - Pet Shop
+# Redesign Pet Shop — Estilo da Referência
 
-## Visão Geral
-Landing page vibrante e animada para um Pet Shop, com tema claro, cores vivas bem aplicadas e personalidade única. Nada genérico, nada de gradientes.
+O objetivo é reformular a landing page para seguir o estilo visual da imagem de referência: hero escuro (verde-escuro/teal), tipografia bold uppercase, destaque em amarelo/laranja, seções com fundos alternados (escuro/claro/amarelo), cards com imagens de produtos, e layout mais sofisticado.
 
-## Paleta de Cores
-- **Laranja vibrante** `#FF6B2C` — CTAs e destaques principais
-- **Verde menta** `#2EC4B6` — seção de serviços e ícones
-- **Amarelo quente** `#FFB800` — badges e elementos de destaque
-- **Roxo suave** `#7C5CFC` — detalhes e hover states
-- **Fundo claro** `#FAFAF7` com cards em branco puro
+## Mudanças na Paleta e Tema
 
-## Seções da Página
+- **Hero/Header**: fundo escuro teal `#1A3C34` (como na referência)
+- **Accent principal**: amarelo quente `#FFB800` para CTAs e badges
+- **Laranja**: `#FF6B2C` mantido para destaques secundários
+- **Seções alternadas**: fundo escuro, branco, amarelo claro `#FFF8E1`
+- Atualizar variáveis CSS no `index.css`
 
-### 1. Header Fixo
-- Logo + nome do pet shop à esquerda
-- Menu: Início, Serviços, Rações, Sobre, Contato
-- Botão "Agendar Banho" em laranja vibrante
+## Componentes a Alterar
 
-### 2. Hero com Carrossel
-- Carrossel automático com 3-4 slides animados
-- Slide 1: "Seu melhor amigo merece o melhor cuidado" + CTA
-- Slide 2: "Banho & Tosa com carinho de verdade"
-- Slide 3: "Rações selecionadas pra cada fase da vida"
-- Imagens com emojis grandes e ilustrativos (🐕 🐈 🐾)
-- Transições suaves entre slides, indicadores de navegação
+### 1. Header (`Header.tsx`)
+- Fundo escuro teal, texto branco
+- Links claros com hover amarelo
+- Botão CTA "SHOP NOW" em preto sólido
+- Adicionar ícones de busca e carrinho (decorativos)
 
-### 3. Serviços (cards animados)
-- Grid de 6 cards com hover scale e cores alternadas
-- Banho & Tosa, Veterinário, Hotel Pet, Adestramento, Taxi Dog, Day Care
-- Cada card com ícone animado, título criativo e descrição curta
-- Cards aparecem com fade-in ao scroll
+### 2. Hero (`HeroCarousel.tsx`)
+- Fundo escuro teal (não colorido vibrante)
+- Tipografia grande, bold, uppercase — "ESTAMOS SEMPRE AQUI PARA A SAÚDE DO SEU PET"
+- Botões "COMPRAR AGORA" (preto) + "Agendar ligação" (outline)
+- Stats no hero: "200K+ Nutrição Completa", "R$4 Menor Preço", "97% Satisfação"
+- Emojis de patinhas decorativos mantidos
+- Slides com transição mais suave
 
-### 4. Rações & Produtos
-- Seção com abas: Cães | Gatos | Filhotes
-- Cards de produtos com imagem, nome, peso e preço
-- Badge "Mais vendido" em amarelo nos populares
-- Botão "Ver todos" para cada categoria
+### 3. Sobre Nós (nova seção `AboutUs.tsx`)
+- Layout 2 colunas: imagem/emoji à esquerda, texto à direita
+- Fundo amarelo claro
+- Lista com checks coloridos: "Mais de 10 anos de experiência", "20 veterinários", "Produtos de alta qualidade"
+- Botão "Saiba mais" em laranja arredondado
 
-### 5. Por que nos escolher?
-- 3 blocos lado a lado com números animados
-- "+5.000 banhos por ano" / "12 anos de experiência" / "4.8 ⭐ no Google"
-- Sem clichês — dados reais e diretos
+### 4. Serviços (`Services.tsx`)
+- Redesenho como cards horizontais com preço e duração
+- Ex: "Visita Pet Cão — R$ 99 — 1hr"
+- Navegação com setas laterais
+- Fundo branco
 
-### 6. Depoimentos
-- Carrossel horizontal de depoimentos
-- Foto + nome do tutor + nome do pet + texto curto
-- Fundo levemente colorido (verde menta claro)
+### 5. Rações / Top Categories (`FoodProducts.tsx`)
+- Abas por tipo de animal: Coelho, Gato, **Cão**, Pássaro, Peixe
+- Cards de produto com fundo laranja/coral, nome, preço, avaliação (estrelas)
+- Carrossel horizontal com setas
 
-### 7. Localização & Contato
-- Mapa estilizado + endereço + horários
-- Botão WhatsApp flutuante em verde
-- Formulário simples: nome, telefone, serviço desejado
+### 6. Depoimentos (`Testimonials.tsx`)
+- Fundo amarelo quente
+- Card grande com aspas, foto, nome e descrição
+- Setas de navegação laterais laranja/coral
 
-### 8. Footer
-- Links rápidos, redes sociais, horário de funcionamento
-- "Feito com 🐾 para quem ama pets"
+### 7. Marcas Parceiras (nova seção `Brands.tsx`)
+- Faixa com logos de marcas fictícias em fundo branco
+- Layout horizontal scrollável
 
-## Animações
-- Carrossel com autoplay e transição suave
-- Cards com `hover-scale` e `fade-in` ao entrar na viewport
-- Números da seção "Por que nos escolher" com contagem animada
-- Botão WhatsApp com pulso sutil
-- Scroll suave entre seções
+### 8. Footer (`Footer.tsx`)
+- Fundo escuro teal (igual header)
+- Logo, menu, contato, newsletter
+- Seção Instagram com grid de fotos (emojis/placeholders)
 
-## Design
-- Tipografia: títulos bold e grandes, corpo legível
-- Espaçamento generoso, sem poluição visual
-- Cores vivas mas bem separadas — cada seção com sua cor dominante
-- Cantos arredondados nos cards, sombras suaves
-- Sem gradientes — cores sólidas e limpas
+## Arquivos Modificados
+- `src/index.css` — novas variáveis de cor (teal escuro, amarelo claro)
+- `tailwind.config.ts` — novos tokens de cor
+- `src/components/petshop/Header.tsx` — redesign escuro
+- `src/components/petshop/HeroCarousel.tsx` — hero escuro, uppercase, stats
+- `src/components/petshop/Services.tsx` — cards horizontais com preço
+- `src/components/petshop/FoodProducts.tsx` — abas por animal, cards com avaliação
+- `src/components/petshop/WhyUs.tsx` — integrado no hero ou removido (stats vão pro hero)
+- `src/components/petshop/Testimonials.tsx` — fundo amarelo, layout maior
+- `src/components/petshop/Contact.tsx` — mantido com ajustes de cor
+- `src/components/petshop/Footer.tsx` — fundo escuro teal, grid instagram
+- **Novo**: `src/components/petshop/AboutUs.tsx` — seção sobre nós
+- **Novo**: `src/components/petshop/Brands.tsx` — marcas parceiras
+- `src/pages/Index.tsx` — adicionar novas seções na ordem correta
+
+## Ordem das Seções
+1. Header (escuro)
+2. Hero com carrossel + stats (escuro)
+3. Sobre Nós (amarelo claro)
+4. Top Categories / Rações (branco)
+5. Serviços (branco)
+6. Depoimentos (amarelo)
+7. Marcas Parceiras (branco)
+8. Contato (branco)
+9. Footer (escuro)
 
