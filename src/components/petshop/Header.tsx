@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-petshop-teal/90 backdrop-blur-md border-b border-petshop-teal-light/50">
       {/* Top bar */}
-      <div className="hidden md:flex items-center justify-center gap-6 bg-red-600 py-1.5 text-white text-xs font-semibold">
+      <div className="hidden md:flex items-center justify-center gap-6 bg-petshop-red py-1.5 text-primary-foreground text-xs font-semibold">
         <span>Seg a Sex: 8h – 19h | Sáb: 8h – 16h</span>
         <span className="flex items-center gap-1">
           <Phone className="w-3 h-3" /> (11) 99999-1234
