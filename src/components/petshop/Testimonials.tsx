@@ -1,30 +1,31 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, User } from "lucide-react";
+import Icon3D from "./Icon3D";
 
 const testimonials = [
   {
     name: "Mariana Silva",
     pet: "Luna (Golden Retriever)",
     text: "A Luna adora ir lá! Sempre volta cheirosa, feliz e com lacinho novo. O carinho da equipe é visível.",
-    avatar: "🧑‍🦰",
+    color: "orange" as const,
   },
   {
     name: "Carlos Oliveira",
     pet: "Thor (Bulldog Francês)",
     text: "O Thor é medroso, mas a equipe tem paciência infinita. É o único lugar que ele não treme.",
-    avatar: "👨",
+    color: "green" as const,
   },
   {
     name: "Ana Beatriz",
     pet: "Mimi (Persa)",
     text: "Difícil encontrar quem cuide bem de gato. Aqui eles sabem lidar com a Mimi sem stress nenhum.",
-    avatar: "👩",
+    color: "teal" as const,
   },
   {
     name: "Roberto Mendes",
     pet: "Pipoca (SRD)",
     text: "Pipoca ficou no hotel enquanto viajamos. Recebemos foto todo dia! Voltamos tranquilos.",
-    avatar: "👴",
+    color: "yellow" as const,
   },
 ];
 
@@ -66,7 +67,9 @@ const Testimonials = () => {
             <p className="text-foreground text-lg md:text-xl italic mb-6 leading-relaxed">
               "{t.text}"
             </p>
-            <span className="text-5xl mb-3 block">{t.avatar}</span>
+            <div className="flex justify-center mb-3">
+              <Icon3D icon={User} size="lg" color={t.color} animate="none" className="!rounded-full" />
+            </div>
             <p className="font-heading font-bold text-foreground">{t.name}</p>
             <p className="text-primary text-sm font-semibold">{t.pet}</p>
           </div>

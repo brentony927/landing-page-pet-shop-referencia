@@ -1,8 +1,16 @@
-import { PawPrint } from "lucide-react";
+import { PawPrint, Camera, Dog, Cat, Bird, Fish, Heart } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Icon3D from "./Icon3D";
 
-const instagramPets = ["🐕", "🐈", "🐾", "🐶", "🐱", "🐕‍🦺"];
+const instagramIcons = [
+  { icon: Dog, color: "orange" as const },
+  { icon: Cat, color: "green" as const },
+  { icon: PawPrint, color: "yellow" as const },
+  { icon: Heart, color: "orange" as const },
+  { icon: Bird, color: "teal" as const },
+  { icon: Fish, color: "green" as const },
+];
 
 const Footer = () => {
   return (
@@ -11,9 +19,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
-                <PawPrint className="w-5 h-5 text-accent-foreground" />
-              </div>
+              <Icon3D icon={PawPrint} size="sm" color="yellow" animate="none" className="!rounded-full" />
               <span className="font-heading text-lg font-bold">Patinhas & Cia</span>
             </div>
             <p className="text-primary-foreground/50 text-sm leading-relaxed">
@@ -54,12 +60,12 @@ const Footer = () => {
           <div>
             <h4 className="font-heading font-bold mb-3 text-accent">Instagram</h4>
             <div className="grid grid-cols-3 gap-2">
-              {instagramPets.map((emoji, i) => (
+              {instagramIcons.map((item, i) => (
                 <div
                   key={i}
-                  className="w-full aspect-square rounded-lg bg-petshop-teal-light flex items-center justify-center text-2xl cursor-pointer hover:bg-primary/20 transition-colors"
+                  className="w-full aspect-square rounded-lg bg-petshop-teal-light flex items-center justify-center cursor-pointer hover:bg-primary/20 transition-colors"
                 >
-                  {emoji}
+                  <Icon3D icon={item.icon} size="sm" color={item.color} animate="none" className="!rounded-lg !shadow-none" />
                 </div>
               ))}
             </div>
@@ -68,7 +74,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/10 pt-6 text-center">
           <p className="text-primary-foreground/30 text-sm">
-            Feito com 🐾 para quem ama pets — © 2024 Patinhas & Cia
+            Feito com <PawPrint className="inline w-4 h-4 text-accent" /> para quem ama pets — © 2024 Patinhas & Cia
           </p>
         </div>
       </div>

@@ -1,12 +1,15 @@
+import { Bone, Heart, Leaf, PawPrint, Cat, Droplets, Star, ShoppingBag } from "lucide-react";
+import Icon3D from "./Icon3D";
+
 const brands = [
-  { name: "PetNutri", emoji: "🦴" },
-  { name: "VitaPet", emoji: "💊" },
-  { name: "NaturDog", emoji: "🌿" },
-  { name: "FreshPaws", emoji: "🐾" },
-  { name: "CatLife", emoji: "🐈" },
-  { name: "BioVet", emoji: "🧬" },
-  { name: "AquaPet", emoji: "💧" },
-  { name: "PetMax", emoji: "⭐" },
+  { name: "PetNutri", icon: Bone, color: "orange" as const },
+  { name: "VitaPet", icon: Heart, color: "green" as const },
+  { name: "NaturDog", icon: Leaf, color: "teal" as const },
+  { name: "FreshPaws", icon: PawPrint, color: "yellow" as const },
+  { name: "CatLife", icon: Cat, color: "green" as const },
+  { name: "BioVet", icon: Droplets, color: "orange" as const },
+  { name: "AquaPet", icon: Droplets, color: "teal" as const },
+  { name: "PetMax", icon: Star, color: "yellow" as const },
 ];
 
 const Brands = () => {
@@ -26,7 +29,7 @@ const Brands = () => {
               key={b.name}
               className="flex items-center gap-2 px-6 py-3 bg-card rounded-xl border border-border hover-scale cursor-pointer transition-all hover:border-primary hover:shadow-md"
             >
-              <span className="text-2xl">{b.emoji}</span>
+              <Icon3D icon={b.icon} size="sm" color={b.color} animate="none" className="!rounded-lg !shadow-none" />
               <span className="font-heading font-bold text-foreground text-sm">{b.name}</span>
             </div>
           ))}

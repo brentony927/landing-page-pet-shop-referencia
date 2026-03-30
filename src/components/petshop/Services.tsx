@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Scissors, Stethoscope, Hotel, Dog, Car, Sun, ChevronLeft, ChevronRight } from "lucide-react";
+import Icon3D from "./Icon3D";
 
 const services = [
-  { icon: Scissors, title: "Banho & Tosa", desc: "Limpeza completa com produtos naturais", price: "R$ 79", duration: "1h30", color: "bg-secondary" },
-  { icon: Stethoscope, title: "Consulta Veterinária", desc: "Check-up completo e vacinação", price: "R$ 120", duration: "45min", color: "bg-primary" },
-  { icon: Hotel, title: "Hotel Pet", desc: "Hospedagem com conforto e diversão 24h", price: "R$ 89/dia", duration: "24h", color: "bg-petshop-purple" },
-  { icon: Dog, title: "Adestramento", desc: "Treino com reforço positivo e socialização", price: "R$ 99", duration: "1h", color: "bg-accent" },
-  { icon: Car, title: "Taxi Dog", desc: "Transporte seguro e pontual para seu pet", price: "R$ 45", duration: "Ida", color: "bg-petshop-coral" },
-  { icon: Sun, title: "Day Care", desc: "Creche diurna com atividades e brincadeiras", price: "R$ 69", duration: "8h", color: "bg-secondary" },
+  { icon: Scissors, title: "Banho & Tosa", desc: "Limpeza completa com produtos naturais", price: "R$ 79", duration: "1h30", color: "green" as const },
+  { icon: Stethoscope, title: "Consulta Veterinária", desc: "Check-up completo e vacinação", price: "R$ 120", duration: "45min", color: "orange" as const },
+  { icon: Hotel, title: "Hotel Pet", desc: "Hospedagem com conforto e diversão 24h", price: "R$ 89/dia", duration: "24h", color: "teal" as const },
+  { icon: Dog, title: "Adestramento", desc: "Treino com reforço positivo e socialização", price: "R$ 99", duration: "1h", color: "yellow" as const },
+  { icon: Car, title: "Taxi Dog", desc: "Transporte seguro e pontual para seu pet", price: "R$ 45", duration: "Ida", color: "orange" as const },
+  { icon: Sun, title: "Day Care", desc: "Creche diurna com atividades e brincadeiras", price: "R$ 69", duration: "8h", color: "green" as const },
 ];
 
 const Services = () => {
@@ -30,11 +31,6 @@ const Services = () => {
 
   return (
     <section id="servicos" className="py-20 bg-background relative overflow-hidden" ref={ref}>
-      {/* Decorative background image */}
-      <div className="absolute top-0 right-0 w-64 h-64 opacity-5 pointer-events-none">
-        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=400&auto=format&fit=crop" alt="" className="w-full h-full object-contain" />
-      </div>
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-end justify-between mb-12">
           <div>
@@ -62,9 +58,7 @@ const Services = () => {
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className={`${s.color} w-14 h-14 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                <s.icon className="w-7 h-7 text-primary-foreground" />
-              </div>
+              <Icon3D icon={s.icon} size="md" color={s.color} animate="none" className="mb-4" />
               <h3 className="font-heading text-lg font-bold text-foreground mb-1">{s.title}</h3>
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{s.desc}</p>
               <div className="flex items-center justify-between border-t border-border pt-3">

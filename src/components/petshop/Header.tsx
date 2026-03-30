@@ -14,7 +14,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-petshop-teal border-b border-petshop-teal-light">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-petshop-teal/90 backdrop-blur-md border-b border-petshop-teal-light/50">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <a href="#inicio" className="flex items-center gap-2">
           <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
