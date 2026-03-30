@@ -61,6 +61,7 @@ export default {
           "teal-light": "hsl(var(--petshop-teal-light))",
           cream: "hsl(var(--petshop-cream))",
           coral: "hsl(var(--petshop-coral))",
+          red: "hsl(var(--petshop-red))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

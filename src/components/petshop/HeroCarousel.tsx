@@ -5,19 +5,19 @@ import ImagePlaceholder from "./ImagePlaceholder";
 
 const slides = [
   {
-    title: "SEU PET MERECE O MELHOR, E A GENTE ENTREGA!",
+    title: "Seu pet merece o melhor, e a gente entrega!",
     subtitle: "Banho, ração, veterinário — tudo num só lugar, com gente que ama bicho de verdade",
     cta1: "COMPRAR AGORA",
     cta2: "Agendar ligação",
   },
   {
-    title: "BANHO & TOSA QUE SEU PET VAI AMAR",
+    title: "Banho & tosa que seu pet vai amar",
     subtitle: "Ele entra precisando, e sai desfilando. Pode confiar!",
     cta1: "AGENDAR AGORA",
     cta2: "Ver serviços",
   },
   {
-    title: "RAÇÃO BOA DE VERDADE, SEM ENROLAÇÃO",
+    title: "Ração boa de verdade, sem enrolação",
     subtitle: "Do filhote ao velhinho, só o que tem qualidade vai pra tigela",
     cta1: "VER RAÇÕES",
     cta2: "Fale conosco",
@@ -25,9 +25,9 @@ const slides = [
 ];
 
 const stats = [
-  { value: "5.000+", label: "Pets Felizes" },
-  { value: "12", label: "Anos de Estrada" },
-  { value: "4.8★", label: "No Google" },
+  { value: "5.000+", label: "Pets atendidos" },
+  { value: "12 anos", label: "No mercado" },
+  { value: "4.8★", label: "Avaliação Google" },
 ];
 
 const SLIDE_DURATION = 5000;
@@ -85,17 +85,17 @@ const HeroCarousel = () => {
         <div className={`container mx-auto px-4 py-16 md:py-24 relative z-10 transition-all duration-500 ${isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="text-center lg:text-left">
-              <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold text-primary-foreground max-w-2xl leading-tight mb-4 uppercase tracking-tight" style={{ textShadow: "0 2px 20px rgba(0,0,0,0.2)" }}>
+              <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold text-primary-foreground max-w-2xl leading-tight mb-4" style={{ textShadow: "0 2px 20px rgba(0,0,0,0.2)" }}>
                 {slide.title}
               </h1>
               <p className="text-primary-foreground/60 text-lg md:text-xl max-w-xl mb-8 font-medium">
                 {slide.subtitle}
               </p>
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <button className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full text-sm tracking-wider shadow-lg uppercase hover:-translate-y-1 transition-transform duration-300">
+                <button className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm tracking-wider shadow-lg uppercase hover:-translate-y-1 transition-transform duration-300">
                   {slide.cta1}
                 </button>
-                <button className="border-2 border-primary-foreground/30 text-primary-foreground font-bold px-8 py-3 rounded-full text-sm tracking-wider hover:border-accent hover:text-accent hover:-translate-y-1 transition-all duration-300">
+                <button className="border-2 border-primary-foreground/30 text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm tracking-wider hover:border-accent hover:text-accent hover:-translate-y-1 transition-all duration-300">
                   {slide.cta2}
                 </button>
               </div>
@@ -124,10 +124,10 @@ const HeroCarousel = () => {
           </div>
         </div>
 
-        <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-full p-3 transition-all z-20 hover:scale-110 backdrop-blur-sm">
+        <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg p-3 transition-all z-20 hover:scale-110 backdrop-blur-sm">
           <ChevronLeft className="w-6 h-6 text-primary-foreground" />
         </button>
-        <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-full p-3 transition-all z-20 hover:scale-110 backdrop-blur-sm">
+        <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg p-3 transition-all z-20 hover:scale-110 backdrop-blur-sm">
           <ChevronRight className="w-6 h-6 text-primary-foreground" />
         </button>
       </div>

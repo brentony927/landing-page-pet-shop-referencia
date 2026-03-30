@@ -30,20 +30,19 @@ const Services = () => {
   };
 
   return (
-    <section id="servicos" className="py-20 bg-background relative overflow-hidden" ref={ref}>
+    <section id="servicos" className="py-14 bg-background relative overflow-hidden" ref={ref}>
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-end justify-between mb-12">
           <div>
-            <p className="text-primary font-bold text-sm uppercase tracking-wider mb-2">O que a gente faz</p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-              SERVIÇOS PRA DEIXAR SEU PET FELIZ
+              Serviços pra deixar seu pet feliz
             </h2>
           </div>
           <div className="hidden md:flex gap-2">
-            <button onClick={() => scroll(-1)} className="w-10 h-10 rounded-full border-2 border-border flex items-center justify-center hover:border-primary hover:text-primary hover:scale-110 transition-all">
+            <button onClick={() => scroll(-1)} className="w-10 h-10 rounded-lg border-2 border-border flex items-center justify-center hover:border-primary hover:text-primary hover:scale-110 transition-all">
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <button onClick={() => scroll(1)} className="w-10 h-10 rounded-full border-2 border-border flex items-center justify-center hover:border-primary hover:text-primary hover:scale-110 transition-all">
+            <button onClick={() => scroll(1)} className="w-10 h-10 rounded-lg border-2 border-border flex items-center justify-center hover:border-primary hover:text-primary hover:scale-110 transition-all">
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
@@ -53,7 +52,7 @@ const Services = () => {
           {services.map((s, i) => (
             <div
               key={s.title}
-              className={`${s.featured ? "min-w-[320px] border-l-4 border-l-primary" : "min-w-[280px]"} bg-card rounded-2xl p-6 shadow-sm cursor-pointer snap-start transition-all duration-500 hover:-translate-y-2 hover:shadow-lg ${
+              className={`${s.featured ? "min-w-[320px] border-l-4 border-l-primary" : "min-w-[280px]"} bg-card rounded-lg p-6 shadow-sm cursor-pointer snap-start transition-all duration-500 hover:-translate-y-2 hover:shadow-lg ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
@@ -63,7 +62,7 @@ const Services = () => {
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{s.desc}</p>
               <div className="flex items-center justify-between border-t border-border/50 pt-3">
                 <span className="font-heading text-xl font-bold text-primary">{s.price}</span>
-                <span className="text-muted-foreground text-xs font-semibold bg-muted px-3 py-1 rounded-full">{s.duration}</span>
+                <span className="text-muted-foreground text-xs font-semibold bg-muted px-3 py-1 rounded-md">{s.duration}</span>
               </div>
             </div>
           ))}

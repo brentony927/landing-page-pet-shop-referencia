@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Quote, User } from "lucide-react";
+import { ChevronLeft, ChevronRight, User } from "lucide-react";
 import Icon3D from "./Icon3D";
 
 const testimonials = [
@@ -52,24 +52,21 @@ const Testimonials = () => {
   const t = testimonials[idx];
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <p className="text-primary font-bold text-sm uppercase tracking-wider mb-2">Depoimentos</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground uppercase">
-            QUEM TROUXE O PET, VOLTOU!
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+            Quem trouxe o pet, voltou!
           </h2>
         </div>
 
         <div className="max-w-2xl mx-auto relative">
-          <Quote className="w-16 h-16 text-primary/15 absolute -top-4 left-4 -rotate-6" />
-
-          <div className={`bg-card rounded-2xl p-8 md:p-10 shadow-sm text-center transition-all duration-400 relative ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
+          <div className={`bg-card rounded-lg p-8 md:p-10 shadow-sm text-center transition-all duration-400 relative ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
             <p className="text-foreground text-lg md:text-xl italic mb-6 leading-relaxed relative z-10">
               "{t.text}"
             </p>
             <div className="flex justify-center mb-3">
-              <Icon3D icon={User} size="lg" color={t.color} animate="none" className="!rounded-full" />
+              <Icon3D icon={User} size="lg" color={t.color} animate="none" />
             </div>
             <p className="font-heading font-bold text-foreground">{t.name}</p>
             <p className="text-primary text-sm font-semibold">{t.pet}</p>
@@ -77,13 +74,13 @@ const Testimonials = () => {
 
           <button
             onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-petshop-teal rounded-full p-2 shadow hover:bg-petshop-teal-light hover:scale-110 transition-all"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-petshop-teal rounded-lg p-2 shadow hover:bg-petshop-teal-light hover:scale-110 transition-all"
           >
             <ChevronLeft className="w-5 h-5 text-primary-foreground" />
           </button>
           <button
             onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-petshop-teal rounded-full p-2 shadow hover:bg-petshop-teal-light hover:scale-110 transition-all"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-petshop-teal rounded-lg p-2 shadow hover:bg-petshop-teal-light hover:scale-110 transition-all"
           >
             <ChevronRight className="w-5 h-5 text-primary-foreground" />
           </button>

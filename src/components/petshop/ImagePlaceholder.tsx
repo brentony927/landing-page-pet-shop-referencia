@@ -15,7 +15,7 @@ const variantMap = {
 const ImagePlaceholder = ({ className = "", text = "Sua imagem aqui", variant = "green" }: ImagePlaceholderProps) => {
   const v = variantMap[variant];
   return (
-    <div className={`${v.split(" ")[0]} rounded-2xl flex flex-col items-center justify-center gap-2 ${className}`}>
+    <div className={`${v.split(" ")[0]} rounded-lg flex flex-col items-center justify-center gap-2 ${className}`}>
       <Camera className={`w-8 h-8 ${v.split(" ").slice(1).join(" ")}`} />
       <span className={`font-bold text-xs uppercase tracking-wider ${v.split(" ").slice(1).join(" ")}`}>
         {text}

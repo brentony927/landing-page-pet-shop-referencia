@@ -14,9 +14,9 @@ const brands = [
 
 const Brands = () => {
   return (
-    <section className="py-16 bg-petshop-cream overflow-hidden">
+    <section className="py-12 bg-petshop-cream overflow-hidden">
       <div className="container mx-auto px-4 mb-8">
-        <p className="text-center text-muted-foreground font-bold text-sm uppercase tracking-wider">
+        <p className="text-center text-muted-foreground font-bold text-sm">
           Marcas que a gente confia e indica
         </p>
       </div>
@@ -26,7 +26,7 @@ const Brands = () => {
           {[...brands, ...brands].map((b, i) => (
             <div key={i} className="flex flex-col items-center gap-2 px-4">
               <Icon3D icon={b.icon} size="md" color={b.color} animate="none" />
-              <span className="text-muted-foreground font-bold text-xs uppercase tracking-wider">{b.name}</span>
+              <span className="text-muted-foreground font-bold text-xs">{b.name}</span>
             </div>
           ))}
         </div>

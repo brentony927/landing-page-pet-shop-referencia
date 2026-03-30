@@ -5,12 +5,11 @@ import Icon3D from "./Icon3D";
 
 const Contact = () => {
   return (
-    <section id="contato" className="py-20 bg-secondary/5">
+    <section id="contato" className="py-16 bg-secondary/5">
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
-          <p className="text-primary font-bold text-sm uppercase tracking-wider mb-2">Contato</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground uppercase">
-            BORA MARCAR? A GENTE TE ESPERA!
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+            Bora marcar? A gente te espera!
           </h2>
         </div>
 
@@ -41,28 +40,28 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="w-full h-48 rounded-2xl bg-secondary/8 flex items-center justify-center gap-3">
+            <div className="w-full h-48 rounded-lg bg-secondary/8 flex items-center justify-center gap-3">
               <Icon3D icon={MapPin} size="lg" color="green" animate="float" />
               <span className="font-heading font-bold text-secondary/40 text-sm">MAPA AQUI</span>
             </div>
           </div>
 
-          <div className="bg-card rounded-2xl p-8 shadow-sm">
-            <h3 className="font-heading text-xl font-bold text-foreground mb-6 uppercase flex items-center gap-2">
-              Manda um oi! <Icon3D icon={PawPrint} size="sm" color="green" animate="none" />
+          <div className="bg-card rounded-lg p-8 shadow-sm">
+            <h3 className="font-heading text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+              Fale com a gente <Icon3D icon={PawPrint} size="sm" color="green" animate="none" />
             </h3>
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
               <div>
                 <label className="text-sm font-semibold text-foreground mb-1 block">Nome</label>
-                <Input placeholder="Seu nome" className="rounded-xl" />
+                <Input placeholder="Seu nome" className="rounded-lg" />
               </div>
               <div>
                 <label className="text-sm font-semibold text-foreground mb-1 block">Telefone</label>
-                <Input placeholder="(11) 99999-0000" className="rounded-xl" />
+                <Input placeholder="(11) 99999-0000" className="rounded-lg" />
               </div>
               <div>
                 <label className="text-sm font-semibold text-foreground mb-1 block">Serviço desejado</label>
-                <select className="w-full h-10 rounded-xl border border-input bg-background px-3 text-sm text-foreground">
+                <select className="w-full h-10 rounded-lg border border-input bg-background px-3 text-sm text-foreground">
                   <option>Banho & Tosa</option>
                   <option>Veterinário</option>
                   <option>Hotel Pet</option>
@@ -71,8 +70,8 @@ const Contact = () => {
                   <option>Day Care</option>
                 </select>
               </div>
-              <Button className="w-full bg-petshop-teal text-primary-foreground font-bold rounded-full text-sm uppercase tracking-wider py-5 hover:bg-petshop-teal-light">
-                ENVIAR MENSAGEM
+              <Button className="w-full bg-petshop-teal text-primary-foreground font-bold rounded-lg text-sm uppercase tracking-wider py-5 hover:bg-petshop-teal-light">
+                Enviar mensagem
               </Button>
             </form>
           </div>

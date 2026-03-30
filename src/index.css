@@ -34,7 +34,7 @@
     --input: 45 10% 90%;
     --ring: 18 100% 59%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     --petshop-orange: 18 100% 59%;
     --petshop-mint: 155 60% 42%;
@@ -45,6 +45,7 @@
     --petshop-teal-light: 155 35% 24%;
     --petshop-cream: 45 100% 97%;
     --petshop-coral: 18 80% 65%;
+    --petshop-red: 0 80% 50%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
