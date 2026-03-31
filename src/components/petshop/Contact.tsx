@@ -36,7 +36,7 @@ const Contact = () => {
               <Icon3D icon={Phone} size="md" color="orange" animate="none" />
               <div>
                 <h3 className="font-heading font-bold text-foreground mb-1">WhatsApp</h3>
-                <p className="text-muted-foreground text-sm">(11) 99999-1234</p>
+                <p className="text-muted-foreground text-sm">(69) 99221-6764</p>
               </div>
             </div>
 

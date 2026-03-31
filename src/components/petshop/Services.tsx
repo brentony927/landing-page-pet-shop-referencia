@@ -4,12 +4,12 @@ import Icon3D from "./Icon3D";
 import { useInView } from "@/hooks/useInView";
 
 const cardBgColors = [
-  "bg-secondary/10 hover:border-secondary",
-  "bg-primary/10 hover:border-primary",
-  "bg-petshop-teal/10 hover:border-petshop-teal",
-  "bg-accent/12 hover:border-accent",
-  "bg-primary/10 hover:border-primary",
-  "bg-secondary/10 hover:border-secondary",
+  "bg-secondary/15 hover:border-secondary",
+  "bg-primary/15 hover:border-primary",
+  "bg-petshop-teal/15 hover:border-petshop-teal",
+  "bg-accent/15 hover:border-accent",
+  "bg-primary/15 hover:border-primary",
+  "bg-secondary/15 hover:border-secondary",
 ];
 
 const services = [

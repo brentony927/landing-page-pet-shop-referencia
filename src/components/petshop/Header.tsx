@@ -19,7 +19,7 @@ const Header = () => {
       <div className="hidden md:flex items-center justify-center gap-6 bg-petshop-red py-1.5 text-primary-foreground text-xs font-semibold">
         <span>Seg a Sex: 8h – 19h | Sáb: 8h – 16h</span>
         <span className="flex items-center gap-1">
-          <Phone className="w-3 h-3" /> (11) 99999-1234
+          <Phone className="w-3 h-3" /> (69) 99221-6764
         </span>
       </div>
 

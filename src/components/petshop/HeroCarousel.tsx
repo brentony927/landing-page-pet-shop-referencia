@@ -104,7 +104,7 @@ const HeroCarousel = () => {
                   <div key={s.label} className="text-center lg:text-left">
                     <div className="flex items-center gap-2 justify-center lg:justify-start">
                       <Icon3D icon={[PawPrint, Heart, PawPrint][i]} size="sm" color={["green", "orange", "yellow"][i] as "green" | "orange" | "yellow"} animate="float" className="!w-8 !h-8" />
-                      <p className="font-heading text-3xl md:text-4xl font-bold text-accent">{s.value}</p>
+                      <p className="font-heading text-3xl md:text-4xl font-bold text-accent" style={{ textShadow: "0 0 20px hsl(43 100% 49% / 0.4)" }}>{s.value}</p>
                     </div>
                     <p className="text-primary-foreground/50 text-sm font-semibold mt-1">{s.label}</p>
                   </div>

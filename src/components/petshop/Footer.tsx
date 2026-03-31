@@ -29,7 +29,7 @@ const Footer = () => {
             <p className="text-primary-foreground/40 text-sm">
               Seg a Sex: 8h – 19h<br />
               Sáb: 8h – 16h<br />
-              <span className="text-accent font-semibold">(11) 99999-1234</span>
+              <span className="text-accent font-semibold">(69) 99221-6764</span>
             </p>
           </div>
 
