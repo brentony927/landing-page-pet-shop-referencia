@@ -1,70 +1,39 @@
 
 
-# Humanizar o Site + Adicionar "Personalizado" no Formulário
+# Corrigir Logos das Marcas + Clarear Cores do Site
 
-## Diagnóstico: O que parece "IA"
-1. **Textos formulaicos** — Todas as seções seguem o mesmo padrão: título curto → subtítulo → grid. Falta quebra de ritmo
-2. **Tudo muito simétrico e previsível** — Cards iguais, espaçamentos idênticos, sem surpresas visuais
-3. **Copys genéricas** — "A gente cuida do seu pet como se fosse nosso", "Só o melhor vai pra tigela" — são frases que qualquer gerador escreve
-4. **Placeholders vazios demais** — Os ImagePlaceholder são cinza morto com "Sua imagem aqui" — parecem wireframe
-5. **Badges repetitivos** — "Destaque" em vários cards, todos com bounce igual
-6. **Estrutura robótica** — Cada componente tem a mesma entrada (fade-in + translate-y), mesma duração
+## 1. Logos das Marcas — Não carregam
+As URLs `logo.clearbit.com` estão falhando (retornando broken images). Solução: trocar para URLs de logos reais que funcionam, usando SVGs públicos de CDNs confiáveis ou logos hospedados diretamente. Como fallback, usar o nome da marca estilizado como texto bold colorido dentro de um card com fundo, criando um visual de "logo" sem depender de URLs externas que quebram.
 
-## Mudanças
+**Abordagem**: Usar logos via `https://cdn.worldvectorlogo.com/logos/` ou similar para as marcas mais conhecidas (Royal Canin, Pedigree, Whiskas, Farmina). Para as que não tiverem logo público confiável, mostrar o nome estilizado com tipografia bold + cor da marca.
 
-### 1. Formulário de Contato — Adicionar "Personalizado"
-`Contact.tsx` — adicionar `<option>Personalizado</option>` na lista de serviços
+**Arquivo**: `Brands.tsx`
 
-### 2. Copys reescritas com personalidade REAL
-Trocar frases genéricas por texto que um dono de pet shop de verdade falaria:
+## 2. Cores mais claras e vivas — site "pesado"
+O site está visualmente pesado por:
+- `--petshop-teal: 155 55% 28%` — muito escuro no header/footer
+- `WhyUs` com fundo teal escuro
+- Muitas seções com fundos saturados/escuros demais
 
-- **Hero slide 1**: "Seu pet merece o melhor" → "Aqui o banho vem com carinho — e o biscoito é por nossa conta"
-- **Hero slide 2**: "Banho & tosa que seu pet vai amar" → "Tosa na tesoura, secagem com paciência. Nada de pressa."
-- **Hero slide 3**: "Ração boa de verdade" → "A gente prova? Não. Mas o rabo abanando já diz tudo."
-- **AboutUs título**: "A gente cuida do seu pet como se fosse nosso" → "12 anos no bairro. Seu vizinho já trouxe o pet dele."
-- **AboutUs texto**: Reescrever para soar como conversa de balcão, não como pitch de startup
-- **Services título**: "Serviços pra deixar seu pet feliz" → "O que a gente faz de melhor"
-- **FoodProducts título**: "Só o melhor vai pra tigela" → "Ração que seu pet come até o fundo"
-- **WhyUs título**: "A gente não é de se gabar, mas..." → "Números que contam nossa história"
-- **Testimonials título**: "Quem trouxe o pet, voltou!" → "O que nossos clientes dizem"
-- **Contact título**: "Bora marcar? A gente te espera!" → "Fala com a gente — a resposta é rápida"
+**Mudanças em `index.css`**:
+- `--petshop-teal` → `155 60% 35%` (mais claro e vivo)
+- `--petshop-teal-light` → `155 50% 42%`
+- `--petshop-cream` → `45 100% 98%` (levemente mais branco)
 
-### 3. Quebrar a simetria visual
-- **AboutUs**: Mover o botão "Conhecer mais" para DENTRO da borda lateral laranja, criar um visual mais editorial
-- **Services**: Primeiro card (Banho & Tosa) maior que os outros (min-w-[340px]), criando hierarquia visual
-- **FoodProducts**: Primeiro produto de cada categoria tem card maior (col-span-2 no grid)
-- **Testimonials**: Adicionar rating com estrelas acima do texto (5 estrelas preenchidas)
-- **Hero**: Stats com layout mais informal — sem ícones 3D nos stats, só o número bold + label simples
-
-### 4. ImagePlaceholders mais vivos
-Trocar o visual morto de wireframe por placeholders coloridos e convidativos:
-- Fundo com cor mais forte (`/15` ao invés de `/8`)
-- Ícone maior e com cor sólida
-- Texto "Sua foto aqui" ao invés de "Sua imagem aqui" (mais informal)
-- Borda sólida fina colorida ao invés de nenhuma
-
-### 5. Micro-detalhes humanos
-- **Service cards**: Adicionar um "Mais pedido" apenas no Banho & Tosa (badge estático, sem bounce)
-- **Product cards**: Trocar badge "Destaque" por "Queridinho" (mais humano) — sem animação bounce (parece IA)
-- **Remover `animate-bounce-small`** de todos os badges — badges estáticos parecem mais profissional
-- **Stats do hero**: Remover ícones 3D, deixar só número + label — mais limpo e profissional
-- **Floating decorations**: Reduzir quantidade de ícones flutuando (hero tem 4, testimonials tem 3 — muito). Deixar no máximo 1-2 por seção
-
-### 6. Reduzir elementos decorativos excessivos
-- **Hero**: Remover 2 dos 4 paw decorations (manter só 1 sutil)
-- **Testimonials**: Remover estrelas flutuando no fundo (parecem clip art)
-- **Contact**: O paw-pattern no fundo é sutil, manter
-- **AboutUs**: Remover o Icon3D de PawPrint flutuando no canto da imagem
+**Mudanças nos componentes**:
+- `Header.tsx`: bg do header com transparência maior (`bg-petshop-teal/85`)
+- `WhyUs.tsx`: fundo teal mais claro ou trocar para branco com detalhes coloridos (menos peso)
+- `Footer.tsx`: verde um tom mais claro
+- Seções com `bg-secondary/18`, `bg-primary/8` etc.: reduzir opacidades para ficar mais leve
 
 ## Arquivos modificados
 | Arquivo | Mudança |
 |---------|---------|
-| `Contact.tsx` | Adicionar "Personalizado", copy nova |
-| `HeroCarousel.tsx` | Copys novas, stats simplificados, menos decorações |
-| `AboutUs.tsx` | Copy humana, menos ícones decorativos |
-| `Services.tsx` | Copy nova, badge "Mais pedido" estático no primeiro card |
-| `FoodProducts.tsx` | Copy nova, badge "Queridinho", sem bounce |
-| `WhyUs.tsx` | Copy nova |
-| `Testimonials.tsx` | Copy nova, estrelas de rating, sem decorações flutuando |
-| `ImagePlaceholder.tsx` | Visual mais colorido e convidativo |
+| `Brands.tsx` | Trocar logos para URLs que funcionam ou fallback texto estilizado |
+| `index.css` | Teal mais claro e vivo, cream mais leve |
+| `Header.tsx` | Transparência maior |
+| `WhyUs.tsx` | Fundo mais leve |
+| `Footer.tsx` | Verde mais claro |
+| `Contact.tsx` | Fundo verde menos pesado |
+| `AboutUs.tsx` | Fundo laranja mais sutil |
 
