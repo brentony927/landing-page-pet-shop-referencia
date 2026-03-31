@@ -1,75 +1,64 @@
 
 
-# Dar Vida ao Site — Referências de Pet Shops Famosos
+# Verde Vivo no Topo + Remover Spin + Número Real + Logos Oficiais + Cores Vivas
 
-## Diagnóstico
-O site tem estrutura boa mas falta MOVIMENTO, CONTRASTE e ESTÍMULOS VISUAIS. Sites de pet shop famosos (Petz, Cobasi, PetLove) usam: banners coloridos chamativos, CTAs enormes e pulsantes, hover effects agressivos, seções com fundos bem contrastados, badges animados, contadores visíveis, e muito uso de cor quente.
+## 1. Verde mais vivo no topo (Header)
+O `--petshop-teal` atual é `155 45% 18%` — muito escuro e morto. Trocar para um verde mais vibrante e saturado: `155 55% 28%` (mais claro e vivo). O `--petshop-teal-light` também sobe: `155 45% 34%`.
 
-## Mudanças
+**Arquivo**: `index.css` — linhas 44-45
 
-### 1. Hero Carousel — Mais impacto
-- Texto do título com palavra-chave em cor diferente (ex: "Seu pet merece o **melhor**" com "melhor" em amarelo/accent)
-- CTAs maiores com animação de pulse sutil constante no botão principal
-- Imagem do hero com animação de entrada mais dramática (scale + rotate)
-- Stats no hero com ícones animados (float) e números em accent (amarelo)
-- Fundo com partículas decorativas animadas (patinhas flutuando com CSS)
+## 2. Remover animação de spin nos ícones dos serviços
+O wrapper `animate-spin-icon` que gira 360° no hover será removido dos cards de serviço.
 
-### 2. Seções com fundos CONTRASTADOS (alternância forte)
-- AboutUs: fundo laranja claro (`bg-primary/8`) com texto escuro — quebra o branco morto
-- Services: manter branco mas adicionar uma faixa de CTA colorida no final ("Agende agora" em bg laranja)
-- FoodProducts: adicionar banner de promoção animado no topo da seção (fundo accent com texto "Frete grátis acima de R$150")
-- WhyUs: fundo teal escuro (como o header) com texto claro — quebra completamente o padrão
-- Testimonials: manter cream mas adicionar estrelas animadas flutuando
-- Contact: fundo com padrão sutil de patinhas (CSS background-image com SVG)
+**Arquivo**: `Services.tsx` — remover div com classe `animate-spin-icon` (linha 60-62)
 
-### 3. Micro-interações e movimento constante
-- **Cards (todos)**: hover com `scale(1.05)` + sombra colorida + borda colorida aparecendo. Transição 200ms
-- **Botões CTA**: pulse keyframe sutil no botão principal do hero (chama atenção)
-- **Badges "Destaque"/"Novo"**: animação de bounce leve infinito
-- **Service cards**: ícone gira 360° no hover
-- **Product cards**: botão "+" cresce e muda de cor no hover
-- **Scroll indicator**: seta animada no hero apontando pra baixo
-- **Brands marquee**: velocidade mais rápida (15s ao invés de 20s)
-- **Números WhyUs**: efeito de glow pulsante depois de contar
+## 3. Número de contato: 69992216764
+Trocar `(11) 99999-1234` e `wa.me/5511999991234` pelo número real em todos os arquivos:
+- Display: `(69) 99221-6764`
+- WhatsApp link: `https://wa.me/5569992216764`
 
-### 4. Elementos decorativos vivos
-- Patinhas flutuando no fundo de seções (CSS pseudo-elements com animação)
-- Separadores coloridos entre seções (linhas com animação de largura ao entrar na viewport)
-- Ícone de patinha girando no canto de seções
-- Badge flutuante "PROMOÇÃO" no canto de cards populares (com bounce)
+**Arquivos**: `Header.tsx`, `WhatsAppButton.tsx`, `Contact.tsx`, `Footer.tsx`
 
-### 5. WhyUs com fundo escuro (alto contraste)
-- Fundo teal escuro como header/footer
-- Números em amarelo (accent) brilhante
-- Ícones com glow
-- Labels em branco
-- Cria uma "quebra" visual forte no meio da página
+## 4. Logos oficiais das marcas (Brands.tsx)
+Substituir os ícones Lucide por `<img>` com as logos oficiais das marcas via URLs públicas de logos (logos hospedados em CDNs públicas como logo.clearbit.com ou logos diretos):
 
-### 6. CTA Strips entre seções
-- Faixa laranja entre AboutUs e Services: "Agende o banho do seu pet agora → WhatsApp"
-- Faixa verde entre Products e WhyUs: "Entrega grátis acima de R$150"
-- Animação de slide-in ao entrar na viewport
+| Marca | Logo URL |
+|-------|----------|
+| PremieRpet | `https://logo.clearbit.com/premierpet.com.br` |
+| Royal Canin | `https://logo.clearbit.com/royalcanin.com` |
+| GranPlus | `https://logo.clearbit.com/granplus.com.br` |
+| Golden | `https://logo.clearbit.com/goldenpet.com.br` |
+| Pedigree | `https://logo.clearbit.com/pedigree.com` |
+| Whiskas | `https://logo.clearbit.com/whiskas.com` |
+| Farmina | `https://logo.clearbit.com/farmina.com` |
+| Guabi | `https://logo.clearbit.com/guabi.com.br` |
 
-### 7. CSS — Novos keyframes e utilidades
-- `@keyframes bounceSmall` — bounce sutil para badges
-- `@keyframes ctaPulse` — pulse no CTA principal
-- `@keyframes patternFloat` — patinhas de fundo
-- `@keyframes glowPulse` — glow nos números
-- `@keyframes scrollDown` — seta no hero
-- Background pattern de patinhas via CSS (repeating SVG data URI)
+Cada logo em `<img>` com `h-10 object-contain grayscale hover:grayscale-0 transition-all` para efeito de "ativar cor" no hover.
+
+## 5. Dar mais vida às cores no site (sem mudar a paleta, só saturar)
+O site está "morto" porque os tons aplicados são muito diluídos (`/10`, `/12`, `/5`). Aumentar a presença das cores:
+
+- **Services cards**: `bg-secondary/10` → `bg-secondary/15`, hover border mais forte
+- **AboutUs**: adicionar borda lateral laranja mais grossa (`border-l-4 border-primary`)
+- **FoodProducts**: tabs e botões com laranja mais saturado no estado ativo
+- **Testimonials**: borda lateral do card ativo mais grossa e colorida
+- **Contact**: fundo verde mais presente (`bg-secondary/18` ao invés de `/12`)
+- **CTA strips**: laranja mais vibrante com texto maior
+- **Hero stats**: números em accent com `text-shadow` sutil para "brilhar"
+- **Footer**: faixa laranja do topo mais grossa (h-1.5 ao invés de h-1)
 
 ## Arquivos modificados
 | Arquivo | Mudança |
 |---------|---------|
-| `index.css` | Novos keyframes, background patterns, utilidades de animação |
-| `HeroCarousel.tsx` | Título com destaque colorido, CTA com pulse, scroll arrow, partículas |
-| `AboutUs.tsx` | Fundo laranja claro, mais contraste |
-| `Services.tsx` | CTA strip no final, hover com spin no ícone |
-| `FoodProducts.tsx` | Banner de promoção animado, badges com bounce |
-| `WhyUs.tsx` | Fundo teal escuro, números amarelos com glow |
-| `Testimonials.tsx` | Estrelas decorativas flutuando |
-| `Contact.tsx` | Background pattern de patinhas |
-| `Brands.tsx` | Marquee mais rápido |
-| `Footer.tsx` | Sem mudanças grandes |
-| `Index.tsx` | Adicionar CTA strips entre seções |
+| `index.css` | `--petshop-teal` e `--petshop-teal-light` mais vivos |
+| `Header.tsx` | Número real |
+| `WhatsAppButton.tsx` | Link WhatsApp real |
+| `Contact.tsx` | Número real, fundo mais saturado |
+| `Footer.tsx` | Número real, faixa laranja maior |
+| `Services.tsx` | Remover spin icon, cards mais coloridos |
+| `Brands.tsx` | Logos oficiais via img + grayscale hover |
+| `HeroCarousel.tsx` | Stats com text-shadow |
+| `AboutUs.tsx` | Borda lateral mais forte |
+| `Testimonials.tsx` | Borda card mais visível |
+| `FoodProducts.tsx` | Tabs mais saturadas |
 
