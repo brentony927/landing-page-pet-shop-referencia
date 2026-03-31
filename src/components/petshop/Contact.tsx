@@ -5,7 +5,7 @@ import Icon3D from "./Icon3D";
 
 const Contact = () => {
   return (
-    <section id="contato" className="py-16 bg-secondary/18 paw-pattern paw-pattern-animated relative">
+    <section id="contato" className="py-16 bg-secondary/10 paw-pattern paw-pattern-animated relative">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
