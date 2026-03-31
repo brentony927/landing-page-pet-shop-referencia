@@ -57,9 +57,7 @@ const Services = () => {
               }`}
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="animate-spin-icon">
-                <Icon3D icon={s.icon} size="md" color={s.color} animate="none" className="mb-4" />
-              </div>
+              <Icon3D icon={s.icon} size="md" color={s.color} animate="none" className="mb-4" />
               <h3 className="font-heading text-lg font-bold text-foreground mb-1">{s.title}</h3>
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{s.desc}</p>
               <div className="flex items-center justify-between border-t border-border/50 pt-3">
