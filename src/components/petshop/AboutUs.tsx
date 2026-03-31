@@ -15,7 +15,7 @@ const AboutUs = () => {
   const { ref, visible } = useInView(0.2);
 
   return (
-    <section id="sobre" className="py-16 bg-primary/8 overflow-hidden" ref={ref}>
+    <section id="sobre" className="py-16 bg-primary/5 overflow-hidden" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center max-w-5xl mx-auto">
           <div className={`lg:col-span-2 flex items-center justify-center transition-all duration-500 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"}`}>
