@@ -1,64 +1,70 @@
 
 
-# Verde Vivo no Topo + Remover Spin + Número Real + Logos Oficiais + Cores Vivas
+# Humanizar o Site + Adicionar "Personalizado" no Formulário
 
-## 1. Verde mais vivo no topo (Header)
-O `--petshop-teal` atual é `155 45% 18%` — muito escuro e morto. Trocar para um verde mais vibrante e saturado: `155 55% 28%` (mais claro e vivo). O `--petshop-teal-light` também sobe: `155 45% 34%`.
+## Diagnóstico: O que parece "IA"
+1. **Textos formulaicos** — Todas as seções seguem o mesmo padrão: título curto → subtítulo → grid. Falta quebra de ritmo
+2. **Tudo muito simétrico e previsível** — Cards iguais, espaçamentos idênticos, sem surpresas visuais
+3. **Copys genéricas** — "A gente cuida do seu pet como se fosse nosso", "Só o melhor vai pra tigela" — são frases que qualquer gerador escreve
+4. **Placeholders vazios demais** — Os ImagePlaceholder são cinza morto com "Sua imagem aqui" — parecem wireframe
+5. **Badges repetitivos** — "Destaque" em vários cards, todos com bounce igual
+6. **Estrutura robótica** — Cada componente tem a mesma entrada (fade-in + translate-y), mesma duração
 
-**Arquivo**: `index.css` — linhas 44-45
+## Mudanças
 
-## 2. Remover animação de spin nos ícones dos serviços
-O wrapper `animate-spin-icon` que gira 360° no hover será removido dos cards de serviço.
+### 1. Formulário de Contato — Adicionar "Personalizado"
+`Contact.tsx` — adicionar `<option>Personalizado</option>` na lista de serviços
 
-**Arquivo**: `Services.tsx` — remover div com classe `animate-spin-icon` (linha 60-62)
+### 2. Copys reescritas com personalidade REAL
+Trocar frases genéricas por texto que um dono de pet shop de verdade falaria:
 
-## 3. Número de contato: 69992216764
-Trocar `(11) 99999-1234` e `wa.me/5511999991234` pelo número real em todos os arquivos:
-- Display: `(69) 99221-6764`
-- WhatsApp link: `https://wa.me/5569992216764`
+- **Hero slide 1**: "Seu pet merece o melhor" → "Aqui o banho vem com carinho — e o biscoito é por nossa conta"
+- **Hero slide 2**: "Banho & tosa que seu pet vai amar" → "Tosa na tesoura, secagem com paciência. Nada de pressa."
+- **Hero slide 3**: "Ração boa de verdade" → "A gente prova? Não. Mas o rabo abanando já diz tudo."
+- **AboutUs título**: "A gente cuida do seu pet como se fosse nosso" → "12 anos no bairro. Seu vizinho já trouxe o pet dele."
+- **AboutUs texto**: Reescrever para soar como conversa de balcão, não como pitch de startup
+- **Services título**: "Serviços pra deixar seu pet feliz" → "O que a gente faz de melhor"
+- **FoodProducts título**: "Só o melhor vai pra tigela" → "Ração que seu pet come até o fundo"
+- **WhyUs título**: "A gente não é de se gabar, mas..." → "Números que contam nossa história"
+- **Testimonials título**: "Quem trouxe o pet, voltou!" → "O que nossos clientes dizem"
+- **Contact título**: "Bora marcar? A gente te espera!" → "Fala com a gente — a resposta é rápida"
 
-**Arquivos**: `Header.tsx`, `WhatsAppButton.tsx`, `Contact.tsx`, `Footer.tsx`
+### 3. Quebrar a simetria visual
+- **AboutUs**: Mover o botão "Conhecer mais" para DENTRO da borda lateral laranja, criar um visual mais editorial
+- **Services**: Primeiro card (Banho & Tosa) maior que os outros (min-w-[340px]), criando hierarquia visual
+- **FoodProducts**: Primeiro produto de cada categoria tem card maior (col-span-2 no grid)
+- **Testimonials**: Adicionar rating com estrelas acima do texto (5 estrelas preenchidas)
+- **Hero**: Stats com layout mais informal — sem ícones 3D nos stats, só o número bold + label simples
 
-## 4. Logos oficiais das marcas (Brands.tsx)
-Substituir os ícones Lucide por `<img>` com as logos oficiais das marcas via URLs públicas de logos (logos hospedados em CDNs públicas como logo.clearbit.com ou logos diretos):
+### 4. ImagePlaceholders mais vivos
+Trocar o visual morto de wireframe por placeholders coloridos e convidativos:
+- Fundo com cor mais forte (`/15` ao invés de `/8`)
+- Ícone maior e com cor sólida
+- Texto "Sua foto aqui" ao invés de "Sua imagem aqui" (mais informal)
+- Borda sólida fina colorida ao invés de nenhuma
 
-| Marca | Logo URL |
-|-------|----------|
-| PremieRpet | `https://logo.clearbit.com/premierpet.com.br` |
-| Royal Canin | `https://logo.clearbit.com/royalcanin.com` |
-| GranPlus | `https://logo.clearbit.com/granplus.com.br` |
-| Golden | `https://logo.clearbit.com/goldenpet.com.br` |
-| Pedigree | `https://logo.clearbit.com/pedigree.com` |
-| Whiskas | `https://logo.clearbit.com/whiskas.com` |
-| Farmina | `https://logo.clearbit.com/farmina.com` |
-| Guabi | `https://logo.clearbit.com/guabi.com.br` |
+### 5. Micro-detalhes humanos
+- **Service cards**: Adicionar um "Mais pedido" apenas no Banho & Tosa (badge estático, sem bounce)
+- **Product cards**: Trocar badge "Destaque" por "Queridinho" (mais humano) — sem animação bounce (parece IA)
+- **Remover `animate-bounce-small`** de todos os badges — badges estáticos parecem mais profissional
+- **Stats do hero**: Remover ícones 3D, deixar só número + label — mais limpo e profissional
+- **Floating decorations**: Reduzir quantidade de ícones flutuando (hero tem 4, testimonials tem 3 — muito). Deixar no máximo 1-2 por seção
 
-Cada logo em `<img>` com `h-10 object-contain grayscale hover:grayscale-0 transition-all` para efeito de "ativar cor" no hover.
-
-## 5. Dar mais vida às cores no site (sem mudar a paleta, só saturar)
-O site está "morto" porque os tons aplicados são muito diluídos (`/10`, `/12`, `/5`). Aumentar a presença das cores:
-
-- **Services cards**: `bg-secondary/10` → `bg-secondary/15`, hover border mais forte
-- **AboutUs**: adicionar borda lateral laranja mais grossa (`border-l-4 border-primary`)
-- **FoodProducts**: tabs e botões com laranja mais saturado no estado ativo
-- **Testimonials**: borda lateral do card ativo mais grossa e colorida
-- **Contact**: fundo verde mais presente (`bg-secondary/18` ao invés de `/12`)
-- **CTA strips**: laranja mais vibrante com texto maior
-- **Hero stats**: números em accent com `text-shadow` sutil para "brilhar"
-- **Footer**: faixa laranja do topo mais grossa (h-1.5 ao invés de h-1)
+### 6. Reduzir elementos decorativos excessivos
+- **Hero**: Remover 2 dos 4 paw decorations (manter só 1 sutil)
+- **Testimonials**: Remover estrelas flutuando no fundo (parecem clip art)
+- **Contact**: O paw-pattern no fundo é sutil, manter
+- **AboutUs**: Remover o Icon3D de PawPrint flutuando no canto da imagem
 
 ## Arquivos modificados
 | Arquivo | Mudança |
 |---------|---------|
-| `index.css` | `--petshop-teal` e `--petshop-teal-light` mais vivos |
-| `Header.tsx` | Número real |
-| `WhatsAppButton.tsx` | Link WhatsApp real |
-| `Contact.tsx` | Número real, fundo mais saturado |
-| `Footer.tsx` | Número real, faixa laranja maior |
-| `Services.tsx` | Remover spin icon, cards mais coloridos |
-| `Brands.tsx` | Logos oficiais via img + grayscale hover |
-| `HeroCarousel.tsx` | Stats com text-shadow |
-| `AboutUs.tsx` | Borda lateral mais forte |
-| `Testimonials.tsx` | Borda card mais visível |
-| `FoodProducts.tsx` | Tabs mais saturadas |
+| `Contact.tsx` | Adicionar "Personalizado", copy nova |
+| `HeroCarousel.tsx` | Copys novas, stats simplificados, menos decorações |
+| `AboutUs.tsx` | Copy humana, menos ícones decorativos |
+| `Services.tsx` | Copy nova, badge "Mais pedido" estático no primeiro card |
+| `FoodProducts.tsx` | Copy nova, badge "Queridinho", sem bounce |
+| `WhyUs.tsx` | Copy nova |
+| `Testimonials.tsx` | Copy nova, estrelas de rating, sem decorações flutuando |
+| `ImagePlaceholder.tsx` | Visual mais colorido e convidativo |
 
