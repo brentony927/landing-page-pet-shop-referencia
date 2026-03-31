@@ -74,7 +74,7 @@ const Testimonials = () => {
         </div>
 
         <div className="max-w-2xl mx-auto relative">
-          <div className={`bg-card rounded-lg p-8 md:p-10 shadow-sm text-center transition-all duration-200 relative border-l-4 ${borderColors[idx]} ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
+          <div className={`bg-card rounded-lg p-8 md:p-10 shadow-sm text-center transition-all duration-200 relative border-l-[6px] ${borderColors[idx]} ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
             <p className="text-foreground text-lg md:text-xl italic mb-6 leading-relaxed relative z-10">
               "{t.text}"
             </p>

@@ -15,7 +15,7 @@ const instagramIcons = [
 const Footer = () => {
   return (
     <footer className="bg-petshop-teal text-primary-foreground">
-      <div className="h-1 bg-primary" />
+      <div className="h-1.5 bg-primary" />
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <div className="md:col-span-1">
@@ -29,7 +29,7 @@ const Footer = () => {
             <p className="text-primary-foreground/40 text-sm">
               Seg a Sex: 8h – 19h<br />
               Sáb: 8h – 16h<br />
-              <span className="text-accent font-semibold">(11) 99999-1234</span>
+              <span className="text-accent font-semibold">(69) 99221-6764</span>
             </p>
           </div>
 

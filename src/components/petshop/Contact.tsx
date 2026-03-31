@@ -5,7 +5,7 @@ import Icon3D from "./Icon3D";
 
 const Contact = () => {
   return (
-    <section id="contato" className="py-16 bg-secondary/12 paw-pattern paw-pattern-animated relative">
+    <section id="contato" className="py-16 bg-secondary/18 paw-pattern paw-pattern-animated relative">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
@@ -36,7 +36,7 @@ const Contact = () => {
               <Icon3D icon={Phone} size="md" color="orange" animate="none" />
               <div>
                 <h3 className="font-heading font-bold text-foreground mb-1">WhatsApp</h3>
-                <p className="text-muted-foreground text-sm">(11) 99999-1234</p>
+                <p className="text-muted-foreground text-sm">(69) 99221-6764</p>
               </div>
             </div>
 
