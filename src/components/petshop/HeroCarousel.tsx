@@ -1,29 +1,29 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, PawPrint, Heart, ChevronDown } from "lucide-react";
+import { ChevronLeft, ChevronRight, PawPrint, ChevronDown } from "lucide-react";
 import Icon3D from "./Icon3D";
 import ImagePlaceholder from "./ImagePlaceholder";
 
 const slides = [
   {
-    title: "Seu pet merece o",
-    highlight: "melhor",
-    titleEnd: ", e a gente entrega!",
+    title: "Aqui o banho vem com carinho —",
+    highlight: "e o biscoito",
+    titleEnd: " é por nossa conta",
     subtitle: "Banho, ração, veterinário — tudo num só lugar, com gente que ama bicho de verdade",
     cta1: "COMPRAR AGORA",
     cta2: "Agendar ligação",
   },
   {
-    title: "Banho & tosa que seu pet vai",
-    highlight: "amar",
-    titleEnd: "",
+    title: "Tosa na tesoura, secagem com",
+    highlight: "paciência",
+    titleEnd: ". Nada de pressa.",
     subtitle: "Ele entra precisando, e sai desfilando. Pode confiar!",
     cta1: "AGENDAR AGORA",
     cta2: "Ver serviços",
   },
   {
-    title: "Ração boa de",
-    highlight: "verdade",
-    titleEnd: ", sem enrolação",
+    title: "A gente prova? Não. Mas o",
+    highlight: "rabo abanando",
+    titleEnd: " já diz tudo.",
     subtitle: "Do filhote ao velhinho, só o que tem qualidade vai pra tigela",
     cta1: "VER RAÇÕES",
     cta2: "Fale conosco",
@@ -67,18 +67,9 @@ const HeroCarousel = () => {
   return (
     <section id="inicio" className="pt-16">
       <div className="bg-petshop-teal relative overflow-hidden min-h-[600px] md:min-h-[650px]">
-        {/* Floating paw decorations */}
-        <div className="absolute top-10 left-10 opacity-15 animate-float">
+        {/* Single subtle paw decoration */}
+        <div className="absolute bottom-20 right-10 opacity-10 animate-float-delayed">
           <Icon3D icon={PawPrint} size="lg" color="green" animate="none" />
-        </div>
-        <div className="absolute bottom-20 right-10 opacity-15 animate-float-delayed">
-          <Icon3D icon={Heart} size="xl" color="orange" animate="none" />
-        </div>
-        <div className="absolute top-1/4 right-1/4 opacity-10 hidden md:block animate-float">
-          <Icon3D icon={PawPrint} size="md" color="yellow" animate="none" />
-        </div>
-        <div className="absolute bottom-1/3 left-1/4 opacity-8 hidden lg:block animate-float-delayed">
-          <Icon3D icon={PawPrint} size="sm" color="green" animate="none" />
         </div>
 
         <div className={`container mx-auto px-4 py-16 md:py-24 relative z-10 transition-all duration-300 ${isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
@@ -100,12 +91,9 @@ const HeroCarousel = () => {
               </div>
 
               <div className="flex flex-wrap gap-8 md:gap-12 mt-12 justify-center lg:justify-start">
-                {stats.map((s, i) => (
+                {stats.map((s) => (
                   <div key={s.label} className="text-center lg:text-left">
-                    <div className="flex items-center gap-2 justify-center lg:justify-start">
-                      <Icon3D icon={[PawPrint, Heart, PawPrint][i]} size="sm" color={["green", "orange", "yellow"][i] as "green" | "orange" | "yellow"} animate="float" className="!w-8 !h-8" />
-                      <p className="font-heading text-3xl md:text-4xl font-bold text-accent" style={{ textShadow: "0 0 20px hsl(43 100% 49% / 0.4)" }}>{s.value}</p>
-                    </div>
+                    <p className="font-heading text-3xl md:text-4xl font-bold text-accent" style={{ textShadow: "0 0 20px hsl(43 100% 49% / 0.4)" }}>{s.value}</p>
                     <p className="text-primary-foreground/50 text-sm font-semibold mt-1">{s.label}</p>
                   </div>
                 ))}
@@ -115,12 +103,6 @@ const HeroCarousel = () => {
             <div className="flex items-center justify-center">
               <div className="relative w-72 h-72 md:w-96 md:h-96 animate-hero-image">
                 <ImagePlaceholder className="w-full h-full" variant="neutral" />
-                <div className="absolute -bottom-3 -right-3 animate-bounce-small">
-                  <Icon3D icon={Heart} size="md" color="orange" animate="none" />
-                </div>
-                <div className="absolute -top-3 -left-3 animate-float">
-                  <Icon3D icon={PawPrint} size="sm" color="green" animate="none" />
-                </div>
               </div>
             </div>
           </div>

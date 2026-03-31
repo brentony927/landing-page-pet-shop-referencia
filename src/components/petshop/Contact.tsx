@@ -9,7 +9,7 @@ const Contact = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-            Bora marcar? A gente te espera!
+            Fala com a gente — a resposta é rápida
           </h2>
         </div>
 
@@ -68,6 +68,7 @@ const Contact = () => {
                   <option>Adestramento</option>
                   <option>Taxi Dog</option>
                   <option>Day Care</option>
+                  <option>Personalizado</option>
                 </select>
               </div>
               <Button className="w-full bg-primary text-primary-foreground font-bold rounded-lg text-sm uppercase tracking-wider py-5 hover:bg-primary/90 glow-orange">
