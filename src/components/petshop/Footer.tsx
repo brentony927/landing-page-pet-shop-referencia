@@ -15,7 +15,7 @@ const instagramIcons = [
 const Footer = () => {
   return (
     <footer className="bg-petshop-teal text-primary-foreground">
-      <div className="h-1 bg-primary" />
+      <div className="h-1.5 bg-primary" />
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <div className="md:col-span-1">
