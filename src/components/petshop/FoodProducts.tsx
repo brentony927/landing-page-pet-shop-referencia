@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Star, Dog, Cat, PawPrint, Bird, Fish } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import Icon3D from "./Icon3D";
 import ImagePlaceholder from "./ImagePlaceholder";
 import { useInView } from "@/hooks/useInView";
@@ -65,7 +64,7 @@ const FoodProducts = () => {
     <section id="racoes" className="py-16 bg-background" ref={ref}>
       {/* Promo banner */}
       <div className="bg-accent py-3 mb-10">
-        <p className="text-center font-bold text-accent-foreground text-sm animate-bounce-small">
+        <p className="text-center font-bold text-accent-foreground text-sm">
           Frete grátis acima de R$150 — Aproveite!
         </p>
       </div>
@@ -74,7 +73,7 @@ const FoodProducts = () => {
         <div className="flex flex-col lg:flex-row items-center gap-8 mb-12">
           <div className="flex-1 text-center lg:text-left">
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-              Só o melhor vai pra tigela
+              Ração que seu pet come até o fundo
             </h2>
             <p className="text-muted-foreground mt-3 max-w-md">
               A gente escolhe cada marca com cuidado. Nada de encher prateleira com qualquer coisa.
@@ -112,9 +111,9 @@ const FoodProducts = () => {
               style={{ transitionDelay: `${i * 80}ms` }}
             >
               {p.popular && (
-                <Badge className="absolute top-3 left-3 bg-accent text-accent-foreground border-0 font-bold text-xs z-10 animate-bounce-small">
-                  Destaque
-                </Badge>
+                <span className="absolute top-3 left-3 bg-accent text-accent-foreground border-0 font-bold text-xs z-10 px-2 py-1 rounded-md">
+                  Queridinho
+                </span>
               )}
               <div className="bg-muted/50 w-full h-40 flex items-center justify-center">
                 {activeCat && (

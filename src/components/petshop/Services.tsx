@@ -13,7 +13,7 @@ const cardBgColors = [
 ];
 
 const services = [
-  { icon: Scissors, title: "Banho & Tosa", desc: "Sai cheiroso e desfilando", price: "R$ 79", duration: "1h30", color: "green" as const, featured: true },
+  { icon: Scissors, title: "Banho & Tosa", desc: "Sai cheiroso e desfilando", price: "R$ 79", duration: "1h30", color: "green" as const, featured: true, badge: "Mais pedido" },
   { icon: Stethoscope, title: "Veterinário", desc: "Check-up, vacina, tudo em dia", price: "R$ 120", duration: "45min", color: "orange" as const },
   { icon: Hotel, title: "Hotel Pet", desc: "Ele fica bem enquanto você viaja", price: "R$ 89/dia", duration: "24h", color: "teal" as const },
   { icon: Dog, title: "Adestramento", desc: "Treino com paciência e reforço positivo", price: "R$ 99", duration: "1h", color: "yellow" as const },
@@ -35,7 +35,7 @@ const Services = () => {
         <div className="flex items-end justify-between mb-12">
           <div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-              Serviços pra deixar seu pet feliz
+              O que a gente faz de melhor
             </h2>
           </div>
           <div className="hidden md:flex gap-2">
@@ -52,11 +52,16 @@ const Services = () => {
           {services.map((s, i) => (
             <div
               key={s.title}
-              className={`${s.featured ? "min-w-[320px] border-l-4 border-l-primary" : "min-w-[280px]"} ${cardBgColors[i]} border border-transparent rounded-lg p-6 cursor-pointer snap-start transition-all duration-200 hover:-translate-y-2 hover:shadow-orange group ${
+              className={`${s.featured ? "min-w-[340px] border-l-4 border-l-primary" : "min-w-[280px]"} ${cardBgColors[i]} border border-transparent rounded-lg p-6 cursor-pointer snap-start transition-all duration-200 hover:-translate-y-2 hover:shadow-orange group relative ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               style={{ transitionDelay: `${i * 80}ms` }}
             >
+              {s.badge && (
+                <span className="absolute top-3 right-3 bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded-md">
+                  {s.badge}
+                </span>
+              )}
               <Icon3D icon={s.icon} size="md" color={s.color} animate="none" className="mb-4" />
               <h3 className="font-heading text-lg font-bold text-foreground mb-1">{s.title}</h3>
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{s.desc}</p>

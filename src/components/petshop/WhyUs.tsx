@@ -48,15 +48,15 @@ const WhyUs = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground mb-3">
-            A gente não é de se gabar, mas...
+            Números que contam nossa história
           </h2>
-          <p className="text-primary-foreground/50 text-lg">Os números falam por si</p>
+          <p className="text-primary-foreground/50 text-lg">Resultados de quem trabalha com amor</p>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center max-w-3xl mx-auto">
           {stats.map((s, i) => (
             <div key={s.label} className="flex-1 text-center p-6 relative">
-              <div className={`flex justify-center mb-4 transition-all duration-300 ${doneCount.has(i) ? "animate-bounce-small" : ""}`}>
+              <div className={`flex justify-center mb-4 transition-all duration-300 ${doneCount.has(i) ? "" : ""}`}>
                 <Icon3D icon={s.icon} size="lg" color={s.color} animate={visible ? "float" : "none"} />
               </div>
               <AnimatedNumber

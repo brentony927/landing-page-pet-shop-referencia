@@ -55,26 +55,21 @@ const Testimonials = () => {
 
   return (
     <section className="py-16 bg-petshop-cream relative overflow-hidden">
-      {/* Floating star decorations */}
-      <div className="absolute top-8 left-8 opacity-10 animate-float">
-        <Star className="w-12 h-12 text-accent fill-accent" />
-      </div>
-      <div className="absolute bottom-8 right-12 opacity-10 animate-float-delayed">
-        <Star className="w-8 h-8 text-primary fill-primary" />
-      </div>
-      <div className="absolute top-1/3 right-8 opacity-8 hidden md:block animate-float">
-        <Star className="w-6 h-6 text-secondary fill-secondary" />
-      </div>
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-            Quem trouxe o pet, voltou!
+            O que nossos clientes dizem
           </h2>
         </div>
 
         <div className="max-w-2xl mx-auto relative">
           <div className={`bg-card rounded-lg p-8 md:p-10 shadow-sm text-center transition-all duration-200 relative border-l-[6px] ${borderColors[idx]} ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
+            {/* Star rating */}
+            <div className="flex justify-center gap-1 mb-4">
+              {Array.from({ length: 5 }, (_, i) => (
+                <Star key={i} className="w-5 h-5 text-accent fill-accent" />
+              ))}
+            </div>
             <p className="text-foreground text-lg md:text-xl italic mb-6 leading-relaxed relative z-10">
               "{t.text}"
             </p>
