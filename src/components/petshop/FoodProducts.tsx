@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Star, Dog, Cat, PawPrint, Bird, Fish } from "lucide-react";
-import Icon3D from "./Icon3D";
 import { useInView } from "@/hooks/useInView";
 
 const categories = [
-  { label: "Cães", icon: Dog, key: "dogs", color: "orange" as const },
-  { label: "Gatos", icon: Cat, key: "cats", color: "green" as const },
-  { label: "Filhotes", icon: PawPrint, key: "puppies", color: "yellow" as const },
-  { label: "Pássaros", icon: Bird, key: "birds", color: "teal" as const },
-  { label: "Peixes", icon: Fish, key: "fish", color: "green" as const },
+  { label: "Cães", icon: Dog, key: "dogs" },
+  { label: "Gatos", icon: Cat, key: "cats" },
+  { label: "Filhotes", icon: PawPrint, key: "puppies" },
+  { label: "Pássaros", icon: Bird, key: "birds" },
+  { label: "Peixes", icon: Fish, key: "fish" },
 ];
 
 const products: Record<string, Array<{ name: string; price: string; rating: number; popular?: boolean }>> = {
@@ -57,42 +56,33 @@ const FoodProducts = () => {
     }, 200);
   };
 
-  const activeCat = categories.find(c => c.key === activeTab);
-
   return (
     <section id="racoes" className="py-14 bg-background" ref={ref}>
-      {/* Promo banner */}
-      <div className="bg-accent py-3 mb-10">
-        <p className="text-center font-bold text-accent-foreground text-sm">
-          Frete grátis acima de R$150 — Aproveite!
-        </p>
-      </div>
-
       <div className="container mx-auto px-4">
         <div className="mb-10">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
             Ração que seu pet come até o fundo
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-md">
-            A gente escolhe cada marca com cuidado. Nada de encher prateleira com qualquer coisa.
-          </p>
         </div>
 
         <div className="flex gap-3 mb-10 flex-wrap">
-          {categories.map((cat) => (
-            <button
-              key={cat.key}
-              onClick={() => handleTabChange(cat.key)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 ${
-                activeTab === cat.key
-                  ? "bg-primary text-primary-foreground shadow-orange scale-105"
-                  : "bg-muted text-muted-foreground hover:bg-border"
-              }`}
-            >
-              <Icon3D icon={cat.icon} size="sm" color={cat.color} animate="none" className="!w-6 !h-6 !rounded-lg" />
-              {cat.label}
-            </button>
-          ))}
+          {categories.map((cat) => {
+            const Icon = cat.icon;
+            return (
+              <button
+                key={cat.key}
+                onClick={() => handleTabChange(cat.key)}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all duration-200 ${
+                  activeTab === cat.key
+                    ? "bg-primary text-primary-foreground shadow-orange"
+                    : "bg-muted text-muted-foreground hover:bg-border"
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                {cat.label}
+              </button>
+            );
+          })}
         </div>
 
         <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 transition-all duration-200 ${tabChanged ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
@@ -109,10 +99,8 @@ const FoodProducts = () => {
                   Queridinho
                 </span>
               )}
-              <div className="bg-muted/50 w-full h-40 flex items-center justify-center">
-                {activeCat && (
-                  <Icon3D icon={activeCat.icon} size="lg" color={activeCat.color} animate="float" />
-                )}
+              <div className="bg-secondary/8 w-full h-32 flex items-center justify-center">
+                <span className="text-muted-foreground/40 text-sm font-semibold">A SUA IMAGEM AQUI</span>
               </div>
               <div className="p-4">
                 <div className="flex items-center gap-1 mb-2">
@@ -127,7 +115,7 @@ const FoodProducts = () => {
                 <h3 className="font-heading font-bold text-foreground text-sm mb-2 leading-tight">{p.name}</h3>
                 <div className="flex items-center justify-between">
                   <p className="font-heading text-xl font-bold text-primary">{p.price}</p>
-                  <a href="https://wa.me/5569992216764" className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-primary/90 hover:scale-110 transition-all duration-200">
+                  <a href="https://wa.me/5569992216764" className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-primary/90 transition-all duration-200">
                     +
                   </a>
                 </div>

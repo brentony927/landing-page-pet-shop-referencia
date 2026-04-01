@@ -129,12 +129,6 @@
     background-size: 80px 80px;
   }
 
-  .animate-spin-icon {
-    transition: transform 0.5s ease;
-  }
-  .group:hover .animate-spin-icon {
-    transform: rotate(360deg);
-  }
 }
 
 @keyframes fadeInUp {

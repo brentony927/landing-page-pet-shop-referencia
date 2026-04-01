@@ -1,5 +1,4 @@
 import { PawPrint } from "lucide-react";
-import Icon3D from "./Icon3D";
 
 const Footer = () => {
   return (
@@ -9,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Icon3D icon={PawPrint} size="sm" color="yellow" animate="none" />
+              <PawPrint className="w-6 h-6 text-accent" />
               <span className="font-heading text-lg font-bold">Patinhas & Cia</span>
             </div>
             <p className="text-primary-foreground/50 text-sm leading-relaxed">
@@ -44,12 +43,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-primary-foreground/10 pt-6">
           <p className="text-primary-foreground/30 text-sm">
             © 2025 Patinhas & Cia — Todos os direitos reservados
-          </p>
-          <p className="text-primary-foreground/30 text-sm flex items-center gap-1">
-            Feito com <PawPrint className="inline w-4 h-4 text-accent" /> pra quem ama pets
           </p>
         </div>
       </div>
