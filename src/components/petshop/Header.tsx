@@ -63,20 +63,25 @@ const Header = () => {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-petshop-teal border-t border-petshop-teal-light px-4 py-4 space-y-3">
+        <div className="md:hidden bg-petshop-teal border-t border-petshop-teal-light px-4 py-4 space-y-1">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="block text-xs font-bold tracking-wider text-primary-foreground/70 hover:text-accent"
+              className="block text-sm font-bold tracking-wider text-primary-foreground/70 hover:text-accent py-3 border-b border-primary-foreground/10"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
             </a>
           ))}
-          <Button className="w-full bg-primary text-primary-foreground font-bold rounded-lg text-xs tracking-wider">
-            AGENDAR
-          </Button>
+          <div className="flex gap-3 pt-3">
+            <a href="https://wa.me/5569992216764" className="flex-1 text-center border border-primary-foreground/30 text-primary-foreground font-bold rounded-lg py-3 text-xs tracking-wider">
+              WHATSAPP
+            </a>
+            <Button className="flex-1 bg-primary text-primary-foreground font-bold rounded-lg text-xs tracking-wider py-3">
+              AGENDAR
+            </Button>
+          </div>
         </div>
       )}
     </header>

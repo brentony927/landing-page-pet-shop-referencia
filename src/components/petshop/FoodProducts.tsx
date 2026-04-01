@@ -53,7 +53,7 @@ const FoodProducts = () => {
     setTimeout(() => {
       setActiveTab(key);
       setTabChanged(false);
-    }, 200);
+    }, 150);
   };
 
   return (
@@ -65,14 +65,14 @@ const FoodProducts = () => {
           </h2>
         </div>
 
-        <div className="flex gap-3 mb-10 flex-wrap">
+        <div className="flex gap-2 sm:gap-3 mb-10 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
           {categories.map((cat) => {
             const Icon = cat.icon;
             return (
               <button
                 key={cat.key}
                 onClick={() => handleTabChange(cat.key)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all duration-200 ${
+                className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg font-bold text-sm transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
                   activeTab === cat.key
                     ? "bg-primary text-primary-foreground shadow-orange"
                     : "bg-muted text-muted-foreground hover:bg-border"
@@ -85,37 +85,37 @@ const FoodProducts = () => {
           })}
         </div>
 
-        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 transition-all duration-200 ${tabChanged ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
+        <div className={`grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 transition-all duration-150 ${tabChanged ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
           {products[activeTab].map((p, i) => (
             <div
               key={p.name}
               className={`bg-card rounded-lg overflow-hidden shadow-sm transition-all duration-200 relative group cursor-pointer hover:-translate-y-2 hover:shadow-lg ${
                 i === 0 && p.popular ? "border-2 border-primary bg-primary/5" : ""
               } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: `${i * 80}ms` }}
+              style={{ transitionDelay: `${i * 60}ms` }}
             >
               {p.popular && (
-                <span className="absolute top-3 left-3 bg-accent text-accent-foreground border-0 font-bold text-xs z-10 px-2 py-1 rounded-md">
+                <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-accent text-accent-foreground border-0 font-bold text-[10px] sm:text-xs z-10 px-2 py-0.5 sm:py-1 rounded-md">
                   Queridinho
                 </span>
               )}
-              <div className="bg-secondary/8 w-full h-32 flex items-center justify-center">
-                <span className="text-muted-foreground/40 text-sm font-semibold">A SUA IMAGEM AQUI</span>
+              <div className="bg-secondary/8 w-full h-24 sm:h-32 flex items-center justify-center">
+                <span className="text-muted-foreground/40 text-xs sm:text-sm font-semibold">A SUA IMAGEM AQUI</span>
               </div>
-              <div className="p-4">
-                <div className="flex items-center gap-1 mb-2">
+              <div className="p-3 sm:p-4">
+                <div className="flex items-center gap-0.5 mb-1 sm:mb-2">
                   {Array.from({ length: 5 }, (_, j) => (
                     <Star
                       key={j}
-                      className={`w-3.5 h-3.5 ${j < Math.floor(p.rating) ? "text-accent fill-accent" : "text-border"}`}
+                      className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${j < Math.floor(p.rating) ? "text-accent fill-accent" : "text-border"}`}
                     />
                   ))}
-                  <span className="text-muted-foreground text-xs ml-1">{p.rating}</span>
+                  <span className="text-muted-foreground text-[10px] sm:text-xs ml-1">{p.rating}</span>
                 </div>
-                <h3 className="font-heading font-bold text-foreground text-sm mb-2 leading-tight">{p.name}</h3>
+                <h3 className="font-heading font-bold text-foreground text-xs sm:text-sm mb-2 leading-tight">{p.name}</h3>
                 <div className="flex items-center justify-between">
-                  <p className="font-heading text-xl font-bold text-primary">{p.price}</p>
-                  <a href="https://wa.me/5569992216764" className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-primary/90 transition-all duration-200">
+                  <p className="font-heading text-lg sm:text-xl font-bold text-primary">{p.price}</p>
+                  <a href="https://wa.me/5569992216764" className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-primary/90 transition-all duration-200">
                     +
                   </a>
                 </div>

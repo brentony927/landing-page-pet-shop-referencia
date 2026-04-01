@@ -37,7 +37,7 @@ const Testimonials = () => {
     setTimeout(() => {
       setIdx(newIdx);
       setIsTransitioning(false);
-    }, 200);
+    }, 150);
   }, []);
 
   const next = useCallback(() => goTo((idx + 1) % testimonials.length), [idx, goTo]);
@@ -51,20 +51,20 @@ const Testimonials = () => {
   const t = testimonials[idx];
 
   return (
-    <section className="py-16 bg-petshop-cream">
+    <section className="py-12 md:py-16 bg-petshop-cream">
       <div className="container mx-auto px-4">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-10">
+        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-8 md:mb-10">
           O que nossos clientes dizem
         </h2>
 
-        <div className="max-w-2xl mx-auto relative">
-          <div className={`bg-card rounded-lg p-8 md:p-10 shadow-sm transition-all duration-200 border-l-4 border-l-primary ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
+        <div className="max-w-2xl mx-auto relative px-8 md:px-12">
+          <div className={`bg-card rounded-lg p-6 sm:p-8 md:p-10 shadow-sm transition-all duration-150 border-l-4 border-l-primary ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
             <div className="flex gap-0.5 mb-4">
               {Array.from({ length: 5 }, (_, i) => (
                 <Star key={i} className={`w-4 h-4 ${i < t.stars ? "text-accent fill-accent" : "text-border"}`} />
               ))}
             </div>
-            <p className="text-foreground text-lg italic mb-6 leading-relaxed">
+            <p className="text-foreground text-base md:text-lg italic mb-6 leading-relaxed">
               "{t.text}"
             </p>
             <div>
@@ -73,11 +73,11 @@ const Testimonials = () => {
             </div>
           </div>
 
-          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 transition-all duration-200">
-            <ChevronLeft className="w-5 h-5 text-primary-foreground" />
+          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 transition-all duration-200">
+            <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-primary-foreground" />
           </button>
-          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 transition-all duration-200">
-            <ChevronRight className="w-5 h-5 text-primary-foreground" />
+          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 transition-all duration-200">
+            <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-primary-foreground" />
           </button>
 
           <div className="flex justify-center gap-2 mt-6">
