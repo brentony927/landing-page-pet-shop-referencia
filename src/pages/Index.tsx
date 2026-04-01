@@ -22,16 +22,6 @@ const Index = () => {
       <WhyUs />
       <Testimonials />
 
-      {/* CTA Strip */}
-      <div className="bg-secondary py-4">
-        <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
-          <span className="text-secondary-foreground font-bold text-lg">Entrega grátis acima de R$150</span>
-          <a href="#racoes" className="bg-secondary-foreground text-secondary font-bold px-6 py-2 rounded-lg text-sm uppercase tracking-wider hover:scale-105 transition-transform duration-200">
-            Ver rações →
-          </a>
-        </div>
-      </div>
-
       <Brands />
       <Contact />
       <Footer />

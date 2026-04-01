@@ -1,35 +1,19 @@
-import { PawPrint, Dog, Cat, Bird, Fish, Heart } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { PawPrint } from "lucide-react";
 import Icon3D from "./Icon3D";
-
-const instagramIcons = [
-  { icon: Dog, color: "orange" as const },
-  { icon: Cat, color: "green" as const },
-  { icon: PawPrint, color: "yellow" as const },
-  { icon: Heart, color: "orange" as const },
-  { icon: Bird, color: "teal" as const },
-  { icon: Fish, color: "green" as const },
-];
 
 const Footer = () => {
   return (
     <footer className="bg-petshop-teal/95 text-primary-foreground">
       <div className="h-1.5 bg-primary" />
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
-          <div className="md:col-span-1">
+      <div className="container mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div>
             <div className="flex items-center gap-2 mb-4">
               <Icon3D icon={PawPrint} size="sm" color="yellow" animate="none" />
               <span className="font-heading text-lg font-bold">Patinhas & Cia</span>
             </div>
-            <p className="text-primary-foreground/50 text-sm leading-relaxed mb-4">
+            <p className="text-primary-foreground/50 text-sm leading-relaxed">
               Desde 2012 cuidando do seu melhor amigo com carinho de verdade.
-            </p>
-            <p className="text-primary-foreground/40 text-sm">
-              Seg a Sex: 8h – 19h<br />
-              Sáb: 8h – 16h<br />
-              <span className="text-accent font-semibold">(69) 99221-6764</span>
             </p>
           </div>
 
@@ -49,28 +33,14 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-heading font-bold mb-3 text-accent">Newsletter</h4>
-            <p className="text-primary-foreground/50 text-sm mb-3">Dicas, promos e fofura na sua caixa</p>
-            <div className="flex gap-2">
-              <Input placeholder="Seu e-mail" className="rounded-lg bg-petshop-teal-light border-petshop-teal-light text-primary-foreground placeholder:text-primary-foreground/30 text-sm" />
-              <Button className="rounded-lg bg-accent text-accent-foreground font-bold text-xs px-4 hover:bg-accent/90">
-                OK
-              </Button>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-heading font-bold mb-3 text-accent">@patinhasecia</h4>
-            <div className="grid grid-cols-3 gap-2">
-              {instagramIcons.map((item, i) => (
-                <div
-                  key={i}
-                  className="w-full aspect-square rounded-lg bg-petshop-teal-light flex items-center justify-center cursor-pointer hover:bg-primary/20 transition-colors duration-200"
-                >
-                  <Icon3D icon={item.icon} size="sm" color={item.color} animate="none" className="!rounded-lg !shadow-none" />
-                </div>
-              ))}
-            </div>
+            <h4 className="font-heading font-bold mb-3 text-accent">Contato</h4>
+            <p className="text-primary-foreground/50 text-sm mb-2">
+              Seg a Sex: 8h – 19h<br />
+              Sáb: 8h – 16h
+            </p>
+            <a href="https://wa.me/5569992216764" className="text-accent font-semibold text-sm hover:underline">
+              (69) 99221-6764
+            </a>
           </div>
         </div>
 

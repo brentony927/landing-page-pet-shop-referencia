@@ -1,7 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, PawPrint, ChevronDown } from "lucide-react";
-import Icon3D from "./Icon3D";
-import ImagePlaceholder from "./ImagePlaceholder";
+import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 
 const slides = [
   {
@@ -9,8 +7,10 @@ const slides = [
     highlight: "e o biscoito",
     titleEnd: " é por nossa conta",
     subtitle: "Banho, ração, veterinário — tudo num só lugar, com gente que ama bicho de verdade",
-    cta1: "COMPRAR AGORA",
-    cta2: "Agendar ligação",
+    cta1: "AGENDAR AGORA",
+    cta1Link: "https://wa.me/5569992216764",
+    cta2: "Ver serviços",
+    cta2Link: "#servicos",
   },
   {
     title: "Tosa na tesoura, secagem com",
@@ -18,7 +18,9 @@ const slides = [
     titleEnd: ". Nada de pressa.",
     subtitle: "Ele entra precisando, e sai desfilando. Pode confiar!",
     cta1: "AGENDAR AGORA",
+    cta1Link: "https://wa.me/5569992216764",
     cta2: "Ver serviços",
+    cta2Link: "#servicos",
   },
   {
     title: "A gente prova? Não. Mas o",
@@ -26,14 +28,10 @@ const slides = [
     titleEnd: " já diz tudo.",
     subtitle: "Do filhote ao velhinho, só o que tem qualidade vai pra tigela",
     cta1: "VER RAÇÕES",
+    cta1Link: "#racoes",
     cta2: "Fale conosco",
+    cta2Link: "https://wa.me/5569992216764",
   },
-];
-
-const stats = [
-  { value: "5.000+", label: "Pets atendidos" },
-  { value: "12 anos", label: "No mercado" },
-  { value: "4.8★", label: "Avaliação Google" },
 ];
 
 const SLIDE_DURATION = 5000;
@@ -66,49 +64,26 @@ const HeroCarousel = () => {
 
   return (
     <section id="inicio" className="pt-16">
-      <div className="bg-petshop-teal relative overflow-hidden min-h-[600px] md:min-h-[650px]">
-        {/* Single subtle paw decoration */}
-        <div className="absolute bottom-20 right-10 opacity-10 animate-float-delayed">
-          <Icon3D icon={PawPrint} size="lg" color="green" animate="none" />
-        </div>
-
+      <div className="bg-petshop-teal relative overflow-hidden min-h-[520px] md:min-h-[560px]">
         <div className={`container mx-auto px-4 py-16 md:py-24 relative z-10 transition-all duration-300 ${isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold text-primary-foreground max-w-2xl leading-tight mb-4" style={{ textShadow: "0 2px 20px rgba(0,0,0,0.2)" }}>
-                {slide.title} <span className="text-accent">{slide.highlight}</span>{slide.titleEnd}
-              </h1>
-              <p className="text-primary-foreground/60 text-lg md:text-xl max-w-xl mb-8 font-medium">
-                {slide.subtitle}
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <button className="animate-cta-pulse bg-primary text-primary-foreground font-bold px-10 py-4 rounded-lg text-sm tracking-wider uppercase shadow-lg hover:-translate-y-1 hover:shadow-[0_0_24px_hsl(18_100%_59%/0.5)] transition-all duration-300">
-                  {slide.cta1}
-                </button>
-                <button className="border-2 border-primary-foreground/30 text-primary-foreground font-bold px-8 py-4 rounded-lg text-sm tracking-wider hover:border-accent hover:text-accent hover:-translate-y-1 transition-all duration-300">
-                  {slide.cta2}
-                </button>
-              </div>
-
-              <div className="flex flex-wrap gap-8 md:gap-12 mt-12 justify-center lg:justify-start">
-                {stats.map((s) => (
-                  <div key={s.label} className="text-center lg:text-left">
-                    <p className="font-heading text-3xl md:text-4xl font-bold text-accent" style={{ textShadow: "0 0 20px hsl(43 100% 49% / 0.4)" }}>{s.value}</p>
-                    <p className="text-primary-foreground/50 text-sm font-semibold mt-1">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center">
-              <div className="relative w-72 h-72 md:w-96 md:h-96 animate-hero-image">
-                <ImagePlaceholder className="w-full h-full" variant="neutral" />
-              </div>
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6" style={{ textShadow: "0 2px 20px rgba(0,0,0,0.2)" }}>
+              {slide.title} <span className="text-accent">{slide.highlight}</span>{slide.titleEnd}
+            </h1>
+            <p className="text-primary-foreground/60 text-lg md:text-xl max-w-xl mx-auto mb-10 font-medium">
+              {slide.subtitle}
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <a href={slide.cta1Link} className="animate-cta-pulse bg-primary text-primary-foreground font-bold px-10 py-4 rounded-lg text-sm tracking-wider uppercase shadow-lg hover:-translate-y-1 hover:shadow-[0_0_24px_hsl(18_100%_59%/0.5)] transition-all duration-300">
+                {slide.cta1}
+              </a>
+              <a href={slide.cta2Link} className="border-2 border-primary-foreground/30 text-primary-foreground font-bold px-8 py-4 rounded-lg text-sm tracking-wider hover:border-accent hover:text-accent hover:-translate-y-1 transition-all duration-300">
+                {slide.cta2}
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 animate-scroll-down">
           <ChevronDown className="w-6 h-6 text-primary-foreground/40" />
         </div>
@@ -121,7 +96,25 @@ const HeroCarousel = () => {
         </button>
       </div>
 
-      <div className="flex justify-center gap-3 -mt-5 relative z-20">
+      {/* Stats strip */}
+      <div className="bg-accent/15 py-6">
+        <div className="container mx-auto px-4 flex flex-wrap justify-center gap-10 md:gap-16">
+          <div className="text-center">
+            <p className="font-heading text-2xl md:text-3xl font-bold text-primary">5.000+</p>
+            <p className="text-muted-foreground text-sm font-semibold">Pets atendidos</p>
+          </div>
+          <div className="text-center">
+            <p className="font-heading text-2xl md:text-3xl font-bold text-primary">12 anos</p>
+            <p className="text-muted-foreground text-sm font-semibold">No mercado</p>
+          </div>
+          <div className="text-center">
+            <p className="font-heading text-2xl md:text-3xl font-bold text-primary">4.8★</p>
+            <p className="text-muted-foreground text-sm font-semibold">Avaliação Google</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-center gap-3 -mt-3 relative z-20">
         {slides.map((_, i) => (
           <button
             key={i}

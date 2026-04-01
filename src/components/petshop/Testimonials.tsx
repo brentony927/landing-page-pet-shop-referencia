@@ -1,33 +1,30 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, User, Star } from "lucide-react";
-import Icon3D from "./Icon3D";
-
-const borderColors = ["border-l-primary", "border-l-secondary", "border-l-petshop-teal", "border-l-accent"];
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const testimonials = [
   {
     name: "Mariana Silva",
     pet: "Luna (Golden Retriever)",
-    text: "A Luna adora ir lá! Sempre volta cheirosa, feliz e com lacinho novo. O carinho da equipe é visível.",
-    color: "orange" as const,
+    text: "A Luna adora ir lá! Sempre volta cheirosa, feliz e com lacinho novo. O carinho da equipe é visível — você percebe que eles gostam mesmo do que fazem.",
+    stars: 5,
   },
   {
     name: "Carlos Oliveira",
     pet: "Thor (Bulldog Francês)",
-    text: "O Thor é medroso, mas a equipe tem paciência infinita. É o único lugar que ele não treme.",
-    color: "green" as const,
+    text: "O Thor é medroso, mas lá eles têm paciência. É o único lugar que ele não treme.",
+    stars: 5,
   },
   {
     name: "Ana Beatriz",
     pet: "Mimi (Persa)",
-    text: "Difícil encontrar quem cuide bem de gato. Aqui eles sabem lidar com a Mimi sem stress nenhum.",
-    color: "teal" as const,
+    text: "Difícil encontrar quem cuide bem de gato. Aqui eles sabem lidar com a Mimi sem stress nenhum. Já indicamos pra três vizinhas e todas ficaram fãs também.",
+    stars: 5,
   },
   {
     name: "Roberto Mendes",
     pet: "Pipoca (SRD)",
-    text: "Pipoca ficou no hotel enquanto viajamos. Recebemos foto todo dia! Voltamos tranquilos.",
-    color: "yellow" as const,
+    text: "Pipoca ficou no hotel enquanto viajamos. Recebemos foto todo dia!",
+    stars: 4,
   },
 ];
 
@@ -54,42 +51,32 @@ const Testimonials = () => {
   const t = testimonials[idx];
 
   return (
-    <section className="py-16 bg-petshop-cream relative overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-            O que nossos clientes dizem
-          </h2>
-        </div>
+    <section className="py-16 bg-petshop-cream">
+      <div className="container mx-auto px-4">
+        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-10 text-center">
+          O que nossos clientes dizem
+        </h2>
 
         <div className="max-w-2xl mx-auto relative">
-          <div className={`bg-card rounded-lg p-8 md:p-10 shadow-sm text-center transition-all duration-200 relative border-l-[6px] ${borderColors[idx]} ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
-            {/* Star rating */}
-            <div className="flex justify-center gap-1 mb-4">
+          <div className={`bg-card rounded-lg p-8 md:p-10 shadow-sm transition-all duration-200 border-l-4 border-l-primary ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
+            <div className="flex gap-0.5 mb-4">
               {Array.from({ length: 5 }, (_, i) => (
-                <Star key={i} className="w-5 h-5 text-accent fill-accent" />
+                <Star key={i} className={`w-4 h-4 ${i < t.stars ? "text-accent fill-accent" : "text-border"}`} />
               ))}
             </div>
-            <p className="text-foreground text-lg md:text-xl italic mb-6 leading-relaxed relative z-10">
+            <p className="text-foreground text-lg italic mb-6 leading-relaxed">
               "{t.text}"
             </p>
-            <div className="flex justify-center mb-3">
-              <Icon3D icon={User} size="lg" color={t.color} animate="none" />
+            <div>
+              <p className="font-heading font-bold text-foreground">{t.name}</p>
+              <p className="text-primary text-sm font-semibold">{t.pet}</p>
             </div>
-            <p className="font-heading font-bold text-foreground">{t.name}</p>
-            <p className="text-primary text-sm font-semibold">{t.pet}</p>
           </div>
 
-          <button
-            onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 hover:scale-110 transition-all duration-200"
-          >
+          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 hover:scale-110 transition-all duration-200">
             <ChevronLeft className="w-5 h-5 text-primary-foreground" />
           </button>
-          <button
-            onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 hover:scale-110 transition-all duration-200"
-          >
+          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 hover:scale-110 transition-all duration-200">
             <ChevronRight className="w-5 h-5 text-primary-foreground" />
           </button>
 
@@ -98,9 +85,7 @@ const Testimonials = () => {
               <button
                 key={i}
                 onClick={() => goTo(i)}
-                className={`h-2.5 rounded-full transition-all duration-200 ${
-                  i === idx ? "bg-primary w-7" : "bg-border w-2.5"
-                }`}
+                className={`h-2.5 rounded-full transition-all duration-200 ${i === idx ? "bg-primary w-7" : "bg-border w-2.5"}`}
               />
             ))}
           </div>
