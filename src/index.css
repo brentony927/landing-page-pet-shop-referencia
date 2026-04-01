@@ -206,33 +206,6 @@
   animation: progressBar var(--duration, 5s) linear forwards;
 }
 
-@keyframes ctaPulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 hsl(18 100% 59% / 0.5);
-  }
-  50% {
-    box-shadow: 0 0 0 12px hsl(18 100% 59% / 0);
-  }
-}
-
-@keyframes bounceSmall {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-@keyframes scrollDown {
-  0%, 100% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(8px); opacity: 0.4; }
-}
-
-@keyframes glowPulse {
-  0%, 100% {
-    text-shadow: 0 0 8px hsl(43 100% 49% / 0.3);
-  }
-  50% {
-    text-shadow: 0 0 20px hsl(43 100% 49% / 0.6), 0 0 40px hsl(43 100% 49% / 0.2);
-  }
-}
 
 @keyframes patternFloat {
   0% { background-position: 0 0; }
