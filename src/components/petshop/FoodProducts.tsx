@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Star, Dog, Cat, PawPrint, Bird, Fish } from "lucide-react";
 import Icon3D from "./Icon3D";
-import ImagePlaceholder from "./ImagePlaceholder";
 import { useInView } from "@/hooks/useInView";
 
 const categories = [
@@ -61,7 +60,7 @@ const FoodProducts = () => {
   const activeCat = categories.find(c => c.key === activeTab);
 
   return (
-    <section id="racoes" className="py-16 bg-background" ref={ref}>
+    <section id="racoes" className="py-14 bg-background" ref={ref}>
       {/* Promo banner */}
       <div className="bg-accent py-3 mb-10">
         <p className="text-center font-bold text-accent-foreground text-sm">
@@ -70,21 +69,16 @@ const FoodProducts = () => {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-8 mb-12">
-          <div className="flex-1 text-center lg:text-left">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-              Ração que seu pet come até o fundo
-            </h2>
-            <p className="text-muted-foreground mt-3 max-w-md">
-              A gente escolhe cada marca com cuidado. Nada de encher prateleira com qualquer coisa.
-            </p>
-          </div>
-          <div className={`flex-shrink-0 transition-all duration-500 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}>
-            <ImagePlaceholder className="w-48 h-48 md:w-56 md:h-56" variant="orange" />
-          </div>
+        <div className="mb-10">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+            Ração que seu pet come até o fundo
+          </h2>
+          <p className="text-muted-foreground mt-3 max-w-md">
+            A gente escolhe cada marca com cuidado. Nada de encher prateleira com qualquer coisa.
+          </p>
         </div>
 
-        <div className="flex justify-center gap-3 mb-12 flex-wrap">
+        <div className="flex gap-3 mb-10 flex-wrap">
           {categories.map((cat) => (
             <button
               key={cat.key}
@@ -105,8 +99,8 @@ const FoodProducts = () => {
           {products[activeTab].map((p, i) => (
             <div
               key={p.name}
-              className={`bg-card rounded-lg overflow-hidden shadow-sm transition-all duration-200 relative group cursor-pointer hover:-translate-y-2 hover:shadow-orange ${
-                p.popular ? "border-l-4 border-l-primary" : ""
+              className={`bg-card rounded-lg overflow-hidden shadow-sm transition-all duration-200 relative group cursor-pointer hover:-translate-y-2 hover:shadow-lg ${
+                i === 0 && p.popular ? "border-2 border-primary bg-primary/5" : ""
               } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${i * 80}ms` }}
             >
@@ -122,10 +116,10 @@ const FoodProducts = () => {
               </div>
               <div className="p-4">
                 <div className="flex items-center gap-1 mb-2">
-                  {Array.from({ length: 5 }, (_, i) => (
+                  {Array.from({ length: 5 }, (_, j) => (
                     <Star
-                      key={i}
-                      className={`w-3.5 h-3.5 ${i < Math.floor(p.rating) ? "text-accent fill-accent" : "text-border"}`}
+                      key={j}
+                      className={`w-3.5 h-3.5 ${j < Math.floor(p.rating) ? "text-accent fill-accent" : "text-border"}`}
                     />
                   ))}
                   <span className="text-muted-foreground text-xs ml-1">{p.rating}</span>
@@ -133,9 +127,9 @@ const FoodProducts = () => {
                 <h3 className="font-heading font-bold text-foreground text-sm mb-2 leading-tight">{p.name}</h3>
                 <div className="flex items-center justify-between">
                   <p className="font-heading text-xl font-bold text-primary">{p.price}</p>
-                  <button className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-primary/90 hover:scale-125 transition-all duration-200">
+                  <a href="https://wa.me/5569992216764" className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-primary/90 hover:scale-110 transition-all duration-200">
                     +
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -143,9 +137,9 @@ const FoodProducts = () => {
         </div>
 
         <div className="text-center mt-10">
-          <button className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 glow-orange transition-all duration-200">
+          <a href="https://wa.me/5569992216764" className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 glow-orange transition-all duration-200 inline-block">
             Ver tudo →
-          </button>
+          </a>
         </div>
       </div>
     </section>
