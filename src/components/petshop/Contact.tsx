@@ -1,20 +1,21 @@
 import { Clock, Phone } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Icon3D from "./Icon3D";
 
 const Contact = () => {
   return (
     <section id="contato" className="py-16 bg-secondary/5">
       <div className="container mx-auto px-4">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-10 text-center">
+        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-10">
           Fala com a gente — a resposta é rápida
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
           <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <Icon3D icon={Clock} size="md" color="yellow" animate="none" />
+              <div className="bg-accent/15 rounded-lg p-3">
+                <Clock className="w-6 h-6 text-accent-foreground" />
+              </div>
               <div>
                 <h3 className="font-heading font-bold text-foreground mb-1">Horário</h3>
                 <p className="text-muted-foreground text-sm">Seg a Sex: 8h às 19h</p>
@@ -23,7 +24,9 @@ const Contact = () => {
             </div>
 
             <div className="flex items-start gap-4">
-              <Icon3D icon={Phone} size="md" color="orange" animate="none" />
+              <div className="bg-primary/10 rounded-lg p-3">
+                <Phone className="w-6 h-6 text-primary" />
+              </div>
               <div>
                 <h3 className="font-heading font-bold text-foreground mb-1">WhatsApp</h3>
                 <a href="https://wa.me/5569992216764" className="text-primary font-semibold text-sm hover:underline">(69) 99221-6764</a>

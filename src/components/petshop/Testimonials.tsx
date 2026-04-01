@@ -18,13 +18,13 @@ const testimonials = [
     name: "Ana Beatriz",
     pet: "Mimi (Persa)",
     text: "Difícil encontrar quem cuide bem de gato. Aqui eles sabem lidar com a Mimi sem stress nenhum. Já indicamos pra três vizinhas e todas ficaram fãs também.",
-    stars: 5,
+    stars: 4,
   },
   {
     name: "Roberto Mendes",
     pet: "Pipoca (SRD)",
     text: "Pipoca ficou no hotel enquanto viajamos. Recebemos foto todo dia!",
-    stars: 4,
+    stars: 5,
   },
 ];
 
@@ -53,7 +53,7 @@ const Testimonials = () => {
   return (
     <section className="py-16 bg-petshop-cream">
       <div className="container mx-auto px-4">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-10 text-center">
+        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-10">
           O que nossos clientes dizem
         </h2>
 
@@ -73,10 +73,10 @@ const Testimonials = () => {
             </div>
           </div>
 
-          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 hover:scale-110 transition-all duration-200">
+          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 transition-all duration-200">
             <ChevronLeft className="w-5 h-5 text-primary-foreground" />
           </button>
-          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 hover:scale-110 transition-all duration-200">
+          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 transition-all duration-200">
             <ChevronRight className="w-5 h-5 text-primary-foreground" />
           </button>
 

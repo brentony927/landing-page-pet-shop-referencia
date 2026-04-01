@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
@@ -74,7 +74,7 @@ const HeroCarousel = () => {
               {slide.subtitle}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <a href={slide.cta1Link} className="animate-cta-pulse bg-primary text-primary-foreground font-bold px-10 py-4 rounded-lg text-sm tracking-wider uppercase shadow-lg hover:-translate-y-1 hover:shadow-[0_0_24px_hsl(18_100%_59%/0.5)] transition-all duration-300">
+              <a href={slide.cta1Link} className="bg-primary text-primary-foreground font-bold px-10 py-4 rounded-lg text-sm tracking-wider uppercase shadow-lg hover:-translate-y-1 hover:shadow-[0_0_24px_hsl(18_100%_59%/0.5)] transition-all duration-300">
                 {slide.cta1}
               </a>
               <a href={slide.cta2Link} className="border-2 border-primary-foreground/30 text-primary-foreground font-bold px-8 py-4 rounded-lg text-sm tracking-wider hover:border-accent hover:text-accent hover:-translate-y-1 transition-all duration-300">
@@ -84,19 +84,14 @@ const HeroCarousel = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 animate-scroll-down">
-          <ChevronDown className="w-6 h-6 text-primary-foreground/40" />
-        </div>
-
-        <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg p-3 transition-all duration-200 z-20 hover:scale-110 backdrop-blur-sm">
+        <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg p-3 transition-all duration-200 z-20 backdrop-blur-sm">
           <ChevronLeft className="w-6 h-6 text-primary-foreground" />
         </button>
-        <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg p-3 transition-all duration-200 z-20 hover:scale-110 backdrop-blur-sm">
+        <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg p-3 transition-all duration-200 z-20 backdrop-blur-sm">
           <ChevronRight className="w-6 h-6 text-primary-foreground" />
         </button>
       </div>
 
-      {/* Stats strip */}
       <div className="bg-accent/15 py-6">
         <div className="container mx-auto px-4 flex flex-wrap justify-center gap-10 md:gap-16">
           <div className="text-center">
