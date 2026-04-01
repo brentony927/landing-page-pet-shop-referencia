@@ -10,11 +10,11 @@ const Contact = () => {
           Fala com a gente — a resposta é rápida
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
-          <div className="space-y-6">
-            <div className="flex items-start gap-4">
-              <div className="bg-accent/15 rounded-lg p-3">
-                <Clock className="w-6 h-6 text-accent-foreground" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 max-w-5xl mx-auto">
+          <div className="space-y-4 md:space-y-6">
+            <div className="flex items-start gap-4 bg-card rounded-lg p-4 border-l-4 border-l-secondary">
+              <div className="bg-secondary/15 rounded-lg p-3 flex-shrink-0">
+                <Clock className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
               </div>
               <div>
                 <h3 className="font-heading font-bold text-foreground mb-1">Horário</h3>
@@ -23,9 +23,9 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="bg-primary/10 rounded-lg p-3">
-                <Phone className="w-6 h-6 text-primary" />
+            <div className="flex items-start gap-4 bg-card rounded-lg p-4 border-l-4 border-l-primary">
+              <div className="bg-primary/10 rounded-lg p-3 flex-shrink-0">
+                <Phone className="w-5 h-5 md:w-6 md:h-6 text-primary" />
               </div>
               <div>
                 <h3 className="font-heading font-bold text-foreground mb-1">WhatsApp</h3>
@@ -33,7 +33,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-secondary/10 rounded-lg p-6">
+            <div className="bg-secondary/8 rounded-lg p-5 md:p-6 border-l-4 border-l-secondary">
               <p className="text-foreground font-semibold text-sm mb-2">Localização</p>
               <p className="text-muted-foreground text-sm">Nos chame no WhatsApp que a gente manda a localização certinha.</p>
               <a href="https://wa.me/5569992216764" className="inline-block mt-3 text-primary font-bold text-sm hover:underline">
@@ -42,7 +42,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="bg-card rounded-lg p-8 shadow-sm border-t-4 border-t-primary">
+          <div className="bg-card rounded-lg p-6 md:p-8 shadow-sm border-t-[6px] border-t-primary">
             <h3 className="font-heading text-xl font-bold text-foreground mb-6">
               Fale com a gente
             </h3>
@@ -67,7 +67,7 @@ const Contact = () => {
                   <option>Personalizado</option>
                 </select>
               </div>
-              <Button className="w-full bg-primary text-primary-foreground font-bold rounded-lg text-sm uppercase tracking-wider py-5 hover:bg-primary/90 glow-orange">
+              <Button className="w-full bg-primary text-primary-foreground font-bold rounded-lg text-sm md:text-base uppercase tracking-wider py-5 md:py-6 hover:bg-primary/90 glow-orange">
                 Enviar mensagem
               </Button>
             </form>
