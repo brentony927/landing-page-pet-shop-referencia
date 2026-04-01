@@ -1,76 +1,46 @@
 
 
-# Remover 100% o Aspecto de IA — Versão Final
+# Responsividade Mobile + Performance + Melhorias Visuais
 
-## O que AINDA parece IA
+## Problemas identificados nas fotos
 
-1. **Icon3D em todo lugar** — O mesmo componente "cubo 3D rotacionado com perspective/rotateX/rotateY" aparece nos Services, FoodProducts tabs, Contact, Footer e WhatsApp button. Nenhum site real usa esse efeito em massa. É o sinal mais forte de IA.
-2. **Todas as seções seguem título → subtítulo → conteúdo** — Estrutura idêntica em AboutUs, Services, FoodProducts, WhyUs, Contact, Testimonials.
-3. **CTA strip pós-Services** — "Agende o banho do seu pet agora" com botão é padrão de template.
-4. **`animate-cta-pulse`** no hero — Botão pulsando infinitamente grita landing page gerada.
-5. **`animate-glow-pulse`** nos números do WhyUs — Texto com glow pulsante é efeito de template.
-6. **`animate-float`** nos ícones 3D dos produtos — Ícones flutuando infinitamente dentro dos cards de produto.
-7. **WhatsApp button com perspective 3D** — `rotateX(5deg) rotateY(-5deg)` num botão de WhatsApp.
-8. **`animate-scroll-down`** — ChevronDown animado no hero é clichê de template.
-9. **Promo banner "Frete grátis acima de R$150"** com fundo amarelo dentro do FoodProducts — parece gerado.
-10. **Products todos com placeholder Icon3D** em vez de imagem — área cinza com ícone flutuante.
-11. **Testimonials: todos com 5 estrelas** (exceto um com 4) — perfeito demais.
-12. **Footer "Feito com [patinha] pra quem ama pets"** — frase típica de gerador.
+**Foto 1 (Contact):** Seção de contato funcional mas com espaçamento grande demais, formulário com borda laranja no topo fina, falta contraste visual.
+
+**Foto 2 (WhyUs):** Números/stats com ícones no fundo verde — funcional mas os ícones ficam pequenos em mobile, espaçamento pode melhorar.
 
 ## Mudanças
 
-### 1. Substituir Icon3D por ícones simples (Lucide direto)
-Remover o componente Icon3D de todos os lugares e usar ícones Lucide normais com cor de fundo sutil. Sem perspective, sem rotateX/Y, sem float animation.
+### 1. Performance — Reduzir re-renders e carregamento
+- **HeroCarousel**: Usar CSS `will-change: opacity, transform` no slide ativo, reduzir `setTimeout` de transição de 300ms para 200ms
+- **useInView**: Adicionar `{ once: true }` para parar de observar após visível (evita recalcular)
+- **Marquee (Brands)**: Adicionar `will-change: transform` na animação
+- **FoodProducts tab transition**: Reduzir de 200ms para 150ms
+- Remover keyframes não usados: `heroImage`, `float`, `countUp`, `patternFloat`
 
-- **Services**: Ícone dentro de `div` com `bg-secondary/15 rounded-lg p-3` (simples)
-- **FoodProducts tabs**: Ícone Lucide inline pequeno (sem cubo 3D)
-- **Contact**: Ícone inline com cor, sem 3D
-- **Footer**: PawPrint simples, sem Icon3D
-- **WhyUs**: Ícone simples com fundo
+### 2. Responsividade Mobile
+- **Header**: Menu mobile com links maiores (py-3), botão AGENDAR + WHATSAPP ambos visíveis
+- **HeroCarousel**: `min-h-[400px]` no mobile (era 520px — muito alto), texto `text-2xl` no mobile, CTAs em coluna (`flex-col`) no mobile, arrows menores
+- **Services**: Grid `grid-cols-1` no mobile, card featured sem `col-span-2` no mobile (já responsivo via `lg:col-span-2`)
+- **FoodProducts**: Tabs com scroll horizontal no mobile (`overflow-x-auto flex-nowrap`), grid `grid-cols-2` no mobile (era 1)
+- **WhyUs**: Stats empilham em coluna no mobile com separador horizontal em vez de vertical, ícones maiores
+- **Contact**: Grid já é `grid-cols-1` no mobile — OK. Melhorar padding do form (`p-6` no mobile vs `p-8`)
+- **Testimonials**: Cards com `min-h` menor no mobile
 
-### 2. Remover animações infinitas que gritam template
-- **Hero CTA**: Remover `animate-cta-pulse` — botão estático com hover normal
-- **WhyUs números**: Remover `animate-glow-pulse` — texto bold colorido sem glow
-- **Icon3D float**: Eliminado ao remover Icon3D
-- **Hero ChevronDown**: Remover o `animate-scroll-down` e o ChevronDown inteiro
-- **WhatsApp button**: Remover perspective/rotateX/Y, deixar botão flat com hover scale
-
-### 3. Products: remover área de ícone flutuante
-Trocar o bloco `bg-muted/50 h-40` com Icon3D por um bloco menor com fundo colorido sutil e ícone estático centralizado. Mais compacto.
-
-### 4. Remover CTA strip pós-Services
-A faixa laranja "Agende o banho do seu pet agora" é redundante e template. Remover.
-
-### 5. Remover promo banner do FoodProducts
-O banner amarelo "Frete grátis acima de R$150" é genérico. Remover.
-
-### 6. Variar estrutura das seções
-- **AboutUs**: Já está bom (editorial com borda lateral)
-- **Services**: Remover o subtítulo centralizado, título alinhado à esquerda (já está)
-- **FoodProducts**: Título à esquerda (já está), remover o `<p>` subtítulo genérico
-- **WhyUs**: Trocar de título centralizado para alinhado à esquerda
-- **Testimonials**: Título à esquerda (não centralizado)
-- **Contact**: Título à esquerda
-
-### 7. Testimonials: variar mais os ratings
-- Mariana: 5 estrelas, Carlos: 5, Ana: 4 estrelas, Roberto: 5 — mais realista
-
-### 8. Footer: remover frase template
-"Feito com [patinha] pra quem ama pets" → apenas copyright simples
-
-### 9. Limpar CSS não usado
-Remover keyframes e classes que não serão mais usadas: `glowPulse`, `bounceSmall`, `ctaPulse`, `scrollDown`, `heroImage`, `animate-spin-icon`, `float` (se não mais usado).
+### 3. Melhorias visuais (fotos enviadas)
+- **WhyUs**: Ícones com fundo mais visível e maior (`p-5`), números com `text-5xl md:text-6xl`, separadores mais visíveis, fundo verde um pouco mais saturado
+- **Contact**: Form border-top mais grossa (`border-t-[6px]`), botão "Enviar" com mais destaque (py-6, text maior), info de horário e WhatsApp com cards individuais com fundo e borda left colorida (estilo editorial, não genérico)
+- **Contact**: Localização card com fundo verde sutil e borda esquerda verde
 
 ## Arquivos modificados
 | Arquivo | Mudança |
 |---------|---------|
-| `Services.tsx` | Ícone simples, remover CTA strip, remover Icon3D |
-| `FoodProducts.tsx` | Ícone simples nos tabs e cards, remover promo banner, remover Icon3D |
-| `WhyUs.tsx` | Ícone simples, remover glow-pulse, título à esquerda, remover Icon3D |
-| `Contact.tsx` | Ícone simples, remover Icon3D, título à esquerda |
-| `Footer.tsx` | PawPrint simples, remover frase template, remover Icon3D |
-| `WhatsAppButton.tsx` | Remover perspective 3D |
-| `HeroCarousel.tsx` | Remover ChevronDown animado, remover pulse do CTA |
-| `Testimonials.tsx` | Título à esquerda, variar ratings |
-| `index.css` | Limpar keyframes/classes não usadas |
+| `HeroCarousel.tsx` | Mobile: altura menor, texto menor, CTAs em coluna, arrows menores |
+| `Header.tsx` | Menu mobile: links maiores, WhatsApp + Agendar |
+| `Services.tsx` | Sem mudança grande (já responsivo) |
+| `FoodProducts.tsx` | Tabs scroll horizontal mobile, grid 2 cols mobile |
+| `WhyUs.tsx` | Ícones maiores, números maiores, layout mobile empilhado |
+| `Contact.tsx` | Form padding mobile, border-top mais grossa, cards info com borda lateral |
+| `Testimonials.tsx` | Altura menor mobile |
+| `useInView.ts` | `once: true` para parar observação |
+| `index.css` | Remover keyframes não usados, `will-change` no marquee |
 
