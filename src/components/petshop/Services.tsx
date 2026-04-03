@@ -14,7 +14,7 @@ const Services = () => {
   const { ref, visible } = useInView(0.15);
 
   return (
-    <section id="servicos" className="py-20 bg-background" ref={ref}>
+    <section id="servicos" className="py-20 bg-muted/50" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="mb-12">
           <h2 className="text-3xl md:text-4xl font-black text-foreground">
@@ -25,15 +25,15 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {/* Featured first card */}
           <div
-            className={`lg:col-span-2 bg-background border border-border rounded-lg p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-secondary hover:shadow-md relative ${
+            className={`lg:col-span-2 bg-background border border-border rounded-lg p-8 transition-all duration-200 hover:-translate-y-1 hover:border-secondary hover:shadow-[0_8px_24px_hsl(142_72%_37%/0.12)] relative ${
               visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="absolute top-4 right-4 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-md">
+            <span className="inline-block bg-accent text-accent-foreground text-xs font-bold px-3 py-1 rounded-md mb-4">
               {services[0].badge}
             </span>
             <div className="flex flex-col md:flex-row gap-6 items-start">
-              <div className="bg-muted rounded-lg p-4">
+              <div className="bg-secondary/10 rounded-lg p-4">
                 <Scissors className="w-8 h-8 text-secondary" />
               </div>
               <div className="flex-1">
@@ -52,13 +52,13 @@ const Services = () => {
             return (
               <div
                 key={s.title}
-                className={`bg-background border border-border rounded-lg p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-primary/40 ${
+                className={`bg-background border border-border rounded-lg p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_hsl(142_72%_37%/0.12)] hover:border-secondary ${
                   visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
                 style={{ transitionDelay: `${(i + 1) * 80}ms` }}
               >
-                <div className="bg-muted rounded-lg p-3 w-fit mb-4">
-                  <Icon className="w-6 h-6 text-foreground" />
+                <div className="bg-secondary/10 rounded-lg p-3 w-fit mb-4">
+                  <Icon className="w-6 h-6 text-secondary" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-1">{s.title}</h3>
                 <p className="text-muted-foreground text-sm mb-4">{s.desc}</p>

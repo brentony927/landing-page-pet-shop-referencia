@@ -63,21 +63,24 @@ const HeroCarousel = () => {
   const slide = slides[current];
 
   return (
-    <section id="inicio" className="pt-16">
+    <section id="inicio" className="pt-[3.5rem] md:pt-[5.5rem]">
       <div className="bg-petshop-teal relative overflow-hidden min-h-[400px] md:min-h-[560px]">
+        {/* Decorative circle */}
+        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full bg-secondary/10 z-0" />
+        
         <div className={`container mx-auto px-4 py-12 md:py-24 relative z-10 transition-all duration-200 ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`} style={{ willChange: "opacity, transform" }}>
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-primary-foreground leading-tight mb-4 md:mb-6" style={{ textShadow: "0 2px 20px rgba(0,0,0,0.2)" }}>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-primary-foreground leading-tight mb-4 md:mb-6">
               {slide.title} <span className="text-accent">{slide.highlight}</span>{slide.titleEnd}
             </h1>
             <p className="text-primary-foreground/60 text-base md:text-xl max-w-xl mx-auto mb-8 md:mb-10">
               {slide.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <a href={slide.cta1Link} className="bg-primary text-primary-foreground font-bold px-8 md:px-10 py-3 md:py-4 rounded-md text-sm tracking-wider uppercase shadow-lg hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(18_100%_59%/0.4)] transition-all duration-200">
+              <a href={slide.cta1Link} className="bg-primary text-primary-foreground font-bold px-8 md:px-10 py-3 md:py-4 rounded-md text-sm tracking-wider uppercase shadow-lg hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(25_95%_53%/0.4)] transition-all duration-200">
                 {slide.cta1}
               </a>
-              <a href={slide.cta2Link} className="border-2 border-primary-foreground/30 text-primary-foreground font-bold px-6 md:px-8 py-3 md:py-4 rounded-md text-sm tracking-wider hover:border-accent hover:text-accent hover:-translate-y-0.5 transition-all duration-200">
+              <a href={slide.cta2Link} className="border-[1.5px] border-primary-foreground/30 text-primary-foreground font-bold px-6 md:px-8 py-3 md:py-4 rounded-md text-sm tracking-wider hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-200">
                 {slide.cta2}
               </a>
             </div>
@@ -92,18 +95,19 @@ const HeroCarousel = () => {
         </button>
       </div>
 
-      <div className="bg-muted py-4 md:py-6">
+      {/* Stats bar */}
+      <div className="bg-background py-4 md:py-6 border-b border-border">
         <div className="container mx-auto px-4 flex flex-wrap justify-center gap-6 md:gap-16">
           <div className="text-center">
-            <p className="text-xl md:text-3xl font-black text-primary">5.000+</p>
+            <p className="text-xl md:text-3xl font-black text-secondary">5.000+</p>
             <p className="text-muted-foreground text-xs md:text-sm">Pets atendidos</p>
           </div>
           <div className="text-center">
-            <p className="text-xl md:text-3xl font-black text-primary">12 anos</p>
+            <p className="text-xl md:text-3xl font-black text-secondary">12 anos</p>
             <p className="text-muted-foreground text-xs md:text-sm">No mercado</p>
           </div>
           <div className="text-center">
-            <p className="text-xl md:text-3xl font-black text-primary">4.8★</p>
+            <p className="text-xl md:text-3xl font-black text-secondary">4.8★</p>
             <p className="text-muted-foreground text-xs md:text-sm">Avaliação Google</p>
           </div>
         </div>

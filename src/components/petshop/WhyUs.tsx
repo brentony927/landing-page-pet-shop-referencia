@@ -30,7 +30,7 @@ const AnimatedNumber = ({ target, suffix, active }: { target: number; suffix: st
   }, [active, target]);
 
   return (
-    <span className="text-4xl sm:text-5xl md:text-6xl font-black text-primary">
+    <span className="text-4xl sm:text-5xl md:text-6xl font-black text-accent">
       {target % 1 !== 0 ? value.toFixed(1) : value.toLocaleString("pt-BR")}
       {suffix}
     </span>
@@ -57,7 +57,7 @@ const WhyUs = () => {
               <div key={s.label} className="flex-1 text-center p-4 sm:p-6 relative w-full md:w-auto">
                 <div className="flex justify-center mb-3 md:mb-4">
                   <div className="bg-primary-foreground/10 rounded-lg p-4 md:p-5">
-                    <Icon className="w-8 h-8 md:w-10 md:h-10 text-primary-foreground" />
+                    <Icon className="w-8 h-8 md:w-10 md:h-10 text-accent" />
                   </div>
                 </div>
                 <AnimatedNumber target={s.number} suffix={s.suffix} active={visible} />
