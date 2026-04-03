@@ -51,32 +51,32 @@ const Testimonials = () => {
   const t = testimonials[idx];
 
   return (
-    <section className="py-12 md:py-16 bg-petshop-cream">
+    <section className="py-12 md:py-16 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-8 md:mb-10">
+        <h2 className="text-3xl md:text-4xl font-black text-foreground mb-8 md:mb-10">
           O que nossos clientes dizem
         </h2>
 
         <div className="max-w-2xl mx-auto relative px-8 md:px-12">
-          <div className={`bg-card rounded-lg p-6 sm:p-8 md:p-10 shadow-sm transition-all duration-150 border-l-4 border-l-primary ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
+          <div className={`bg-muted/50 rounded-lg p-6 sm:p-8 md:p-10 transition-all duration-150 border border-border ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
             <div className="flex gap-0.5 mb-4">
               {Array.from({ length: 5 }, (_, i) => (
                 <Star key={i} className={`w-4 h-4 ${i < t.stars ? "text-accent fill-accent" : "text-border"}`} />
               ))}
             </div>
-            <p className="text-foreground text-base md:text-lg italic mb-6 leading-relaxed">
+            <p className="text-foreground text-base md:text-lg mb-6 leading-relaxed">
               "{t.text}"
             </p>
             <div>
-              <p className="font-heading font-bold text-foreground">{t.name}</p>
-              <p className="text-primary text-sm font-semibold">{t.pet}</p>
+              <p className="font-bold text-foreground">{t.name}</p>
+              <p className="text-primary text-sm font-medium">{t.pet}</p>
             </div>
           </div>
 
-          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 transition-all duration-200">
+          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 bg-primary rounded-md p-2 shadow hover:bg-primary/90 transition-all duration-200">
             <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-primary-foreground" />
           </button>
-          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 bg-primary rounded-lg p-2 shadow hover:bg-primary/90 transition-all duration-200">
+          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 bg-primary rounded-md p-2 shadow hover:bg-primary/90 transition-all duration-200">
             <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-primary-foreground" />
           </button>
 
@@ -85,7 +85,7 @@ const Testimonials = () => {
               <button
                 key={i}
                 onClick={() => goTo(i)}
-                className={`h-2.5 rounded-full transition-all duration-200 ${i === idx ? "bg-primary w-7" : "bg-border w-2.5"}`}
+                className={`h-2 rounded-sm transition-all duration-200 ${i === idx ? "bg-primary w-6" : "bg-border w-2.5"}`}
               />
             ))}
           </div>
