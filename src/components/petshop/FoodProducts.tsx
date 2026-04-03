@@ -57,7 +57,7 @@ const FoodProducts = () => {
   };
 
   return (
-    <section id="racoes" className="py-14 bg-muted/30" ref={ref}>
+    <section id="racoes" className="py-14 bg-background" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="mb-10">
           <h2 className="text-3xl md:text-4xl font-black text-foreground">
@@ -74,8 +74,8 @@ const FoodProducts = () => {
                 onClick={() => handleTabChange(cat.key)}
                 className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md font-bold text-sm transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
                   activeTab === cat.key
-                    ? "bg-primary text-primary-foreground shadow-orange"
-                    : "bg-background text-muted-foreground border border-border hover:border-primary/40"
+                    ? "bg-secondary text-secondary-foreground shadow-green"
+                    : "bg-muted text-muted-foreground border border-border hover:border-secondary/40"
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -89,9 +89,9 @@ const FoodProducts = () => {
           {products[activeTab].map((p, i) => (
             <div
               key={p.name}
-              className={`bg-background rounded-lg overflow-hidden transition-all duration-200 relative group cursor-pointer hover:-translate-y-1 hover:shadow-md border border-border hover:border-primary/40 ${
-                i === 0 && p.popular ? "border-primary bg-primary/3" : ""
-              } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`bg-background rounded-lg overflow-hidden transition-all duration-200 relative group cursor-pointer hover:-translate-y-1 hover:shadow-[0_8px_24px_hsl(142_72%_37%/0.12)] border border-border hover:border-secondary ${
+                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
               style={{ transitionDelay: `${i * 60}ms` }}
             >
               {p.popular && (
@@ -115,7 +115,7 @@ const FoodProducts = () => {
                 <h3 className="font-bold text-foreground text-xs sm:text-sm mb-2 leading-tight">{p.name}</h3>
                 <div className="flex items-center justify-between">
                   <p className="text-lg sm:text-xl font-black text-primary">{p.price}</p>
-                  <a href="https://wa.me/5569992216764" className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-primary/90 transition-all duration-200">
+                  <a href="https://wa.me/5569992216764" className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-secondary flex items-center justify-center text-secondary-foreground text-sm font-bold hover:bg-secondary/90 transition-all duration-200">
                     +
                   </a>
                 </div>
@@ -125,7 +125,7 @@ const FoodProducts = () => {
         </div>
 
         <div className="text-center mt-10">
-          <a href="https://wa.me/5569992216764" className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(18_100%_59%/0.35)] transition-all duration-200 inline-block">
+          <a href="https://wa.me/5569992216764" className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(25_95%_53%/0.35)] transition-all duration-200 inline-block">
             Ver tudo →
           </a>
         </div>
