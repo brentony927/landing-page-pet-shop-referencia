@@ -13,24 +13,25 @@ const AboutUs = () => {
   const { ref, visible } = useInView(0.2);
 
   return (
-    <section id="sobre" className="py-12 bg-primary/5 overflow-hidden" ref={ref}>
+    <section id="sobre" className="py-12 bg-muted/50 overflow-hidden" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <div className={`transition-all duration-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <div className="border-l-[6px] border-primary pl-6 mb-8">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight">
-                12 anos no bairro. Seu vizinho já trouxe o pet dele.
-              </h2>
-            </div>
+            <h2 className="text-3xl md:text-4xl font-black text-foreground leading-tight mb-8">
+              12 anos no bairro. Seu vizinho já trouxe o pet dele.
+            </h2>
 
             <p className="text-muted-foreground text-base mb-6 leading-relaxed">
               Aqui não tem franquia nem manual de rede grande. É uma equipe pequena que conhece cada pet pelo nome. O Thor tem medo de secador? A gente sabe. A Luna só come ração de salmão? Tá anotado.
             </p>
 
-            <blockquote className="border-l-4 border-secondary pl-5 my-8 italic text-foreground/80 text-lg">
-              "Comecei sozinho, com um balde e uma mangueira. Hoje tenho equipe, mas ainda sou eu que abro a porta todo dia."
-              <span className="block text-sm font-bold text-primary mt-2 not-italic">— Dono do Patinhas & Cia</span>
-            </blockquote>
+            <div className="relative bg-[#fff8f0] rounded-lg p-8 my-8">
+              <span className="absolute top-0 left-6 text-7xl leading-none text-primary/50" style={{ fontFamily: "Georgia, serif" }}>"</span>
+              <p className="text-foreground text-lg leading-relaxed pt-6">
+                Comecei sozinho, com um balde e uma mangueira. Hoje tenho equipe, mas ainda sou eu que abro a porta todo dia.
+              </p>
+              <p className="text-sm font-bold text-primary mt-4">— Dono do Patinhas & Cia</p>
+            </div>
 
             <ul className="space-y-3 mb-8">
               {benefits.map((b, i) => (
@@ -39,15 +40,13 @@ const AboutUs = () => {
                   className={`flex items-center gap-3 transition-all duration-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                   style={{ transitionDelay: `${400 + i * 80}ms` }}
                 >
-                  <div className="w-6 h-6 rounded-md bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-4 h-4 text-primary" />
-                  </div>
-                  <span className="text-foreground font-semibold text-sm">{b}</span>
+                  <Check className="w-5 h-5 text-secondary flex-shrink-0" />
+                  <span className="text-foreground font-medium text-sm">{b}</span>
                 </li>
               ))}
             </ul>
 
-            <a href="https://wa.me/5569992216764" className="inline-block bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 glow-orange transition-all duration-200">
+            <a href="https://wa.me/5569992216764" className="inline-block bg-primary text-primary-foreground font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(18_100%_59%/0.35)] transition-all duration-200">
               Fale com a gente →
             </a>
           </div>

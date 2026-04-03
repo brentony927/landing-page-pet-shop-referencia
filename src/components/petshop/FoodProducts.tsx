@@ -57,10 +57,10 @@ const FoodProducts = () => {
   };
 
   return (
-    <section id="racoes" className="py-14 bg-background" ref={ref}>
+    <section id="racoes" className="py-14 bg-muted/30" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="mb-10">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="text-3xl md:text-4xl font-black text-foreground">
             Ração que seu pet come até o fundo
           </h2>
         </div>
@@ -72,10 +72,10 @@ const FoodProducts = () => {
               <button
                 key={cat.key}
                 onClick={() => handleTabChange(cat.key)}
-                className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg font-bold text-sm transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
+                className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md font-bold text-sm transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
                   activeTab === cat.key
                     ? "bg-primary text-primary-foreground shadow-orange"
-                    : "bg-muted text-muted-foreground hover:bg-border"
+                    : "bg-background text-muted-foreground border border-border hover:border-primary/40"
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -89,18 +89,18 @@ const FoodProducts = () => {
           {products[activeTab].map((p, i) => (
             <div
               key={p.name}
-              className={`bg-card rounded-lg overflow-hidden shadow-sm transition-all duration-200 relative group cursor-pointer hover:-translate-y-2 hover:shadow-lg ${
-                i === 0 && p.popular ? "border-2 border-primary bg-primary/5" : ""
+              className={`bg-background rounded-lg overflow-hidden transition-all duration-200 relative group cursor-pointer hover:-translate-y-1 hover:shadow-md border border-border hover:border-primary/40 ${
+                i === 0 && p.popular ? "border-primary bg-primary/3" : ""
               } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${i * 60}ms` }}
             >
               {p.popular && (
-                <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-accent text-accent-foreground border-0 font-bold text-[10px] sm:text-xs z-10 px-2 py-0.5 sm:py-1 rounded-md">
+                <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-accent text-accent-foreground font-bold text-[10px] sm:text-xs z-10 px-2 py-0.5 sm:py-1 rounded-md">
                   Queridinho
                 </span>
               )}
-              <div className="bg-secondary/8 w-full h-24 sm:h-32 flex items-center justify-center">
-                <span className="text-muted-foreground/40 text-xs sm:text-sm font-semibold">A SUA IMAGEM AQUI</span>
+              <div className="bg-muted w-full h-24 sm:h-32 flex items-center justify-center">
+                <span className="text-muted-foreground/40 text-xs sm:text-sm">A SUA IMAGEM AQUI</span>
               </div>
               <div className="p-3 sm:p-4">
                 <div className="flex items-center gap-0.5 mb-1 sm:mb-2">
@@ -112,10 +112,10 @@ const FoodProducts = () => {
                   ))}
                   <span className="text-muted-foreground text-[10px] sm:text-xs ml-1">{p.rating}</span>
                 </div>
-                <h3 className="font-heading font-bold text-foreground text-xs sm:text-sm mb-2 leading-tight">{p.name}</h3>
+                <h3 className="font-bold text-foreground text-xs sm:text-sm mb-2 leading-tight">{p.name}</h3>
                 <div className="flex items-center justify-between">
-                  <p className="font-heading text-lg sm:text-xl font-bold text-primary">{p.price}</p>
-                  <a href="https://wa.me/5569992216764" className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-primary/90 transition-all duration-200">
+                  <p className="text-lg sm:text-xl font-black text-primary">{p.price}</p>
+                  <a href="https://wa.me/5569992216764" className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold hover:bg-primary/90 transition-all duration-200">
                     +
                   </a>
                 </div>
@@ -125,7 +125,7 @@ const FoodProducts = () => {
         </div>
 
         <div className="text-center mt-10">
-          <a href="https://wa.me/5569992216764" className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg text-sm uppercase tracking-wider shadow-md hover:-translate-y-1 glow-orange transition-all duration-200 inline-block">
+          <a href="https://wa.me/5569992216764" className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(18_100%_59%/0.35)] transition-all duration-200 inline-block">
             Ver tudo →
           </a>
         </div>
