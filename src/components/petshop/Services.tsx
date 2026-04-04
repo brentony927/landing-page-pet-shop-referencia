@@ -6,9 +6,7 @@ const services = [
     title: "Banho & Tosa",
     desc: "Banho completo com produtos profissionais, secagem e acabamento pra todas as raças.",
     price: "Consulte",
-    badge: "Mais pedido",
-    badgeIcon: Star,
-    featured: true,
+    highlight: true,
   },
   {
     icon: Scissors,
@@ -21,8 +19,6 @@ const services = [
     title: "Rações & Petiscos",
     desc: "Linha completa de rações de qualidade. Entrega no bairro no mesmo dia.",
     price: "Consulte",
-    badge: "Entrega rápida",
-    badgeIcon: Truck,
   },
 ];
 
@@ -30,9 +26,14 @@ const Services = () => {
   return (
     <section id="servicos" className="py-16 md:py-20 px-4 bg-white">
       <div className="max-w-[1100px] mx-auto">
-        <h2 className="text-2xl md:text-[2.4rem] font-black mb-10 leading-tight" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
-          Banho, tosa e ração
-        </h2>
+        <div className="flex items-end justify-between mb-10">
+          <h2 className="text-2xl md:text-[2rem] font-black leading-tight" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
+            Banho, tosa e ração
+          </h2>
+          <a href="https://wa.me/5569992216764" className="hidden md:block text-sm font-semibold hover:underline" style={{ color: "#16a34a" }}>
+            Agendar pelo WhatsApp →
+          </a>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {services.map((s, idx) => {
@@ -40,45 +41,38 @@ const Services = () => {
             return (
               <div
                 key={s.title}
-                className="group relative rounded-xl p-7 bg-white overflow-hidden cursor-pointer transition-all duration-250"
-                style={{ border: "1px solid #e7e5e4" }}
+                className="group relative rounded-2xl p-7 bg-white overflow-hidden cursor-pointer transition-all duration-300"
+                style={{ border: `1.5px solid ${s.highlight ? "#16a34a" : "#e7e5e4"}` }}
                 onMouseEnter={(e) => {
-                  if (idx === 0) {
-                    e.currentTarget.style.background = "#f0fdf4";
-                  } else {
-                    e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.06)";
-                  }
+                  e.currentTarget.style.transform = "translateY(-3px)";
+                  e.currentTarget.style.boxShadow = "0 12px 32px rgba(0,0,0,0.08)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "#fff";
+                  e.currentTarget.style.transform = "none";
                   e.currentTarget.style.boxShadow = "none";
                 }}
               >
-                <Icon className="w-6 h-6 mb-4" style={{ color: "#16a34a" }} />
-
-                {s.badge && (
-                  <span
-                    className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold mb-3"
-                    style={{ background: "#fef9c3", border: "1px solid #fde047", color: "#713f12" }}
-                  >
-                    {s.badgeIcon && <s.badgeIcon className="w-3 h-3" />}
-                    {s.badge}
+                {s.highlight && (
+                  <span className="absolute top-0 right-6 bg-[#16a34a] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-b-md">
+                    Mais pedido
                   </span>
                 )}
+
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style={{ background: idx === 0 ? "#f0fdf4" : "#f5f5f4" }}>
+                  <Icon className="w-5 h-5" style={{ color: idx === 0 ? "#16a34a" : "#78716c" }} />
+                </div>
 
                 <h3 className="text-xl font-bold mb-2" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
                   {s.title}
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "#78716c" }}>{s.desc}</p>
-
-                <div className="pt-4" style={{ borderTop: "1px solid #e7e5e4" }}>
-                  <span className="font-bold" style={{ color: "#16a34a" }}>{s.price}</span>
-                </div>
+                <p className="text-sm leading-relaxed mb-6" style={{ color: "#78716c" }}>{s.desc}</p>
 
                 <a
                   href="https://wa.me/5569992216764"
-                  className="mt-3 inline-block rounded-md px-4 py-2 text-sm font-bold text-white transition-all duration-200"
+                  className="inline-block rounded-lg px-5 py-2.5 text-sm font-bold text-white transition-all duration-200"
                   style={{ background: "#f97316" }}
+                  onMouseEnter={(e) => e.currentTarget.style.background = "#c2410c"}
+                  onMouseLeave={(e) => e.currentTarget.style.background = "#f97316"}
                 >
                   Agendar →
                 </a>

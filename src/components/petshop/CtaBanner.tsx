@@ -1,62 +1,54 @@
 import { Gift, Calendar, MessageCircle } from "lucide-react";
+import { useInView } from "@/hooks/useInView";
 
 const CtaBanner = () => {
+  const { ref, visible } = useInView(0.3);
+
   return (
-    <section className="py-16 md:py-20 px-4 text-center text-white" style={{ background: "var(--verde-escuro)" }}>
-      <div className="max-w-[800px] mx-auto">
-        <span
-          className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold mb-4"
-          style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.2)" }}
-        >
-          <Gift className="w-4 h-4" />
-          Para clientes do bairro
-        </span>
+    <section className="py-14 md:py-16 px-4" ref={ref}>
+      <div
+        className={`max-w-[1100px] mx-auto rounded-2xl px-8 md:px-16 py-12 md:py-16 text-white relative overflow-hidden transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-[0.97]"}`}
+        style={{ background: "#1c1917" }}
+      >
+        <div className="relative z-10 max-w-xl">
+          <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold mb-5" style={{ background: "rgba(255,255,255,0.1)" }}>
+            <Gift className="w-3.5 h-3.5" />
+            Para clientes do bairro
+          </span>
 
-        <h2
-          className="text-2xl md:text-[2.8rem] font-black mb-4 leading-tight"
-          style={{ fontFamily: "'Fraunces', Georgia, serif" }}
-        >
-          Agende hoje e ganhe 10% off no próximo serviço.
-        </h2>
+          <h2 className="text-2xl md:text-3xl font-black mb-3 leading-tight" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
+            Agende hoje e ganhe 10% off no próximo serviço.
+          </h2>
 
-        <p className="text-base md:text-lg leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.75)" }}>
-          Clientes que agendam pelo WhatsApp ou pelo formulário recebem desconto especial na próxima visita. É nossa forma de agradecer a confiança.
-        </p>
+          <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.6)" }}>
+            Clientes que agendam pelo WhatsApp recebem desconto na próxima visita.
+          </p>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <a
-            href="https://wa.me/5569992216764"
-            className="rounded-md px-8 py-4 font-bold text-lg text-white transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center justify-center gap-2"
-            style={{ background: "var(--laranja)" }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "var(--laranja-escuro)";
-              e.currentTarget.style.boxShadow = "0 8px 24px rgba(249,115,22,0.3)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "var(--laranja)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
-          >
-            <Calendar className="w-5 h-5" />
-            AGENDAR AGORA
-          </a>
-          <a
-            href="https://wa.me/5569992216764"
-            className="rounded-md px-8 py-4 font-semibold text-white transition-all duration-200 inline-flex items-center justify-center gap-2"
-            style={{ border: "2px solid rgba(255,255,255,0.5)" }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "#fff";
-              e.currentTarget.style.background = "rgba(255,255,255,0.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)";
-              e.currentTarget.style.background = "transparent";
-            }}
-          >
-            <MessageCircle className="w-5 h-5" />
-            Falar pelo WhatsApp
-          </a>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="https://wa.me/5569992216764"
+              className="rounded-lg px-6 py-3 font-bold text-sm text-white transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2"
+              style={{ background: "#f97316" }}
+              onMouseEnter={(e) => e.currentTarget.style.background = "#c2410c"}
+              onMouseLeave={(e) => e.currentTarget.style.background = "#f97316"}
+            >
+              <Calendar className="w-4 h-4" />
+              AGENDAR AGORA
+            </a>
+            <a
+              href="https://wa.me/5569992216764"
+              className="rounded-lg px-6 py-3 font-semibold text-sm text-white/70 transition-all duration-200 inline-flex items-center gap-2 hover:text-white"
+              style={{ border: "1px solid rgba(255,255,255,0.2)" }}
+            >
+              <MessageCircle className="w-4 h-4" />
+              WhatsApp
+            </a>
+          </div>
         </div>
+
+        {/* Decorative circle */}
+        <div className="absolute -right-20 -bottom-20 w-72 h-72 rounded-full" style={{ background: "rgba(255,255,255,0.03)" }} />
+        <div className="absolute right-10 top-10 w-32 h-32 rounded-full" style={{ background: "rgba(255,255,255,0.02)" }} />
       </div>
     </section>
   );
