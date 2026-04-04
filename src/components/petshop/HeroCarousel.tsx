@@ -174,7 +174,5 @@ const HeroCarousel = () => {
   );
 };
 
-// Need Star import
-import { Star } from "lucide-react";
 
 export default HeroCarousel;
