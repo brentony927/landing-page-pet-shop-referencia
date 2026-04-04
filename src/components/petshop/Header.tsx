@@ -1,16 +1,27 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Menu, X, Phone } from "lucide-react";
 
 const navLinks = [
-  { label: "INÍCIO", href: "#inicio" },
-  { label: "SERVIÇOS", href: "#servicos" },
-  { label: "RAÇÕES", href: "#racoes" },
-  { label: "SOBRE", href: "#sobre" },
-  { label: "CONTATO", href: "#contato" },
+  { label: "INÍCIO", href: "#inicio", emoji: "🐾" },
+  { label: "SERVIÇOS", href: "#servicos", emoji: "🐶" },
+  { label: "RAÇÕES", href: "#racoes", emoji: "🦴" },
+  { label: "SOBRE", href: "#sobre", emoji: "🐱" },
+  { label: "CONTATO", href: "#contato", emoji: "🐕" },
 ];
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeEmoji, setActiveEmoji] = useState<{ emoji: string; x: number; y: number; id: number } | null>(null);
+  const idRef = useRef(0);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, emoji: string) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height;
+    idRef.current += 1;
+    setActiveEmoji({ emoji, x, y, id: idRef.current });
+    setTimeout(() => setActiveEmoji(null), 900);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -43,6 +54,7 @@ const Header = () => {
                 style={{ color: "rgba(255,255,255,0.8)", fontFamily: "'DM Sans', sans-serif" }}
                 onMouseEnter={(e) => e.currentTarget.style.color = "#fff"}
                 onMouseLeave={(e) => e.currentTarget.style.color = "rgba(255,255,255,0.8)"}
+                onClick={(e) => handleNavClick(e, link.emoji)}
               >
                 <span className="relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:transition-all after:duration-200 hover:after:w-full" style={{ ["--tw-after-bg" as string]: "var(--laranja)" }}>
                   {link.label}
@@ -88,6 +100,7 @@ const Header = () => {
               style={{ color: "rgba(255,255,255,0.8)" }}
               onClick={() => setMobileOpen(false)}
             >
+              <span className="mr-2">{link.emoji}</span>
               {link.label}
             </a>
           ))}
@@ -99,6 +112,21 @@ const Header = () => {
               AGENDAR
             </a>
           </div>
+        </div>
+      )}
+
+      {/* Animal emoji animation */}
+      {activeEmoji && (
+        <div
+          key={activeEmoji.id}
+          className="fixed pointer-events-none z-[100]"
+          style={{
+            left: activeEmoji.x - 16,
+            top: activeEmoji.y,
+            animation: "navAnimalBounce 0.8s ease-out forwards",
+          }}
+        >
+          <span className="text-3xl drop-shadow-lg">{activeEmoji.emoji}</span>
         </div>
       )}
     </header>
