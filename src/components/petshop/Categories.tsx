@@ -162,7 +162,7 @@ const Categories = () => {
                     onMouseLeave={(e) => { e.currentTarget.style.background = "#f5f5f4"; e.currentTarget.style.color = "#57534e"; }}
                   >
                     {sub}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
