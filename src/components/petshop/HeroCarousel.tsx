@@ -3,136 +3,146 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    title: "Aqui o banho vem com carinho —",
-    highlight: "e o biscoito",
-    titleEnd: " é por nossa conta",
-    subtitle: "Banho, ração, veterinário — tudo num só lugar, com gente que ama bicho de verdade",
-    cta1: "AGENDAR AGORA",
-    cta1Link: "https://wa.me/5569992216764",
-    cta2: "Ver serviços",
-    cta2Link: "#servicos",
+    h1: "Tosa na tesoura,\nsecagem com paciência.\nNada de pressa.",
+    sub: "Ele entra precisando, e sai desfilando. Pode confiar!",
+    cta1: { text: "AGENDAR AGORA", href: "https://wa.me/5569992216764" },
+    cta2: { text: "Ver serviços", href: "#servicos" },
+    visual: { bg: "var(--verde-escuro)", emoji: "🐶", label: "Banho & Tosa" },
+    badgeA: "⭐ Nota 5.0",
+    badgeB: "🐾 +500 pets felizes",
   },
   {
-    title: "Tosa na tesoura, secagem com",
-    highlight: "paciência",
-    titleEnd: ". Nada de pressa.",
-    subtitle: "Ele entra precisando, e sai desfilando. Pode confiar!",
-    cta1: "AGENDAR AGORA",
-    cta1Link: "https://wa.me/5569992216764",
-    cta2: "Ver serviços",
-    cta2Link: "#servicos",
+    h1: "12 anos no bairro.\nSeu vizinho\njá trouxe o pet dele.",
+    sub: "Aqui não tem franquia nem manual de rede grande. É uma equipe pequena que conhece cada pet pelo nome.",
+    cta1: { text: "FALE PELO WHATSAPP", href: "https://wa.me/5569992216764" },
+    cta2: { text: "Nossa história", href: "#sobre" },
+    visual: { bg: "var(--laranja)", emoji: "🏘️", label: "12 Anos" },
+    badgeA: "⭐ Nota 5.0",
+    badgeB: "🐾 +500 pets felizes",
   },
   {
-    title: "A gente prova? Não. Mas o",
-    highlight: "rabo abanando",
-    titleEnd: " já diz tudo.",
-    subtitle: "Do filhote ao velhinho, só o que tem qualidade vai pra tigela",
-    cta1: "VER RAÇÕES",
-    cta1Link: "#racoes",
-    cta2: "Fale conosco",
-    cta2Link: "https://wa.me/5569992216764",
+    h1: "Ração premium\nentregue no\nmesmo dia.",
+    sub: "Linha completa de rações, petiscos e suplementos. Entrega no bairro sem taxa mínima.",
+    cta1: { text: "VER RAÇÕES", href: "#racoes" },
+    cta2: { text: "Agendar serviço", href: "https://wa.me/5569992216764" },
+    visual: { bg: "var(--amarelo)", emoji: "🦴", label: "Entrega Rápida" },
+    badgeA: "⭐ Nota 5.0",
+    badgeB: "🐾 +500 pets felizes",
   },
 ];
 
-const SLIDE_DURATION = 5000;
-
 const HeroCarousel = () => {
   const [current, setCurrent] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [progressKey, setProgressKey] = useState(0);
 
-  const goTo = useCallback((idx: number) => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrent(idx);
-      setIsTransitioning(false);
-      setProgressKey(k => k + 1);
-    }, 200);
-  }, []);
-
-  const next = useCallback(() => goTo((current + 1) % slides.length), [current, goTo]);
-  const prev = useCallback(() => goTo((current - 1 + slides.length) % slides.length), [current, goTo]);
+  const next = useCallback(() => setCurrent((p) => (p + 1) % slides.length), []);
+  const prev = useCallback(() => setCurrent((p) => (p - 1 + slides.length) % slides.length), []);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      goTo((current + 1) % slides.length);
-    }, SLIDE_DURATION);
+    const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
-  }, [current, goTo]);
+  }, [next]);
 
-  const slide = slides[current];
+  const s = slides[current];
+  const isYellow = s.visual.bg === "var(--amarelo)";
 
   return (
-    <section id="inicio" className="pt-[3.5rem] md:pt-[5.5rem]">
-      {/* Fundo branco com shape decorativo verde claro */}
-      <div className="bg-background relative overflow-hidden min-h-[400px] md:min-h-[560px]">
-        {/* Decorative shape */}
-        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full bg-secondary/8 z-0" />
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-secondary/5 z-0" />
-        
-        <div className={`container mx-auto px-4 py-12 md:py-24 relative z-10 transition-all duration-200 ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`} style={{ willChange: "opacity, transform" }}>
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-foreground leading-tight mb-4 md:mb-6">
-              {slide.title} <span className="text-secondary">{slide.highlight}</span>{slide.titleEnd}
+    <section id="inicio" className="bg-white relative overflow-hidden" style={{ paddingTop: "calc(64px + 32px)" }}>
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 md:px-10 py-12 md:py-[72px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Text */}
+          <div className="animate-fadeUp">
+            <h1
+              className="text-3xl sm:text-4xl md:text-[3.5rem] font-black leading-tight mb-4"
+              style={{ fontFamily: "'Fraunces', Georgia, serif", color: "var(--txt)", whiteSpace: "pre-line" }}
+            >
+              {s.h1}
             </h1>
-            <p className="text-muted-foreground text-base md:text-xl max-w-xl mx-auto mb-8 md:mb-10">
-              {slide.subtitle}
+            <p className="text-base md:text-lg mb-8 leading-relaxed" style={{ color: "var(--txt2)" }}>
+              {s.sub}
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <a href={slide.cta1Link} className="bg-secondary text-secondary-foreground font-bold px-8 md:px-10 py-3 md:py-4 rounded-md text-sm tracking-wider uppercase shadow-lg hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(142_72%_37%/0.3)] transition-all duration-200">
-                {slide.cta1}
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={s.cta1.href}
+                className="rounded-md px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5"
+                style={{ background: "var(--laranja)" }}
+                onMouseEnter={(e) => e.currentTarget.style.background = "var(--laranja-escuro)"}
+                onMouseLeave={(e) => e.currentTarget.style.background = "var(--laranja)"}
+              >
+                {s.cta1.text}
               </a>
-              <a href={slide.cta2Link} className="border-[1.5px] border-foreground/20 text-foreground font-bold px-6 md:px-8 py-3 md:py-4 rounded-md text-sm tracking-wider hover:bg-muted hover:border-foreground/40 transition-all duration-200">
-                {slide.cta2}
+              <a
+                href={s.cta2.href}
+                className="rounded-md px-6 py-3 text-sm font-semibold transition-all duration-200"
+                style={{ border: "1.5px solid var(--verde)", color: "var(--verde)" }}
+              >
+                {s.cta2.text}
               </a>
+            </div>
+          </div>
+
+          {/* Visual */}
+          <div className="flex justify-center relative">
+            <div
+              className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-3xl flex flex-col items-center justify-center animate-float"
+              style={{ background: s.visual.bg }}
+            >
+              <span className="text-5xl md:text-6xl mb-3">{s.visual.emoji}</span>
+              <span
+                className="text-lg md:text-xl font-bold"
+                style={{ fontFamily: "'Fraunces', Georgia, serif", color: isYellow ? "var(--amarelo-texto)" : "#fff" }}
+              >
+                {s.visual.label}
+              </span>
+            </div>
+            <div
+              className="absolute -top-2 md:-top-4 right-0 md:-right-6 rounded-xl px-3 py-2 text-[13px] font-bold"
+              style={{ background: "var(--amarelo)", border: "1.5px solid var(--amarelo-borda)", color: "var(--amarelo-texto)" }}
+            >
+              {s.badgeA}
+            </div>
+            <div
+              className="absolute bottom-4 -left-4 md:-left-10 rounded-xl px-3 py-2 text-[13px] font-bold"
+              style={{ background: "var(--amarelo)", border: "1.5px solid var(--amarelo-borda)", color: "var(--amarelo-texto)" }}
+            >
+              {s.badgeB}
             </div>
           </div>
         </div>
 
-        <button onClick={prev} className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-foreground/5 hover:bg-foreground/10 rounded-md p-2 md:p-3 transition-all duration-200 z-20">
-          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
-        </button>
-        <button onClick={next} className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-foreground/5 hover:bg-foreground/10 rounded-md p-2 md:p-3 transition-all duration-200 z-20">
-          <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
-        </button>
-      </div>
-
-      {/* Stats bar */}
-      <div className="bg-background py-4 md:py-6 border-b border-border">
-        <div className="container mx-auto px-4 flex flex-wrap justify-center gap-6 md:gap-16">
-          <div className="text-center">
-            <p className="text-xl md:text-3xl font-black text-secondary">5.000+</p>
-            <p className="text-muted-foreground text-xs md:text-sm">Pets atendidos</p>
-          </div>
-          <div className="text-center">
-            <p className="text-xl md:text-3xl font-black text-secondary">12 anos</p>
-            <p className="text-muted-foreground text-xs md:text-sm">No mercado</p>
-          </div>
-          <div className="text-center">
-            <p className="text-xl md:text-3xl font-black text-secondary">4.8★</p>
-            <p className="text-muted-foreground text-xs md:text-sm">Avaliação Google</p>
-          </div>
+        {/* Dots */}
+        <div className="flex justify-center gap-2 mt-10">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className="h-2 rounded-full transition-all duration-300"
+              style={{
+                width: i === current ? 24 : 8,
+                background: i === current ? "var(--laranja)" : "rgba(0,0,0,0.2)",
+              }}
+            />
+          ))}
         </div>
       </div>
 
-      <div className="flex justify-center gap-3 -mt-3 relative z-20">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            className="relative h-1.5 rounded-sm overflow-hidden bg-border transition-all duration-200"
-            style={{ width: i === current ? "3rem" : "1.5rem" }}
-          >
-            {i === current && (
-              <div
-                key={progressKey}
-                className="absolute inset-0 bg-secondary rounded-sm animate-progress"
-                style={{ "--duration": `${SLIDE_DURATION}ms` } as React.CSSProperties}
-              />
-            )}
-          </button>
-        ))}
-      </div>
+      <button
+        onClick={prev}
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full hidden md:flex items-center justify-center transition-colors duration-200"
+        style={{ background: "rgba(255,255,255,0.8)" }}
+        onMouseEnter={(e) => e.currentTarget.style.background = "#fff"}
+        onMouseLeave={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.8)"}
+      >
+        <ChevronLeft className="w-5 h-5" style={{ color: "var(--verde-escuro)" }} />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full hidden md:flex items-center justify-center transition-colors duration-200"
+        style={{ background: "rgba(255,255,255,0.8)" }}
+        onMouseEnter={(e) => e.currentTarget.style.background = "#fff"}
+        onMouseLeave={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.8)"}
+      >
+        <ChevronRight className="w-5 h-5" style={{ color: "var(--verde-escuro)" }} />
+      </button>
     </section>
   );
 };

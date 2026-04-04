@@ -1,28 +1,26 @@
 import Header from "@/components/petshop/Header";
 import HeroCarousel from "@/components/petshop/HeroCarousel";
-import AboutUs from "@/components/petshop/AboutUs";
-import FoodProducts from "@/components/petshop/FoodProducts";
+import AnimatedStrip from "@/components/petshop/AnimatedStrip";
+import Categories from "@/components/petshop/Categories";
 import Services from "@/components/petshop/Services";
+import AboutUs from "@/components/petshop/AboutUs";
 import Testimonials from "@/components/petshop/Testimonials";
-import Brands from "@/components/petshop/Brands";
+import CtaBanner from "@/components/petshop/CtaBanner";
 import Contact from "@/components/petshop/Contact";
 import Footer from "@/components/petshop/Footer";
 import WhatsAppButton from "@/components/petshop/WhatsAppButton";
-import WhyUs from "@/components/petshop/WhyUs";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Header />
       <HeroCarousel />
-      <AboutUs />
-
-      <FoodProducts />
+      <AnimatedStrip />
+      <Categories />
       <Services />
-      <WhyUs />
+      <AboutUs />
       <Testimonials />
-
-      <Brands />
+      <CtaBanner />
       <Contact />
       <Footer />
       <WhatsAppButton />

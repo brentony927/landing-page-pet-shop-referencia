@@ -1,94 +1,72 @@
-import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-
 const testimonials = [
   {
-    name: "Mariana Silva",
-    pet: "Luna (Golden Retriever)",
-    text: "A Luna adora ir lá! Sempre volta cheirosa, feliz e com lacinho novo. O carinho da equipe é visível — você percebe que eles gostam mesmo do que fazem.",
+    initials: "MA",
+    initialsBg: "#dcfce7",
+    name: "Maria Aparecida",
+    role: "Cliente há 4 anos",
+    text: "Levo o Bob aqui há 4 anos. Ele chega animado, sai cheiroso e ainda fica querendo ficar mais tempo. Melhor banho e tosa do bairro sem dúvida.",
     stars: 5,
   },
   {
-    name: "Carlos Oliveira",
-    pet: "Thor (Bulldog Francês)",
-    text: "O Thor é medroso, mas lá eles têm paciência. É o único lugar que ele não treme.",
+    initials: "JC",
+    initialsBg: "#ffedd5",
+    name: "João Carlos",
+    role: "Tutor do Mingau",
+    text: "Eles conhecem o meu gato pelo nome. Sempre me avisam quando ele está agitado. Isso vale ouro.",
     stars: 5,
   },
   {
-    name: "Ana Beatriz",
-    pet: "Mimi (Persa)",
-    text: "Difícil encontrar quem cuide bem de gato. Aqui eles sabem lidar com a Mimi sem stress nenhum. Já indicamos pra três vizinhas e todas ficaram fãs também.",
-    stars: 4,
-  },
-  {
-    name: "Roberto Mendes",
-    pet: "Pipoca (SRD)",
-    text: "Pipoca ficou no hotel enquanto viajamos. Recebemos foto todo dia!",
+    initials: "RS",
+    initialsBg: "#fef08a",
+    name: "Renata Silva",
+    role: "Tutora da Luna e da Mel",
+    text: "Tentei outros pet shops do bairro, mas voltei. O atendimento aqui é diferente. Parece que realmente gostam dos animais.",
     stars: 5,
   },
 ];
 
 const Testimonials = () => {
-  const [idx, setIdx] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  const goTo = useCallback((newIdx: number) => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setIdx(newIdx);
-      setIsTransitioning(false);
-    }, 150);
-  }, []);
-
-  const next = useCallback(() => goTo((idx + 1) % testimonials.length), [idx, goTo]);
-  const prev = useCallback(() => goTo((idx - 1 + testimonials.length) % testimonials.length), [idx, goTo]);
-
-  useEffect(() => {
-    const timer = setInterval(next, 5000);
-    return () => clearInterval(timer);
-  }, [next]);
-
-  const t = testimonials[idx];
-
   return (
-    <section className="py-12 md:py-16 bg-[#f0fdf4]">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-black text-foreground mb-8 md:mb-10">
-          O que nossos clientes dizem
+    <section className="py-16 md:py-20 px-4 bg-white">
+      <div className="max-w-[1100px] mx-auto">
+        <p className="text-xs uppercase tracking-widest font-medium mb-3" style={{ color: "var(--verde)" }}>
+          O que dizem sobre a gente
+        </p>
+        <h2 className="text-2xl md:text-[2.2rem] font-black mb-12" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "var(--txt)" }}>
+          Pets felizes. Donos mais felizes ainda.
         </h2>
 
-        <div className="max-w-2xl mx-auto relative px-8 md:px-12">
-          <div className={`bg-background rounded-lg p-6 sm:p-8 md:p-10 transition-all duration-150 border border-border shadow-sm ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}>
-            <div className="flex gap-0.5 mb-4">
-              {Array.from({ length: 5 }, (_, i) => (
-                <Star key={i} className={`w-4 h-4 ${i < t.stars ? "text-accent fill-accent" : "text-border"}`} />
-              ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {testimonials.map((t) => (
+            <div
+              key={t.name}
+              className="rounded-xl p-6 transition-all duration-200 hover:-translate-y-1"
+              style={{ background: "var(--verde-bg)", border: "1px solid #bbf7d0" }}
+              onMouseEnter={(e) => e.currentTarget.style.boxShadow = "0 8px 24px rgba(22,163,74,0.1)"}
+              onMouseLeave={(e) => e.currentTarget.style.boxShadow = "none"}
+            >
+              <div className="flex gap-0.5 mb-3">
+                {Array.from({ length: t.stars }, (_, i) => (
+                  <span key={i} className="text-lg" style={{ color: "var(--laranja)" }}>★</span>
+                ))}
+              </div>
+              <p className="text-[15px] leading-relaxed mb-4 italic" style={{ color: "var(--txt2)" }}>
+                "{t.text}"
+              </p>
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold"
+                  style={{ background: t.initialsBg, color: "var(--verde)" }}
+                >
+                  {t.initials}
+                </div>
+                <div>
+                  <p className="text-sm font-semibold" style={{ color: "var(--txt)" }}>{t.name}</p>
+                  <p className="text-xs" style={{ color: "var(--txt2)" }}>{t.role}</p>
+                </div>
+              </div>
             </div>
-            <p className="text-foreground text-base md:text-lg mb-6 leading-relaxed">
-              "{t.text}"
-            </p>
-            <div>
-              <p className="font-bold text-foreground">{t.name}</p>
-              <p className="text-secondary text-sm font-medium">{t.pet}</p>
-            </div>
-          </div>
-
-          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 bg-secondary rounded-md p-2 shadow hover:bg-secondary/90 transition-all duration-200">
-            <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-secondary-foreground" />
-          </button>
-          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 bg-secondary rounded-md p-2 shadow hover:bg-secondary/90 transition-all duration-200">
-            <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-secondary-foreground" />
-          </button>
-
-          <div className="flex justify-center gap-2 mt-6">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                className={`h-2 rounded-sm transition-all duration-200 ${i === idx ? "bg-secondary w-6" : "bg-border w-2.5"}`}
-              />
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>
