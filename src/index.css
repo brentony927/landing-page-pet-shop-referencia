@@ -85,6 +85,11 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes pulse-ring {
   0% { box-shadow: 0 0 0 0 rgba(22,163,74,0.4); }
   100% { box-shadow: 0 0 0 12px rgba(22,163,74,0); }
@@ -95,28 +100,25 @@
   100% { transform: translateX(-50%); }
 }
 
-.animate-float { animation: float 3.5s ease-in-out infinite; }
-.animate-scrollX { animation: scrollX 22s linear infinite; }
-.animate-fadeUp { animation: fadeUp 0.6s ease both; }
-.animate-pulse-ring { animation: pulse-ring 2s infinite; }
-.animate-marquee { animation: marquee 15s linear infinite; will-change: transform; }
+@keyframes animalBounceStay {
+  0% { opacity: 0; transform: translateY(0) scale(0.3) rotate(0deg); }
+  40% { opacity: 1; transform: translateY(-25px) scale(1.1) rotate(-10deg); }
+  70% { opacity: 1; transform: translateY(-15px) scale(0.95) rotate(5deg); }
+  100% { opacity: 0.7; transform: translateY(-20px) scale(0.85) rotate(0deg); }
+}
 
 @keyframes progressBar {
   from { width: 0%; }
   to { width: 100%; }
 }
 
-.animate-progress {
-  animation: progressBar var(--duration, 5s) linear forwards;
-}
-
-@keyframes navAnimalBounce {
-  0% { opacity: 1; transform: translateY(0) scale(0.5) rotate(0deg); }
-  30% { opacity: 1; transform: translateY(-30px) scale(1.2) rotate(-15deg); }
-  50% { opacity: 1; transform: translateY(-15px) scale(1) rotate(10deg); }
-  70% { opacity: 0.8; transform: translateY(-40px) scale(0.9) rotate(-5deg); }
-  100% { opacity: 0; transform: translateY(-60px) scale(0.6) rotate(0deg); }
-}
+.animate-float { animation: float 3.5s ease-in-out infinite; }
+.animate-scrollX { animation: scrollX 22s linear infinite; }
+.animate-fadeUp { animation: fadeUp 0.6s ease both; }
+.animate-fadeDown { animation: fadeDown 0.25s ease both; }
+.animate-pulse-ring { animation: pulse-ring 2s infinite; }
+.animate-marquee { animation: marquee 15s linear infinite; will-change: transform; }
+.animate-progress { animation: progressBar var(--duration, 5s) linear forwards; }
 
 .scrollbar-hide {
   -ms-overflow-style: none;
