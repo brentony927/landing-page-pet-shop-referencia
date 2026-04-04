@@ -1,44 +1,95 @@
-const categories = [
-  { emoji: "🛁", title: "Banho & Tosa", sub: "Cães e gatos" },
-  { emoji: "🦴", title: "Rações", sub: "Todas as marcas" },
-  { emoji: "✂️", title: "Tosa", sub: "Higiênica e estética" },
-  { emoji: "🚗", title: "Busca e Entrega", sub: "Mesmo dia" },
+import { useState } from "react";
+import { Bath, Bone, Scissors, Truck, Stethoscope, Heart, Dog, Cat } from "lucide-react";
+
+const services = [
+  { icon: Stethoscope, title: "Veterinário", color: "#e74c3c", bg: "#fde8e8" },
+  { icon: Bath, title: "Banho & Tosa", color: "#2563eb", bg: "#dbeafe" },
+  { icon: Scissors, title: "Tosa Higiênica", color: "#7c3aed", bg: "#ede9fe" },
+  { icon: Heart, title: "Adote um Pet", color: "#16a34a", bg: "#dcfce7" },
+  { icon: Truck, title: "Entrega Rápida", color: "#f97316", bg: "#ffedd5" },
+];
+
+const navCategories = [
+  "Cachorro", "Gato", "Rações", "Petiscos", "Higiene",
+  "Farmácia", "Brinquedos", "Acessórios", "Promoções", "Serviços",
 ];
 
 const Categories = () => {
-  return (
-    <section className="py-12 px-4" style={{ background: "var(--verde-bg)" }}>
-      <div className="max-w-[1100px] mx-auto">
-        <p className="text-[13px] uppercase tracking-widest font-medium mb-3" style={{ color: "var(--verde)" }}>
-          O que você precisa hoje?
-        </p>
-        <h2 className="text-2xl md:text-3xl font-black mb-8" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "var(--txt)" }}>
-          Escolha uma categoria
-        </h2>
+  const [activeNav, setActiveNav] = useState("Cachorro");
+  const [hoveredService, setHoveredService] = useState<string | null>(null);
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {categories.map((c) => (
-            <div
-              key={c.title}
-              className="rounded-xl p-6 text-center cursor-pointer transition-all duration-200 bg-white hover:-translate-y-1"
-              style={{ border: "1px solid var(--borda)" }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--verde)";
-                e.currentTarget.style.boxShadow = "0 8px 24px rgba(22,163,74,0.12)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "var(--borda)";
-                e.currentTarget.style.boxShadow = "none";
+  return (
+    <>
+      {/* Barra de navegação de categorias — estilo Petz */}
+      <nav className="border-b overflow-x-auto" style={{ borderColor: "var(--borda)" }}>
+        <div className="max-w-[1100px] mx-auto flex items-center gap-0">
+          {navCategories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveNav(cat)}
+              className="relative px-5 py-3.5 text-sm font-medium whitespace-nowrap transition-colors duration-200"
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                color: activeNav === cat ? "var(--verde)" : "var(--txt2)",
+                fontWeight: activeNav === cat ? 600 : 400,
               }}
             >
-              <span className="text-5xl block mb-3">{c.emoji}</span>
-              <h3 className="text-base font-bold mb-1" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "var(--txt)" }}>{c.title}</h3>
-              <p className="text-[13px]" style={{ color: "var(--txt2)" }}>{c.sub}</p>
-            </div>
+              {cat}
+              {/* Underline animado */}
+              <span
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2.5px] rounded-full transition-all duration-300"
+                style={{
+                  width: activeNav === cat ? "60%" : "0%",
+                  background: "var(--verde)",
+                }}
+              />
+            </button>
           ))}
         </div>
-      </div>
-    </section>
+      </nav>
+
+      {/* Cards de serviços — estilo Petz clean */}
+      <section className="py-10 px-4 bg-white">
+        <div className="max-w-[1100px] mx-auto">
+          <div className="flex items-center gap-4 overflow-x-auto pb-2 scrollbar-hide">
+            {services.map((s) => {
+              const Icon = s.icon;
+              const isHovered = hoveredService === s.title;
+              return (
+                <div
+                  key={s.title}
+                  className="flex-shrink-0 flex items-center gap-3 rounded-2xl px-6 py-4 cursor-pointer transition-all duration-250"
+                  style={{
+                    background: isHovered ? s.bg : "#f5f5f4",
+                    minWidth: 180,
+                    transform: isHovered ? "translateY(-2px)" : "none",
+                    boxShadow: isHovered ? `0 8px 24px ${s.color}20` : "none",
+                  }}
+                  onMouseEnter={() => setHoveredService(s.title)}
+                  onMouseLeave={() => setHoveredService(null)}
+                >
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-250"
+                    style={{ background: isHovered ? s.color : "#e7e5e4" }}
+                  >
+                    <Icon size={20} style={{ color: isHovered ? "#fff" : s.color }} />
+                  </div>
+                  <span
+                    className="text-sm font-semibold whitespace-nowrap transition-colors duration-200"
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      color: isHovered ? s.color : "var(--txt)",
+                    }}
+                  >
+                    {s.title}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
