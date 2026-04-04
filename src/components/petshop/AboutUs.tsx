@@ -12,9 +12,6 @@ const AboutUs = () => {
     <section id="sobre" className="py-16 md:py-20 px-4 bg-white">
       <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
         <div>
-          <p className="text-xs uppercase tracking-widest font-medium mb-3" style={{ color: "#16a34a" }}>
-            Nossa história
-          </p>
           <h2
             className="text-2xl md:text-[2.4rem] font-black mb-4 leading-tight"
             style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}
