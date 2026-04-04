@@ -1,15 +1,14 @@
-import { Instagram, Facebook, MessageCircle } from "lucide-react";
+import { Instagram, Facebook, MessageCircle, Dog } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="bg-white border-t" style={{ borderColor: "#e7e5e4" }}>
       <div className="max-w-[1100px] mx-auto px-4 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-          {/* Col 1 */}
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "#16a34a" }}>
-                <span className="text-lg">🐾</span>
+                <Dog className="w-5 h-5 text-white" />
               </div>
               <span className="text-xl font-bold" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
                 Patinhas <span style={{ color: "#16a34a" }}>& Cia</span>
@@ -34,7 +33,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Col 2 */}
           <div>
             <h4 className="text-[13px] uppercase tracking-widest mb-4" style={{ color: "#a8a29e" }}>Serviços</h4>
             {["Banho & Tosa", "Tosa Higiênica", "Rações", "Entrega em domicílio", "Agendamento online"].map((l) => (
@@ -45,7 +43,6 @@ const Footer = () => {
             ))}
           </div>
 
-          {/* Col 3 */}
           <div>
             <h4 className="text-[13px] uppercase tracking-widest mb-4" style={{ color: "#a8a29e" }}>Atendimento</h4>
             {["Segunda a Sexta: 8h–19h", "Sábado: 8h–16h"].map((l) => (
@@ -56,7 +53,6 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Col 4 */}
           <div>
             <h4 className="text-[13px] uppercase tracking-widest mb-4" style={{ color: "#a8a29e" }}>Agendar</h4>
             <p className="text-sm mb-4" style={{ color: "#78716c" }}>

@@ -10,36 +10,36 @@ const categories = [
   { label: "Peixes", icon: Fish, key: "fish" },
 ];
 
-const products: Record<string, Array<{ name: string; price: string; rating: number; popular?: boolean }>> = {
+const products: Record<string, Array<{ name: string; rating: number; popular?: boolean }>> = {
   dogs: [
-    { name: "Ração Natural Frango & Arroz", price: "R$ 189,90", rating: 4.8, popular: true },
-    { name: "Ração Cordeiro & Vegetais", price: "R$ 159,90", rating: 4.5 },
-    { name: "Petiscos Dental Stick", price: "R$ 34,90", rating: 4.7 },
-    { name: "Ração Salmão & Batata Doce", price: "R$ 179,90", rating: 4.9, popular: true },
+    { name: "Ração Natural Frango & Arroz", rating: 4.8, popular: true },
+    { name: "Ração Cordeiro & Vegetais", rating: 4.5 },
+    { name: "Petiscos Dental Stick", rating: 4.7 },
+    { name: "Ração Salmão & Batata Doce", rating: 4.9, popular: true },
   ],
   cats: [
-    { name: "Ração Frango & Salmão Indoor", price: "R$ 169,90", rating: 4.8, popular: true },
-    { name: "Sachê Mix Sabores (12un)", price: "R$ 49,90", rating: 4.3 },
-    { name: "Petiscos Anti Bola de Pelo", price: "R$ 29,90", rating: 4.6 },
-    { name: "Ração Atum & Arroz", price: "R$ 139,90", rating: 4.4 },
+    { name: "Ração Frango & Salmão Indoor", rating: 4.8, popular: true },
+    { name: "Sachê Mix Sabores (12un)", rating: 4.3 },
+    { name: "Petiscos Anti Bola de Pelo", rating: 4.6 },
+    { name: "Ração Atum & Arroz", rating: 4.4 },
   ],
   puppies: [
-    { name: "Ração Filhotes Frango", price: "R$ 149,90", rating: 4.9, popular: true },
-    { name: "Sachê Filhotes Carne (8un)", price: "R$ 39,90", rating: 4.5 },
-    { name: "Ração Raças Pequenas", price: "R$ 119,90", rating: 4.7 },
-    { name: "Suplemento Crescimento", price: "R$ 59,90", rating: 4.6, popular: true },
+    { name: "Ração Filhotes Frango", rating: 4.9, popular: true },
+    { name: "Sachê Filhotes Carne (8un)", rating: 4.5 },
+    { name: "Ração Raças Pequenas", rating: 4.7 },
+    { name: "Suplemento Crescimento", rating: 4.6, popular: true },
   ],
   birds: [
-    { name: "Mix Sementes Canário", price: "R$ 24,90", rating: 4.5 },
-    { name: "Ração Calopsita", price: "R$ 32,90", rating: 4.7, popular: true },
-    { name: "Farinhada com Ovo", price: "R$ 19,90", rating: 4.3 },
-    { name: "Petiscos Frutas Secas", price: "R$ 15,90", rating: 4.4 },
+    { name: "Mix Sementes Canário", rating: 4.5 },
+    { name: "Ração Calopsita", rating: 4.7, popular: true },
+    { name: "Farinhada com Ovo", rating: 4.3 },
+    { name: "Petiscos Frutas Secas", rating: 4.4 },
   ],
   fish: [
-    { name: "Ração Flocos Tropical", price: "R$ 18,90", rating: 4.6, popular: true },
-    { name: "Ração Betta", price: "R$ 14,90", rating: 4.8 },
-    { name: "Algas Spirulina", price: "R$ 22,90", rating: 4.5 },
-    { name: "Ração Kinguio Gold", price: "R$ 16,90", rating: 4.3 },
+    { name: "Ração Flocos Tropical", rating: 4.6, popular: true },
+    { name: "Ração Betta", rating: 4.8 },
+    { name: "Algas Spirulina", rating: 4.5 },
+    { name: "Ração Kinguio Gold", rating: 4.3 },
   ],
 };
 
@@ -114,7 +114,7 @@ const FoodProducts = () => {
                 </div>
                 <h3 className="font-bold text-foreground text-xs sm:text-sm mb-2 leading-tight">{p.name}</h3>
                 <div className="flex items-center justify-between">
-                  <p className="text-lg sm:text-xl font-black text-primary">{p.price}</p>
+                  <p className="text-sm sm:text-base font-bold" style={{ color: "var(--verde)" }}>Consulte</p>
                   <a href="https://wa.me/5569992216764" className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-secondary flex items-center justify-center text-secondary-foreground text-sm font-bold hover:bg-secondary/90 transition-all duration-200">
                     +
                   </a>
