@@ -15,7 +15,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-sm leading-relaxed max-w-xs" style={{ color: "#78716c" }}>
-              Pet shop de bairro com 12 anos de história. Aqui, cada animal é tratado com nome e carinho.
+              Pet shop de bairro com 12 anos de história.
             </p>
             <div className="flex gap-3 mt-6">
               {[Instagram, Facebook, MessageCircle].map((Icon, i) => (
@@ -35,7 +35,7 @@ const Footer = () => {
 
           <div>
             <h4 className="text-[13px] uppercase tracking-widest mb-4" style={{ color: "#a8a29e" }}>Serviços</h4>
-            {["Banho & Tosa", "Tosa Higiênica", "Rações", "Entrega em domicílio", "Agendamento online"].map((l) => (
+            {["Banho & Tosa", "Tosa Higiênica", "Rações", "Entrega em domicílio"].map((l) => (
               <a key={l} href="#servicos" className="block text-sm mb-2 transition-colors duration-200" style={{ color: "#78716c" }}
                 onMouseEnter={(e) => e.currentTarget.style.color = "#16a34a"}
                 onMouseLeave={(e) => e.currentTarget.style.color = "#78716c"}
@@ -56,7 +56,7 @@ const Footer = () => {
           <div>
             <h4 className="text-[13px] uppercase tracking-widest mb-4" style={{ color: "#a8a29e" }}>Agendar</h4>
             <p className="text-sm mb-4" style={{ color: "#78716c" }}>
-              Marque seu horário rápido pelo WhatsApp ou pelo formulário.
+              Marque seu horário pelo WhatsApp ou formulário.
             </p>
             <a
               href="https://wa.me/5569992216764"
@@ -72,10 +72,7 @@ const Footer = () => {
 
         <div className="flex flex-col sm:flex-row justify-between items-center pt-8" style={{ borderTop: "1px solid #e7e5e4" }}>
           <p className="text-[13px]" style={{ color: "#a8a29e" }}>
-            © 2024 Patinhas & Cia — Todos os direitos reservados
-          </p>
-          <p className="text-xs" style={{ color: "#d6d3d1" }}>
-            Feito com carinho no bairro
+            © 2025 Patinhas & Cia — Todos os direitos reservados
           </p>
         </div>
       </div>

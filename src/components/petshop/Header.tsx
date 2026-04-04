@@ -1,33 +1,19 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Menu, X, Phone, Home, Scissors, Bone, Cat, Dog, MessageCircle } from "lucide-react";
 
 const navLinks = [
-  { label: "INÍCIO", href: "#inicio", icon: Home },
-  { label: "SERVIÇOS", href: "#servicos", icon: Scissors },
-  { label: "RAÇÕES", href: "#racoes", icon: Bone },
-  { label: "SOBRE", href: "#sobre", icon: Cat },
-  { label: "CONTATO", href: "#contato", icon: Dog },
+  { label: "INÍCIO", href: "#inicio" },
+  { label: "SERVIÇOS", href: "#servicos" },
+  { label: "RAÇÕES", href: "#racoes" },
+  { label: "SOBRE", href: "#sobre" },
+  { label: "CONTATO", href: "#contato" },
 ];
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeIcons, setActiveIcons] = useState<Array<{ icon: typeof Home; x: number; y: number; id: number; color: string }>>([]);
-  const idRef = useRef(0);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: typeof navLinks[0]) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height;
-    idRef.current += 1;
-    setActiveIcons(prev => [
-      ...prev.slice(-6),
-      { icon: link.icon, x, y, id: idRef.current, color: "#16a34a" }
-    ]);
-  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Topbar */}
       <div className="hidden md:flex items-center justify-center gap-6 py-1.5 text-xs font-medium text-white" style={{ background: "#16a34a" }}>
         <span>Seg–Sex: 8h–19h | Sáb: 8h–16h</span>
         <a href="https://wa.me/5569992216764" className="flex items-center gap-1 hover:underline">
@@ -35,7 +21,6 @@ const Header = () => {
         </a>
       </div>
 
-      {/* Navbar */}
       <div className="h-16 bg-white border-b" style={{ borderColor: "#e7e5e4" }}>
         <div className="max-w-[1100px] mx-auto flex items-center justify-between h-full px-4">
           <a href="#inicio" className="flex items-center gap-2.5">
@@ -56,7 +41,6 @@ const Header = () => {
                 style={{ color: "#57534e", fontFamily: "'DM Sans', sans-serif" }}
                 onMouseEnter={(e) => e.currentTarget.style.color = "#1c1917"}
                 onMouseLeave={(e) => e.currentTarget.style.color = "#57534e"}
-                onClick={(e) => handleNavClick(e, link)}
               >
                 <span className="relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-[#f97316] after:transition-all after:duration-200 hover:after:w-full">
                   {link.label}
@@ -94,21 +78,17 @@ const Header = () => {
 
       {mobileOpen && (
         <div className="md:hidden px-4 py-4 space-y-1 bg-white border-b" style={{ borderColor: "#e7e5e4" }}>
-          {navLinks.map((link) => {
-            const Icon = link.icon;
-            return (
-              <a
-                key={link.href}
-                href={link.href}
-                className="flex items-center gap-3 text-sm font-semibold tracking-wider py-3 border-b"
-                style={{ color: "#57534e", borderColor: "#f5f5f4" }}
-                onClick={() => setMobileOpen(false)}
-              >
-                <Icon className="w-4 h-4" style={{ color: "#16a34a" }} />
-                {link.label}
-              </a>
-            );
-          })}
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="block text-sm font-semibold tracking-wider py-3 border-b"
+              style={{ color: "#57534e", borderColor: "#f5f5f4" }}
+              onClick={() => setMobileOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
           <div className="flex gap-3 pt-3">
             <a href="https://wa.me/5569992216764" className="flex-1 text-center rounded-md py-3 text-xs font-semibold tracking-wider" style={{ border: "1.5px solid #e7e5e4", color: "#57534e" }}>
               WHATSAPP
@@ -119,24 +99,6 @@ const Header = () => {
           </div>
         </div>
       )}
-
-      {/* Animal icons that STAY */}
-      {activeIcons.map((a) => {
-        const Icon = a.icon;
-        return (
-          <div
-            key={a.id}
-            className="fixed pointer-events-none z-[100]"
-            style={{
-              left: a.x - 12,
-              top: a.y,
-              animation: "animalBounceStay 0.6s ease-out forwards",
-            }}
-          >
-            <Icon className="w-6 h-6 drop-shadow-lg" style={{ color: a.color }} />
-          </div>
-        );
-      })}
     </header>
   );
 };

@@ -8,18 +8,19 @@ const services = [
     price: "Consulte",
     badge: "Mais pedido",
     badgeIcon: Star,
+    featured: true,
   },
   {
     icon: Scissors,
     title: "Tosa Higiênica",
-    desc: "Higienização das áreas sensíveis com cuidado e segurança. Recomendado mensalmente.",
+    desc: "Higienização das áreas sensíveis com cuidado e segurança.",
     price: "Consulte",
   },
   {
     icon: Bone,
     title: "Rações & Petiscos",
-    desc: "Linha completa de rações de qualidade. Entrega no bairro no mesmo dia, sem valor mínimo.",
-    price: "Consulte estoque",
+    desc: "Linha completa de rações de qualidade. Entrega no bairro no mesmo dia.",
+    price: "Consulte",
     badge: "Entrega rápida",
     badgeIcon: Truck,
   },
@@ -29,65 +30,55 @@ const Services = () => {
   return (
     <section id="servicos" className="py-16 md:py-20 px-4 bg-white">
       <div className="max-w-[1100px] mx-auto">
-        <p className="text-xs uppercase tracking-widest font-medium mb-3" style={{ color: "var(--verde)" }}>
-          O que a gente faz
-        </p>
-        <h2 className="text-2xl md:text-[2.6rem] font-black mb-2 max-w-[500px] leading-tight" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "var(--txt)" }}>
-          Serviços que o seu pet merece
+        <h2 className="text-2xl md:text-[2.4rem] font-black mb-10 leading-tight" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
+          Banho, tosa e ração
         </h2>
-        <p className="text-base mb-12" style={{ color: "var(--txt2)" }}>
-          Atendimento personalizado. Sem pressa, sem franquia.
-        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {services.map((s) => {
+          {services.map((s, idx) => {
             const Icon = s.icon;
             return (
               <div
                 key={s.title}
-                className="group relative rounded-xl p-7 bg-white overflow-hidden cursor-pointer transition-all duration-250 hover:-translate-y-1"
-                style={{ border: "1px solid var(--borda)" }}
+                className="group relative rounded-xl p-7 bg-white overflow-hidden cursor-pointer transition-all duration-250"
+                style={{ border: "1px solid #e7e5e4" }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--verde)";
-                  e.currentTarget.style.boxShadow = "0 12px 32px rgba(22,163,74,0.12)";
+                  if (idx === 0) {
+                    e.currentTarget.style.background = "#f0fdf4";
+                  } else {
+                    e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.06)";
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "var(--borda)";
+                  e.currentTarget.style.background = "#fff";
                   e.currentTarget.style.boxShadow = "none";
                 }}
               >
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-[3px] transition-transform duration-250 origin-left scale-x-0 group-hover:scale-x-100"
-                  style={{ background: "var(--laranja)" }}
-                />
-
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ background: "var(--verde-bg)" }}>
-                  <Icon className="w-6 h-6" style={{ color: "var(--verde)" }} />
-                </div>
+                <Icon className="w-6 h-6 mb-4" style={{ color: "#16a34a" }} />
 
                 {s.badge && (
                   <span
                     className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold mb-3"
-                    style={{ background: "var(--amarelo)", border: "1px solid var(--amarelo-borda)", color: "var(--amarelo-texto)" }}
+                    style={{ background: "#fef9c3", border: "1px solid #fde047", color: "#713f12" }}
                   >
                     {s.badgeIcon && <s.badgeIcon className="w-3 h-3" />}
                     {s.badge}
                   </span>
                 )}
 
-                <h3 className="text-xl font-bold mb-2" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "var(--txt)" }}>
+                <h3 className="text-xl font-bold mb-2" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
                   {s.title}
                 </h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--txt2)" }}>{s.desc}</p>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: "#78716c" }}>{s.desc}</p>
 
-                <div className="pt-4" style={{ borderTop: "1px solid var(--borda)" }}>
-                  <span className="font-bold" style={{ color: "var(--verde)" }}>{s.price}</span>
+                <div className="pt-4" style={{ borderTop: "1px solid #e7e5e4" }}>
+                  <span className="font-bold" style={{ color: "#16a34a" }}>{s.price}</span>
                 </div>
 
                 <a
                   href="https://wa.me/5569992216764"
-                  className="mt-3 inline-block rounded-md px-4 py-2 text-sm font-bold text-white opacity-0 translate-y-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0"
-                  style={{ background: "var(--laranja)" }}
+                  className="mt-3 inline-block rounded-md px-4 py-2 text-sm font-bold text-white transition-all duration-200"
+                  style={{ background: "#f97316" }}
                 >
                   Agendar →
                 </a>
