@@ -91,38 +91,40 @@ const FoodProducts = () => {
         </div>
 
         <div className={`grid grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-200 ${tabChanged ? "opacity-0 scale-[0.98]" : "opacity-100 scale-100"}`}>
-          {products[activeTab].map((p, i) => (
+          {products[activeTab].map((p, i) => {
+            const isFirst = i === 0;
+            return (
             <div
               key={p.name}
-              className={`bg-white rounded-xl overflow-hidden transition-all duration-300 relative group cursor-pointer border border-stone-200 hover:shadow-md ${
-                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}
+              className={`bg-white rounded-xl overflow-hidden transition-all duration-300 relative group cursor-pointer border hover:shadow-md ${
+                isFirst ? "col-span-2 row-span-1 border-[#16a34a] border-[1.5px]" : "border-stone-200"
+              } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
               style={{ transitionDelay: `${i * 80}ms` }}
               onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
               onMouseLeave={(e) => e.currentTarget.style.transform = "none"}
             >
               {p.popular && (
-                <span className="absolute top-2 left-2 bg-[#1c1917] text-white font-bold text-[10px] z-10 px-2 py-1 rounded-md">
-                  Popular
+                <span className={`absolute top-2 left-2 text-white font-bold text-[10px] z-10 px-2 py-1 rounded-md ${isFirst ? "bg-[#16a34a]" : "bg-[#1c1917]"}`}>
+                  {isFirst ? "⭐ Queridinho" : "Popular"}
                 </span>
               )}
-              <div className="bg-stone-100 w-full h-28 sm:h-36 flex items-center justify-center">
+              <div className={`bg-stone-100 w-full flex items-center justify-center ${isFirst ? "h-40 sm:h-52" : "h-28 sm:h-36"}`}>
                 <span className="text-stone-300 text-xs">Foto do produto</span>
               </div>
-              <div className="p-3 sm:p-4">
+              <div className={`${isFirst ? "p-4 sm:p-5" : "p-3 sm:p-4"}`}>
                 <div className="flex items-center gap-0.5 mb-1.5">
                   {Array.from({ length: 5 }, (_, j) => (
                     <Star
                       key={j}
-                      className={`w-3 h-3 ${j < Math.floor(p.rating) ? "text-yellow-400 fill-yellow-400" : "text-stone-200"}`}
+                      className={`${isFirst ? "w-4 h-4" : "w-3 h-3"} ${j < Math.floor(p.rating) ? "text-yellow-400 fill-yellow-400" : "text-stone-200"}`}
                     />
                   ))}
                   <span className="text-stone-400 text-[10px] ml-1">{p.rating}</span>
                 </div>
-                <h3 className="font-bold text-stone-800 text-xs sm:text-sm mb-3 leading-tight">{p.name}</h3>
+                <h3 className={`font-bold text-stone-800 mb-3 leading-tight ${isFirst ? "text-base sm:text-lg" : "text-xs sm:text-sm"}`}>{p.name}</h3>
                 <a
                   href="https://wa.me/5569992216764"
-                  className="text-xs font-semibold hover:underline"
+                  className={`font-semibold hover:underline ${isFirst ? "text-sm" : "text-xs"}`}
                   style={{ color: "#16a34a" }}
                 >
                   Consultar preço →
