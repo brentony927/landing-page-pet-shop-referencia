@@ -95,7 +95,7 @@ const FoodProducts = () => {
               style={{ transitionDelay: `${i * 60}ms` }}
             >
               {p.popular && (
-                <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-accent text-accent-foreground font-bold text-[10px] sm:text-xs z-10 px-2 py-0.5 sm:py-1 rounded-md">
+                <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-primary text-primary-foreground font-bold text-[10px] sm:text-xs z-10 px-2 py-0.5 sm:py-1 rounded-md">
                   Queridinho
                 </span>
               )}
@@ -125,7 +125,7 @@ const FoodProducts = () => {
         </div>
 
         <div className="text-center mt-10">
-          <a href="https://wa.me/5569992216764" className="bg-primary text-primary-foreground font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(25_95%_53%/0.35)] transition-all duration-200 inline-block">
+          <a href="https://wa.me/5569992216764" className="bg-secondary text-secondary-foreground font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(142_72%_37%/0.3)] transition-all duration-200 inline-block">
             Ver tudo →
           </a>
         </div>

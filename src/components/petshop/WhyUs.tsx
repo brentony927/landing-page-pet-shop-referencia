@@ -30,7 +30,7 @@ const AnimatedNumber = ({ target, suffix, active }: { target: number; suffix: st
   }, [active, target]);
 
   return (
-    <span className="text-4xl sm:text-5xl md:text-6xl font-black text-accent">
+    <span className="text-4xl sm:text-5xl md:text-6xl font-black text-secondary">
       {target % 1 !== 0 ? value.toFixed(1) : value.toLocaleString("pt-BR")}
       {suffix}
     </span>
@@ -41,13 +41,13 @@ const WhyUs = () => {
   const { ref, visible } = useInView(0.3);
 
   return (
-    <section className="py-14 bg-petshop-teal" ref={ref}>
+    <section className="py-14 bg-background border-y border-border" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="mb-10 md:mb-14">
-          <h2 className="text-3xl md:text-4xl font-black text-primary-foreground mb-3">
+          <h2 className="text-3xl md:text-4xl font-black text-foreground mb-3">
             Números que contam nossa história
           </h2>
-          <p className="text-primary-foreground/50 text-lg">Resultados de quem trabalha com amor</p>
+          <p className="text-muted-foreground text-lg">Resultados de quem trabalha com amor</p>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center max-w-3xl mx-auto gap-4 md:gap-0">
@@ -56,16 +56,16 @@ const WhyUs = () => {
             return (
               <div key={s.label} className="flex-1 text-center p-4 sm:p-6 relative w-full md:w-auto">
                 <div className="flex justify-center mb-3 md:mb-4">
-                  <div className="bg-primary-foreground/10 rounded-lg p-4 md:p-5">
-                    <Icon className="w-8 h-8 md:w-10 md:h-10 text-accent" />
+                  <div className="bg-secondary/10 rounded-lg p-4 md:p-5">
+                    <Icon className="w-8 h-8 md:w-10 md:h-10 text-secondary" />
                   </div>
                 </div>
                 <AnimatedNumber target={s.number} suffix={s.suffix} active={visible} />
-                <p className="text-primary-foreground/60 font-medium mt-2 text-sm md:text-base">{s.label}</p>
+                <p className="text-muted-foreground font-medium mt-2 text-sm md:text-base">{s.label}</p>
                 {i < stats.length - 1 && (
                   <>
-                    <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-16 bg-primary-foreground/15" />
-                    <div className="md:hidden w-24 h-px bg-primary-foreground/15 mx-auto mt-4" />
+                    <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-16 bg-border" />
+                    <div className="md:hidden w-24 h-px bg-border mx-auto mt-4" />
                   </>
                 )}
               </div>
