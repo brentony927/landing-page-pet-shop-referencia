@@ -131,7 +131,8 @@ const FoodProducts = () => {
                 </a>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="text-center mt-10 md:hidden">
