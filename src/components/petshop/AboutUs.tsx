@@ -27,7 +27,7 @@ const AboutUs = () => {
 
             {/* Blockquote com fundo amarelo quente */}
             <div className="relative bg-accent/30 border border-accent rounded-lg p-8 my-8">
-              <span className="absolute -top-3 left-6 text-7xl leading-none text-primary" style={{ fontFamily: "Georgia, serif" }}>"</span>
+              <span className="absolute -top-3 left-6 text-7xl leading-none text-secondary" style={{ fontFamily: "Georgia, serif" }}>"</span>
               <p className="text-foreground text-lg leading-relaxed pt-4">
                 Comecei sozinho, com um balde e uma mangueira. Hoje tenho equipe, mas ainda sou eu que abro a porta todo dia.
               </p>
@@ -47,7 +47,7 @@ const AboutUs = () => {
               ))}
             </ul>
 
-            <a href="https://wa.me/5569992216764" className="inline-block bg-primary text-primary-foreground font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(25_95%_53%/0.35)] transition-all duration-200">
+            <a href="https://wa.me/5569992216764" className="inline-block bg-secondary text-secondary-foreground font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(142_72%_37%/0.3)] transition-all duration-200">
               Fale com a gente →
             </a>
           </div>

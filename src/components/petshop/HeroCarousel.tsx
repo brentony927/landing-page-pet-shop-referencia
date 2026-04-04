@@ -64,34 +64,36 @@ const HeroCarousel = () => {
 
   return (
     <section id="inicio" className="pt-[3.5rem] md:pt-[5.5rem]">
-      <div className="bg-petshop-teal relative overflow-hidden min-h-[400px] md:min-h-[560px]">
-        {/* Decorative circle */}
-        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full bg-secondary/10 z-0" />
+      {/* Fundo branco com shape decorativo verde claro */}
+      <div className="bg-background relative overflow-hidden min-h-[400px] md:min-h-[560px]">
+        {/* Decorative shape */}
+        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full bg-secondary/8 z-0" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-secondary/5 z-0" />
         
         <div className={`container mx-auto px-4 py-12 md:py-24 relative z-10 transition-all duration-200 ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`} style={{ willChange: "opacity, transform" }}>
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-primary-foreground leading-tight mb-4 md:mb-6">
-              {slide.title} <span className="text-accent">{slide.highlight}</span>{slide.titleEnd}
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-foreground leading-tight mb-4 md:mb-6">
+              {slide.title} <span className="text-secondary">{slide.highlight}</span>{slide.titleEnd}
             </h1>
-            <p className="text-primary-foreground/60 text-base md:text-xl max-w-xl mx-auto mb-8 md:mb-10">
+            <p className="text-muted-foreground text-base md:text-xl max-w-xl mx-auto mb-8 md:mb-10">
               {slide.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <a href={slide.cta1Link} className="bg-primary text-primary-foreground font-bold px-8 md:px-10 py-3 md:py-4 rounded-md text-sm tracking-wider uppercase shadow-lg hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(25_95%_53%/0.4)] transition-all duration-200">
+              <a href={slide.cta1Link} className="bg-secondary text-secondary-foreground font-bold px-8 md:px-10 py-3 md:py-4 rounded-md text-sm tracking-wider uppercase shadow-lg hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(142_72%_37%/0.3)] transition-all duration-200">
                 {slide.cta1}
               </a>
-              <a href={slide.cta2Link} className="border-[1.5px] border-primary-foreground/30 text-primary-foreground font-bold px-6 md:px-8 py-3 md:py-4 rounded-md text-sm tracking-wider hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-200">
+              <a href={slide.cta2Link} className="border-[1.5px] border-foreground/20 text-foreground font-bold px-6 md:px-8 py-3 md:py-4 rounded-md text-sm tracking-wider hover:bg-muted hover:border-foreground/40 transition-all duration-200">
                 {slide.cta2}
               </a>
             </div>
           </div>
         </div>
 
-        <button onClick={prev} className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-md p-2 md:p-3 transition-all duration-200 z-20 backdrop-blur-sm">
-          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-primary-foreground" />
+        <button onClick={prev} className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-foreground/5 hover:bg-foreground/10 rounded-md p-2 md:p-3 transition-all duration-200 z-20">
+          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
         </button>
-        <button onClick={next} className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-md p-2 md:p-3 transition-all duration-200 z-20 backdrop-blur-sm">
-          <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-primary-foreground" />
+        <button onClick={next} className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-foreground/5 hover:bg-foreground/10 rounded-md p-2 md:p-3 transition-all duration-200 z-20">
+          <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
         </button>
       </div>
 
@@ -124,7 +126,7 @@ const HeroCarousel = () => {
             {i === current && (
               <div
                 key={progressKey}
-                className="absolute inset-0 bg-primary rounded-sm animate-progress"
+                className="absolute inset-0 bg-secondary rounded-sm animate-progress"
                 style={{ "--duration": `${SLIDE_DURATION}ms` } as React.CSSProperties}
               />
             )}
