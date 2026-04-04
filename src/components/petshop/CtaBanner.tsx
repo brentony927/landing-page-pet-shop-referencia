@@ -1,12 +1,15 @@
+import { Gift, Calendar, MessageCircle } from "lucide-react";
+
 const CtaBanner = () => {
   return (
     <section className="py-16 md:py-20 px-4 text-center text-white" style={{ background: "var(--verde-escuro)" }}>
       <div className="max-w-[800px] mx-auto">
         <span
-          className="inline-block rounded-full px-4 py-2 text-sm font-semibold mb-4"
+          className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold mb-4"
           style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.2)" }}
         >
-          🎁 Para clientes do bairro
+          <Gift className="w-4 h-4" />
+          Para clientes do bairro
         </span>
 
         <h2
@@ -23,7 +26,7 @@ const CtaBanner = () => {
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <a
             href="https://wa.me/5569992216764"
-            className="rounded-md px-8 py-4 font-bold text-lg text-white transition-all duration-200 hover:-translate-y-0.5"
+            className="rounded-md px-8 py-4 font-bold text-lg text-white transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center justify-center gap-2"
             style={{ background: "var(--laranja)" }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = "var(--laranja-escuro)";
@@ -34,11 +37,12 @@ const CtaBanner = () => {
               e.currentTarget.style.boxShadow = "none";
             }}
           >
-            📅 AGENDAR AGORA
+            <Calendar className="w-5 h-5" />
+            AGENDAR AGORA
           </a>
           <a
             href="https://wa.me/5569992216764"
-            className="rounded-md px-8 py-4 font-semibold text-white transition-all duration-200"
+            className="rounded-md px-8 py-4 font-semibold text-white transition-all duration-200 inline-flex items-center justify-center gap-2"
             style={{ border: "2px solid rgba(255,255,255,0.5)" }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = "#fff";
@@ -49,7 +53,8 @@ const CtaBanner = () => {
               e.currentTarget.style.background = "transparent";
             }}
           >
-            💬 Falar pelo WhatsApp
+            <MessageCircle className="w-5 h-5" />
+            Falar pelo WhatsApp
           </a>
         </div>
       </div>
