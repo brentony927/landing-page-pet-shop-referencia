@@ -1,26 +1,4 @@
-import { Bath, Scissors, Bone, Truck, Star } from "lucide-react";
-
-const services = [
-  {
-    icon: Bath,
-    title: "Banho & Tosa",
-    desc: "Banho completo com produtos profissionais, secagem e acabamento pra todas as raças.",
-    price: "Consulte",
-    highlight: true,
-  },
-  {
-    icon: Scissors,
-    title: "Tosa Higiênica",
-    desc: "Higienização das áreas sensíveis com cuidado e segurança.",
-    price: "Consulte",
-  },
-  {
-    icon: Bone,
-    title: "Rações & Petiscos",
-    desc: "Linha completa de rações de qualidade. Entrega no bairro no mesmo dia.",
-    price: "Consulte",
-  },
-];
+import { Bath, Scissors, Bone, Truck, Star, ArrowRight } from "lucide-react";
 
 const Services = () => {
   return (
@@ -35,50 +13,93 @@ const Services = () => {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {services.map((s, idx) => {
-            const Icon = s.icon;
-            return (
-              <div
-                key={s.title}
-                className="group relative rounded-2xl p-7 bg-white overflow-hidden cursor-pointer transition-all duration-300"
-                style={{ border: `1.5px solid ${s.highlight ? "#16a34a" : "#e7e5e4"}` }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-3px)";
-                  e.currentTarget.style.boxShadow = "0 12px 32px rgba(0,0,0,0.08)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "none";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
-                {s.highlight && (
-                  <span className="absolute top-0 right-6 bg-[#16a34a] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-b-md">
-                    Mais pedido
-                  </span>
-                )}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+          {/* DESTAQUE — Banho & Tosa ocupa 7 colunas */}
+          <div
+            className="md:col-span-7 relative rounded-2xl p-8 md:p-10 overflow-hidden cursor-pointer transition-all duration-300 group"
+            style={{ background: "#f0fdf4", border: "1.5px solid #16a34a" }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 16px 40px rgba(22,163,74,0.12)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "none"; }}
+          >
+            <span className="absolute top-0 right-6 bg-[#16a34a] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-b-md">
+              Mais pedido
+            </span>
+            <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5" style={{ background: "#16a34a" }}>
+              <Bath className="w-7 h-7 text-white" />
+            </div>
+            <h3 className="text-2xl md:text-3xl font-black mb-3" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
+              Banho & Tosa
+            </h3>
+            <p className="text-base leading-relaxed mb-6 max-w-md" style={{ color: "#57534e" }}>
+              Banho completo com produtos profissionais, secagem e acabamento pra todas as raças. Seu pet sai cheiroso e bonito.
+            </p>
+            <a
+              href="https://wa.me/5569992216764"
+              className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5"
+              style={{ background: "#f97316" }}
+              onMouseEnter={(e) => e.currentTarget.style.background = "#c2410c"}
+              onMouseLeave={(e) => e.currentTarget.style.background = "#f97316"}
+            >
+              Agendar agora <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
 
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style={{ background: idx === 0 ? "#f0fdf4" : "#f5f5f4" }}>
-                  <Icon className="w-5 h-5" style={{ color: idx === 0 ? "#16a34a" : "#78716c" }} />
+          {/* Cards menores empilhados — 5 colunas */}
+          <div className="md:col-span-5 flex flex-col gap-4">
+            <div
+              className="rounded-2xl p-6 bg-white cursor-pointer transition-all duration-300"
+              style={{ border: "1.5px solid #e7e5e4" }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.06)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-stone-100">
+                  <Scissors className="w-5 h-5" style={{ color: "#7c3aed" }} />
                 </div>
-
-                <h3 className="text-xl font-bold mb-2" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
-                  {s.title}
-                </h3>
-                <p className="text-sm leading-relaxed mb-6" style={{ color: "#78716c" }}>{s.desc}</p>
-
-                <a
-                  href="https://wa.me/5569992216764"
-                  className="inline-block rounded-lg px-5 py-2.5 text-sm font-bold text-white transition-all duration-200"
-                  style={{ background: "#f97316" }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = "#c2410c"}
-                  onMouseLeave={(e) => e.currentTarget.style.background = "#f97316"}
-                >
-                  Agendar →
-                </a>
+                <div>
+                  <h3 className="text-lg font-bold mb-1" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>Tosa Higiênica</h3>
+                  <p className="text-sm leading-relaxed mb-3" style={{ color: "#78716c" }}>Higienização das áreas sensíveis com cuidado e segurança.</p>
+                  <a href="https://wa.me/5569992216764" className="text-sm font-semibold hover:underline" style={{ color: "#16a34a" }}>Agendar →</a>
+                </div>
               </div>
-            );
-          })}
+            </div>
+
+            <div
+              className="rounded-2xl p-6 bg-white cursor-pointer transition-all duration-300"
+              style={{ border: "1.5px solid #e7e5e4" }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.06)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-stone-100">
+                  <Bone className="w-5 h-5" style={{ color: "#f97316" }} />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-1" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>Rações & Petiscos</h3>
+                  <p className="text-sm leading-relaxed mb-3" style={{ color: "#78716c" }}>Linha completa de rações. Entrega no bairro no mesmo dia.</p>
+                  <a href="https://wa.me/5569992216764" className="text-sm font-semibold hover:underline" style={{ color: "#16a34a" }}>Ver rações →</a>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="rounded-2xl p-6 cursor-pointer transition-all duration-300"
+              style={{ background: "#1c1917" }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.15)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "none"; }}
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "#f97316" }}>
+                  <Truck className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-white">Entrega no mesmo dia</h3>
+                  <p className="text-xs text-stone-400">No bairro, sem taxa mínima</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-stone-500 ml-auto" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
