@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Bath, Bone, Scissors, Truck, Stethoscope, Heart, Dog, Cat, Drumstick, Sparkles, Pill, Gamepad2, Watch, Tag, ChevronDown, PawPrint } from "lucide-react";
+import { Bath, Bone, Scissors, Truck, Stethoscope, Heart, Dog, Cat, Drumstick, Sparkles, Pill, Gamepad2, Watch, Tag, ChevronDown } from "lucide-react";
 
-const navCategories = [
-  { label: "Cachorro", icon: Dog, color: "#f97316", bg: "#fff7ed", subs: ["Ração Seca", "Ração Úmida", "Petiscos", "Brinquedos", "Coleiras", "Camas"] },
-  { label: "Gato", icon: Cat, color: "#7c3aed", bg: "#f5f3ff", subs: ["Ração Seca", "Ração Úmida", "Areia Higiênica", "Arranhadores", "Brinquedos"] },
+const mainCategories = [
+  { label: "Cachorro", icon: Dog, color: "#f97316", bg: "#fff7ed", big: true, subs: ["Ração Seca", "Ração Úmida", "Petiscos", "Brinquedos", "Coleiras", "Camas"] },
+  { label: "Gato", icon: Cat, color: "#7c3aed", bg: "#f5f3ff", big: true, subs: ["Ração Seca", "Ração Úmida", "Areia Higiênica", "Arranhadores", "Brinquedos"] },
   { label: "Rações", icon: Bone, color: "#16a34a", bg: "#f0fdf4", subs: ["Premium", "Super Premium", "Natural", "Filhotes", "Adultos", "Idosos"] },
   { label: "Petiscos", icon: Drumstick, color: "#ea580c", bg: "#fff7ed", subs: ["Bifinhos", "Ossos", "Dental", "Snacks", "Biscoitos"] },
   { label: "Higiene", icon: Bath, color: "#0891b2", bg: "#ecfeff", subs: ["Shampoo", "Condicionador", "Perfume", "Lenços", "Tapete Higiênico"] },
@@ -41,15 +41,65 @@ const Categories = () => {
     if (closeTimeout.current) clearTimeout(closeTimeout.current);
   };
 
-  const activeCategory = navCategories.find(c => c.label === activeNav);
+  const activeCategory = mainCategories.find(c => c.label === activeNav);
 
   return (
     <>
-      {/* Category icons grid */}
       <section className="py-8 px-4 bg-white">
         <div className="max-w-[1100px] mx-auto">
-          <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
-            {navCategories.map((cat) => {
+          {/* Top row: Cachorro + Gato big, rest smaller */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-3">
+            {mainCategories.filter(c => c.big).map((cat) => {
+              const Icon = cat.icon;
+              const isActive = activeNav === cat.label;
+              return (
+                <div
+                  key={cat.label}
+                  className="relative md:col-span-1"
+                  onMouseEnter={() => handleNavEnter(cat.label)}
+                  onMouseLeave={handleNavLeave}
+                >
+                  <button
+                    className="w-full flex flex-col items-center gap-2 py-5 px-3 rounded-2xl transition-all duration-200"
+                    style={{ background: isActive ? cat.bg : "#fafaf9", border: isActive ? `2px solid ${cat.color}40` : "2px solid transparent" }}
+                  >
+                    <div className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-200" style={{ background: isActive ? cat.color : "#f0efed" }}>
+                      <Icon className="w-7 h-7" style={{ color: isActive ? "#fff" : cat.color }} />
+                    </div>
+                    <span className="text-sm font-bold" style={{ color: isActive ? cat.color : "#1c1917" }}>{cat.label}</span>
+                  </button>
+                </div>
+              );
+            })}
+
+            {/* Remaining categories smaller */}
+            {mainCategories.filter(c => !c.big).slice(0, 3).map((cat) => {
+              const Icon = cat.icon;
+              const isActive = activeNav === cat.label;
+              return (
+                <div
+                  key={cat.label}
+                  className="relative"
+                  onMouseEnter={() => handleNavEnter(cat.label)}
+                  onMouseLeave={handleNavLeave}
+                >
+                  <button
+                    className="w-full flex flex-col items-center gap-1.5 py-4 px-2 rounded-xl transition-all duration-200"
+                    style={{ background: isActive ? cat.bg : "transparent" }}
+                  >
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: isActive ? cat.color : "#f5f5f4" }}>
+                      <Icon className="w-4.5 h-4.5" style={{ color: isActive ? "#fff" : cat.color, width: 18, height: 18 }} />
+                    </div>
+                    <span className="text-[11px] font-semibold" style={{ color: isActive ? cat.color : "#57534e" }}>{cat.label}</span>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom row: rest of categories */}
+          <div className="grid grid-cols-5 md:grid-cols-7 gap-2">
+            {mainCategories.filter(c => !c.big).slice(3).map((cat) => {
               const Icon = cat.icon;
               const isActive = activeNav === cat.label;
               return (
@@ -61,24 +111,12 @@ const Categories = () => {
                 >
                   <button
                     className="w-full flex flex-col items-center gap-1.5 py-3 px-1 rounded-xl transition-all duration-200"
-                    style={{
-                      background: isActive ? cat.bg : "transparent",
-                    }}
+                    style={{ background: isActive ? cat.bg : "transparent" }}
                   >
-                    <div
-                      className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200"
-                      style={{
-                        background: isActive ? cat.color : "#f5f5f4",
-                      }}
-                    >
-                      <Icon className="w-5 h-5" style={{ color: isActive ? "#fff" : cat.color }} />
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: isActive ? cat.color : "#f5f5f4" }}>
+                      <Icon className="w-4 h-4" style={{ color: isActive ? "#fff" : cat.color }} />
                     </div>
-                    <span
-                      className="text-[11px] font-semibold whitespace-nowrap"
-                      style={{ color: isActive ? cat.color : "#57534e" }}
-                    >
-                      {cat.label}
-                    </span>
+                    <span className="text-[11px] font-semibold" style={{ color: isActive ? cat.color : "#57534e" }}>{cat.label}</span>
                   </button>
                 </div>
               );
@@ -89,7 +127,7 @@ const Categories = () => {
         {/* Dropdown */}
         {activeCategory && (
           <div
-            className="max-w-[1100px] mx-auto mt-2 rounded-xl bg-white border animate-fadeDown"
+            className="max-w-[1100px] mx-auto mt-3 rounded-xl bg-white border animate-fadeDown"
             style={{ borderColor: "#e7e5e4", boxShadow: "0 8px 24px rgba(0,0,0,0.08)" }}
             onMouseEnter={handleDropdownEnter}
             onMouseLeave={handleNavLeave}
@@ -137,9 +175,7 @@ const Categories = () => {
                   onMouseLeave={() => setHoveredService(null)}
                 >
                   <Icon size={16} style={{ color: s.color }} />
-                  <span className="text-sm font-semibold" style={{ color: isHovered ? s.color : "#57534e" }}>
-                    {s.title}
-                  </span>
+                  <span className="text-sm font-semibold" style={{ color: isHovered ? s.color : "#57534e" }}>{s.title}</span>
                 </div>
               );
             })}
