@@ -153,9 +153,9 @@ const Categories = () => {
               </div>
               <div className="flex flex-wrap gap-2">
                 {activeCategory.subs.map(sub => (
-                  <a
+                  <Link
                     key={sub}
-                    href={`#${activeCategory.label.toLowerCase()}`}
+                    to={`/categoria/${activeCategory.label.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}
                     className="px-4 py-2 rounded-lg text-sm transition-all duration-200 hover:-translate-y-0.5"
                     style={{ background: "#f5f5f4", color: "#57534e" }}
                     onMouseEnter={(e) => { e.currentTarget.style.background = "var(--verde-bg)"; e.currentTarget.style.color = "var(--verde)"; }}
