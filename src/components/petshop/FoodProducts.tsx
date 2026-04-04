@@ -49,6 +49,7 @@ const FoodProducts = () => {
   const { ref, visible } = useInView(0.1);
 
   const handleTabChange = (key: string) => {
+    if (key === activeTab) return;
     setTabChanged(true);
     setTimeout(() => {
       setActiveTab(key);
@@ -57,26 +58,30 @@ const FoodProducts = () => {
   };
 
   return (
-    <section id="racoes" className="py-14 bg-background" ref={ref}>
-      <div className="container mx-auto px-4">
-        <div className="mb-10">
-          <h2 className="text-3xl md:text-4xl font-black text-foreground">
-            Ração que seu pet come até o fundo
+    <section id="racoes" className="py-16 md:py-20 px-4 bg-white" ref={ref}>
+      <div className="max-w-[1100px] mx-auto">
+        <div className="flex items-end justify-between mb-10">
+          <h2 className="text-2xl md:text-[2rem] font-black" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
+            Rações e petiscos
           </h2>
+          <a href="https://wa.me/5569992216764" className="hidden md:block text-sm font-semibold hover:underline" style={{ color: "#16a34a" }}>
+            Ver tudo →
+          </a>
         </div>
 
-        <div className="flex gap-2 sm:gap-3 mb-10 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
+        <div className="flex gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide">
           {categories.map((cat) => {
             const Icon = cat.icon;
+            const isActive = activeTab === cat.key;
             return (
               <button
                 key={cat.key}
                 onClick={() => handleTabChange(cat.key)}
-                className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md font-bold text-sm transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
-                  activeTab === cat.key
-                    ? "bg-secondary text-secondary-foreground shadow-green"
-                    : "bg-muted text-muted-foreground border border-border hover:border-secondary/40"
-                }`}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 whitespace-nowrap flex-shrink-0"
+                style={{
+                  background: isActive ? "#1c1917" : "#f5f5f4",
+                  color: isActive ? "#fff" : "#78716c",
+                }}
               >
                 <Icon className="w-4 h-4" />
                 {cat.label}
@@ -85,48 +90,51 @@ const FoodProducts = () => {
           })}
         </div>
 
-        <div className={`grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 transition-all duration-150 ${tabChanged ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+        <div className={`grid grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-200 ${tabChanged ? "opacity-0 scale-[0.98]" : "opacity-100 scale-100"}`}>
           {products[activeTab].map((p, i) => (
             <div
               key={p.name}
-              className={`bg-background rounded-lg overflow-hidden transition-all duration-200 relative group cursor-pointer hover:-translate-y-1 hover:shadow-[0_8px_24px_hsl(142_72%_37%/0.12)] border border-border hover:border-secondary ${
-                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              className={`bg-white rounded-xl overflow-hidden transition-all duration-300 relative group cursor-pointer border border-stone-200 hover:shadow-md ${
+                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
-              style={{ transitionDelay: `${i * 60}ms` }}
+              style={{ transitionDelay: `${i * 80}ms` }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
+              onMouseLeave={(e) => e.currentTarget.style.transform = "none"}
             >
               {p.popular && (
-                <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-primary text-primary-foreground font-bold text-[10px] sm:text-xs z-10 px-2 py-0.5 sm:py-1 rounded-md">
-                  Queridinho
+                <span className="absolute top-2 left-2 bg-[#1c1917] text-white font-bold text-[10px] z-10 px-2 py-1 rounded-md">
+                  Popular
                 </span>
               )}
-              <div className="bg-muted w-full h-24 sm:h-32 flex items-center justify-center">
-                <span className="text-muted-foreground/40 text-xs sm:text-sm">A SUA IMAGEM AQUI</span>
+              <div className="bg-stone-100 w-full h-28 sm:h-36 flex items-center justify-center">
+                <span className="text-stone-300 text-xs">Foto do produto</span>
               </div>
               <div className="p-3 sm:p-4">
-                <div className="flex items-center gap-0.5 mb-1 sm:mb-2">
+                <div className="flex items-center gap-0.5 mb-1.5">
                   {Array.from({ length: 5 }, (_, j) => (
                     <Star
                       key={j}
-                      className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${j < Math.floor(p.rating) ? "text-accent fill-accent" : "text-border"}`}
+                      className={`w-3 h-3 ${j < Math.floor(p.rating) ? "text-yellow-400 fill-yellow-400" : "text-stone-200"}`}
                     />
                   ))}
-                  <span className="text-muted-foreground text-[10px] sm:text-xs ml-1">{p.rating}</span>
+                  <span className="text-stone-400 text-[10px] ml-1">{p.rating}</span>
                 </div>
-                <h3 className="font-bold text-foreground text-xs sm:text-sm mb-2 leading-tight">{p.name}</h3>
-                <div className="flex items-center justify-between">
-                  <p className="text-sm sm:text-base font-bold" style={{ color: "var(--verde)" }}>Consulte</p>
-                  <a href="https://wa.me/5569992216764" className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-secondary flex items-center justify-center text-secondary-foreground text-sm font-bold hover:bg-secondary/90 transition-all duration-200">
-                    +
-                  </a>
-                </div>
+                <h3 className="font-bold text-stone-800 text-xs sm:text-sm mb-3 leading-tight">{p.name}</h3>
+                <a
+                  href="https://wa.me/5569992216764"
+                  className="text-xs font-semibold hover:underline"
+                  style={{ color: "#16a34a" }}
+                >
+                  Consultar preço →
+                </a>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-10">
-          <a href="https://wa.me/5569992216764" className="bg-secondary text-secondary-foreground font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-[0_6px_20px_hsl(142_72%_37%/0.3)] transition-all duration-200 inline-block">
-            Ver tudo →
+        <div className="text-center mt-10 md:hidden">
+          <a href="https://wa.me/5569992216764" className="text-sm font-bold hover:underline" style={{ color: "#16a34a" }}>
+            Ver todas as rações →
           </a>
         </div>
       </div>
