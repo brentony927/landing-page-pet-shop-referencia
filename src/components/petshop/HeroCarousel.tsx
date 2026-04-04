@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Dog, Home, Bone } from "lucide-react";
+import { ChevronLeft, ChevronRight, Dog, Home, Bone, Star } from "lucide-react";
 
 const slides = [
   {
