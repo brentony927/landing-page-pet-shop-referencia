@@ -21,14 +21,14 @@ const brands = [
 const BrandLogo = ({ brand }: { brand: { name: string; logo: string } }) => {
   return (
     <div className="flex flex-col items-center gap-2 px-6">
-      <div className="h-14 w-28 flex items-center justify-center">
+      <div className="h-16 w-32 flex items-center justify-center">
         <img
           src={brand.logo}
           alt={brand.name}
-          className="h-12 w-auto max-w-[112px] object-contain grayscale hover:grayscale-0 transition-all duration-300"
+          className="h-14 w-auto max-w-[128px] object-contain grayscale hover:grayscale-0 transition-all duration-300"
           loading="lazy"
-          width={112}
-          height={48}
+          width={128}
+          height={56}
         />
       </div>
       <span className="text-muted-foreground font-bold text-xs">{brand.name}</span>
