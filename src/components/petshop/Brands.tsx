@@ -1,36 +1,35 @@
+import premierpetLogo from '@/assets/brands/premierpet.png';
+import royalcaninLogo from '@/assets/brands/royalcanin.png';
+import granplusLogo from '@/assets/brands/granplus.png';
+import goldenLogo from '@/assets/brands/golden.png';
+import pedigreeLogo from '@/assets/brands/pedigree.png';
+import whiskasLogo from '@/assets/brands/whiskas.png';
+import farminaLogo from '@/assets/brands/farmina.png';
+import guabiLogo from '@/assets/brands/guabi.png';
+
 const brands = [
-  { name: "PremieRpet", logo: "https://www.premierpet.com.br/wp-content/themes/developer-developer/img/logo-premier.svg" },
-  { name: "Royal Canin", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Royal_Canin_logo.svg/320px-Royal_Canin_logo.svg.png" },
-  { name: "GranPlus", logo: "https://www.granplus.com.br/img/logo-granplus.png" },
-  { name: "Golden", logo: "https://www.premierpet.com.br/wp-content/themes/developer-developer/img/logo-golden.svg" },
-  { name: "Pedigree", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pedigree_logo.svg/320px-Pedigree_logo.svg.png" },
-  { name: "Whiskas", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Whiskas_logo.svg/320px-Whiskas_logo.svg.png" },
-  { name: "Farmina", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Farmina_Pet_Foods_logo.svg/320px-Farmina_Pet_Foods_logo.svg.png" },
-  { name: "Guabi", logo: "https://guabi.com.br/wp-content/uploads/2021/08/logo-guabi.svg" },
+  { name: "PremieRpet", logo: premierpetLogo },
+  { name: "Royal Canin", logo: royalcaninLogo },
+  { name: "GranPlus", logo: granplusLogo },
+  { name: "Golden", logo: goldenLogo },
+  { name: "Pedigree", logo: pedigreeLogo },
+  { name: "Whiskas", logo: whiskasLogo },
+  { name: "Farmina", logo: farminaLogo },
+  { name: "Guabi", logo: guabiLogo },
 ];
 
 const BrandLogo = ({ brand }: { brand: { name: string; logo: string } }) => {
   return (
     <div className="flex flex-col items-center gap-2 px-6">
-      <div className="h-12 w-24 flex items-center justify-center">
+      <div className="h-14 w-28 flex items-center justify-center">
         <img
           src={brand.logo}
           alt={brand.name}
-          className="h-10 w-auto max-w-[96px] object-contain grayscale hover:grayscale-0 transition-all duration-300"
+          className="h-12 w-auto max-w-[112px] object-contain grayscale hover:grayscale-0 transition-all duration-300"
           loading="lazy"
-          onError={(e) => {
-            const target = e.currentTarget;
-            target.style.display = "none";
-            const fallback = target.nextElementSibling as HTMLElement;
-            if (fallback) fallback.style.display = "flex";
-          }}
+          width={112}
+          height={48}
         />
-        <span
-          className="hidden font-heading font-bold text-foreground/60 text-sm tracking-tight"
-          style={{ display: "none" }}
-        >
-          {brand.name}
-        </span>
       </div>
       <span className="text-muted-foreground font-bold text-xs">{brand.name}</span>
     </div>
@@ -39,7 +38,7 @@ const BrandLogo = ({ brand }: { brand: { name: string; logo: string } }) => {
 
 const Brands = () => {
   return (
-    <section className="py-10 bg-petshop-cream overflow-hidden">
+    <section className="py-10 bg-background overflow-hidden">
       <div className="container mx-auto px-4 mb-6">
         <p className="text-center text-muted-foreground font-bold text-sm">
           Marcas que a gente confia e indica
