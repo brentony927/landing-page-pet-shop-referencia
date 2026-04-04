@@ -26,22 +26,22 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Topbar */}
-      <div className="hidden md:flex items-center justify-center gap-6 py-1.5 text-xs font-medium text-white" style={{ background: "var(--verde)" }}>
+      <div className="hidden md:flex items-center justify-center gap-6 py-1.5 text-xs font-medium text-white" style={{ background: "#16a34a" }}>
         <span>Seg–Sex: 8h–19h | Sáb: 8h–16h</span>
         <a href="https://wa.me/5569992216764" className="flex items-center gap-1 hover:underline">
           <Phone className="w-3 h-3" /> (69) 99221-6764
         </a>
       </div>
 
-      {/* Navbar */}
-      <div style={{ background: "var(--verde-escuro)" }} className="h-16">
+      {/* Navbar — branca e limpa */}
+      <div className="h-16 bg-white border-b" style={{ borderColor: "#e7e5e4" }}>
         <div className="max-w-[1100px] mx-auto flex items-center justify-between h-full px-4">
           <a href="#inicio" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "var(--amarelo)" }}>
+            <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "#16a34a" }}>
               <span className="text-lg">🐾</span>
             </div>
-            <span className="text-xl font-bold text-white" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
-              Patinhas <span style={{ color: "var(--amarelo)" }}>& Cia</span>
+            <span className="text-xl font-bold" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
+              Patinhas <span style={{ color: "#16a34a" }}>& Cia</span>
             </span>
           </a>
 
@@ -51,12 +51,12 @@ const Header = () => {
                 key={link.href}
                 href={link.href}
                 className="relative text-[13px] font-medium tracking-widest uppercase transition-colors duration-200"
-                style={{ color: "rgba(255,255,255,0.8)", fontFamily: "'DM Sans', sans-serif" }}
-                onMouseEnter={(e) => e.currentTarget.style.color = "#fff"}
-                onMouseLeave={(e) => e.currentTarget.style.color = "rgba(255,255,255,0.8)"}
+                style={{ color: "#57534e", fontFamily: "'DM Sans', sans-serif" }}
+                onMouseEnter={(e) => e.currentTarget.style.color = "#1c1917"}
+                onMouseLeave={(e) => e.currentTarget.style.color = "#57534e"}
                 onClick={(e) => handleNavClick(e, link.emoji)}
               >
-                <span className="relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:transition-all after:duration-200 hover:after:w-full" style={{ ["--tw-after-bg" as string]: "var(--laranja)" }}>
+                <span className="relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-[#f97316] after:transition-all after:duration-200 hover:after:w-full">
                   {link.label}
                 </span>
               </a>
@@ -66,38 +66,38 @@ const Header = () => {
           <div className="hidden md:flex items-center gap-3">
             <a
               href="https://wa.me/5569992216764"
-              className="rounded-md px-4 py-2 text-xs font-semibold tracking-wider text-white transition-colors duration-200"
-              style={{ border: "1.5px solid rgba(255,255,255,0.3)" }}
-              onMouseEnter={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.1)"}
-              onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
+              className="rounded-md px-4 py-2 text-xs font-semibold tracking-wider transition-colors duration-200"
+              style={{ border: "1.5px solid #e7e5e4", color: "#57534e" }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#16a34a"; e.currentTarget.style.color = "#16a34a"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#e7e5e4"; e.currentTarget.style.color = "#57534e"; }}
             >
               WHATSAPP
             </a>
             <a
               href="https://wa.me/5569992216764"
               className="rounded-md px-6 py-2 text-xs font-bold tracking-wider text-white transition-all duration-200 hover:-translate-y-0.5"
-              style={{ background: "var(--laranja)" }}
-              onMouseEnter={(e) => e.currentTarget.style.background = "var(--laranja-escuro)"}
-              onMouseLeave={(e) => e.currentTarget.style.background = "var(--laranja)"}
+              style={{ background: "#f97316" }}
+              onMouseEnter={(e) => e.currentTarget.style.background = "#c2410c"}
+              onMouseLeave={(e) => e.currentTarget.style.background = "#f97316"}
             >
               AGENDAR
             </a>
           </div>
 
-          <button className="md:hidden p-2 text-white" onClick={() => setMobileOpen(!mobileOpen)}>
+          <button className="md:hidden p-2" style={{ color: "#1c1917" }} onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
       {mobileOpen && (
-        <div style={{ background: "var(--verde-escuro)" }} className="md:hidden px-4 py-4 space-y-1 border-t border-white/10">
+        <div className="md:hidden px-4 py-4 space-y-1 bg-white border-b" style={{ borderColor: "#e7e5e4" }}>
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="block text-sm font-semibold tracking-wider py-3 border-b border-white/10"
-              style={{ color: "rgba(255,255,255,0.8)" }}
+              className="block text-sm font-semibold tracking-wider py-3 border-b"
+              style={{ color: "#57534e", borderColor: "#f5f5f4" }}
               onClick={() => setMobileOpen(false)}
             >
               <span className="mr-2">{link.emoji}</span>
@@ -105,10 +105,10 @@ const Header = () => {
             </a>
           ))}
           <div className="flex gap-3 pt-3">
-            <a href="https://wa.me/5569992216764" className="flex-1 text-center rounded-md py-3 text-xs font-semibold tracking-wider text-white" style={{ border: "1.5px solid rgba(255,255,255,0.3)" }}>
+            <a href="https://wa.me/5569992216764" className="flex-1 text-center rounded-md py-3 text-xs font-semibold tracking-wider" style={{ border: "1.5px solid #e7e5e4", color: "#57534e" }}>
               WHATSAPP
             </a>
-            <a href="https://wa.me/5569992216764" className="flex-1 text-center rounded-md py-3 text-xs font-bold tracking-wider text-white" style={{ background: "var(--laranja)" }}>
+            <a href="https://wa.me/5569992216764" className="flex-1 text-center rounded-md py-3 text-xs font-bold tracking-wider text-white" style={{ background: "#f97316" }}>
               AGENDAR
             </a>
           </div>
