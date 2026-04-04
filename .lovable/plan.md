@@ -1,47 +1,55 @@
 
 
-# Efeitos de Scroll — Animações ao rolar a página
+# Redesign: Menos Verde/Laranja, Mais Limpo — Inspirado em Petlove/Petz
 
-## O que será feito
-Adicionar animações de scroll suaves em todas as seções do site. Cada seção aparece com um efeito diferente ao entrar na tela — fade up, slide lateral, scale — criando ritmo visual e vida ao rolar.
+## Observações dos Sites de Referência
 
-## Detalhes técnicos
+Petlove e Petz têm algo em comum: **fundo branco dominante**, navbar clara/branca, e cores usadas apenas em CTAs e badges. O site atual do Patinhas & Cia tem verde escuro pesado no header, hero, WhyUs e Contact — 4 seções com fundo escuro. Isso sufoca.
 
-### 1. Atualizar `useInView.ts` para suportar direção
-Adicionar parâmetro opcional de direção (`up`, `left`, `right`, `scale`) para variar os efeitos entre seções.
+## Mudanças Principais
 
-### 2. Criar classes CSS de scroll em `index.css`
-- `scroll-fade-up`: translateY(30px) → 0, opacity 0→1
-- `scroll-slide-left`: translateX(-40px) → 0
-- `scroll-slide-right`: translateX(40px) → 0
-- `scroll-scale`: scale(0.95) → 1
-- Todas com `transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1)` (ease-out suave)
+### 1. Header — De verde escuro para branco
+- Navbar com fundo **branco** (como Petlove/Petz), texto escuro
+- Logo com a patinha verde + nome em texto escuro
+- Links da nav em cinza escuro, hover com underline verde
+- Botão "WhatsApp" = outline verde, "Agendar" = botão verde sólido (não laranja)
+- Barra de topo: verde vivo `#16a34a` (mantém, é pequena e dá identidade)
 
-### 3. Aplicar efeitos variados por seção
-| Seção | Efeito | Delay |
-|-------|--------|-------|
-| AboutUs | fade-up | 0ms |
-| Services | slide-right (cards staggered 100ms cada) | stagger |
-| FoodProducts | fade-up | 0ms |
-| WhyUs | scale (números com stagger) | stagger |
-| Testimonials | slide-left | 0ms |
-| Contact | fade-up | 0ms |
-| Brands | já tem marquee | — |
+### 2. Hero — Fundo branco com acento
+- Trocar `bg-petshop-teal` (verde escuro) por **fundo branco** com um shape decorativo verde claro sutil
+- Textos em preto/cinza escuro, highlight em verde
+- Botão CTA primário = verde (não laranja), secundário = outline
+- Stats bar fica como está (já é fundo branco)
 
-### 4. Stagger nos cards (Services, WhyUs, FoodProducts)
-Cada card recebe `transition-delay` incrementando 100ms (0ms, 100ms, 200ms...) para aparecerem em sequência.
+### 3. Seções — Alternância limpa
+- **Services**: `bg-muted/50` → `bg-[#f8f9f5]` (quase branco) — OK como está
+- **FoodProducts**: `bg-background` (branco) — OK
+- **AboutUs**: `bg-background` (branco) — OK
+- **WhyUs**: `bg-petshop-teal` → fundo **branco** com números em verde. Seção simples, sem fundo escuro
+- **Testimonials**: `bg-[#f0fdf4]` (verde suave) — OK, é leve
+- **Contact**: `bg-petshop-teal` → fundo `#f8f9f5` (neutro claro), cards com borda simples, texto escuro
+- **Footer**: `bg-[#0f3d20]` → **mantém verde escuro** (footer escuro é padrão real)
 
-### 5. Header parallax sutil
-Barra do topo com `backdrop-blur` que fica mais opaca conforme scroll (usando CSS `scroll()` ou evento leve).
+### 4. Uso Estratégico das Cores
+- **Verde** (`#16a34a`): apenas em CTAs principais, ícones de check, badges, barra de topo
+- **Laranja** (`#f97316`): apenas em preços e badges "Queridinho" / "Mais pedido" — não em botões
+- **Amarelo**: apenas na quote do AboutUs
+- **Fundo**: 90% branco e quase-branco
+
+### 5. Botões — Verde como CTA principal
+- Todos os botões CTA: `bg-secondary` (verde) em vez de `bg-primary` (laranja)
+- Laranja sai dos botões completamente — fica só em preços e badges de destaque
 
 ## Arquivos modificados
 | Arquivo | Mudança |
 |---------|---------|
-| `index.css` | Novas classes de scroll animation |
-| `AboutUs.tsx` | Efeito fade-up |
-| `Services.tsx` | Cards com stagger slide-right |
-| `FoodProducts.tsx` | Fade-up + cards stagger |
-| `WhyUs.tsx` | Scale-in + números stagger |
-| `Testimonials.tsx` | Slide-left |
-| `Contact.tsx` | Fade-up |
+| `Header.tsx` | Navbar branca, texto escuro, botões verdes |
+| `HeroCarousel.tsx` | Fundo branco, textos escuros, CTA verde |
+| `WhyUs.tsx` | Fundo branco, números verdes, ícones verdes |
+| `Contact.tsx` | Fundo claro, cards com borda cinza, texto escuro |
+| `Services.tsx` | Botão verde (se houver) |
+| `FoodProducts.tsx` | Botão "Ver tudo" verde, preços em laranja (mantém) |
+| `AboutUs.tsx` | Botão verde |
+| `Testimonials.tsx` | Sem mudança significativa |
+| `index.css` | Ajustar petshop-teal se necessário |
 
