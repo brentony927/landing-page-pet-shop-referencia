@@ -16,7 +16,7 @@ const PetTips = () => {
   return (
     <section className="py-16 md:py-20 px-4 bg-white" ref={ref}>
       <div className="max-w-[1100px] mx-auto">
-        <h2 className="text-2xl md:text-[2rem] font-black mb-10" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}>
+        <h2 className="text-2xl md:text-[2rem] font-black mb-10" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "var(--txt-primary)" }}>
           Dicas rápidas
         </h2>
 
@@ -26,14 +26,16 @@ const PetTips = () => {
             return (
               <div
                 key={t.title}
-                className={`rounded-xl p-5 cursor-pointer transition-all duration-300 border bg-white hover:bg-[#f9f6f1] ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-                style={{ transitionDelay: `${idx * 60}ms`, borderColor: "#e2ddd6" }}
+                className={`rounded-xl p-5 cursor-pointer transition-all duration-300 border bg-white ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                style={{ transitionDelay: `${idx * 60}ms`, borderColor: "var(--border)" }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "var(--cream)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "#fff"; }}
               >
-                <Icon className="w-4 h-4 mb-3" style={{ color: "#a8a29e" }} />
-                <h3 className="text-sm font-bold mb-1.5" style={{ color: "#1a1a1a" }}>
+                <Icon className="w-4 h-4 mb-3" style={{ color: "var(--txt-muted)" }} />
+                <h3 className="text-sm font-bold mb-1.5" style={{ color: "var(--txt-primary)" }}>
                   {t.title}
                 </h3>
-                <p className="text-[13px] leading-relaxed" style={{ color: "#6b6b6b" }}>{t.desc}</p>
+                <p className="text-[13px] leading-relaxed" style={{ color: "var(--txt-secondary)" }}>{t.desc}</p>
               </div>
             );
           })}
