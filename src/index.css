@@ -5,24 +5,25 @@
 @tailwind utilities;
 
 :root {
+  /* Cores INTENSAS inspiradas no carrossel Pedigree */
+  --pet-orange: #F5851F;
+  --pet-orange-dark: #E06B0A;
+  --pet-orange-light: #FFF3E8;
+  --pet-yellow: #FFA000;
+  --pet-yellow-dark: #E08F00;
+  --pet-yellow-light: #FFF8E1;
+  --pet-blue: #1E88E5;
+  --pet-blue-dark: #1565C0;
+  --pet-blue-light: #E3F2FD;
   --pet-green: #4CAF50;
   --pet-green-dark: #388E3C;
   --pet-green-light: #E8F5E9;
-  --pet-yellow: #FFC107;
-  --pet-yellow-dark: #FFA000;
-  --pet-yellow-light: #FFF8E1;
-  --pet-blue: #42A5F5;
-  --pet-blue-dark: #1E88E5;
-  --pet-blue-light: #E3F2FD;
-  --pet-orange: #FF8A65;
-  --pet-orange-dark: #F4511E;
-  --pet-orange-light: #FBE9E7;
   --pet-white: #FFFFFF;
-  --pet-gray: #555555;
+  --pet-gray: #444444;
   --pet-gray-light: #888888;
-  --pet-gray-border: #E0E0E0;
+  --pet-gray-border: #E8E8E8;
   --pet-bg: #FAFCFF;
-  --pet-bg-alt: #F5F9FF;
+  --pet-bg-alt: #F5F8FC;
 
   --background: 0 0% 100%;
   --foreground: 0 0% 20%;
@@ -32,17 +33,17 @@
   --popover-foreground: 0 0% 20%;
   --primary: 122 39% 49%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 207 90% 61%;
+  --secondary: 210 79% 51%;
   --secondary-foreground: 0 0% 100%;
   --muted: 210 40% 96%;
   --muted-foreground: 0 0% 45%;
-  --accent: 45 100% 51%;
+  --accent: 38 100% 50%;
   --accent-foreground: 0 0% 20%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
   --border: 0 0% 88%;
   --input: 0 0% 88%;
-  --ring: 122 39% 49%;
+  --ring: 210 79% 51%;
   --radius: 0.75rem;
   --sidebar-background: 0 0% 98%;
   --sidebar-foreground: 240 5% 26%;
@@ -62,6 +63,8 @@
     @apply bg-background text-foreground;
     font-family: 'Nunito', sans-serif;
     color: var(--pet-gray);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3 {
     font-family: 'Baloo 2', cursive;
@@ -75,6 +78,56 @@
     scroll-behavior: smooth;
   }
 }
+
+/* Scroll animations */
+.scroll-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scroll-scale-in {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.scroll-scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+.scroll-slide-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.scroll-slide-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.scroll-slide-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.scroll-slide-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.stagger-children.visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: none; }
+.stagger-children.visible > *:nth-child(2) { transition-delay: 100ms; opacity: 1; transform: none; }
+.stagger-children.visible > *:nth-child(3) { transition-delay: 200ms; opacity: 1; transform: none; }
+.stagger-children.visible > *:nth-child(4) { transition-delay: 300ms; opacity: 1; transform: none; }
+.stagger-children.visible > *:nth-child(5) { transition-delay: 400ms; opacity: 1; transform: none; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
@@ -97,20 +150,13 @@
 }
 
 @keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgba(76,175,80,0.4); }
-  100% { box-shadow: 0 0 0 12px rgba(76,175,80,0); }
+  0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.4); }
+  100% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
 }
 
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
-}
-
-@keyframes animalBounce {
-  0% { opacity: 0; transform: translateY(0) scale(0.3); }
-  40% { opacity: 1; transform: translateY(-20px) scale(1.1); }
-  70% { opacity: 0.8; transform: translateY(-12px) scale(0.95); }
-  100% { opacity: 0; transform: translateY(-25px) scale(0.7); }
 }
 
 @keyframes progressBar {

@@ -19,17 +19,14 @@ const AnimatedNumber = ({ target, suffix, active }: { target: number; suffix: st
     let current = 0;
     const timer = setInterval(() => {
       current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
+      if (current >= target) { current = target; clearInterval(timer); }
       setValue(isDecimal ? Math.round(current * 10) / 10 : Math.floor(current));
     }, 2000 / steps);
     return () => clearInterval(timer);
   }, [active, target]);
 
   return (
-    <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-orange)" }}>
+    <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "#FFA000" }}>
       {target % 1 !== 0 ? value.toFixed(1) : value.toLocaleString("pt-BR")}
       {suffix}
     </span>
@@ -40,19 +37,18 @@ const WhyUs = () => {
   const { ref, visible } = useInView(0.3);
 
   return (
-    <section className="py-12 md:py-16" style={{ background: "var(--pet-blue-dark)" }} ref={ref}>
-      <div className={`max-w-[1200px] mx-auto px-4 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0">
+    <section className="py-10 sm:py-14" style={{ background: "var(--pet-blue-dark)" }} ref={ref}>
+      <div className={`max-w-[1200px] mx-auto px-4 scroll-fade-up ${visible ? "visible" : ""}`}>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {stats.map((s, i) => (
-            <div key={s.label} className="flex items-center gap-4 justify-center md:justify-start" style={{ transitionDelay: `${i * 150}ms` }}>
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,138,101,0.2)" }}>
-                <s.Icon className="w-5 h-5" style={{ color: "var(--pet-orange)" }} />
+            <div key={s.label} className="flex items-center gap-4 justify-center text-center sm:text-left">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,160,0,0.2)" }}>
+                <s.Icon className="w-5 h-5" style={{ color: "#FFA000" }} />
               </div>
               <div>
                 <AnimatedNumber target={s.number} suffix={s.suffix} active={visible} />
                 <p className="text-sm font-semibold text-white/70">{s.label}</p>
               </div>
-              {i < stats.length - 1 && <span className="hidden md:block w-px h-12 ml-auto bg-white/10" />}
             </div>
           ))}
         </div>
