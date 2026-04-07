@@ -11,8 +11,8 @@ const benefits = [
 const timeline = [
   { year: "2013", text: "Começamos com 1 mesa de banho e muito sabão 🧼" },
   { year: "2016", text: "Primeiro funcionário contratado 👋" },
-  { year: "2019", text: "Expandimos para entrega de ração no bairro 🚚" },
-  { year: "2024", text: "500+ pets atendidos por ano, nota 5.0 no Google ⭐" },
+  { year: "2019", text: "Expandimos para entrega de ração no bairro" },
+  { year: "2024", text: "500+ pets atendidos por ano, nota 5.0 no Google" },
 ];
 
 const AboutUs = () => {
@@ -23,7 +23,7 @@ const AboutUs = () => {
       <div className={`max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
         <div>
           <h2 className="text-2xl md:text-[2rem] font-extrabold mb-4 leading-tight" style={{ fontFamily: "'Baloo 2', cursive", color: "#333" }}>
-            🐾 Começou com um balde e uma mangueira.
+            Começou com um balde e uma mangueira.
           </h2>
           <div style={{ borderLeft: "4px solid var(--pet-green)", paddingLeft: "1.5rem" }}>
             <p className="text-base leading-relaxed mb-8" style={{ color: "var(--pet-gray)" }}>

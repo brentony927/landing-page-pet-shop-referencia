@@ -38,7 +38,7 @@ const Footer = () => (
           <h4 className="text-[10px] uppercase tracking-widest mb-3 font-bold text-white/50">Agendar</h4>
           <p className="text-sm text-white/35 mb-3">Pelo WhatsApp é mais rápido.</p>
           <a href="https://wa.me/5569992216764" className="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-extrabold text-white transition-all hover:-translate-y-0.5 active:scale-[0.98]" style={{ background: "#F5851F", boxShadow: "0 4px 14px rgba(245,133,31,0.25)" }}>
-            🐾 AGENDAR
+            AGENDAR
           </a>
         </div>
       </div>
