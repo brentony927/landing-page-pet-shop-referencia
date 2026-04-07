@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone, PawPrint, Home, Scissors, Info, MessageSquare, ChevronRight, ShoppingBag } from "lucide-react";
 
 const navLinks = [
-  { label: "Início", href: "#inicio", icon: Home },
-  { label: "Serviços", href: "#servicos", icon: Scissors },
+  { label: "Início", href: "/", icon: Home },
+  { label: "Serviços", href: "/#servicos", icon: Scissors },
   { label: "Catálogo", href: "/catalogo", icon: ShoppingBag },
-  { label: "Sobre", href: "#sobre", icon: Info },
-  { label: "Contato", href: "#contato", icon: MessageSquare },
+  { label: "Sobre", href: "/#sobre", icon: Info },
+  { label: "Contato", href: "/#contato", icon: MessageSquare },
 ];
 
 const Header = () => {
