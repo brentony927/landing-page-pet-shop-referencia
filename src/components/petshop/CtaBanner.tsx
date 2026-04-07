@@ -1,5 +1,7 @@
-import { Gift, Calendar, MessageCircle } from "lucide-react";
+import { Calendar, MessageCircle } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+
+const WA_LINK = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20e%20ganhar%20desconto";
 
 const CtaBanner = () => {
   const { ref, visible } = useInView(0.3);
@@ -14,22 +16,18 @@ const CtaBanner = () => {
         }}
       >
         <div className="relative z-10 max-w-xl">
-          <span className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-extrabold mb-5 bg-white/15">
-            <Gift className="w-3.5 h-3.5" />
-            🎁 Para clientes do bairro
-          </span>
-
           <h2 className="text-2xl md:text-3xl font-extrabold mb-3 leading-tight" style={{ fontFamily: "'Baloo 2', cursive" }}>
-            Agende hoje e ganhe 10% off no próximo serviço. 🐾
+            Agende hoje e ganhe 10% off no próximo serviço 🐾
           </h2>
-
           <p className="text-sm leading-relaxed mb-8 text-white/70">
             Clientes que agendam pelo WhatsApp recebem desconto na próxima visita.
           </p>
 
           <div className="flex flex-wrap gap-3">
             <a
-              href="https://wa.me/5569992216764"
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full px-7 py-3 font-extrabold text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl inline-flex items-center gap-2"
               style={{ background: "var(--pet-yellow)", color: "#333", boxShadow: "0 4px 14px rgba(255,193,7,0.4)" }}
             >
@@ -37,7 +35,9 @@ const CtaBanner = () => {
               AGENDAR AGORA
             </a>
             <a
-              href="https://wa.me/5569992216764"
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full px-6 py-3 font-bold text-sm text-white/70 transition-all duration-200 inline-flex items-center gap-2 hover:text-white border border-white/20"
             >
               <MessageCircle className="w-4 h-4" />

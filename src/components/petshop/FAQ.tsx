@@ -3,12 +3,9 @@ import { ChevronDown } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const faqs = [
-  { q: "Qual o horário de funcionamento?", a: "Funcionamos de segunda a sexta das 8h às 19h, e aos sábados das 8h às 16h. Domingos e feriados estamos fechados." },
-  { q: "Preciso agendar o banho com antecedência?", a: "Recomendamos agendar pelo WhatsApp pelo menos 1 dia antes, especialmente aos sábados. Mas aceitamos encaixes quando possível." },
-  { q: "Vocês fazem entrega de ração?", a: "Sim! Entregamos no bairro no mesmo dia, sem valor mínimo. Basta pedir pelo WhatsApp." },
-  { q: "Meu pet tem medo de secador, vocês conseguem atender?", a: "Claro! Conhecemos cada pet e suas particularidades. Usamos secagem natural ou com baixa potência quando necessário." },
-  { q: "Aceitam cartão e Pix?", a: "Aceitamos Pix, cartão de débito e crédito (todas as bandeiras). Também aceitamos dinheiro." },
-  { q: "Têm estacionamento?", a: "Temos estacionamento gratuito na frente da loja." },
+  { q: "Preciso agendar com antecedência?", a: "Recomendamos agendar pelo WhatsApp pelo menos 1 dia antes, especialmente aos sábados. Mas aceitamos encaixes quando possível." },
+  { q: "Aceitam Pix e cartão?", a: "Aceitamos Pix, cartão de débito e crédito (todas as bandeiras). Também aceitamos dinheiro." },
+  { q: "Vocês entregam ração?", a: "Sim! Entregamos no bairro no mesmo dia, sem valor mínimo. Basta pedir pelo WhatsApp." },
 ];
 
 const FAQ = () => {
@@ -26,7 +23,7 @@ const FAQ = () => {
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
-              <div key={i} className="rounded-2xl bg-white overflow-hidden transition-all duration-200 border" style={{ borderColor: isOpen ? "var(--pet-green)" : "var(--pet-gray-border)" }}>
+              <div key={i} className="rounded-3xl bg-white overflow-hidden transition-all duration-200 border" style={{ borderColor: isOpen ? "var(--pet-green)" : "var(--pet-gray-border)", boxShadow: "0 4px 16px rgba(0,0,0,0.04)" }}>
                 <button onClick={() => setOpenIndex(isOpen ? null : i)} className="w-full flex items-center justify-between p-5 text-left group">
                   <span className="text-sm font-bold pr-4" style={{ color: "#333" }}>{faq.q}</span>
                   <ChevronDown
