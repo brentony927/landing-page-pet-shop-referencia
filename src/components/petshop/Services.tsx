@@ -1,4 +1,4 @@
-import { Bath, Scissors, Bone, Truck, Star, ArrowRight } from "lucide-react";
+import { Bath, Scissors, Bone, Truck, ArrowRight } from "lucide-react";
 
 const Services = () => {
   return (
@@ -14,7 +14,7 @@ const Services = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          {/* DESTAQUE — Banho & Tosa ocupa 7 colunas */}
+          {/* DESTAQUE — Banho & Tosa */}
           <div
             className="md:col-span-7 relative rounded-2xl p-8 md:p-10 overflow-hidden cursor-pointer transition-all duration-300 group"
             style={{ background: "#f0fdf4", border: "1.5px solid #16a34a" }}
@@ -30,8 +30,11 @@ const Services = () => {
             <h3 className="text-2xl md:text-3xl font-black mb-3" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
               Banho & Tosa
             </h3>
-            <p className="text-base leading-relaxed mb-6 max-w-md" style={{ color: "#57534e" }}>
+            <p className="text-base leading-relaxed mb-3 max-w-md" style={{ color: "#57534e" }}>
               Banho completo com produtos profissionais, secagem e acabamento pra todas as raças. Seu pet sai cheiroso e bonito.
+            </p>
+            <p className="text-sm font-bold mb-6" style={{ color: "#16a34a" }}>
+              A partir de <span style={{ fontSize: "1.1rem" }}>R$ 35</span>
             </p>
             <a
               href="https://wa.me/5569992216764"
@@ -44,7 +47,7 @@ const Services = () => {
             </a>
           </div>
 
-          {/* Cards menores empilhados — 5 colunas */}
+          {/* Cards menores */}
           <div className="md:col-span-5 flex flex-col gap-4">
             <div
               className="rounded-2xl p-6 bg-white cursor-pointer transition-all duration-300"
@@ -58,7 +61,8 @@ const Services = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>Tosa Higiênica</h3>
-                  <p className="text-sm leading-relaxed mb-3" style={{ color: "#78716c" }}>Higienização das áreas sensíveis com cuidado e segurança.</p>
+                  <p className="text-sm leading-relaxed mb-1" style={{ color: "#78716c" }}>Higienização das áreas sensíveis com cuidado e segurança.</p>
+                  <p className="text-xs font-semibold mb-2" style={{ color: "#7c3aed" }}>A partir de R$ 20</p>
                   <a href="https://wa.me/5569992216764" className="text-sm font-semibold hover:underline" style={{ color: "#16a34a" }}>Agendar →</a>
                 </div>
               </div>
@@ -76,7 +80,8 @@ const Services = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>Rações & Petiscos</h3>
-                  <p className="text-sm leading-relaxed mb-3" style={{ color: "#78716c" }}>Linha completa de rações. Entrega no bairro no mesmo dia.</p>
+                  <p className="text-sm leading-relaxed mb-1" style={{ color: "#78716c" }}>Linha completa de rações. Entrega no bairro no mesmo dia.</p>
+                  <p className="text-xs font-semibold mb-2" style={{ color: "#f97316" }}>Consultar pelo WhatsApp</p>
                   <a href="https://wa.me/5569992216764" className="text-sm font-semibold hover:underline" style={{ color: "#16a34a" }}>Ver rações →</a>
                 </div>
               </div>

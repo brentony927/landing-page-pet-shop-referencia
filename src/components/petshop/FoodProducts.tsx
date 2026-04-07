@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Star, Dog, Cat, PawPrint, Bird, Fish } from "lucide-react";
+import { Star, Dog, Cat, PawPrint, Bird, Fish, ArrowLeft, Eye, MessageCircle } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { Link } from "react-router-dom";
 
 const categories = [
   { label: "Cães", icon: Dog, key: "dogs" },
@@ -64,9 +65,9 @@ const FoodProducts = () => {
           <h2 className="text-2xl md:text-[2rem] font-black" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
             Rações e petiscos
           </h2>
-          <a href="https://wa.me/5569992216764" className="hidden md:block text-sm font-semibold hover:underline" style={{ color: "#16a34a" }}>
-            Ver tudo →
-          </a>
+          <Link to="/catalogo" className="hidden md:block text-sm font-semibold hover:underline" style={{ color: "#16a34a" }}>
+            Ver catálogo completo →
+          </Link>
         </div>
 
         <div className="flex gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide">
@@ -94,51 +95,59 @@ const FoodProducts = () => {
           {products[activeTab].map((p, i) => {
             const isFirst = i === 0;
             return (
-            <div
-              key={p.name}
-              className={`bg-white rounded-xl overflow-hidden transition-all duration-300 relative group cursor-pointer border hover:shadow-md ${
-                isFirst ? "col-span-2 row-span-1 border-[#16a34a] border-[1.5px]" : "border-stone-200"
-              } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-              style={{ transitionDelay: `${i * 80}ms` }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
-              onMouseLeave={(e) => e.currentTarget.style.transform = "none"}
-            >
-              {p.popular && (
-                <span className={`absolute top-2 left-2 text-white font-bold text-[10px] z-10 px-2 py-1 rounded-md ${isFirst ? "bg-[#16a34a]" : "bg-[#1c1917]"}`}>
-                  {isFirst ? "⭐ Queridinho" : "Popular"}
-                </span>
-              )}
-              <div className={`bg-stone-100 w-full flex items-center justify-center ${isFirst ? "h-40 sm:h-52" : "h-28 sm:h-36"}`}>
-                <span className="text-stone-300 text-xs">Foto do produto</span>
-              </div>
-              <div className={`${isFirst ? "p-4 sm:p-5" : "p-3 sm:p-4"}`}>
-                <div className="flex items-center gap-0.5 mb-1.5">
-                  {Array.from({ length: 5 }, (_, j) => (
-                    <Star
-                      key={j}
-                      className={`${isFirst ? "w-4 h-4" : "w-3 h-3"} ${j < Math.floor(p.rating) ? "text-yellow-400 fill-yellow-400" : "text-stone-200"}`}
-                    />
-                  ))}
-                  <span className="text-stone-400 text-[10px] ml-1">{p.rating}</span>
+              <div
+                key={p.name}
+                className={`bg-white rounded-xl overflow-hidden transition-all duration-300 relative group cursor-pointer border hover:shadow-md ${
+                  isFirst ? "col-span-2 row-span-1 border-[#16a34a] border-[1.5px]" : "border-stone-200"
+                } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                style={{ transitionDelay: `${i * 80}ms` }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
+                onMouseLeave={(e) => e.currentTarget.style.transform = "none"}
+              >
+                {p.popular && (
+                  <span className={`absolute top-2 left-2 text-white font-bold text-[10px] z-10 px-2 py-1 rounded-md ${isFirst ? "bg-[#16a34a]" : "bg-[#1c1917]"}`}>
+                    {isFirst ? "Queridinho" : "Popular"}
+                  </span>
+                )}
+                <div className={`bg-stone-100 w-full flex items-center justify-center ${isFirst ? "h-40 sm:h-52" : "h-28 sm:h-36"}`}>
+                  <span className="text-stone-300 text-xs">Foto do produto</span>
                 </div>
-                <h3 className={`font-bold text-stone-800 mb-3 leading-tight ${isFirst ? "text-base sm:text-lg" : "text-xs sm:text-sm"}`}>{p.name}</h3>
-                <a
-                  href="https://wa.me/5569992216764"
-                  className={`font-semibold hover:underline ${isFirst ? "text-sm" : "text-xs"}`}
-                  style={{ color: "#16a34a" }}
-                >
-                  Consultar preço →
-                </a>
+                <div className={`${isFirst ? "p-4 sm:p-5" : "p-3 sm:p-4"}`}>
+                  <div className="flex items-center gap-0.5 mb-1.5">
+                    {Array.from({ length: 5 }, (_, j) => (
+                      <Star
+                        key={j}
+                        className={`${isFirst ? "w-4 h-4" : "w-3 h-3"} ${j < Math.floor(p.rating) ? "text-yellow-400 fill-yellow-400" : "text-stone-200"}`}
+                      />
+                    ))}
+                    <span className="text-stone-400 text-[10px] ml-1">{p.rating}</span>
+                  </div>
+                  <h3 className={`font-bold text-stone-800 mb-3 leading-tight ${isFirst ? "text-base sm:text-lg" : "text-xs sm:text-sm"}`}>{p.name}</h3>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="https://wa.me/5569992216764"
+                      className={`font-semibold hover:underline ${isFirst ? "text-sm" : "text-xs"}`}
+                      style={{ color: "#16a34a" }}
+                    >
+                      Consultar preço →
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
             );
           })}
         </div>
 
-        <div className="text-center mt-10 md:hidden">
-          <a href="https://wa.me/5569992216764" className="text-sm font-bold hover:underline" style={{ color: "#16a34a" }}>
-            Ver todas as rações →
-          </a>
+        <div className="text-center mt-10">
+          <Link
+            to="/catalogo"
+            className="inline-block rounded-lg px-8 py-3 text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5"
+            style={{ background: "#f97316" }}
+            onMouseEnter={(e) => e.currentTarget.style.background = "#c2410c"}
+            onMouseLeave={(e) => e.currentTarget.style.background = "#f97316"}
+          >
+            Ver catálogo completo →
+          </Link>
         </div>
       </div>
     </section>

@@ -139,7 +139,7 @@ const HeroCarousel = () => {
             className="relative hidden md:flex justify-center items-center transition-all duration-700 ease-out"
             style={{
               opacity: isAnimating ? 0 : 1,
-              transform: isAnimating ? "scale(0.9)" : "scale(1)",
+              transform: isAnimating ? "scale(0.92) rotate(-2deg)" : "scale(1) rotate(0deg)",
             }}
           >
             {/* Main circle */}
@@ -157,7 +157,7 @@ const HeroCarousel = () => {
 
               {/* Decorative ring */}
               <div
-                className="absolute inset-0 rounded-full animate-spin"
+                className="absolute inset-[-12px] rounded-full animate-spin"
                 style={{
                   border: `2px dashed ${s.rightColor}20`,
                   animationDuration: "30s",

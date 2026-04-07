@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Phone, Home, Scissors, Bone, Cat, Dog, MessageCircle } from "lucide-react";
+import { Menu, X, Phone, Dog } from "lucide-react";
 
 const navLinks = [
   { label: "INÍCIO", href: "#inicio" },
@@ -19,6 +19,7 @@ const Header = () => {
         <a href="https://wa.me/5569992216764" className="flex items-center gap-1 hover:underline">
           <Phone className="w-3 h-3" /> (69) 99221-6764
         </a>
+        <span className="text-white/70">💳 Pix · Cartão · Dinheiro</span>
       </div>
 
       <div className="h-16 bg-white border-b" style={{ borderColor: "#e7e5e4" }}>
@@ -76,28 +77,52 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Mobile sidebar — Apple glass style */}
       {mobileOpen && (
-        <div className="md:hidden px-4 py-4 space-y-1 bg-white border-b" style={{ borderColor: "#e7e5e4" }}>
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="block text-sm font-semibold tracking-wider py-3 border-b"
-              style={{ color: "#57534e", borderColor: "#f5f5f4" }}
-              onClick={() => setMobileOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
-          <div className="flex gap-3 pt-3">
-            <a href="https://wa.me/5569992216764" className="flex-1 text-center rounded-md py-3 text-xs font-semibold tracking-wider" style={{ border: "1.5px solid #e7e5e4", color: "#57534e" }}>
-              WHATSAPP
-            </a>
-            <a href="https://wa.me/5569992216764" className="flex-1 text-center rounded-md py-3 text-xs font-bold tracking-wider text-white" style={{ background: "#f97316" }}>
-              AGENDAR
-            </a>
+        <>
+          <div
+            className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm md:hidden"
+            onClick={() => setMobileOpen(false)}
+          />
+          <div
+            className="fixed top-0 right-0 z-50 w-72 h-full md:hidden flex flex-col"
+            style={{
+              background: "rgba(255,255,255,0.85)",
+              backdropFilter: "blur(20px) saturate(180%)",
+              WebkitBackdropFilter: "blur(20px) saturate(180%)",
+              borderLeft: "1px solid rgba(0,0,0,0.08)",
+            }}
+          >
+            <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
+              <span className="text-base font-bold" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>Menu</span>
+              <button onClick={() => setMobileOpen(false)} className="p-1">
+                <X className="w-5 h-5" style={{ color: "#57534e" }} />
+              </button>
+            </div>
+            <nav className="flex-1 px-5 py-4 space-y-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="block text-sm font-semibold tracking-wider py-3 border-b transition-colors duration-200"
+                  style={{ color: "#1c1917", borderColor: "rgba(0,0,0,0.05)" }}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+            <div className="px-5 py-5 space-y-3 border-t" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
+              <a href="https://wa.me/5569992216764" className="block text-center rounded-lg py-3 text-xs font-semibold tracking-wider" style={{ border: "1.5px solid #e7e5e4", color: "#57534e" }}>
+                WHATSAPP
+              </a>
+              <a href="https://wa.me/5569992216764" className="block text-center rounded-lg py-3 text-xs font-bold tracking-wider text-white" style={{ background: "#f97316" }}>
+                AGENDAR
+              </a>
+              <p className="text-center text-[11px]" style={{ color: "#a8a29e" }}>💳 Pix · Cartão · Dinheiro</p>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );
