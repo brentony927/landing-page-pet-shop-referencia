@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, PawPrint, Home, Scissors, Bone, Info, MessageSquare, ChevronRight, ShoppingBag } from "lucide-react";
+import { Menu, X, Phone, PawPrint, Home, Scissors, Info, MessageSquare, ChevronRight, ShoppingBag } from "lucide-react";
 
 const navLinks = [
   { label: "Início", href: "#inicio", icon: Home },
   { label: "Serviços", href: "#servicos", icon: Scissors },
   { label: "Catálogo", href: "/catalogo", icon: ShoppingBag },
-  { label: "Rações", href: "/catalogo", icon: Bone },
   { label: "Sobre", href: "#sobre", icon: Info },
   { label: "Contato", href: "#contato", icon: MessageSquare },
 ];
@@ -35,9 +34,9 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Top bar */}
       <div className="hidden md:flex items-center justify-center gap-6 py-1.5 text-xs font-semibold text-white" style={{ background: "#0D47A1" }}>
-        <span>🐾 Seg–Sex: 8h–19h | Sáb: 8h–16h</span>
+        <span className="flex items-center gap-1"><PawPrint className="w-3 h-3" /> Seg–Sex: 8h–19h | Sáb: 8h–16h</span>
         <a href="https://wa.me/5569992216764" className="flex items-center gap-1 hover:underline"><Phone className="w-3 h-3" /> (69) 99221-6764</a>
-        <span className="text-white/60">💳 Pix · Cartão · Dinheiro</span>
+        <span className="text-white/60">Pix · Cartão · Dinheiro</span>
       </div>
 
       {/* Main bar */}
@@ -64,7 +63,7 @@ const Header = () => {
               onMouseEnter={e => { e.currentTarget.style.background = "#1E88E5"; e.currentTarget.style.color = "#fff"; }}
               onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#1E88E5"; }}
             >WHATSAPP</a>
-            <a href="https://wa.me/5569992216764" className="rounded-xl px-5 py-2.5 text-xs font-extrabold tracking-wider text-white hover:-translate-y-0.5 transition-all" style={{ background: "#F5851F", boxShadow: "0 4px 14px rgba(245,133,31,0.3)" }}>🐕 AGENDAR</a>
+            <a href="https://wa.me/5569992216764" className="rounded-xl px-5 py-2.5 text-xs font-extrabold tracking-wider text-white hover:-translate-y-0.5 transition-all flex items-center gap-1.5" style={{ background: "#F5851F", boxShadow: "0 4px 14px rgba(245,133,31,0.3)" }}><PawPrint className="w-3.5 h-3.5" /> AGENDAR</a>
           </div>
 
           <button className="md:hidden p-2 -mr-1" onClick={() => setOpen(true)}>

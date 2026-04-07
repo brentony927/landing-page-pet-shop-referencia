@@ -390,7 +390,7 @@ const allProducts: Product[] = [
     size: "Peixes Betta",
     recommendation: "Ofereça 3-4 grânulos por vez, 2x ao dia. Remova sobras para não turvar a água.",
     images: [
-      "https://cobasi.vteximg.com.br/arquivos/ids/1051150/Racao-Umida-Whiskas-Sache-Frango-ao-Molho-Gatos-Adultos.png?v=638322007768230000",
+      "https://cobasi.vteximg.com.br/arquivos/ids/873832/Racao-Alcon-Betta-Granulado-10g.png?v=638753953445830000",
     ],
     desc: "Micro grânulos flutuantes para peixes Betta. Formulação exclusiva que não turva a água.",
     benefits: ["Micro grânulos", "Não turva água", "Rico em proteínas", "Cores vibrantes"],
@@ -549,7 +549,7 @@ const ProductCard = ({ product: p, onSelect }: { product: Product; onSelect: () 
   return (
     <div className="bg-white rounded-[18px] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group relative" style={{ border: "1.5px solid #f0f0f0", boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
       {p.popular && (
-        <span className="absolute top-2 left-2 text-white font-bold text-[9px] z-10 px-2 py-0.5 rounded-full" style={{ background: "#F5851F" }}>⭐ Popular</span>
+        <span className="absolute top-2 left-2 text-white font-bold text-[9px] z-10 px-2 py-0.5 rounded-full flex items-center gap-0.5" style={{ background: "#F5851F" }}><Star className="w-2.5 h-2.5" style={{ fill: "#fff" }} /> Popular</span>
       )}
       <div className="relative bg-gray-50 w-full h-36 sm:h-44 flex items-center justify-center p-4 cursor-pointer" onClick={onSelect}>
         {!imgError ? (

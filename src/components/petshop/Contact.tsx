@@ -50,7 +50,7 @@ const Contact = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="rounded-[20px] p-6 sm:p-7 bg-white" style={{ border: "1.5px solid #f0f0f0", boxShadow: "0 4px 24px rgba(0,0,0,0.04)" }}>
-            <h3 className="text-lg font-extrabold mb-5" style={{ fontFamily: "'Baloo 2', cursive", color: "#1a3a5c" }}>🐾 Agendar serviço</h3>
+            <h3 className="text-lg font-extrabold mb-5" style={{ fontFamily: "'Baloo 2', cursive", color: "#1a3a5c" }}>Agendar serviço</h3>
             <div className="space-y-3">
               <div className="grid grid-cols-2 gap-3">
                 <div>
