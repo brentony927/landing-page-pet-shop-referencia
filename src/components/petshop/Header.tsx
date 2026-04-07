@@ -12,6 +12,7 @@ const navLinks = [
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [closing, setClosing] = useState(false);
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 20);
@@ -23,6 +24,11 @@ const Header = () => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
+
+  const closeSidebar = () => {
+    setClosing(true);
+    setTimeout(() => { setOpen(false); setClosing(false); }, 280);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -66,52 +72,140 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile sidebar */}
+      {/* ========== SIDEBAR MOBILE — GLASS PROFISSIONAL ========== */}
       {open && (
         <>
-          <div className="fixed inset-0 z-[60] md:hidden" style={{ background: "rgba(0,0,0,0.45)", backdropFilter: "blur(4px)" }} onClick={() => setOpen(false)} />
-          <div className="fixed top-0 right-0 z-[70] w-[80%] max-w-[310px] h-full md:hidden flex flex-col" style={{ background: "rgba(255,255,255,0.95)", backdropFilter: "blur(24px)", borderLeft: "1px solid rgba(0,0,0,0.06)", boxShadow: "-12px 0 50px rgba(0,0,0,0.15)", animation: "slideInRight 0.3s cubic-bezier(0.32,0.72,0,1)" }}>
-            <div className="flex items-center justify-between px-5 py-4">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "#F5851F" }}>
+          {/* Backdrop escuro com blur */}
+          <div
+            className="fixed inset-0 z-[60] md:hidden transition-opacity duration-300"
+            style={{
+              background: "rgba(0,0,0,0.35)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+              opacity: closing ? 0 : 1,
+            }}
+            onClick={closeSidebar}
+          />
+
+          {/* Sidebar glass */}
+          <div
+            className="fixed top-0 right-0 z-[70] w-[82%] max-w-[320px] h-full md:hidden flex flex-col"
+            style={{
+              background: "rgba(255,255,255,0.65)",
+              backdropFilter: "saturate(180%) blur(30px)",
+              WebkitBackdropFilter: "saturate(180%) blur(30px)",
+              borderLeft: "1px solid rgba(255,255,255,0.5)",
+              boxShadow: "-20px 0 60px rgba(0,0,0,0.12), inset 1px 0 0 rgba(255,255,255,0.4)",
+              animation: closing
+                ? "slideOutRight 0.28s cubic-bezier(0.32,0.72,0,1) forwards"
+                : "slideInRight 0.32s cubic-bezier(0.32,0.72,0,1)",
+            }}
+          >
+            {/* Header da sidebar */}
+            <div className="flex items-center justify-between px-5 py-5">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-sm" style={{ background: "#F5851F" }}>
                   <PawPrint className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-base font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "#0D47A1" }}>Menu</span>
+                <div>
+                  <span className="text-base font-extrabold block leading-none" style={{ fontFamily: "'Baloo 2', cursive", color: "#0D47A1" }}>Menu</span>
+                  <span className="text-[10px] font-medium" style={{ color: "#999" }}>Navegação</span>
+                </div>
               </div>
-              <button onClick={() => setOpen(false)} className="w-8 h-8 rounded-lg flex items-center justify-center bg-black/5">
-                <X className="w-4 h-4" style={{ color: "#555" }} />
+              <button
+                onClick={closeSidebar}
+                className="w-8 h-8 rounded-full flex items-center justify-center transition-all active:scale-90"
+                style={{ background: "rgba(0,0,0,0.06)", backdropFilter: "blur(4px)" }}
+              >
+                <X className="w-4 h-4" style={{ color: "#666" }} />
               </button>
             </div>
 
-            <div className="mx-5 h-px bg-black/[0.06]" />
+            {/* Divider glass */}
+            <div className="mx-5 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent)" }} />
 
-            <nav className="flex-1 px-3 py-3 space-y-0.5">
-              {navLinks.map(l => (
-                <a key={l.href} href={l.href} className="flex items-center gap-3 px-3 py-3 rounded-xl text-[15px] font-semibold active:bg-blue-50/50 transition-all" style={{ color: "#333" }} onClick={() => setOpen(false)}>
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: "rgba(30,136,229,0.08)" }}>
-                    <l.icon className="w-4 h-4" style={{ color: "#1E88E5" }} />
+            {/* Nav items */}
+            <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
+              {navLinks.map((l, i) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="flex items-center gap-3 px-3 py-3 rounded-2xl text-[15px] font-semibold transition-all duration-200 active:scale-[0.97]"
+                  style={{
+                    color: "#333",
+                    animationDelay: `${i * 40}ms`,
+                    animation: closing ? "none" : `fadeInItem 0.3s ease ${i * 40}ms both`,
+                  }}
+                  onClick={closeSidebar}
+                >
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: "rgba(30,136,229,0.08)",
+                      backdropFilter: "blur(4px)",
+                      border: "1px solid rgba(30,136,229,0.1)",
+                    }}
+                  >
+                    <l.icon className="w-[18px] h-[18px]" style={{ color: "#1E88E5" }} />
                   </div>
                   <span className="flex-1">{l.label}</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
+                  <ChevronRight className="w-3.5 h-3.5" style={{ color: "#ccc" }} />
                 </a>
               ))}
             </nav>
 
-            <div className="px-4 pb-7 space-y-2.5">
-              <div className="h-px bg-black/[0.06] mb-3" />
-              <a href="https://wa.me/5569992216764" className="flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-bold text-white active:scale-[0.97] transition-transform" style={{ background: "#1E88E5", boxShadow: "0 4px 16px rgba(30,136,229,0.25)" }}>
-                <MessageSquare className="w-4 h-4" /> WhatsApp
-              </a>
-              <a href="https://wa.me/5569992216764" className="flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-extrabold text-white active:scale-[0.97] transition-transform" style={{ background: "#F5851F", boxShadow: "0 4px 16px rgba(245,133,31,0.25)" }}>
-                <PawPrint className="w-4 h-4" /> Agendar Agora
-              </a>
-              <p className="text-center text-[10px] pt-1" style={{ color: "#aaa" }}>(69) 99221-6764 · Seg–Sex 8h–19h</p>
+            {/* Bottom CTAs */}
+            <div className="px-4 pb-8 pt-3">
+              {/* Divider */}
+              <div className="h-px mb-4" style={{ background: "linear-gradient(90deg, transparent, rgba(0,0,0,0.06), transparent)" }} />
+
+              <div className="space-y-2.5">
+                <a
+                  href="https://wa.me/5569992216764"
+                  className="flex items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-bold text-white active:scale-[0.97] transition-all"
+                  style={{
+                    background: "rgba(30,136,229,0.9)",
+                    backdropFilter: "blur(8px)",
+                    boxShadow: "0 8px 24px rgba(30,136,229,0.25), inset 0 1px 0 rgba(255,255,255,0.2)",
+                  }}
+                >
+                  <MessageSquare className="w-4 h-4" /> WhatsApp
+                </a>
+                <a
+                  href="https://wa.me/5569992216764"
+                  className="flex items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-extrabold text-white active:scale-[0.97] transition-all"
+                  style={{
+                    background: "rgba(245,133,31,0.92)",
+                    backdropFilter: "blur(8px)",
+                    boxShadow: "0 8px 24px rgba(245,133,31,0.25), inset 0 1px 0 rgba(255,255,255,0.2)",
+                  }}
+                >
+                  <PawPrint className="w-4 h-4" /> Agendar Agora
+                </a>
+              </div>
+
+              <p className="text-center text-[10px] pt-3" style={{ color: "#aaa" }}>
+                (69) 99221-6764 · Seg–Sex 8h–19h
+              </p>
             </div>
           </div>
         </>
       )}
 
-      <style>{`@keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }`}</style>
+      <style>{`
+        @keyframes slideInRight {
+          from { transform: translateX(100%); opacity: 0.5; }
+          to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutRight {
+          from { transform: translateX(0); opacity: 1; }
+          to { transform: translateX(100%); opacity: 0; }
+        }
+        @keyframes fadeInItem {
+          from { opacity: 0; transform: translateX(12px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+      `}</style>
     </header>
   );
 };
