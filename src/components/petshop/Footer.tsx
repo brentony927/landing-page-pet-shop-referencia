@@ -11,7 +11,7 @@ const Footer = () => {
                 <PawPrint className="w-4 h-4 text-white" />
               </div>
               <span className="text-lg font-extrabold text-white" style={{ fontFamily: "'Baloo 2', cursive" }}>
-                Patinhas & Cia
+                Demonstração
               </span>
             </div>
             <p className="text-sm leading-relaxed text-white/60">
@@ -54,7 +54,11 @@ const Footer = () => {
         </div>
 
         <div className="pt-6 border-t border-white/10 text-center">
-          <p className="text-xs text-white/40">© 2025 Patinhas & Cia — Todos os direitos reservados 🐶</p>
+          <p className="text-xs text-white/40">
+            © 2025 Demonstração — Todos os direitos reservados 🐶 ·{" "}
+            <a href="/privacidade" className="underline hover:text-white/70 transition-colors">Política de Privacidade</a> ·{" "}
+            <a href="/termos" className="underline hover:text-white/70 transition-colors">Termos de Uso</a>
+          </p>
         </div>
       </div>
     </footer>

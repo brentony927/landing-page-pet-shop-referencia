@@ -29,7 +29,7 @@ const Header = () => {
               <PawPrint className="w-5 h-5 text-white" />
             </div>
             <span className="text-2xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-green-dark)" }}>
-              Patinhas <span style={{ color: "var(--pet-orange)" }}>&</span> Cia
+              Demonstração
             </span>
           </a>
 

@@ -36,7 +36,7 @@ const AboutUs = () => {
             <p className="text-base leading-relaxed" style={{ color: "#333" }}>
               Comecei sozinho, com um balde e uma mangueira. Hoje tenho equipe, mas ainda sou eu que abro a porta todo dia.
             </p>
-            <p className="text-sm font-extrabold mt-3" style={{ color: "var(--pet-orange)" }}>— Dono do Patinhas & Cia</p>
+            <p className="text-sm font-extrabold mt-3" style={{ color: "var(--pet-orange)" }}>— Dono do Demonstração</p>
           </div>
 
           <ul className="space-y-3">
