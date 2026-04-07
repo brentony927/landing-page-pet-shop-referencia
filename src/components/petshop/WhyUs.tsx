@@ -29,7 +29,7 @@ const AnimatedNumber = ({ target, suffix, active }: { target: number; suffix: st
   }, [active, target]);
 
   return (
-    <span className="text-3xl sm:text-4xl md:text-5xl font-black" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
+    <span className="text-3xl sm:text-4xl md:text-5xl font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1b4332" }}>
       {target % 1 !== 0 ? value.toFixed(1) : value.toLocaleString("pt-BR")}
       {suffix}
     </span>
@@ -40,13 +40,13 @@ const WhyUs = () => {
   const { ref, visible } = useInView(0.3);
 
   return (
-    <section className="py-12 bg-stone-50" ref={ref}>
+    <section className="py-12" style={{ background: "#f2ede6" }} ref={ref}>
       <div className={`max-w-[1100px] mx-auto px-4 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {stats.map((s, i) => (
             <div key={s.label} className="flex items-baseline gap-2 md:gap-3">
               <AnimatedNumber target={s.number} suffix={s.suffix} active={visible} />
-              <p className="text-sm font-medium" style={{ color: "#78716c" }}>{s.label}</p>
+              <p className="text-sm font-medium" style={{ color: "#6b6b6b" }}>{s.label}</p>
               {i < stats.length - 1 && <span className="hidden md:block w-px h-8 bg-stone-200 ml-8" />}
             </div>
           ))}

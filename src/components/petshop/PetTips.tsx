@@ -16,7 +16,7 @@ const PetTips = () => {
   return (
     <section className="py-16 md:py-20 px-4 bg-white" ref={ref}>
       <div className="max-w-[1100px] mx-auto">
-        <h2 className="text-2xl md:text-[2rem] font-black mb-10" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
+        <h2 className="text-2xl md:text-[2rem] font-black mb-10" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}>
           Dicas rápidas
         </h2>
 
@@ -26,14 +26,14 @@ const PetTips = () => {
             return (
               <div
                 key={t.title}
-                className={`rounded-xl p-5 cursor-pointer transition-all duration-300 border border-stone-200 bg-white hover:bg-stone-50 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-                style={{ transitionDelay: `${idx * 60}ms` }}
+                className={`rounded-xl p-5 cursor-pointer transition-all duration-300 border bg-white hover:bg-[#f9f6f1] ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                style={{ transitionDelay: `${idx * 60}ms`, borderColor: "#e2ddd6" }}
               >
                 <Icon className="w-4 h-4 mb-3" style={{ color: "#a8a29e" }} />
-                <h3 className="text-sm font-bold mb-1.5" style={{ color: "#1c1917" }}>
+                <h3 className="text-sm font-bold mb-1.5" style={{ color: "#1a1a1a" }}>
                   {t.title}
                 </h3>
-                <p className="text-[13px] leading-relaxed" style={{ color: "#78716c" }}>{t.desc}</p>
+                <p className="text-[13px] leading-relaxed" style={{ color: "#6b6b6b" }}>{t.desc}</p>
               </div>
             );
           })}

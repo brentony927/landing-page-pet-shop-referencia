@@ -20,22 +20,21 @@ const brands = [
 
 const Brands = () => {
   return (
-    <section className="py-12 bg-stone-50 overflow-hidden">
+    <section className="py-12 overflow-hidden" style={{ background: "#f9f6f1" }}>
       <div className="max-w-[1100px] mx-auto px-4 mb-8">
-        <h2 className="text-xl md:text-2xl font-black text-center" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
+        <h2 className="text-xl md:text-2xl font-black text-center" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}>
           Marcas que trabalhamos
         </h2>
       </div>
 
       <div className="relative">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 z-10" style={{ background: "linear-gradient(to right, #fafaf9, transparent)" }} />
-        <div className="absolute right-0 top-0 bottom-0 w-20 z-10" style={{ background: "linear-gradient(to left, #fafaf9, transparent)" }} />
+        <div className="absolute left-0 top-0 bottom-0 w-20 z-10" style={{ background: "linear-gradient(to right, #f9f6f1, transparent)" }} />
+        <div className="absolute right-0 top-0 bottom-0 w-20 z-10" style={{ background: "linear-gradient(to left, #f9f6f1, transparent)" }} />
 
         <div className="flex animate-marquee gap-8 w-max">
           {[...brands, ...brands, ...brands].map((b, i) => (
             <div key={i} className="flex-shrink-0 group">
-              <div className="w-36 h-20 rounded-xl bg-white border border-stone-200 flex items-center justify-center px-4 transition-all duration-300 group-hover:shadow-md group-hover:border-stone-300 group-hover:-translate-y-1">
+              <div className="w-36 h-20 rounded-xl bg-white flex items-center justify-center px-4 transition-all duration-300 group-hover:shadow-md group-hover:-translate-y-1" style={{ border: "1px solid #e2ddd6" }}>
                 <img
                   src={b.logo}
                   alt={b.name}

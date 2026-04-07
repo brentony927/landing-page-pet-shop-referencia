@@ -17,27 +17,29 @@ const AboutUs = () => {
         <div>
           <h2
             className="text-2xl md:text-[2rem] font-black mb-4 leading-tight"
-            style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}
+            style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}
           >
             Começou com um balde e uma mangueira.
           </h2>
-          <p className="text-base leading-relaxed mb-8" style={{ color: "#78716c" }}>
-            Aqui não tem franquia nem manual de rede grande. É uma equipe pequena que conhece cada pet pelo nome. O Thor tem medo de secador? A gente sabe. A Luna só come ração de salmão? Tá anotado.
-          </p>
+          <div style={{ borderLeft: "3px solid #1b4332", paddingLeft: "1.5rem" }}>
+            <p className="text-base leading-relaxed mb-8" style={{ color: "#6b6b6b" }}>
+              Aqui não tem franquia nem manual de rede grande. É uma equipe pequena que conhece cada pet pelo nome. O Thor tem medo de secador? A gente sabe. A Luna só come ração de salmão? Tá anotado.
+            </p>
+          </div>
 
           <div
-            className="relative rounded-xl p-7 mb-8 bg-stone-50"
+            className="relative rounded-xl p-7 mb-8" style={{ background: "#f9f6f1" }}
           >
             <span
               className="absolute -top-3 left-5 text-6xl leading-none"
-              style={{ fontFamily: "Georgia, serif", color: "#f97316", opacity: 0.3 }}
+              style={{ fontFamily: "Georgia, serif", color: "#e07b39", opacity: 0.3 }}
             >
               "
             </span>
-            <p className="text-base leading-relaxed" style={{ color: "#1c1917" }}>
+            <p className="text-base leading-relaxed" style={{ color: "#1a1a1a" }}>
               Comecei sozinho, com um balde e uma mangueira. Hoje tenho equipe, mas ainda sou eu que abro a porta todo dia.
             </p>
-            <p className="text-sm font-bold mt-3" style={{ color: "#f97316" }}>
+            <p className="text-sm font-bold mt-3" style={{ color: "#e07b39" }}>
               — Dono do Patinhas & Cia
             </p>
           </div>
@@ -45,31 +47,31 @@ const AboutUs = () => {
           <ul className="space-y-3">
             {benefits.map((b) => (
               <li key={b} className="flex items-start gap-3">
-                <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "#16a34a" }} />
-                <span className="text-sm" style={{ color: "#57534e" }}>{b}</span>
+                <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "#1b4332" }} />
+                <span className="text-sm" style={{ color: "#6b6b6b" }}>{b}</span>
               </li>
             ))}
           </ul>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
-          <div className="col-span-2 rounded-xl p-6" style={{ background: "#f0fdf4" }}>
-            <span className="text-3xl md:text-4xl font-black block mb-1" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#16a34a" }}>
+          <div className="col-span-2 rounded-xl p-6" style={{ background: "#d8f3dc" }}>
+            <span className="text-3xl md:text-4xl font-black block mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1b4332" }}>
               12 anos
             </span>
-            <p className="text-sm" style={{ color: "#57534e" }}>no bairro</p>
+            <p className="text-sm" style={{ color: "#6b6b6b" }}>no bairro</p>
           </div>
           <div className="rounded-xl p-6" style={{ background: "#fff7ed" }}>
-            <span className="text-3xl md:text-4xl font-black block mb-1" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#f97316" }}>
+            <span className="text-3xl md:text-4xl font-black block mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#e07b39" }}>
               500+
             </span>
-            <p className="text-sm" style={{ color: "#57534e" }}>pets atendidos</p>
+            <p className="text-sm" style={{ color: "#6b6b6b" }}>pets atendidos</p>
           </div>
-          <div className="rounded-xl p-6 bg-stone-50">
-            <span className="text-3xl md:text-4xl font-black block mb-1" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
+          <div className="rounded-xl p-6" style={{ background: "#f9f6f1" }}>
+            <span className="text-3xl md:text-4xl font-black block mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}>
               5 ★
             </span>
-            <p className="text-sm" style={{ color: "#57534e" }}>no Google</p>
+            <p className="text-sm" style={{ color: "#6b6b6b" }}>no Google</p>
           </div>
         </div>
       </div>
