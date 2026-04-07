@@ -21,7 +21,7 @@ import WhatsAppButton from "@/components/petshop/WhatsAppButton";
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
-      <LeafOverlay />
+      
       <Header />
       <HeroCarousel />
       <AnimatedStrip />
