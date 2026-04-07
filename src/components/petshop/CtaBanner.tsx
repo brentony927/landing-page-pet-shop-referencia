@@ -9,8 +9,8 @@ const CtaBanner = () => {
       <div
         className={`max-w-[1100px] mx-auto rounded-2xl px-8 md:px-16 py-12 md:py-16 text-white relative overflow-hidden transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-[0.97]"}`}
         style={{
-          background: "#1b4332",
-          backgroundImage: "radial-gradient(circle at 90% 10%, rgba(255,255,255,0.04) 0%, transparent 50%), radial-gradient(circle at 10% 90%, rgba(224,123,57,0.08) 0%, transparent 40%)",
+          background: "var(--forest)",
+          backgroundImage: "radial-gradient(circle at 90% 10%, rgba(255,255,255,0.04) 0%, transparent 50%), radial-gradient(circle at 10% 90%, rgba(212,98,26,0.08) 0%, transparent 40%)",
         }}
       >
         <div className="relative z-10 max-w-xl">
@@ -31,9 +31,9 @@ const CtaBanner = () => {
             <a
               href="https://wa.me/5569992216764"
               className="rounded-lg px-6 py-3 font-bold text-sm text-white transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2"
-              style={{ background: "#e07b39" }}
-              onMouseEnter={(e) => e.currentTarget.style.background = "#b85c20"}
-              onMouseLeave={(e) => e.currentTarget.style.background = "#e07b39"}
+              style={{ background: "var(--amber)" }}
+              onMouseEnter={(e) => e.currentTarget.style.background = "var(--amber-dark)"}
+              onMouseLeave={(e) => e.currentTarget.style.background = "var(--amber)"}
             >
               <Calendar className="w-4 h-4" />
               AGENDAR AGORA

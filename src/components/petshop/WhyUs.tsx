@@ -9,6 +9,7 @@ const stats = [
 
 const AnimatedNumber = ({ target, suffix, active }: { target: number; suffix: string; active: boolean }) => {
   const [value, setValue] = useState(0);
+  const [popped, setPopped] = useState(false);
 
   useEffect(() => {
     if (!active) return;
@@ -22,6 +23,8 @@ const AnimatedNumber = ({ target, suffix, active }: { target: number; suffix: st
       if (current >= target) {
         current = target;
         clearInterval(timer);
+        setPopped(true);
+        setTimeout(() => setPopped(false), 200);
       }
       setValue(isDecimal ? Math.round(current * 10) / 10 : Math.floor(current));
     }, duration / steps);
@@ -29,7 +32,16 @@ const AnimatedNumber = ({ target, suffix, active }: { target: number; suffix: st
   }, [active, target]);
 
   return (
-    <span className="text-3xl sm:text-4xl md:text-5xl font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1b4332" }}>
+    <span
+      className="text-3xl sm:text-4xl md:text-5xl font-black"
+      style={{
+        display: "inline-block",
+        transform: popped ? "scale(1.12)" : "scale(1)",
+        transition: "transform 0.2s ease",
+        fontFamily: "'Playfair Display', Georgia, serif",
+        color: "var(--forest)",
+      }}
+    >
       {target % 1 !== 0 ? value.toFixed(1) : value.toLocaleString("pt-BR")}
       {suffix}
     </span>
@@ -40,14 +52,18 @@ const WhyUs = () => {
   const { ref, visible } = useInView(0.3);
 
   return (
-    <section className="py-12" style={{ background: "#f2ede6" }} ref={ref}>
+    <section className="py-12" style={{ background: "var(--cream-dark)" }} ref={ref}>
       <div className={`max-w-[1100px] mx-auto px-4 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {stats.map((s, i) => (
-            <div key={s.label} className="flex items-baseline gap-2 md:gap-3">
+            <div
+              key={s.label}
+              className="flex items-baseline gap-2 md:gap-3"
+              style={{ transitionDelay: `${i * 150}ms` }}
+            >
               <AnimatedNumber target={s.number} suffix={s.suffix} active={visible} />
-              <p className="text-sm font-medium" style={{ color: "#6b6b6b" }}>{s.label}</p>
-              {i < stats.length - 1 && <span className="hidden md:block w-px h-8 bg-stone-200 ml-8" />}
+              <p className="text-sm font-medium" style={{ color: "var(--txt-secondary)" }}>{s.label}</p>
+              {i < stats.length - 1 && <span className="hidden md:block w-px h-8 ml-8" style={{ background: "var(--border)" }} />}
             </div>
           ))}
         </div>

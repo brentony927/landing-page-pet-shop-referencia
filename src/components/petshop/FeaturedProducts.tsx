@@ -14,13 +14,13 @@ const FeaturedProducts = () => {
   const { ref, visible } = useInView(0.1);
 
   return (
-    <section className="py-16 md:py-20 px-4" style={{ background: "#f9f6f1" }} ref={ref}>
+    <section className="py-16 md:py-20 px-4" style={{ background: "var(--cream)" }} ref={ref}>
       <div className="max-w-[1100px] mx-auto">
         <div className="flex items-end justify-between mb-10">
-          <h2 className="text-2xl md:text-[2rem] font-black leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}>
+          <h2 className="text-2xl md:text-[2rem] font-black leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "var(--txt-primary)" }}>
             Destaques da semana
           </h2>
-          <a href="https://wa.me/5569992216764" className="hidden md:block text-sm font-semibold hover:underline" style={{ color: "#1b4332" }}>
+          <a href="https://wa.me/5569992216764" className="hidden md:block text-sm font-semibold hover:underline" style={{ color: "var(--forest)" }}>
             Ver todos →
           </a>
         </div>
@@ -32,22 +32,16 @@ const FeaturedProducts = () => {
               <div
                 key={f.title}
                 className={`rounded-xl p-6 bg-white cursor-pointer transition-all duration-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-                style={{ border: "1px solid #e2ddd6", transitionDelay: `${idx * 60}ms` }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.06)";
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = "none";
-                  e.currentTarget.style.transform = "none";
-                }}
+                style={{ border: "1px solid var(--border)", transitionDelay: `${idx * 60}ms` }}
+                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.06)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}
               >
-                <Icon className="w-5 h-5 mb-4" style={{ color: "#6b6b6b" }} />
-                <h3 className="text-base font-bold mb-2" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}>
+                <Icon className="w-5 h-5 mb-4" style={{ color: "var(--txt-secondary)" }} />
+                <h3 className="text-base font-bold mb-2" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "var(--txt-primary)" }}>
                   {f.title}
                 </h3>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "#6b6b6b" }}>{f.desc}</p>
-                <a href="https://wa.me/5569992216764" className="text-sm font-semibold hover:underline" style={{ color: "#1b4332" }}>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--txt-secondary)" }}>{f.desc}</p>
+                <a href="https://wa.me/5569992216764" className="text-sm font-semibold hover:underline" style={{ color: "var(--forest)" }}>
                   Pergunte no WhatsApp →
                 </a>
               </div>

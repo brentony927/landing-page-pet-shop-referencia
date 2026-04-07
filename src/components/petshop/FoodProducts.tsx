@@ -62,10 +62,10 @@ const FoodProducts = () => {
     <section id="racoes" className="py-16 md:py-20 px-4 bg-white" ref={ref}>
       <div className="max-w-[1100px] mx-auto">
         <div className="flex items-end justify-between mb-10">
-          <h2 className="text-2xl md:text-[2rem] font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}>
+          <h2 className="text-2xl md:text-[2rem] font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "var(--txt-primary)" }}>
             Rações e petiscos
           </h2>
-          <Link to="/catalogo" className="hidden md:block text-sm font-semibold hover:underline" style={{ color: "#1b4332" }}>
+          <Link to="/catalogo" className="hidden md:block text-sm font-semibold hover:underline" style={{ color: "var(--forest)" }}>
             Ver catálogo completo →
           </Link>
         </div>
@@ -80,8 +80,8 @@ const FoodProducts = () => {
                 onClick={() => handleTabChange(cat.key)}
                 className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 whitespace-nowrap flex-shrink-0"
                 style={{
-                  background: isActive ? "#1b4332" : "#f9f6f1",
-                  color: isActive ? "#fff" : "#6b6b6b",
+                  background: isActive ? "var(--forest)" : "var(--cream)",
+                  color: isActive ? "#fff" : "var(--txt-secondary)",
                 }}
               >
                 <Icon className="w-4 h-4" />
@@ -98,14 +98,14 @@ const FoodProducts = () => {
               <div
                 key={p.name}
                 className={`bg-white rounded-xl overflow-hidden transition-all duration-300 relative group cursor-pointer border hover:shadow-md ${
-                  isFirst ? "col-span-2 row-span-1 border-[#1b4332] border-[1.5px]" : ""
+                  isFirst ? "col-span-2 row-span-1" : ""
                 } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-                style={{ transitionDelay: `${i * 80}ms`, borderColor: isFirst ? "#1b4332" : "#e2ddd6" }}
+                style={{ transitionDelay: `${i * 80}ms`, borderColor: isFirst ? "var(--forest)" : "var(--border)", borderWidth: isFirst ? "1.5px" : "1px" }}
                 onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
                 onMouseLeave={(e) => e.currentTarget.style.transform = "none"}
               >
                 {p.popular && (
-                  <span className={`absolute top-2 left-2 text-white font-bold text-[10px] z-10 px-2 py-1 rounded-md`} style={{ background: isFirst ? "#1b4332" : "#1a1a1a" }}>
+                  <span className="absolute top-2 left-2 text-white font-bold text-[10px] z-10 px-2 py-1 rounded-md" style={{ background: isFirst ? "var(--forest)" : "var(--txt-primary)" }}>
                     {isFirst ? "Queridinho" : "Popular"}
                   </span>
                 )}
@@ -115,23 +115,14 @@ const FoodProducts = () => {
                 <div className={`${isFirst ? "p-4 sm:p-5" : "p-3 sm:p-4"}`}>
                   <div className="flex items-center gap-0.5 mb-1.5">
                     {Array.from({ length: 5 }, (_, j) => (
-                      <Star
-                        key={j}
-                        className={`${isFirst ? "w-4 h-4" : "w-3 h-3"} ${j < Math.floor(p.rating) ? "text-yellow-400 fill-yellow-400" : "text-stone-200"}`}
-                      />
+                      <Star key={j} className={`${isFirst ? "w-4 h-4" : "w-3 h-3"} ${j < Math.floor(p.rating) ? "text-yellow-400 fill-yellow-400" : "text-stone-200"}`} />
                     ))}
                     <span className="text-stone-400 text-[10px] ml-1">{p.rating}</span>
                   </div>
-                  <h3 className={`font-bold text-stone-800 mb-3 leading-tight ${isFirst ? "text-base sm:text-lg" : "text-xs sm:text-sm"}`}>{p.name}</h3>
-                  <div className="flex items-center gap-2">
-                    <a
-                      href="https://wa.me/5569992216764"
-                      className={`font-semibold hover:underline ${isFirst ? "text-sm" : "text-xs"}`}
-                      style={{ color: "#1b4332" }}
-                    >
-                      Consultar preço →
-                    </a>
-                  </div>
+                  <h3 className={`font-bold mb-3 leading-tight ${isFirst ? "text-base sm:text-lg" : "text-xs sm:text-sm"}`} style={{ color: "var(--txt-primary)" }}>{p.name}</h3>
+                  <a href="https://wa.me/5569992216764" className={`font-semibold hover:underline ${isFirst ? "text-sm" : "text-xs"}`} style={{ color: "var(--forest)" }}>
+                    Consultar preço →
+                  </a>
                 </div>
               </div>
             );
@@ -142,9 +133,9 @@ const FoodProducts = () => {
           <Link
             to="/catalogo"
             className="inline-block rounded-lg px-8 py-3 text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5"
-            style={{ background: "#e07b39" }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "#b85c20"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "#e07b39"}
+            style={{ background: "var(--amber)" }}
+            onMouseEnter={(e) => e.currentTarget.style.background = "var(--amber-dark)"}
+            onMouseLeave={(e) => e.currentTarget.style.background = "var(--amber)"}
           >
             Ver catálogo completo →
           </Link>

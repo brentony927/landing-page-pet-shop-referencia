@@ -6,6 +6,20 @@
 @tailwind utilities;
 
 :root {
+  --forest: #0d3321;
+  --forest-mid: #1a5c3a;
+  --forest-light: #c8ecd4;
+  --forest-bg: #eaf5ee;
+  --amber: #d4621a;
+  --amber-dark: #a84c12;
+  --amber-light: #fde8d5;
+  --cream: #f7f3ed;
+  --cream-dark: #ede8e0;
+  --txt-primary: #141210;
+  --txt-secondary: #5a5550;
+  --txt-muted: #9a918a;
+  --border: #ddd8d0;
+
   --verde: #16a34a;
   --verde-hover: #15803d;
   --verde-escuro: #14532d;
