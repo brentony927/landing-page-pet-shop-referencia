@@ -1,4 +1,4 @@
-import LeafOverlay from "@/components/petshop/LeafOverlay";
+
 import Header from "@/components/petshop/Header";
 import HeroCarousel from "@/components/petshop/HeroCarousel";
 import AnimatedStrip from "@/components/petshop/AnimatedStrip";
@@ -21,7 +21,7 @@ import WhatsAppButton from "@/components/petshop/WhatsAppButton";
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
-      <LeafOverlay />
+      
       <Header />
       <HeroCarousel />
       <AnimatedStrip />
