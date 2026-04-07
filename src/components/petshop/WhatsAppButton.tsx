@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { MessageCircle } from "lucide-react";
 
+const WA_LINK = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20um%20banho%20pro%20meu%20pet";
+
 const WhatsAppButton = () => {
   const [showBubble, setShowBubble] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowBubble(true), 30000);
+    const timer = setTimeout(() => setShowBubble(true), 15000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -13,33 +15,34 @@ const WhatsAppButton = () => {
     <div className="fixed bottom-6 right-6 z-[999]">
       {showBubble && (
         <div
-          className="absolute bottom-16 right-0 bg-white rounded-2xl rounded-br-sm px-4 py-3 text-sm font-medium shadow-lg"
+          className="absolute bottom-20 right-0 bg-white rounded-2xl rounded-br-sm px-4 py-3 text-sm font-bold"
           style={{
-            color: "var(--txt-primary)",
-            border: "0.5px solid var(--border)",
+            color: "#333",
+            border: "1.5px solid var(--pet-gray-border)",
             whiteSpace: "nowrap",
             animation: "fadeUp 0.4s ease both",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
           }}
         >
-          Precisa agendar? Me chama! 👇
+          Agende agora pelo WhatsApp! 🐾
           <button
             onClick={() => setShowBubble(false)}
             className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-white flex items-center justify-center text-xs"
-            style={{ border: "0.5px solid var(--border)", color: "var(--txt-muted)" }}
+            style={{ border: "1px solid var(--pet-gray-border)", color: "var(--pet-gray-light)" }}
           >
             ×
           </button>
         </div>
       )}
       <a
-        href="https://wa.me/5569992216764"
+        href={WA_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-14 h-14 rounded-full flex items-center justify-center animate-pulse-ring transition-transform duration-200 hover:scale-110"
-        style={{ background: "#25d366", boxShadow: "0 4px 16px rgba(37,211,102,0.4)" }}
+        className="w-16 h-16 rounded-full flex items-center justify-center animate-pulse-ring transition-transform duration-200 hover:scale-110"
+        style={{ background: "#25d366", boxShadow: "0 6px 24px rgba(37,211,102,0.5)" }}
         aria-label="Chamar no WhatsApp"
       >
-        <MessageCircle className="w-[26px] h-[26px] text-white" />
+        <MessageCircle className="w-7 h-7 text-white" />
       </a>
     </div>
   );

@@ -1,16 +1,10 @@
 
 import Header from "@/components/petshop/Header";
 import HeroCarousel from "@/components/petshop/HeroCarousel";
-import AnimatedStrip from "@/components/petshop/AnimatedStrip";
-import Categories from "@/components/petshop/Categories";
-import Services from "@/components/petshop/Services";
-import Gallery from "@/components/petshop/Gallery";
-import FeaturedProducts from "@/components/petshop/FeaturedProducts";
-import FoodProducts from "@/components/petshop/FoodProducts";
-import Brands from "@/components/petshop/Brands";
-import AboutUs from "@/components/petshop/AboutUs";
 import WhyUs from "@/components/petshop/WhyUs";
-import PetTips from "@/components/petshop/PetTips";
+import Services from "@/components/petshop/Services";
+import PromoSection from "@/components/petshop/PromoSection";
+import Gallery from "@/components/petshop/Gallery";
 import Testimonials from "@/components/petshop/Testimonials";
 import CtaBanner from "@/components/petshop/CtaBanner";
 import FAQ from "@/components/petshop/FAQ";
@@ -21,19 +15,12 @@ import WhatsAppButton from "@/components/petshop/WhatsAppButton";
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
-      
       <Header />
       <HeroCarousel />
-      <AnimatedStrip />
-      <Categories />
-      <Services />
-      <Gallery />
-      <FeaturedProducts />
-      <FoodProducts />
-      <Brands />
       <WhyUs />
-      <AboutUs />
-      <PetTips />
+      <Services />
+      <PromoSection />
+      <Gallery />
       <Testimonials />
       <CtaBanner />
       <FAQ />
