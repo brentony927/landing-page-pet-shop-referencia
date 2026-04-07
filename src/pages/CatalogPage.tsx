@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Star, Dog, Cat, PawPrint, Bird, Fish, MessageCircle, Search, ShoppingBag, X, ChevronLeft, ChevronRight, Package, Heart, Eye, Info, Calendar, Ruler, ShieldCheck } from "lucide-react";
-import alconCanarioImg from "@/assets/catalog/alcon-canario.png";
-import megazooPapagaioImg from "@/assets/catalog/megazoo-papagaio.png";
+import alconCanarioImg from "@/assets/catalog/alcon-canario.jpg";
+import alconCurioImg from "@/assets/catalog/alcon-curio.jpg";
+import megazooPapagaioMixImg from "@/assets/catalog/megazoo-papagaio-mix.jpg";
+import megazooPapagaioFrutasImg from "@/assets/catalog/megazoo-papagaio-frutas.jpg";
 import tetraColorbitsImg from "@/assets/catalog/tetra-colorbits.jpg";
 import tetraColorFlakesImg from "@/assets/catalog/tetra-color-flakes.jpg";
 import alconMiniBettaImg from "@/assets/catalog/alcon-mini-betta.jpg";
 import alconBettamixImg from "@/assets/catalog/alcon-bettamix.jpg";
+import pedigreeFilhotesImg from "@/assets/catalog/pedigree-filhotes.png";
+import goldenFilhotesImg from "@/assets/catalog/golden-filhotes.jpg";
 import Header from "@/components/petshop/Header";
 import Footer from "@/components/petshop/Footer";
 import WhatsAppButton from "@/components/petshop/WhatsAppButton";
@@ -308,7 +312,7 @@ const allProducts: Product[] = [
     recommendation: "Servir 3-4x ao dia até 6 meses, depois 2x ao dia. Manter água fresca disponível.",
     ingredients: "Cereais, farinha de carne, DHA, cálcio, fósforo, vitaminas A, D, E",
     images: [
-      "https://cobasi.vteximg.com.br/arquivos/ids/1095404/Racao%20Umida%20Pedigree%20Sache%20Caes%20Filhotes%20Carne%20ao%20Molho.webp?v=639033225153600000",
+      pedigreeFilhotesImg,
     ],
     desc: "Ração completa para filhotes com DHA para desenvolvimento cerebral e crescimento saudável dos ossos e dentes.",
     benefits: ["DHA para cérebro", "Ossos fortes", "Pelo macio", "Alta energia"],
@@ -326,7 +330,7 @@ const allProducts: Product[] = [
     recommendation: "Super premium natural. Sem corantes nem conservantes artificiais. Ideal para filhotes sensíveis.",
     ingredients: "Frango, abóbora, alecrim, arroz integral, óleos naturais",
     images: [
-      "https://cobasi.vteximg.com.br/arquivos/ids/939193/racao-golden-selecao-natural-gatos-castrados-frango-com-abobora-e-alecrim-3924008-lado-3kg.jpg?v=638848190534870000",
+      goldenFilhotesImg,
     ],
     desc: "Linha natural da Golden com ingredientes selecionados. Frango com abóbora e alecrim para nutrição completa.",
     benefits: ["Ingredientes naturais", "Frango + abóbora", "Sem corantes", "Super premium"],
@@ -359,7 +363,7 @@ const allProducts: Product[] = [
     age: "Adulto",
     size: "Curió, Bicudo e Azulão",
     recommendation: "Ideal para aves de canto. Sirva em comedouro limpo e complemente com água fresca.",
-    images: [alconCanarioImg],
+    images: [alconCurioImg],
     desc: "Alimento balanceado para curió, bicudo e azulão, com nutrientes essenciais para bem-estar e vitalidade.",
     benefits: ["Alta energia", "Mistura equilibrada", "Boa aceitação", "Uso diário"],
   },
@@ -373,7 +377,7 @@ const allProducts: Product[] = [
     age: "Adulto",
     size: "Papagaios",
     recommendation: "Pode complementar com frutas frescas. Troque sobras diariamente.",
-    images: [megazooPapagaioImg],
+    images: [megazooPapagaioMixImg],
     desc: "Mix nutritivo para papagaios com ingredientes selecionados para alimentação equilibrada.",
     benefits: ["Nutrição balanceada", "Boa palatabilidade", "Uso diário", "Ingredientes selecionados"],
   },
@@ -387,7 +391,7 @@ const allProducts: Product[] = [
     age: "Adulto",
     size: "Papagaios",
     recommendation: "Extrusada completa. Pode ser a base da alimentação com água sempre fresca.",
-    images: [megazooPapagaioImg],
+    images: [megazooPapagaioFrutasImg],
     desc: "Alimento para papagaios com frutas e legumes, pensado para uma dieta mais completa.",
     benefits: ["Com frutas e legumes", "Extrusado", "Nutrição completa", "Maior praticidade"],
   },
