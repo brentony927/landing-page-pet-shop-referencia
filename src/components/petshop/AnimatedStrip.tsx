@@ -13,13 +13,13 @@ const items = [
 
 const AnimatedStrip = () => {
   return (
-    <div className="overflow-hidden py-3" style={{ background: "var(--forest)" }}>
+    <div className="overflow-hidden py-3" style={{ background: "var(--pet-green)" }}>
       <div className="flex gap-12 w-max animate-scrollX">
         {[...items, ...items].map((item, i) => {
           const Icon = item.icon;
           return (
-            <span key={i} className="text-white text-sm font-medium whitespace-nowrap flex items-center gap-2" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              <Icon className="w-4 h-4" style={{ color: "var(--amber)" }} />
+            <span key={i} className="text-white text-sm font-bold whitespace-nowrap flex items-center gap-2">
+              <Icon className="w-4 h-4" style={{ color: "var(--pet-yellow)" }} />
               {item.text}
             </span>
           );
