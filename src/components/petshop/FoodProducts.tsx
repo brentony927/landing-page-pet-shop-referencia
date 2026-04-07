@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Star, Dog, Cat, PawPrint, Bird, Fish, ArrowLeft, Eye, MessageCircle } from "lucide-react";
+import { Star, Dog, Cat, PawPrint, Bird, Fish } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { Link } from "react-router-dom";
 
@@ -62,10 +62,10 @@ const FoodProducts = () => {
     <section id="racoes" className="py-16 md:py-20 px-4 bg-white" ref={ref}>
       <div className="max-w-[1100px] mx-auto">
         <div className="flex items-end justify-between mb-10">
-          <h2 className="text-2xl md:text-[2rem] font-black" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
+          <h2 className="text-2xl md:text-[2rem] font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}>
             Rações e petiscos
           </h2>
-          <Link to="/catalogo" className="hidden md:block text-sm font-semibold hover:underline" style={{ color: "#16a34a" }}>
+          <Link to="/catalogo" className="hidden md:block text-sm font-semibold hover:underline" style={{ color: "#1b4332" }}>
             Ver catálogo completo →
           </Link>
         </div>
@@ -80,8 +80,8 @@ const FoodProducts = () => {
                 onClick={() => handleTabChange(cat.key)}
                 className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 whitespace-nowrap flex-shrink-0"
                 style={{
-                  background: isActive ? "#1c1917" : "#f5f5f4",
-                  color: isActive ? "#fff" : "#78716c",
+                  background: isActive ? "#1b4332" : "#f9f6f1",
+                  color: isActive ? "#fff" : "#6b6b6b",
                 }}
               >
                 <Icon className="w-4 h-4" />
@@ -98,14 +98,14 @@ const FoodProducts = () => {
               <div
                 key={p.name}
                 className={`bg-white rounded-xl overflow-hidden transition-all duration-300 relative group cursor-pointer border hover:shadow-md ${
-                  isFirst ? "col-span-2 row-span-1 border-[#16a34a] border-[1.5px]" : "border-stone-200"
+                  isFirst ? "col-span-2 row-span-1 border-[#1b4332] border-[1.5px]" : ""
                 } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-                style={{ transitionDelay: `${i * 80}ms` }}
+                style={{ transitionDelay: `${i * 80}ms`, borderColor: isFirst ? "#1b4332" : "#e2ddd6" }}
                 onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
                 onMouseLeave={(e) => e.currentTarget.style.transform = "none"}
               >
                 {p.popular && (
-                  <span className={`absolute top-2 left-2 text-white font-bold text-[10px] z-10 px-2 py-1 rounded-md ${isFirst ? "bg-[#16a34a]" : "bg-[#1c1917]"}`}>
+                  <span className={`absolute top-2 left-2 text-white font-bold text-[10px] z-10 px-2 py-1 rounded-md`} style={{ background: isFirst ? "#1b4332" : "#1a1a1a" }}>
                     {isFirst ? "Queridinho" : "Popular"}
                   </span>
                 )}
@@ -127,7 +127,7 @@ const FoodProducts = () => {
                     <a
                       href="https://wa.me/5569992216764"
                       className={`font-semibold hover:underline ${isFirst ? "text-sm" : "text-xs"}`}
-                      style={{ color: "#16a34a" }}
+                      style={{ color: "#1b4332" }}
                     >
                       Consultar preço →
                     </a>
@@ -142,9 +142,9 @@ const FoodProducts = () => {
           <Link
             to="/catalogo"
             className="inline-block rounded-lg px-8 py-3 text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5"
-            style={{ background: "#f97316" }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "#c2410c"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "#f97316"}
+            style={{ background: "#e07b39" }}
+            onMouseEnter={(e) => e.currentTarget.style.background = "#b85c20"}
+            onMouseLeave={(e) => e.currentTarget.style.background = "#e07b39"}
           >
             Ver catálogo completo →
           </Link>

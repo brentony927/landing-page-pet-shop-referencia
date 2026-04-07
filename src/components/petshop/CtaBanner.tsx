@@ -8,7 +8,10 @@ const CtaBanner = () => {
     <section className="py-14 md:py-16 px-4" ref={ref}>
       <div
         className={`max-w-[1100px] mx-auto rounded-2xl px-8 md:px-16 py-12 md:py-16 text-white relative overflow-hidden transition-all duration-700 ${visible ? "opacity-100 scale-100" : "opacity-0 scale-[0.97]"}`}
-        style={{ background: "#1c1917" }}
+        style={{
+          background: "#1b4332",
+          backgroundImage: "radial-gradient(circle at 90% 10%, rgba(255,255,255,0.04) 0%, transparent 50%), radial-gradient(circle at 10% 90%, rgba(224,123,57,0.08) 0%, transparent 40%)",
+        }}
       >
         <div className="relative z-10 max-w-xl">
           <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold mb-5" style={{ background: "rgba(255,255,255,0.1)" }}>
@@ -16,7 +19,7 @@ const CtaBanner = () => {
             Para clientes do bairro
           </span>
 
-          <h2 className="text-2xl md:text-3xl font-black mb-3 leading-tight" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
+          <h2 className="text-2xl md:text-3xl font-black mb-3 leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
             Agende hoje e ganhe 10% off no próximo serviço.
           </h2>
 
@@ -28,9 +31,9 @@ const CtaBanner = () => {
             <a
               href="https://wa.me/5569992216764"
               className="rounded-lg px-6 py-3 font-bold text-sm text-white transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2"
-              style={{ background: "#f97316" }}
-              onMouseEnter={(e) => e.currentTarget.style.background = "#c2410c"}
-              onMouseLeave={(e) => e.currentTarget.style.background = "#f97316"}
+              style={{ background: "#e07b39" }}
+              onMouseEnter={(e) => e.currentTarget.style.background = "#b85c20"}
+              onMouseLeave={(e) => e.currentTarget.style.background = "#e07b39"}
             >
               <Calendar className="w-4 h-4" />
               AGENDAR AGORA
@@ -46,7 +49,6 @@ const CtaBanner = () => {
           </div>
         </div>
 
-        {/* Decorative circle */}
         <div className="absolute -right-20 -bottom-20 w-72 h-72 rounded-full" style={{ background: "rgba(255,255,255,0.03)" }} />
         <div className="absolute right-10 top-10 w-32 h-32 rounded-full" style={{ background: "rgba(255,255,255,0.02)" }} />
       </div>

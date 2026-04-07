@@ -8,11 +8,11 @@ const slides = [
     cta1: { text: "AGENDAR AGORA", href: "https://wa.me/5569992216764" },
     cta2: { text: "Ver serviços", href: "#servicos" },
     rightIcon: Scissors,
-    rightBg: "#f0fdf4",
-    rightColor: "#16a34a",
+    rightBg: "#d8f3dc",
+    rightColor: "#1b4332",
     rightLabel: "Banho & Tosa",
     floatingIcons: [
-      { icon: Bath, x: "75%", y: "15%", bg: "#dcfce7", color: "#16a34a", size: 36 },
+      { icon: Bath, x: "75%", y: "15%", bg: "#d8f3dc", color: "#1b4332", size: 36 },
       { icon: Heart, x: "90%", y: "65%", bg: "#fef2f2", color: "#ef4444", size: 28 },
       { icon: Star, x: "65%", y: "80%", bg: "#fef9c3", color: "#ca8a04", size: 24 },
     ],
@@ -24,11 +24,11 @@ const slides = [
     cta2: { text: "Nossa história", href: "#sobre" },
     rightIcon: Dog,
     rightBg: "#fff7ed",
-    rightColor: "#f97316",
+    rightColor: "#e07b39",
     rightLabel: "12 Anos",
     floatingIcons: [
       { icon: Heart, x: "70%", y: "12%", bg: "#fce7f3", color: "#ec4899", size: 32 },
-      { icon: Bone, x: "92%", y: "55%", bg: "#f0fdf4", color: "#16a34a", size: 26 },
+      { icon: Bone, x: "92%", y: "55%", bg: "#d8f3dc", color: "#1b4332", size: 26 },
       { icon: Star, x: "68%", y: "78%", bg: "#fef9c3", color: "#ca8a04", size: 30 },
     ],
   },
@@ -38,12 +38,12 @@ const slides = [
     cta1: { text: "VER RAÇÕES", href: "#racoes" },
     cta2: { text: "Agendar serviço", href: "https://wa.me/5569992216764" },
     rightIcon: Truck,
-    rightBg: "#f0fdf4",
-    rightColor: "#16a34a",
+    rightBg: "#d8f3dc",
+    rightColor: "#1b4332",
     rightLabel: "Entrega Rápida",
     floatingIcons: [
-      { icon: Bone, x: "72%", y: "18%", bg: "#fff7ed", color: "#f97316", size: 30 },
-      { icon: Dog, x: "88%", y: "60%", bg: "#dcfce7", color: "#16a34a", size: 28 },
+      { icon: Bone, x: "72%", y: "18%", bg: "#fff7ed", color: "#e07b39", size: 30 },
+      { icon: Dog, x: "88%", y: "60%", bg: "#d8f3dc", color: "#1b4332", size: 28 },
       { icon: Heart, x: "70%", y: "75%", bg: "#fce7f3", color: "#ec4899", size: 24 },
     ],
   },
@@ -74,10 +74,17 @@ const HeroCarousel = () => {
   const RightIcon = s.rightIcon;
 
   return (
-    <section id="inicio" className="bg-white relative overflow-hidden" style={{ paddingTop: "calc(64px + 32px)" }}>
+    <section
+      id="inicio"
+      className="relative overflow-hidden"
+      style={{
+        paddingTop: "calc(64px + 32px)",
+        background: "#f9f6f1",
+        backgroundImage: "radial-gradient(circle at 80% 20%, #d8f3dc 0%, transparent 50%), radial-gradient(circle at 10% 80%, #f2ede6 0%, transparent 40%)",
+      }}
+    >
       <div className="max-w-[1100px] mx-auto px-4 sm:px-6 md:px-10 py-12 md:py-20 min-h-[500px] md:min-h-[540px]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
-          {/* Left — Text */}
           <div
             className="transition-all duration-600 ease-out"
             style={{
@@ -90,33 +97,32 @@ const HeroCarousel = () => {
           >
             <h1
               className="text-3xl sm:text-4xl md:text-[3.4rem] font-black leading-[1.04] mb-5"
-              style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917", whiteSpace: "pre-line" }}
+              style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 900, color: "#1a1a1a", whiteSpace: "pre-line" }}
             >
               {s.h1}
             </h1>
-            <p className="text-base md:text-lg mb-8 max-w-md leading-relaxed" style={{ color: "#78716c" }}>
+            <p className="text-base md:text-lg mb-8 max-w-md leading-relaxed" style={{ color: "#6b6b6b" }}>
               {s.sub}
             </p>
             <div className="flex flex-wrap gap-3 mb-10">
               <a
                 href={s.cta1.href}
                 className="rounded-xl px-8 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
-                style={{ background: "#f97316", boxShadow: "0 4px 14px rgba(249,115,22,0.3)" }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = "#c2410c"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(249,115,22,0.4)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = "#f97316"; e.currentTarget.style.boxShadow = "0 4px 14px rgba(249,115,22,0.3)"; }}
+                style={{ background: "#e07b39", boxShadow: "0 4px 14px rgba(224,123,57,0.3)" }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "#b85c20"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(224,123,57,0.4)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "#e07b39"; e.currentTarget.style.boxShadow = "0 4px 14px rgba(224,123,57,0.3)"; }}
               >
                 {s.cta1.text}
               </a>
               <a
                 href={s.cta2.href}
                 className="rounded-xl px-8 py-4 text-sm font-semibold transition-all duration-200 hover:bg-stone-50"
-                style={{ border: "1.5px solid #d6d3d1", color: "#57534e" }}
+                style={{ border: "1.5px solid #e2ddd6", color: "#6b6b6b" }}
               >
                 {s.cta2.text}
               </a>
             </div>
 
-            {/* Stats */}
             <div className="flex items-center gap-6 md:gap-10">
               {[
                 { icon: Star, value: "5.0", label: "Google", fill: true },
@@ -125,7 +131,7 @@ const HeroCarousel = () => {
               ].map((stat, i) => (
                 <div key={i} className="flex items-center gap-2">
                   {stat.icon && <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />}
-                  <span className="text-xl md:text-2xl font-black" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
+                  <span className="text-xl md:text-2xl font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}>
                     {stat.value}
                   </span>
                   <span className="text-[11px] text-stone-400 uppercase tracking-wider font-medium">{stat.label}</span>
@@ -135,7 +141,6 @@ const HeroCarousel = () => {
             </div>
           </div>
 
-          {/* Right — Visual */}
           <div
             className="relative hidden md:flex justify-center items-center"
             style={{
@@ -144,7 +149,6 @@ const HeroCarousel = () => {
               transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
             }}
           >
-            {/* Main circle */}
             <div
               className="w-[280px] h-[280px] lg:w-[320px] lg:h-[320px] rounded-full flex flex-col items-center justify-center relative"
               style={{ background: s.rightBg }}
@@ -152,12 +156,10 @@ const HeroCarousel = () => {
               <RightIcon className="w-16 h-16 lg:w-20 lg:h-20 mb-3" style={{ color: s.rightColor }} />
               <span
                 className="text-lg lg:text-xl font-bold"
-                style={{ fontFamily: "'Fraunces', Georgia, serif", color: s.rightColor }}
+                style={{ fontFamily: "'Playfair Display', Georgia, serif", color: s.rightColor }}
               >
                 {s.rightLabel}
               </span>
-
-              {/* Decorative ring */}
               <div
                 className="absolute inset-[-14px] rounded-full"
                 style={{
@@ -167,7 +169,6 @@ const HeroCarousel = () => {
               />
             </div>
 
-            {/* Floating icons */}
             {s.floatingIcons.map((fi, i) => {
               const FIcon = fi.icon;
               return (
@@ -189,10 +190,9 @@ const HeroCarousel = () => {
               );
             })}
 
-            {/* Badge */}
             <div
               className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-full px-5 py-2.5 text-xs font-bold bg-white flex items-center gap-2"
-              style={{ color: "#1c1917", whiteSpace: "nowrap", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}
+              style={{ color: "#1a1a1a", whiteSpace: "nowrap", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}
             >
               <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
               Nota 5.0 no Google
@@ -200,7 +200,6 @@ const HeroCarousel = () => {
           </div>
         </div>
 
-        {/* Dots + Progress */}
         <div className="flex gap-2 mt-10 md:mt-12">
           {slides.map((_, i) => (
             <button
@@ -209,14 +208,14 @@ const HeroCarousel = () => {
               className="h-1.5 rounded-full transition-all duration-500 relative overflow-hidden"
               style={{
                 width: i === current ? 40 : 8,
-                background: i === current ? "#f97316" : "#e7e5e4",
+                background: i === current ? "#e07b39" : "#e2ddd6",
               }}
             >
               {i === current && (
                 <span
                   className="absolute inset-0 rounded-full"
                   style={{
-                    background: "rgba(194,65,12,0.25)",
+                    background: "rgba(184,92,32,0.25)",
                     animation: "progress 5s linear",
                   }}
                 />
@@ -226,7 +225,6 @@ const HeroCarousel = () => {
         </div>
       </div>
 
-      {/* Nav arrows */}
       <button
         onClick={prev}
         className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full hidden md:flex items-center justify-center bg-white/95 backdrop-blur-sm border border-stone-200/50 hover:shadow-md transition-all duration-200"

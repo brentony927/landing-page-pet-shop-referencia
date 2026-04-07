@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -18,6 +19,16 @@
   --txt: #1c1917;
   --txt2: #57534e;
   --borda: #e7e5e4;
+
+  --color-forest: #1b4332;
+  --color-forest-mid: #2d6a4f;
+  --color-forest-light: #d8f3dc;
+  --color-accent: #e07b39;
+  --color-accent-dark: #b85c20;
+  --color-text-primary: #1a1a1a;
+  --color-text-muted: #6b6b6b;
+  --color-surface: #f9f6f1;
+  --color-border: #e2ddd6;
 
   --background: 0 0% 100%;
   --foreground: 0 0% 10%;
@@ -59,7 +70,7 @@
     color: var(--txt);
   }
   h1, h2, h3 {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Playfair Display', Georgia, serif;
   }
   h4, h5, h6 {
     font-family: 'DM Sans', sans-serif;

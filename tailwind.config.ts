@@ -51,6 +51,17 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        forest: {
+          DEFAULT: '#1b4332',
+          mid: '#2d6a4f',
+          light: '#d8f3dc',
+        },
+        'accent-custom': {
+          DEFAULT: '#e07b39',
+          dark: '#b85c20',
+        },
+        surface: '#f9f6f1',
+        parchment: '#f2ede6',
         petshop: {
           orange: "hsl(var(--petshop-orange))",
           mint: "hsl(var(--petshop-mint))",
