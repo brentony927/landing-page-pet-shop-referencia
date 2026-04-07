@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Star, Dog, Cat, PawPrint, Bird, Fish, MessageCircle, Search, ShoppingBag, X, ChevronLeft, ChevronRight, Package, Heart, Eye, Info, Calendar, Ruler, ShieldCheck } from "lucide-react";
+import alconCanarioImg from "@/assets/catalog/alcon-canario.png";
+import megazooPapagaioImg from "@/assets/catalog/megazoo-papagaio.png";
+import tetraColorbitsImg from "@/assets/catalog/tetra-colorbits.jpg";
+import tetraColorFlakesImg from "@/assets/catalog/tetra-color-flakes.jpg";
+import alconMiniBettaImg from "@/assets/catalog/alcon-mini-betta.jpg";
+import alconBettamixImg from "@/assets/catalog/alcon-bettamix.jpg";
 import Header from "@/components/petshop/Header";
 import Footer from "@/components/petshop/Footer";
 import WhatsAppButton from "@/components/petshop/WhatsAppButton";
