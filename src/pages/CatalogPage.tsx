@@ -327,8 +327,9 @@ const allProducts: Product[] = [
   },
 
   // ─── PÁSSAROS ───
+  // ─── PÁSSAROS ───
   {
-    name: "Alcon Club Mix Canário",
+    name: "Alcon Club Canário",
     brand: "Alcon",
     rating: 4.5,
     cat: "birds",
@@ -338,7 +339,7 @@ const allProducts: Product[] = [
     size: "Canários",
     recommendation: "Mistura balanceada de sementes. Troque diariamente e mantenha água limpa.",
     images: [
-      "https://cobasi.vteximg.com.br/arquivos/ids/776753/7896029052327_1_Pedigree_759163.jpg?v=638753913790200000",
+      "https://m.media-amazon.com/images/I/61eBYaN2URL._AC_SL1000_.jpg",
     ],
     desc: "Mistura premium de sementes selecionadas para canários. Estimula o canto e mantém a saúde.",
     benefits: ["Sementes selecionadas", "Estimula o canto", "Rico em nutrientes", "Sem sujeira"],
@@ -355,10 +356,42 @@ const allProducts: Product[] = [
     size: "Calopsitas e Agapornis",
     recommendation: "Mix especial para calopsitas. Ofereça junto com frutas e verduras frescas.",
     images: [
-      "https://cobasi.vteximg.com.br/arquivos/ids/1042487/Petiscos-Anti-bola-de-pelo-Whiskas-40g.jpg?v=638753893779770000",
+      "https://m.media-amazon.com/images/I/61v+OqEr2NL._AC_SL1000_.jpg",
     ],
     desc: "Alimento premium para calopsitas e agapornis. Mix de sementes com vitaminas e minerais essenciais.",
     benefits: ["Penas brilhantes", "Vitaminas e minerais", "Mistura equilibrada", "Alto valor nutricional"],
+  },
+  {
+    name: "Megazoo Mix Papagaio",
+    brand: "Megazoo",
+    rating: 4.8,
+    cat: "birds",
+    weight: "700g",
+    price: "R$ 32,90",
+    age: "Adulto",
+    size: "Papagaios e Araras",
+    recommendation: "Alimento extrusado completo. Pode complementar com frutas frescas.",
+    images: [
+      "https://m.media-amazon.com/images/I/51Ci8d+LHZL._AC_SL1000_.jpg",
+    ],
+    desc: "Ração extrusada para papagaios com frutas desidratadas. Nutrição completa e balanceada.",
+    benefits: ["Extrusado premium", "Com frutas", "Sem desperdício", "Nutrição completa"],
+  },
+  {
+    name: "Alcon Club Periquito",
+    brand: "Alcon",
+    rating: 4.4,
+    cat: "birds",
+    weight: "500g",
+    price: "R$ 16,90",
+    age: "Adulto",
+    size: "Periquitos",
+    recommendation: "Mix de sementes ideal para periquitos australianos. Troque a água diariamente.",
+    images: [
+      "https://m.media-amazon.com/images/I/61QjH6sTpjL._AC_SL1000_.jpg",
+    ],
+    desc: "Mistura de sementes selecionadas para periquitos. Enriquecida com vitaminas para penas saudáveis.",
+    benefits: ["Sementes premium", "Penas saudáveis", "Rico em vitaminas", "Alta palatabilidade"],
   },
 
   // ─── PEIXES ───
@@ -374,7 +407,7 @@ const allProducts: Product[] = [
     size: "Peixes tropicais",
     recommendation: "Ofereça 2-3x ao dia a quantidade consumida em 2 minutos. Não turva a água.",
     images: [
-      "https://cobasi.vteximg.com.br/arquivos/ids/1051118/Modelo.png?v=638321928423030000",
+      "https://m.media-amazon.com/images/I/71tq7VsjuEL._AC_SL1500_.jpg",
     ],
     desc: "Alimento em grânulos para peixes tropicais. Realça as cores naturais dos peixes ornamentais.",
     benefits: ["Realça cores", "Não turva água", "Alta digestão", "Rico em proteínas"],
@@ -390,10 +423,42 @@ const allProducts: Product[] = [
     size: "Peixes Betta",
     recommendation: "Ofereça 3-4 grânulos por vez, 2x ao dia. Remova sobras para não turvar a água.",
     images: [
-      "https://cobasi.vteximg.com.br/arquivos/ids/873832/Racao-Alcon-Betta-Granulado-10g.png?v=638753953445830000",
+      "https://m.media-amazon.com/images/I/61PkXJHmURL._AC_SL1000_.jpg",
     ],
     desc: "Micro grânulos flutuantes para peixes Betta. Formulação exclusiva que não turva a água.",
     benefits: ["Micro grânulos", "Não turva água", "Rico em proteínas", "Cores vibrantes"],
+  },
+  {
+    name: "Tetra Min Flakes",
+    brand: "Tetra",
+    rating: 4.7,
+    cat: "fish",
+    weight: "52g",
+    price: "R$ 29,90",
+    age: "Adulto",
+    size: "Todos os peixes tropicais",
+    recommendation: "Alimento básico em flocos. Ofereça 2x ao dia a quantidade consumida em 3 minutos.",
+    images: [
+      "https://m.media-amazon.com/images/I/71Jh1Y1FEEL._AC_SL1500_.jpg",
+    ],
+    desc: "Flocos de alta qualidade para peixes tropicais. Fórmula com prebióticos para saúde digestiva.",
+    benefits: ["Flocos premium", "Com prebióticos", "Água limpa", "Nutrição completa"],
+  },
+  {
+    name: "Alcon Bottom Fish",
+    brand: "Alcon",
+    rating: 4.5,
+    cat: "fish",
+    weight: "50g",
+    price: "R$ 19,90",
+    age: "Adulto",
+    size: "Peixes de fundo",
+    recommendation: "Tabletes que afundam rapidamente. Ideal para cascudos, coridoras e botias.",
+    images: [
+      "https://m.media-amazon.com/images/I/61LQ2TQ3g3L._AC_SL1000_.jpg",
+    ],
+    desc: "Tabletes nutritivos para peixes de fundo. Afundam rapidamente e não turvam a água.",
+    benefits: ["Afunda rápido", "Para peixes de fundo", "Não turva água", "Rico em fibras"],
   },
 ];
 

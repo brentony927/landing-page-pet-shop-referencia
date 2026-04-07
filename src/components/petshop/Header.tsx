@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone, PawPrint, Home, Scissors, Info, MessageSquare, ChevronRight, ShoppingBag } from "lucide-react";
 
 const navLinks = [
-  { label: "Início", href: "#inicio", icon: Home },
-  { label: "Serviços", href: "#servicos", icon: Scissors },
+  { label: "Início", href: "/", icon: Home },
+  { label: "Serviços", href: "/#servicos", icon: Scissors },
   { label: "Catálogo", href: "/catalogo", icon: ShoppingBag },
-  { label: "Sobre", href: "#sobre", icon: Info },
-  { label: "Contato", href: "#contato", icon: MessageSquare },
+  { label: "Sobre", href: "/#sobre", icon: Info },
+  { label: "Contato", href: "/#contato", icon: MessageSquare },
 ];
 
 const Header = () => {
@@ -42,7 +42,7 @@ const Header = () => {
       {/* Main bar */}
       <div className="h-14 md:h-16 transition-all duration-300" style={{ background: scrolled ? "rgba(255,255,255,0.98)" : "rgba(255,255,255,0.96)", backdropFilter: "blur(16px)", boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.06)" : "none" }}>
         <div className="max-w-[1100px] mx-auto flex items-center justify-between h-full px-4">
-          <a href="#inicio" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-2">
             <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center" style={{ background: "#F5851F" }}>
               <PawPrint className="w-4 h-4 md:w-5 md:h-5 text-white" />
             </div>
