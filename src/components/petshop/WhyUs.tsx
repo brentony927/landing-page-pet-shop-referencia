@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { useInView } from "@/hooks/useInView";
+import { Bath, Home, Star } from "lucide-react";
 
 const stats = [
-  { number: 5000, suffix: "+", label: "banhos por ano", emoji: "🛁" },
-  { number: 12, suffix: " anos", label: "no bairro", emoji: "🏠" },
-  { number: 4.8, suffix: "", label: "no Google", emoji: "⭐" },
+  { number: 5000, suffix: "+", label: "banhos por ano", Icon: Bath },
+  { number: 12, suffix: " anos", label: "no bairro", Icon: Home },
+  { number: 4.8, suffix: "", label: "no Google", Icon: Star },
 ];
 
 const AnimatedNumber = ({ target, suffix, active }: { target: number; suffix: string; active: boolean }) => {
   const [value, setValue] = useState(0);
-  const [popped, setPopped] = useState(false);
 
   useEffect(() => {
     if (!active) return;
     const isDecimal = target % 1 !== 0;
-    const duration = 2000;
     const steps = 60;
     const increment = target / steps;
     let current = 0;
@@ -23,25 +22,14 @@ const AnimatedNumber = ({ target, suffix, active }: { target: number; suffix: st
       if (current >= target) {
         current = target;
         clearInterval(timer);
-        setPopped(true);
-        setTimeout(() => setPopped(false), 200);
       }
       setValue(isDecimal ? Math.round(current * 10) / 10 : Math.floor(current));
-    }, duration / steps);
+    }, 2000 / steps);
     return () => clearInterval(timer);
   }, [active, target]);
 
   return (
-    <span
-      className="text-3xl sm:text-4xl md:text-5xl font-extrabold"
-      style={{
-        display: "inline-block",
-        transform: popped ? "scale(1.12)" : "scale(1)",
-        transition: "transform 0.2s ease",
-        fontFamily: "'Baloo 2', cursive",
-        color: "var(--pet-orange)",
-      }}
-    >
+    <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-orange)" }}>
       {target % 1 !== 0 ? value.toFixed(1) : value.toLocaleString("pt-BR")}
       {suffix}
     </span>
@@ -52,15 +40,19 @@ const WhyUs = () => {
   const { ref, visible } = useInView(0.3);
 
   return (
-    <section className="py-14" style={{ background: "var(--pet-blue)", }} ref={ref}>
-      <div className={`max-w-[1100px] mx-auto px-4 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+    <section className="py-12 md:py-16" style={{ background: "var(--pet-blue-dark)" }} ref={ref}>
+      <div className={`max-w-[1200px] mx-auto px-4 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0">
           {stats.map((s, i) => (
-            <div key={s.label} className="flex items-baseline gap-2 md:gap-3" style={{ transitionDelay: `${i * 150}ms` }}>
-              <span className="text-2xl">{s.emoji}</span>
-              <AnimatedNumber target={s.number} suffix={s.suffix} active={visible} />
-              <p className="text-sm font-bold text-white">{s.label}</p>
-              {i < stats.length - 1 && <span className="hidden md:block w-px h-8 ml-8 bg-white/20" />}
+            <div key={s.label} className="flex items-center gap-4 justify-center md:justify-start" style={{ transitionDelay: `${i * 150}ms` }}>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,138,101,0.2)" }}>
+                <s.Icon className="w-5 h-5" style={{ color: "var(--pet-orange)" }} />
+              </div>
+              <div>
+                <AnimatedNumber target={s.number} suffix={s.suffix} active={visible} />
+                <p className="text-sm font-semibold text-white/70">{s.label}</p>
+              </div>
+              {i < stats.length - 1 && <span className="hidden md:block w-px h-12 ml-auto bg-white/10" />}
             </div>
           ))}
         </div>
