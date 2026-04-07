@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Star, Dog, Scissors, Bone, Heart, Truck, Bath } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const slides = [
   {
@@ -7,45 +7,24 @@ const slides = [
     sub: "Ele entra precisando, e sai desfilando.",
     cta1: { text: "AGENDAR AGORA", href: "https://wa.me/5569992216764" },
     cta2: { text: "Ver serviços", href: "#servicos" },
-    rightIcon: Scissors,
-    rightBg: "#d8f3dc",
-    rightColor: "#1b4332",
     rightLabel: "Banho & Tosa",
-    floatingIcons: [
-      { icon: Bath, x: "75%", y: "15%", bg: "#d8f3dc", color: "#1b4332", size: 36 },
-      { icon: Heart, x: "90%", y: "65%", bg: "#fef2f2", color: "#ef4444", size: 28 },
-      { icon: Star, x: "65%", y: "80%", bg: "#fef9c3", color: "#ca8a04", size: 24 },
-    ],
+    heroImage: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=700&q=80",
   },
   {
     h1: "12 anos no\nbairro. Seu vizinho\njá trouxe o pet.",
     sub: "Equipe pequena que conhece cada pet pelo nome.",
     cta1: { text: "FALE PELO WHATSAPP", href: "https://wa.me/5569992216764" },
     cta2: { text: "Nossa história", href: "#sobre" },
-    rightIcon: Dog,
-    rightBg: "#fff7ed",
-    rightColor: "#e07b39",
     rightLabel: "12 Anos",
-    floatingIcons: [
-      { icon: Heart, x: "70%", y: "12%", bg: "#fce7f3", color: "#ec4899", size: 32 },
-      { icon: Bone, x: "92%", y: "55%", bg: "#d8f3dc", color: "#1b4332", size: 26 },
-      { icon: Star, x: "68%", y: "78%", bg: "#fef9c3", color: "#ca8a04", size: 30 },
-    ],
+    heroImage: "https://images.unsplash.com/photo-1601979031925-424e53b6caaa?w=700&q=80",
   },
   {
     h1: "Ração de\nqualidade\nno mesmo dia.",
     sub: "Rações, petiscos e suplementos. Entrega sem taxa mínima.",
     cta1: { text: "VER RAÇÕES", href: "#racoes" },
     cta2: { text: "Agendar serviço", href: "https://wa.me/5569992216764" },
-    rightIcon: Truck,
-    rightBg: "#d8f3dc",
-    rightColor: "#1b4332",
     rightLabel: "Entrega Rápida",
-    floatingIcons: [
-      { icon: Bone, x: "72%", y: "18%", bg: "#fff7ed", color: "#e07b39", size: 30 },
-      { icon: Dog, x: "88%", y: "60%", bg: "#d8f3dc", color: "#1b4332", size: 28 },
-      { icon: Heart, x: "70%", y: "75%", bg: "#fce7f3", color: "#ec4899", size: 24 },
-    ],
+    heroImage: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&q=80",
   },
 ];
 
@@ -71,7 +50,6 @@ const HeroCarousel = () => {
   }, [next]);
 
   const s = slides[current];
-  const RightIcon = s.rightIcon;
 
   return (
     <section
@@ -79,8 +57,8 @@ const HeroCarousel = () => {
       className="relative overflow-hidden"
       style={{
         paddingTop: "calc(64px + 32px)",
-        background: "#f9f6f1",
-        backgroundImage: "radial-gradient(circle at 80% 20%, #d8f3dc 0%, transparent 50%), radial-gradient(circle at 10% 80%, #f2ede6 0%, transparent 40%)",
+        background: "var(--cream)",
+        backgroundImage: "radial-gradient(circle at 80% 20%, var(--forest-light) 0%, transparent 50%), radial-gradient(circle at 10% 80%, var(--cream-dark) 0%, transparent 40%)",
       }}
     >
       <div className="max-w-[1100px] mx-auto px-4 sm:px-6 md:px-10 py-12 md:py-20 min-h-[500px] md:min-h-[540px]">
@@ -97,27 +75,27 @@ const HeroCarousel = () => {
           >
             <h1
               className="text-3xl sm:text-4xl md:text-[3.4rem] font-black leading-[1.04] mb-5"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 900, color: "#1a1a1a", whiteSpace: "pre-line" }}
+              style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 900, color: "var(--txt-primary)", whiteSpace: "pre-line" }}
             >
               {s.h1}
             </h1>
-            <p className="text-base md:text-lg mb-8 max-w-md leading-relaxed" style={{ color: "#6b6b6b" }}>
+            <p className="text-base md:text-lg mb-8 max-w-md leading-relaxed" style={{ color: "var(--txt-secondary)" }}>
               {s.sub}
             </p>
             <div className="flex flex-wrap gap-3 mb-10">
               <a
                 href={s.cta1.href}
                 className="rounded-xl px-8 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
-                style={{ background: "#e07b39", boxShadow: "0 4px 14px rgba(224,123,57,0.3)" }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = "#b85c20"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(224,123,57,0.4)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = "#e07b39"; e.currentTarget.style.boxShadow = "0 4px 14px rgba(224,123,57,0.3)"; }}
+                style={{ background: "var(--amber)", boxShadow: "0 4px 14px rgba(212,98,26,0.3)" }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "var(--amber-dark)"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(212,98,26,0.4)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "var(--amber)"; e.currentTarget.style.boxShadow = "0 4px 14px rgba(212,98,26,0.3)"; }}
               >
                 {s.cta1.text}
               </a>
               <a
                 href={s.cta2.href}
                 className="rounded-xl px-8 py-4 text-sm font-semibold transition-all duration-200 hover:bg-stone-50"
-                style={{ border: "1.5px solid #e2ddd6", color: "#6b6b6b" }}
+                style={{ border: "1.5px solid var(--border)", color: "var(--txt-secondary)" }}
               >
                 {s.cta2.text}
               </a>
@@ -131,68 +109,49 @@ const HeroCarousel = () => {
               ].map((stat, i) => (
                 <div key={i} className="flex items-center gap-2">
                   {stat.icon && <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />}
-                  <span className="text-xl md:text-2xl font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}>
+                  <span className="text-xl md:text-2xl font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "var(--txt-primary)" }}>
                     {stat.value}
                   </span>
-                  <span className="text-[11px] text-stone-400 uppercase tracking-wider font-medium">{stat.label}</span>
-                  {i < 2 && <span className="w-px h-5 bg-stone-200 ml-4 md:ml-6" />}
+                  <span className="text-[11px] uppercase tracking-wider font-medium" style={{ color: "var(--txt-muted)" }}>{stat.label}</span>
+                  {i < 2 && <span className="w-px h-5 ml-4 md:ml-6" style={{ background: "var(--border)" }} />}
                 </div>
               ))}
             </div>
           </div>
 
+          {/* Foto real inclinada */}
           <div
             className="relative hidden md:flex justify-center items-center"
             style={{
               opacity: isAnimating ? 0 : 1,
-              transform: isAnimating ? "scale(0.9)" : "scale(1)",
+              transform: isAnimating ? "scale(0.94)" : "scale(1)",
               transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
             }}
           >
             <div
-              className="w-[280px] h-[280px] lg:w-[320px] lg:h-[320px] rounded-full flex flex-col items-center justify-center relative"
-              style={{ background: s.rightBg }}
+              className="relative w-[300px] h-[360px] lg:w-[340px] lg:h-[400px] rounded-3xl overflow-hidden"
+              style={{
+                transform: "rotate(2deg)",
+                boxShadow: "0 24px 60px rgba(13,51,33,0.18), 0 4px 12px rgba(0,0,0,0.06)",
+              }}
             >
-              <RightIcon className="w-16 h-16 lg:w-20 lg:h-20 mb-3" style={{ color: s.rightColor }} />
-              <span
-                className="text-lg lg:text-xl font-bold"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif", color: s.rightColor }}
-              >
-                {s.rightLabel}
-              </span>
+              <img
+                src={s.heroImage}
+                alt={s.rightLabel}
+                className="w-full h-full object-cover"
+                style={{ transform: "rotate(-2deg) scale(1.05)" }}
+              />
               <div
-                className="absolute inset-[-14px] rounded-full"
+                className="absolute inset-0"
                 style={{
-                  border: `2px dashed ${s.rightColor}15`,
-                  animation: "spin 40s linear infinite",
+                  background: "linear-gradient(to top, rgba(13,51,33,0.35) 0%, transparent 50%)",
                 }}
               />
             </div>
 
-            {s.floatingIcons.map((fi, i) => {
-              const FIcon = fi.icon;
-              return (
-                <div
-                  key={i}
-                  className="absolute rounded-xl flex items-center justify-center shadow-sm"
-                  style={{
-                    left: fi.x,
-                    top: fi.y,
-                    background: fi.bg,
-                    width: fi.size + 16,
-                    height: fi.size + 16,
-                    animation: `float ${3 + i * 0.5}s ease-in-out infinite`,
-                    animationDelay: `${i * 0.6}s`,
-                  }}
-                >
-                  <FIcon style={{ width: fi.size * 0.5, height: fi.size * 0.5, color: fi.color }} />
-                </div>
-              );
-            })}
-
             <div
               className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-full px-5 py-2.5 text-xs font-bold bg-white flex items-center gap-2"
-              style={{ color: "#1a1a1a", whiteSpace: "nowrap", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}
+              style={{ color: "var(--txt-primary)", whiteSpace: "nowrap", boxShadow: "0 4px 16px rgba(0,0,0,0.10)" }}
             >
               <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
               Nota 5.0 no Google
@@ -208,14 +167,14 @@ const HeroCarousel = () => {
               className="h-1.5 rounded-full transition-all duration-500 relative overflow-hidden"
               style={{
                 width: i === current ? 40 : 8,
-                background: i === current ? "#e07b39" : "#e2ddd6",
+                background: i === current ? "var(--amber)" : "var(--border)",
               }}
             >
               {i === current && (
                 <span
                   className="absolute inset-0 rounded-full"
                   style={{
-                    background: "rgba(184,92,32,0.25)",
+                    background: "rgba(168,76,18,0.25)",
                     animation: "progress 5s linear",
                   }}
                 />
@@ -227,24 +186,22 @@ const HeroCarousel = () => {
 
       <button
         onClick={prev}
-        className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full hidden md:flex items-center justify-center bg-white/95 backdrop-blur-sm border border-stone-200/50 hover:shadow-md transition-all duration-200"
+        className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full hidden md:flex items-center justify-center bg-white/95 backdrop-blur-sm hover:shadow-md transition-all duration-200"
+        style={{ border: "1px solid var(--border)" }}
         aria-label="Anterior"
       >
-        <ChevronLeft className="w-5 h-5 text-stone-500" />
+        <ChevronLeft className="w-5 h-5" style={{ color: "var(--txt-muted)" }} />
       </button>
       <button
         onClick={next}
-        className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full hidden md:flex items-center justify-center bg-white/95 backdrop-blur-sm border border-stone-200/50 hover:shadow-md transition-all duration-200"
+        className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full hidden md:flex items-center justify-center bg-white/95 backdrop-blur-sm hover:shadow-md transition-all duration-200"
+        style={{ border: "1px solid var(--border)" }}
         aria-label="Próximo"
       >
-        <ChevronRight className="w-5 h-5 text-stone-500" />
+        <ChevronRight className="w-5 h-5" style={{ color: "var(--txt-muted)" }} />
       </button>
 
       <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-        }
         @keyframes progress {
           from { width: 0; }
           to { width: 100%; }

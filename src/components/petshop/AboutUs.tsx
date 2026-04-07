@@ -8,6 +8,13 @@ const benefits = [
   "Entrega rápida na sua porta, no mesmo dia",
 ];
 
+const timeline = [
+  { year: "2013", text: "Começamos com 1 mesa de banho e muito sabão" },
+  { year: "2016", text: "Primeiro funcionário contratado" },
+  { year: "2019", text: "Expandimos para entrega de ração no bairro" },
+  { year: "2024", text: "500+ pets atendidos por ano, nota 5.0 no Google" },
+];
+
 const AboutUs = () => {
   const { ref, visible } = useInView(0.2);
 
@@ -17,29 +24,29 @@ const AboutUs = () => {
         <div>
           <h2
             className="text-2xl md:text-[2rem] font-black mb-4 leading-tight"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}
+            style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "var(--txt-primary)" }}
           >
             Começou com um balde e uma mangueira.
           </h2>
-          <div style={{ borderLeft: "3px solid #1b4332", paddingLeft: "1.5rem" }}>
-            <p className="text-base leading-relaxed mb-8" style={{ color: "#6b6b6b" }}>
+          <div style={{ borderLeft: "3px solid var(--forest)", paddingLeft: "1.5rem" }}>
+            <p className="text-base leading-relaxed mb-8" style={{ color: "var(--txt-secondary)" }}>
               Aqui não tem franquia nem manual de rede grande. É uma equipe pequena que conhece cada pet pelo nome. O Thor tem medo de secador? A gente sabe. A Luna só come ração de salmão? Tá anotado.
             </p>
           </div>
 
           <div
-            className="relative rounded-xl p-7 mb-8" style={{ background: "#f9f6f1" }}
+            className="relative rounded-xl p-7 mb-8" style={{ background: "var(--cream)" }}
           >
             <span
               className="absolute -top-3 left-5 text-6xl leading-none"
-              style={{ fontFamily: "Georgia, serif", color: "#e07b39", opacity: 0.3 }}
+              style={{ fontFamily: "Georgia, serif", color: "var(--amber)", opacity: 0.3 }}
             >
               "
             </span>
-            <p className="text-base leading-relaxed" style={{ color: "#1a1a1a" }}>
+            <p className="text-base leading-relaxed" style={{ color: "var(--txt-primary)" }}>
               Comecei sozinho, com um balde e uma mangueira. Hoje tenho equipe, mas ainda sou eu que abro a porta todo dia.
             </p>
-            <p className="text-sm font-bold mt-3" style={{ color: "#e07b39" }}>
+            <p className="text-sm font-bold mt-3" style={{ color: "var(--amber)" }}>
               — Dono do Patinhas & Cia
             </p>
           </div>
@@ -47,32 +54,27 @@ const AboutUs = () => {
           <ul className="space-y-3">
             {benefits.map((b) => (
               <li key={b} className="flex items-start gap-3">
-                <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "#1b4332" }} />
-                <span className="text-sm" style={{ color: "#6b6b6b" }}>{b}</span>
+                <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "var(--forest)" }} />
+                <span className="text-sm" style={{ color: "var(--txt-secondary)" }}>{b}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          <div className="col-span-2 rounded-xl p-6" style={{ background: "#d8f3dc" }}>
-            <span className="text-3xl md:text-4xl font-black block mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1b4332" }}>
-              12 anos
-            </span>
-            <p className="text-sm" style={{ color: "#6b6b6b" }}>no bairro</p>
-          </div>
-          <div className="rounded-xl p-6" style={{ background: "#fff7ed" }}>
-            <span className="text-3xl md:text-4xl font-black block mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#e07b39" }}>
-              500+
-            </span>
-            <p className="text-sm" style={{ color: "#6b6b6b" }}>pets atendidos</p>
-          </div>
-          <div className="rounded-xl p-6" style={{ background: "#f9f6f1" }}>
-            <span className="text-3xl md:text-4xl font-black block mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}>
-              5 ★
-            </span>
-            <p className="text-sm" style={{ color: "#6b6b6b" }}>no Google</p>
-          </div>
+        {/* Timeline vertical */}
+        <div className="pl-8 relative" style={{ borderLeft: "2px solid var(--forest-light)" }}>
+          {timeline.map((item) => (
+            <div key={item.year} className="relative mb-8 last:mb-0 pl-6">
+              <div
+                className="absolute -left-[1.85rem] top-0.5 w-4 h-4 rounded-full border-2 bg-white"
+                style={{ borderColor: "var(--amber)", backgroundColor: "white" }}
+              />
+              <p className="text-lg font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "var(--forest)" }}>
+                {item.year}
+              </p>
+              <p className="text-sm mt-1" style={{ color: "var(--txt-secondary)" }}>{item.text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
