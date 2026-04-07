@@ -24,7 +24,7 @@ const Contact = () => {
             {[
               { icon: Clock, title: "Horário", info: "Seg–Sex: 8h às 19h · Sábado: 8h às 16h" },
               { icon: Phone, title: "WhatsApp", info: "(69) 99221-6764", href: "https://wa.me/5569992216764", isLink: true },
-              { icon: MapPin, title: "Localização", info: "Nos chame no WhatsApp para o endereço", link: { text: "Pedir localização →", href: "https://wa.me/5569992216764" } },
+              { icon: MapPin, title: "Localização", info: "Av. Marechal Rondon, Nº 1200 — Centro, Ji-Paraná/RO", link: { text: "Ver no Google Maps →", href: "https://maps.google.com/?q=Pet+Shop+Amazonia+Ji-Parana+RO" } },
             ].map((c) => (
               <div
                 key={c.title}
@@ -42,11 +42,25 @@ const Contact = () => {
                     <p className="text-[13px]" style={{ color: "#78716c" }}>{c.info}</p>
                   )}
                   {c.link && (
-                    <a href={c.link.href} className="text-[13px] font-semibold block" style={{ color: "#16a34a" }}>{c.link.text}</a>
+                    <a href={c.link.href} target="_blank" rel="noopener noreferrer" className="text-[13px] font-semibold block" style={{ color: "#16a34a" }}>{c.link.text}</a>
                   )}
                 </div>
               </div>
             ))}
+
+            {/* Google Maps Embed */}
+            <div className="rounded-xl overflow-hidden mt-4" style={{ border: "1px solid #e7e5e4" }}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.5!2d-61.95!3d-10.88!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDUyJzQ4LjAiUyA2McKwNTcnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1"
+                width="100%"
+                height="200"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Localização Pet Shop Amazônia"
+              />
+            </div>
           </div>
 
           <form

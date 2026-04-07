@@ -3,6 +3,7 @@ import HeroCarousel from "@/components/petshop/HeroCarousel";
 import AnimatedStrip from "@/components/petshop/AnimatedStrip";
 import Categories from "@/components/petshop/Categories";
 import Services from "@/components/petshop/Services";
+import Gallery from "@/components/petshop/Gallery";
 import FeaturedProducts from "@/components/petshop/FeaturedProducts";
 import FoodProducts from "@/components/petshop/FoodProducts";
 import Brands from "@/components/petshop/Brands";
@@ -24,6 +25,7 @@ const Index = () => {
       <AnimatedStrip />
       <Categories />
       <Services />
+      <Gallery />
       <FeaturedProducts />
       <FoodProducts />
       <Brands />
