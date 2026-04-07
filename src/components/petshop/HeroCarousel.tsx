@@ -1,22 +1,36 @@
 import { MessageCircle, Star, Shield, Clock, PawPrint } from "lucide-react";
 
 const WA_LINK = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20um%20banho%20pro%20meu%20pet";
+const HERO_IMG = "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&q=80";
 
 const HeroCarousel = () => {
   return (
-    <section
-      id="inicio"
-      className="relative overflow-hidden"
-      style={{
-        paddingTop: "calc(64px + 32px)",
-        background: "var(--pet-bg)",
-        backgroundImage: "radial-gradient(circle at 80% 20%, var(--pet-green-light) 0%, transparent 50%), radial-gradient(circle at 10% 80%, var(--pet-blue-light) 0%, transparent 40%)",
-      }}
-    >
-      <PawPrint className="absolute top-32 right-20 w-16 h-16 opacity-[0.04] rotate-12" />
-      <PawPrint className="absolute bottom-20 left-10 w-12 h-12 opacity-[0.04] -rotate-12" />
+    <section id="inicio" className="relative overflow-hidden">
+      {/* Mobile: full background image */}
+      <div
+        className="absolute inset-0 md:hidden"
+        style={{
+          backgroundImage: `url(${HERO_IMG})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.92) 60%, rgba(255,255,255,0.98) 100%)" }} />
+      </div>
 
-      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 md:px-10 py-14 md:py-24 min-h-[500px] md:min-h-[540px]">
+      {/* Desktop: subtle radial bg */}
+      <div
+        className="absolute inset-0 hidden md:block"
+        style={{
+          background: "var(--pet-bg)",
+          backgroundImage: "radial-gradient(circle at 80% 20%, var(--pet-green-light) 0%, transparent 50%), radial-gradient(circle at 10% 80%, var(--pet-blue-light) 0%, transparent 40%)",
+        }}
+      />
+
+      <PawPrint className="absolute top-32 right-20 w-16 h-16 opacity-[0.04] rotate-12 z-[1]" />
+      <PawPrint className="absolute bottom-20 left-10 w-12 h-12 opacity-[0.04] -rotate-12 z-[1]" />
+
+      <div className="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-6 md:px-10 min-h-[520px] md:min-h-[540px]" style={{ paddingTop: "calc(64px + 40px)", paddingBottom: "3rem" }}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
           <div className="animate-fadeUp">
             <h1
@@ -25,15 +39,15 @@ const HeroCarousel = () => {
             >
               Banho e tosa com qualidade profissional por preço justo 🐶
             </h1>
-            <p className="text-base md:text-lg mb-8 max-w-md leading-relaxed" style={{ color: "var(--pet-gray-light)" }}>
+            <p className="text-base md:text-lg mb-8 max-w-md leading-relaxed" style={{ color: "var(--pet-gray)" }}>
               Deixe seu pet limpo, cheiroso e bem cuidado em menos de 1 hora
             </p>
-            <div className="flex flex-wrap gap-3 mb-10">
+            <div className="flex flex-wrap gap-3 mb-8">
               <a
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full px-8 py-4 text-sm font-extrabold transition-all duration-300 hover:-translate-y-1 inline-flex items-center gap-2"
+                className="rounded-full px-7 py-3.5 sm:px-8 sm:py-4 text-sm font-extrabold transition-all duration-300 hover:-translate-y-1 inline-flex items-center gap-2"
                 style={{ background: "var(--pet-yellow)", color: "#333", boxShadow: "0 6px 20px rgba(255,193,7,0.4)" }}
                 onMouseEnter={(e) => e.currentTarget.style.background = "#FFB300"}
                 onMouseLeave={(e) => e.currentTarget.style.background = "var(--pet-yellow)"}
@@ -43,8 +57,8 @@ const HeroCarousel = () => {
               </a>
               <a
                 href="#servicos"
-                className="rounded-full px-8 py-4 text-sm font-bold transition-all duration-200"
-                style={{ border: "2px solid var(--pet-gray-border)", color: "var(--pet-gray)" }}
+                className="rounded-full px-7 py-3.5 sm:px-8 sm:py-4 text-sm font-bold transition-all duration-200"
+                style={{ border: "2px solid var(--pet-gray-border)", color: "var(--pet-gray)", background: "rgba(255,255,255,0.7)", backdropFilter: "blur(4px)" }}
                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--pet-green)"; e.currentTarget.style.color = "var(--pet-green)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--pet-gray-border)"; e.currentTarget.style.color = "var(--pet-gray)"; }}
               >
@@ -52,13 +66,13 @@ const HeroCarousel = () => {
               </a>
             </div>
 
-            <div className="flex flex-wrap items-center gap-5 md:gap-8">
+            <div className="flex flex-wrap items-center gap-4 md:gap-8">
               {[
                 { icon: Star, label: "500+ pets atendidos" },
                 { icon: Shield, label: "Nota 5.0 no Google" },
                 { icon: Clock, label: "12 anos no bairro" },
               ].map((badge, i) => (
-                <div key={i} className="flex items-center gap-2 text-sm font-bold" style={{ color: "var(--pet-gray)" }}>
+                <div key={i} className="flex items-center gap-2 text-xs sm:text-sm font-bold" style={{ color: "var(--pet-gray)" }}>
                   <badge.icon className="w-4 h-4" style={{ color: "var(--pet-green)" }} />
                   {badge.label}
                 </div>
@@ -66,12 +80,13 @@ const HeroCarousel = () => {
             </div>
           </div>
 
+          {/* Desktop: photo card */}
           <div className="relative hidden md:flex justify-center items-center animate-fadeUp" style={{ animationDelay: "0.2s" }}>
             <div
               className="relative w-[300px] h-[360px] lg:w-[340px] lg:h-[400px] rounded-[2rem] overflow-hidden"
               style={{ boxShadow: "0 24px 60px rgba(76,175,80,0.15), 0 4px 12px rgba(0,0,0,0.06)" }}
             >
-              <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=700&q=80" alt="Pet feliz após banho" className="w-full h-full object-cover" />
+              <img src={HERO_IMG} alt="Pet feliz após banho" className="w-full h-full object-cover" />
               <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(76,175,80,0.2) 0%, transparent 50%)" }} />
             </div>
             <div
