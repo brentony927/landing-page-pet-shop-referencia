@@ -13,26 +13,28 @@ const FAQ = () => {
   const { ref, visible } = useInView(0.1);
 
   return (
-    <section className="py-16 md:py-20 px-4" style={{ background: "var(--pet-bg)" }} ref={ref}>
-      <div className={`max-w-[800px] mx-auto transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-        <h2 className="text-2xl md:text-[2rem] font-extrabold mb-8" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-blue-dark)" }}>
-          ❓ Perguntas frequentes
-        </h2>
+    <section className="py-14 sm:py-20 px-4 bg-white" ref={ref}>
+      <div className={`max-w-[800px] mx-auto scroll-fade-up ${visible ? "visible" : ""}`}>
+        <div className="text-center mb-8 sm:mb-10">
+          <span className="inline-block text-[11px] font-bold uppercase tracking-widest mb-3 px-4 py-1.5 rounded-full" style={{ background: "var(--pet-blue-light)", color: "var(--pet-blue)" }}>
+            Dúvidas
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-blue-dark)" }}>
+            Perguntas frequentes
+          </h2>
+        </div>
 
-        <div className="space-y-2">
+        <div className="space-y-3">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
-              <div key={i} className="rounded-3xl bg-white overflow-hidden transition-all duration-200 border" style={{ borderColor: isOpen ? "var(--pet-orange)" : "var(--pet-gray-border)", boxShadow: isOpen ? "0 4px 20px rgba(255,138,101,0.1)" : "0 4px 16px rgba(0,0,0,0.04)" }}>
-                <button onClick={() => setOpenIndex(isOpen ? null : i)} className="w-full flex items-center justify-between p-5 text-left group">
+              <div key={i} className="rounded-2xl bg-white overflow-hidden transition-all duration-200" style={{ border: `1px solid ${isOpen ? "var(--pet-orange)" : "var(--pet-gray-border)"}`, boxShadow: isOpen ? "0 4px 20px rgba(245,133,31,0.1)" : "none" }}>
+                <button onClick={() => setOpenIndex(isOpen ? null : i)} className="w-full flex items-center justify-between p-4 sm:p-5 text-left">
                   <span className="text-sm font-bold pr-4" style={{ color: "#333" }}>{faq.q}</span>
-                  <ChevronDown
-                    className="w-4 h-4 flex-shrink-0 transition-transform duration-200"
-                    style={{ color: isOpen ? "var(--pet-orange)" : "var(--pet-gray-light)", transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}
-                  />
+                  <ChevronDown className="w-4 h-4 flex-shrink-0 transition-transform duration-200" style={{ color: isOpen ? "var(--pet-orange)" : "var(--pet-gray-light)", transform: isOpen ? "rotate(180deg)" : "rotate(0)" }} />
                 </button>
                 <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: isOpen ? 200 : 0, opacity: isOpen ? 1 : 0 }}>
-                  <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "var(--pet-gray)" }}>{faq.a}</p>
+                  <p className="px-4 sm:px-5 pb-4 sm:pb-5 text-sm leading-relaxed" style={{ color: "var(--pet-gray)" }}>{faq.a}</p>
                 </div>
               </div>
             );
