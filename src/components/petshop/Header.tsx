@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, PawPrint, Home, Scissors, Bone, Info, MessageSquare, ChevronRight } from "lucide-react";
+import { Menu, X, Phone, PawPrint, Home, Scissors, Bone, Info, MessageSquare, ChevronRight, ShoppingBag } from "lucide-react";
 
 const navLinks = [
   { label: "Início", href: "#inicio", icon: Home },
   { label: "Serviços", href: "#servicos", icon: Scissors },
+  { label: "Catálogo", href: "/catalogo", icon: ShoppingBag },
   { label: "Rações", href: "/catalogo", icon: Bone },
   { label: "Sobre", href: "#sobre", icon: Info },
   { label: "Contato", href: "#contato", icon: MessageSquare },
