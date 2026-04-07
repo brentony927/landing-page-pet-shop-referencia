@@ -1,18 +1,21 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Bath, Bone, Scissors, Truck, Stethoscope, Heart, Dog, Cat, Drumstick, Sparkles, Pill, Gamepad2, Watch, Tag, ChevronDown } from "lucide-react";
+import { Bath, Bone, Scissors, Truck, Stethoscope, Heart, Dog, Cat, Drumstick, Sparkles, Pill, Gamepad2, Watch, Tag } from "lucide-react";
 
-const mainCategories = [
-  { label: "Cachorro", icon: Dog, color: "#f97316", bg: "#fff7ed", big: true, subs: ["Ração Seca", "Ração Úmida", "Petiscos", "Brinquedos", "Coleiras", "Camas"] },
-  { label: "Gato", icon: Cat, color: "#7c3aed", bg: "#f5f3ff", big: true, subs: ["Ração Seca", "Ração Úmida", "Areia Higiênica", "Arranhadores", "Brinquedos"] },
+const topRow = [
+  { label: "Cachorro", icon: Dog, color: "#f97316", bg: "#fff7ed", subs: ["Ração Seca", "Ração Úmida", "Petiscos", "Brinquedos", "Coleiras", "Camas"] },
+  { label: "Gato", icon: Cat, color: "#7c3aed", bg: "#f5f3ff", subs: ["Ração Seca", "Ração Úmida", "Areia Higiênica", "Arranhadores", "Brinquedos"] },
   { label: "Rações", icon: Bone, color: "#16a34a", bg: "#f0fdf4", subs: ["Premium", "Super Premium", "Natural", "Filhotes", "Adultos", "Idosos"] },
   { label: "Petiscos", icon: Drumstick, color: "#ea580c", bg: "#fff7ed", subs: ["Bifinhos", "Ossos", "Dental", "Snacks", "Biscoitos"] },
   { label: "Higiene", icon: Bath, color: "#0891b2", bg: "#ecfeff", subs: ["Shampoo", "Condicionador", "Perfume", "Lenços", "Tapete Higiênico"] },
+];
+
+const bottomRow = [
   { label: "Farmácia", icon: Pill, color: "#dc2626", bg: "#fef2f2", subs: ["Antipulgas", "Vermífugos", "Vitaminas", "Suplementos"] },
-  { label: "Brinquedos", icon: Gamepad2, color: "#2563eb", bg: "#eff6ff", subs: ["Mordedores", "Bolinhas", "Pelúcia", "Interativos", "Cordas"] },
-  { label: "Acessórios", icon: Watch, color: "#ca8a04", bg: "#fefce8", subs: ["Coleiras", "Guias", "Roupas", "Comedouros", "Caixas de Transporte"] },
-  { label: "Promoções", icon: Tag, color: "#e11d48", bg: "#fff1f2", subs: ["Até 30% off", "Combos", "Leve 3 Pague 2", "Queima de Estoque"] },
-  { label: "Serviços", icon: Sparkles, color: "#16a34a", bg: "#f0fdf4", subs: ["Banho & Tosa", "Veterinário", "Táxi Pet", "Hotel Pet"] },
+  { label: "Brinquedos", icon: Gamepad2, color: "#2563eb", bg: "#eff6ff", subs: ["Mordedores", "Bolinhas", "Pelúcia", "Interativos"] },
+  { label: "Acessórios", icon: Watch, color: "#ca8a04", bg: "#fefce8", subs: ["Coleiras", "Guias", "Roupas", "Comedouros"] },
+  { label: "Promoções", icon: Tag, color: "#e11d48", bg: "#fff1f2", subs: ["Até 30% off", "Combos", "Leve 3 Pague 2"] },
+  { label: "Serviços", icon: Sparkles, color: "#16a34a", bg: "#f0fdf4", subs: ["Banho & Tosa", "Veterinário", "Táxi Pet"] },
 ];
 
 const quickServices = [
@@ -22,6 +25,26 @@ const quickServices = [
   { icon: Heart, title: "Adote um Pet", color: "#16a34a", bg: "#dcfce7" },
   { icon: Truck, title: "Entrega Rápida", color: "#f97316", bg: "#ffedd5" },
 ];
+
+const CategoryItem = ({ cat, isActive, onEnter, onLeave }: { cat: typeof topRow[0]; isActive: boolean; onEnter: () => void; onLeave: () => void }) => {
+  const Icon = cat.icon;
+  return (
+    <div className="relative" onMouseEnter={onEnter} onMouseLeave={onLeave}>
+      <button
+        className="w-full flex flex-col items-center gap-2 py-4 px-2 rounded-2xl transition-all duration-200"
+        style={{ background: isActive ? cat.bg : "#fafaf9" }}
+      >
+        <div
+          className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200"
+          style={{ background: isActive ? `${cat.color}18` : "#f0efed" }}
+        >
+          <Icon className="w-5 h-5" style={{ color: cat.color }} />
+        </div>
+        <span className="text-xs font-semibold" style={{ color: isActive ? cat.color : "#44403c" }}>{cat.label}</span>
+      </button>
+    </div>
+  );
+};
 
 const Categories = () => {
   const [activeNav, setActiveNav] = useState<string | null>(null);
@@ -41,93 +64,44 @@ const Categories = () => {
     if (closeTimeout.current) clearTimeout(closeTimeout.current);
   };
 
-  const activeCategory = mainCategories.find(c => c.label === activeNav);
+  const allCats = [...topRow, ...bottomRow];
+  const activeCategory = allCats.find(c => c.label === activeNav);
 
   return (
     <>
       <section className="py-8 px-4 bg-white">
-        <div className="max-w-[1100px] mx-auto">
-          {/* Top row: Cachorro + Gato big, rest smaller */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-3">
-            {mainCategories.filter(c => c.big).map((cat) => {
-              const Icon = cat.icon;
-              const isActive = activeNav === cat.label;
-              return (
-                <div
-                  key={cat.label}
-                  className="relative md:col-span-1"
-                  onMouseEnter={() => handleNavEnter(cat.label)}
-                  onMouseLeave={handleNavLeave}
-                >
-                  <button
-                    className="w-full flex flex-col items-center gap-2 py-5 px-3 rounded-2xl transition-all duration-200"
-                    style={{ background: isActive ? cat.bg : "#fafaf9", border: isActive ? `2px solid ${cat.color}40` : "2px solid transparent" }}
-                  >
-                    <div className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-200" style={{ background: isActive ? cat.color : "#f0efed" }}>
-                      <Icon className="w-7 h-7" style={{ color: isActive ? "#fff" : cat.color }} />
-                    </div>
-                    <span className="text-sm font-bold" style={{ color: isActive ? cat.color : "#1c1917" }}>{cat.label}</span>
-                  </button>
-                </div>
-              );
-            })}
-
-            {/* Remaining categories smaller */}
-            {mainCategories.filter(c => !c.big).slice(0, 3).map((cat) => {
-              const Icon = cat.icon;
-              const isActive = activeNav === cat.label;
-              return (
-                <div
-                  key={cat.label}
-                  className="relative"
-                  onMouseEnter={() => handleNavEnter(cat.label)}
-                  onMouseLeave={handleNavLeave}
-                >
-                  <button
-                    className="w-full flex flex-col items-center gap-1.5 py-4 px-2 rounded-xl transition-all duration-200"
-                    style={{ background: isActive ? cat.bg : "transparent" }}
-                  >
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: isActive ? cat.color : "#f5f5f4" }}>
-                      <Icon className="w-4.5 h-4.5" style={{ color: isActive ? "#fff" : cat.color, width: 18, height: 18 }} />
-                    </div>
-                    <span className="text-[11px] font-semibold" style={{ color: isActive ? cat.color : "#57534e" }}>{cat.label}</span>
-                  </button>
-                </div>
-              );
-            })}
+        <div className="max-w-[1000px] mx-auto">
+          {/* Row 1 — 5 equal columns */}
+          <div className="grid grid-cols-5 gap-2 mb-2">
+            {topRow.map((cat) => (
+              <CategoryItem
+                key={cat.label}
+                cat={cat}
+                isActive={activeNav === cat.label}
+                onEnter={() => handleNavEnter(cat.label)}
+                onLeave={handleNavLeave}
+              />
+            ))}
           </div>
 
-          {/* Bottom row: rest of categories */}
-          <div className="grid grid-cols-5 md:grid-cols-7 gap-2">
-            {mainCategories.filter(c => !c.big).slice(3).map((cat) => {
-              const Icon = cat.icon;
-              const isActive = activeNav === cat.label;
-              return (
-                <div
-                  key={cat.label}
-                  className="relative"
-                  onMouseEnter={() => handleNavEnter(cat.label)}
-                  onMouseLeave={handleNavLeave}
-                >
-                  <button
-                    className="w-full flex flex-col items-center gap-1.5 py-3 px-1 rounded-xl transition-all duration-200"
-                    style={{ background: isActive ? cat.bg : "transparent" }}
-                  >
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: isActive ? cat.color : "#f5f5f4" }}>
-                      <Icon className="w-4 h-4" style={{ color: isActive ? "#fff" : cat.color }} />
-                    </div>
-                    <span className="text-[11px] font-semibold" style={{ color: isActive ? cat.color : "#57534e" }}>{cat.label}</span>
-                  </button>
-                </div>
-              );
-            })}
+          {/* Row 2 — 5 equal columns */}
+          <div className="grid grid-cols-5 gap-2">
+            {bottomRow.map((cat) => (
+              <CategoryItem
+                key={cat.label}
+                cat={cat}
+                isActive={activeNav === cat.label}
+                onEnter={() => handleNavEnter(cat.label)}
+                onLeave={handleNavLeave}
+              />
+            ))}
           </div>
         </div>
 
         {/* Dropdown */}
         {activeCategory && (
           <div
-            className="max-w-[1100px] mx-auto mt-3 rounded-xl bg-white border animate-fadeDown"
+            className="max-w-[1000px] mx-auto mt-3 rounded-xl bg-white border animate-fadeDown"
             style={{ borderColor: "#e7e5e4", boxShadow: "0 8px 24px rgba(0,0,0,0.08)" }}
             onMouseEnter={handleDropdownEnter}
             onMouseLeave={handleNavLeave}
@@ -158,7 +132,7 @@ const Categories = () => {
 
       {/* Quick service pills */}
       <section className="pb-6 px-4 bg-white">
-        <div className="max-w-[1100px] mx-auto">
+        <div className="max-w-[1000px] mx-auto">
           <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
             {quickServices.map((s) => {
               const Icon = s.icon;

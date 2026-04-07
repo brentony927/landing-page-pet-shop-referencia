@@ -59,7 +59,7 @@ const HeroCarousel = () => {
     setIsAnimating(true);
     setSlideDirection(dir);
     setCurrent(index);
-    setTimeout(() => setIsAnimating(false), 700);
+    setTimeout(() => setIsAnimating(false), 600);
   }, [isAnimating]);
 
   const next = useCallback(() => goTo((current + 1) % slides.length, "right"), [current, goTo]);
@@ -75,40 +75,41 @@ const HeroCarousel = () => {
 
   return (
     <section id="inicio" className="bg-white relative overflow-hidden" style={{ paddingTop: "calc(64px + 32px)" }}>
-      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 md:px-10 py-10 md:py-16 min-h-[480px] md:min-h-[520px]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 items-center">
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 md:px-10 py-12 md:py-20 min-h-[500px] md:min-h-[540px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
           {/* Left — Text */}
           <div
-            className="transition-all duration-700 ease-out"
+            className="transition-all duration-600 ease-out"
             style={{
               opacity: isAnimating ? 0 : 1,
               transform: isAnimating
-                ? slideDirection === "right" ? "translateX(40px)" : "translateX(-40px)"
+                ? slideDirection === "right" ? "translateX(30px)" : "translateX(-30px)"
                 : "translateX(0)",
+              transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
             }}
           >
             <h1
-              className="text-3xl sm:text-4xl md:text-[3.2rem] font-black leading-[1.06] mb-4"
+              className="text-3xl sm:text-4xl md:text-[3.4rem] font-black leading-[1.04] mb-5"
               style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917", whiteSpace: "pre-line" }}
             >
               {s.h1}
             </h1>
-            <p className="text-base md:text-lg mb-7 max-w-md" style={{ color: "#78716c" }}>
+            <p className="text-base md:text-lg mb-8 max-w-md leading-relaxed" style={{ color: "#78716c" }}>
               {s.sub}
             </p>
-            <div className="flex flex-wrap gap-3 mb-8">
+            <div className="flex flex-wrap gap-3 mb-10">
               <a
                 href={s.cta1.href}
-                className="rounded-lg px-7 py-3.5 text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-                style={{ background: "#f97316" }}
-                onMouseEnter={(e) => e.currentTarget.style.background = "#c2410c"}
-                onMouseLeave={(e) => e.currentTarget.style.background = "#f97316"}
+                className="rounded-xl px-8 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
+                style={{ background: "#f97316", boxShadow: "0 4px 14px rgba(249,115,22,0.3)" }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "#c2410c"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(249,115,22,0.4)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "#f97316"; e.currentTarget.style.boxShadow = "0 4px 14px rgba(249,115,22,0.3)"; }}
               >
                 {s.cta1.text}
               </a>
               <a
                 href={s.cta2.href}
-                className="rounded-lg px-7 py-3.5 text-sm font-semibold transition-all duration-200 hover:bg-stone-50"
+                className="rounded-xl px-8 py-4 text-sm font-semibold transition-all duration-200 hover:bg-stone-50"
                 style={{ border: "1.5px solid #d6d3d1", color: "#57534e" }}
               >
                 {s.cta2.text}
@@ -116,19 +117,19 @@ const HeroCarousel = () => {
             </div>
 
             {/* Stats */}
-            <div className="flex items-center gap-5 md:gap-8">
+            <div className="flex items-center gap-6 md:gap-10">
               {[
                 { icon: Star, value: "5.0", label: "Google", fill: true },
                 { value: "500+", label: "pets" },
                 { value: "12", label: "anos" },
               ].map((stat, i) => (
-                <div key={i} className="flex items-center gap-1.5">
-                  {stat.icon && <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />}
-                  <span className="text-lg md:text-xl font-black" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
+                <div key={i} className="flex items-center gap-2">
+                  {stat.icon && <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />}
+                  <span className="text-xl md:text-2xl font-black" style={{ fontFamily: "'Fraunces', Georgia, serif", color: "#1c1917" }}>
                     {stat.value}
                   </span>
-                  <span className="text-[10px] text-stone-400 uppercase tracking-wider">{stat.label}</span>
-                  {i < 2 && <span className="w-px h-4 bg-stone-200 ml-3 md:ml-5" />}
+                  <span className="text-[11px] text-stone-400 uppercase tracking-wider font-medium">{stat.label}</span>
+                  {i < 2 && <span className="w-px h-5 bg-stone-200 ml-4 md:ml-6" />}
                 </div>
               ))}
             </div>
@@ -136,20 +137,21 @@ const HeroCarousel = () => {
 
           {/* Right — Visual */}
           <div
-            className="relative hidden md:flex justify-center items-center transition-all duration-700 ease-out"
+            className="relative hidden md:flex justify-center items-center"
             style={{
               opacity: isAnimating ? 0 : 1,
-              transform: isAnimating ? "scale(0.92) rotate(-2deg)" : "scale(1) rotate(0deg)",
+              transform: isAnimating ? "scale(0.9)" : "scale(1)",
+              transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
             }}
           >
             {/* Main circle */}
             <div
-              className="w-[260px] h-[260px] lg:w-[300px] lg:h-[300px] rounded-full flex flex-col items-center justify-center relative"
+              className="w-[280px] h-[280px] lg:w-[320px] lg:h-[320px] rounded-full flex flex-col items-center justify-center relative"
               style={{ background: s.rightBg }}
             >
-              <RightIcon className="w-16 h-16 lg:w-20 lg:h-20 mb-2" style={{ color: s.rightColor }} />
+              <RightIcon className="w-16 h-16 lg:w-20 lg:h-20 mb-3" style={{ color: s.rightColor }} />
               <span
-                className="text-base lg:text-lg font-bold"
+                className="text-lg lg:text-xl font-bold"
                 style={{ fontFamily: "'Fraunces', Georgia, serif", color: s.rightColor }}
               >
                 {s.rightLabel}
@@ -157,10 +159,10 @@ const HeroCarousel = () => {
 
               {/* Decorative ring */}
               <div
-                className="absolute inset-[-12px] rounded-full animate-spin"
+                className="absolute inset-[-14px] rounded-full"
                 style={{
-                  border: `2px dashed ${s.rightColor}20`,
-                  animationDuration: "30s",
+                  border: `2px dashed ${s.rightColor}15`,
+                  animation: "spin 40s linear infinite",
                 }}
               />
             </div>
@@ -171,15 +173,15 @@ const HeroCarousel = () => {
               return (
                 <div
                   key={i}
-                  className="absolute rounded-xl flex items-center justify-center shadow-sm animate-float"
+                  className="absolute rounded-xl flex items-center justify-center shadow-sm"
                   style={{
                     left: fi.x,
                     top: fi.y,
                     background: fi.bg,
                     width: fi.size + 16,
                     height: fi.size + 16,
-                    animationDelay: `${i * 0.8}s`,
-                    animationDuration: `${3 + i * 0.5}s`,
+                    animation: `float ${3 + i * 0.5}s ease-in-out infinite`,
+                    animationDelay: `${i * 0.6}s`,
                   }}
                 >
                   <FIcon style={{ width: fi.size * 0.5, height: fi.size * 0.5, color: fi.color }} />
@@ -189,31 +191,34 @@ const HeroCarousel = () => {
 
             {/* Badge */}
             <div
-              className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full px-4 py-2 text-[12px] font-bold bg-white shadow-md flex items-center gap-1.5"
-              style={{ color: "#1c1917", whiteSpace: "nowrap" }}
+              className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-full px-5 py-2.5 text-xs font-bold bg-white flex items-center gap-2"
+              style={{ color: "#1c1917", whiteSpace: "nowrap", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}
             >
-              <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+              <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
               Nota 5.0 no Google
             </div>
           </div>
         </div>
 
         {/* Dots + Progress */}
-        <div className="flex gap-2 mt-8 md:mt-10">
+        <div className="flex gap-2 mt-10 md:mt-12">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => goTo(i, i > current ? "right" : "left")}
-              className="h-1.5 rounded-full transition-all duration-300 relative overflow-hidden"
+              className="h-1.5 rounded-full transition-all duration-500 relative overflow-hidden"
               style={{
-                width: i === current ? 32 : 8,
+                width: i === current ? 40 : 8,
                 background: i === current ? "#f97316" : "#e7e5e4",
               }}
             >
               {i === current && (
                 <span
-                  className="absolute inset-0 bg-orange-800/20 animate-progress"
-                  style={{ "--duration": "5s" } as React.CSSProperties}
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: "rgba(194,65,12,0.25)",
+                    animation: "progress 5s linear",
+                  }}
                 />
               )}
             </button>
@@ -224,16 +229,29 @@ const HeroCarousel = () => {
       {/* Nav arrows */}
       <button
         onClick={prev}
-        className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full hidden md:flex items-center justify-center bg-white/90 backdrop-blur-sm border border-stone-200/60 hover:border-stone-300 hover:shadow-sm transition-all"
+        className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full hidden md:flex items-center justify-center bg-white/95 backdrop-blur-sm border border-stone-200/50 hover:shadow-md transition-all duration-200"
+        aria-label="Anterior"
       >
-        <ChevronLeft className="w-5 h-5 text-stone-400" />
+        <ChevronLeft className="w-5 h-5 text-stone-500" />
       </button>
       <button
         onClick={next}
-        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full hidden md:flex items-center justify-center bg-white/90 backdrop-blur-sm border border-stone-200/60 hover:border-stone-300 hover:shadow-sm transition-all"
+        className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full hidden md:flex items-center justify-center bg-white/95 backdrop-blur-sm border border-stone-200/50 hover:shadow-md transition-all duration-200"
+        aria-label="Próximo"
       >
-        <ChevronRight className="w-5 h-5 text-stone-400" />
+        <ChevronRight className="w-5 h-5 text-stone-500" />
       </button>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+        @keyframes progress {
+          from { width: 0; }
+          to { width: 100%; }
+        }
+      `}</style>
     </section>
   );
 };
