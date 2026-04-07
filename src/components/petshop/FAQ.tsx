@@ -16,9 +16,9 @@ const FAQ = () => {
   const { ref, visible } = useInView(0.1);
 
   return (
-    <section className="py-16 md:py-20 px-4" style={{ background: "#f9f6f1" }} ref={ref}>
+    <section className="py-16 md:py-20 px-4" style={{ background: "var(--cream)" }} ref={ref}>
       <div className={`max-w-[800px] mx-auto transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-        <h2 className="text-2xl md:text-[2rem] font-black mb-8" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#1a1a1a" }}>
+        <h2 className="text-2xl md:text-[2rem] font-black mb-8" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "var(--txt-primary)" }}>
           Perguntas frequentes
         </h2>
 
@@ -26,19 +26,19 @@ const FAQ = () => {
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
-              <div key={i} className="rounded-xl bg-white overflow-hidden transition-all duration-200 border" style={{ borderColor: "#e2ddd6" }}>
+              <div key={i} className="rounded-xl bg-white overflow-hidden transition-all duration-200 border" style={{ borderColor: "var(--border)" }}>
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   className="w-full flex items-center justify-between p-5 text-left group"
                 >
-                  <span className="text-sm font-semibold pr-4" style={{ color: "#1a1a1a" }}>{faq.q}</span>
+                  <span className="text-sm font-semibold pr-4" style={{ color: "var(--txt-primary)" }}>{faq.q}</span>
                   <ChevronDown
                     className="w-4 h-4 flex-shrink-0 transition-transform duration-200"
-                    style={{ color: isOpen ? "#1b4332" : "#a8a29e", transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}
+                    style={{ color: isOpen ? "var(--forest)" : "var(--txt-muted)", transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}
                   />
                 </button>
                 <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: isOpen ? 200 : 0, opacity: isOpen ? 1 : 0 }}>
-                  <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "#6b6b6b" }}>{faq.a}</p>
+                  <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "var(--txt-secondary)" }}>{faq.a}</p>
                 </div>
               </div>
             );
