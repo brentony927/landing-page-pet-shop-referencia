@@ -7,7 +7,7 @@ const Services = () => {
   const { ref, visible } = useInView(0.08);
 
   return (
-    <section id="servicos" className="py-14 sm:py-18 lg:py-24 px-4 bg-white" ref={ref}>
+    <section id="servicos" className="py-10 sm:py-18 lg:py-24 px-4 bg-white" ref={ref}>
       <div className={`max-w-[1100px] mx-auto scroll-fade-up ${visible ? "visible" : ""}`}>
         <div className="text-center mb-10 sm:mb-14">
           <span className="inline-block text-[10px] font-extrabold uppercase tracking-[0.18em] mb-2.5 px-4 py-1.5 rounded-full" style={{ background: "var(--pet-orange-light)", color: "var(--pet-action)" }}>Nossos Serviços</span>

@@ -72,13 +72,13 @@ const Header = () => {
       </div>
 
       {/* Main bar */}
-      <div className="h-14 md:h-16 transition-all duration-300" style={{ background: scrolled ? "rgba(255,255,255,0.98)" : "rgba(255,255,255,0.96)", backdropFilter: "blur(16px)", boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.06)" : "none" }}>
+      <div className="h-[52px] md:h-16 transition-all duration-300" style={{ background: scrolled ? "rgba(255,255,255,0.98)" : "rgba(255,255,255,0.96)", backdropFilter: "blur(16px)", boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.06)" : "none" }}>
         <div className="max-w-[1100px] mx-auto flex items-center justify-between h-full px-4">
           <a href="/" onClick={e => handleNavClick(e, "/")} className="flex items-center gap-2">
-            <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center" style={{ background: "#F5851F" }}>
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center" style={{ background: "#F5851F" }}>
               <PawPrint className="w-4 h-4 md:w-5 md:h-5 text-white" />
             </div>
-            <span className="text-lg md:text-xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-gray)" }}>Demonstração</span>
+            <span className="text-base md:text-xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-gray)" }}>Demonstração</span>
           </a>
 
           <nav className="hidden md:flex items-center gap-7">

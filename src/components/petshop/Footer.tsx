@@ -2,7 +2,7 @@ import { Instagram, Facebook, MessageCircle, PawPrint, Heart } from "lucide-reac
 
 const Footer = () => (
   <footer style={{ background: "var(--pet-navy)" }}>
-    <div className="max-w-[1100px] mx-auto px-5 py-12 sm:py-14">
+    <div className="max-w-[1100px] mx-auto px-5 py-8 sm:py-14">
       {/* Top */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10 pb-7" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div className="flex items-center gap-2.5">
