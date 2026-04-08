@@ -3,9 +3,7 @@ import { MessageCircle, ChevronLeft, ChevronRight, Shield, Star, Clock, Truck, S
 import heroSlide1 from "@/assets/hero-slide-1.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
-import heroSlide4 from "@/assets/hero-slide-4.jpg";
 import heroSlide5 from "@/assets/hero-slide-5.jpg";
-import heroSlide6 from "@/assets/hero-slide-6.jpg";
 
 const WA_LINK = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20um%20banho%20pro%20meu%20pet";
 
@@ -17,14 +15,6 @@ const slides = [
     cta: "Agendar Banho",
     accent: "#F5851F",
     badge: "Mais de 5.000 pets atendidos",
-  },
-  {
-    img: heroSlide4,
-    title: "Banho & Tosa Profissional",
-    sub: "Equipe treinada, produtos de qualidade e muito amor",
-    cta: "Agendar Agora",
-    accent: "#22A66E",
-    badge: "Nota 5.0 no Google",
   },
   {
     img: heroSlide2,
@@ -49,14 +39,6 @@ const slides = [
     cta: "Pedir Agora",
     accent: "#22A66E",
     badge: "Entrega em < 1h",
-  },
-  {
-    img: heroSlide6,
-    title: "Delivery de ração expressa",
-    sub: "Peça pelo WhatsApp e receba em menos de 1 hora",
-    cta: "Pedir pelo WhatsApp",
-    accent: "#F5851F",
-    badge: "Frete grátis",
   },
 ];
 
