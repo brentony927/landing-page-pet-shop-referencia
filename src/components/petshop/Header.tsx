@@ -46,7 +46,7 @@ const Header = () => {
             <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center" style={{ background: "#F5851F" }}>
               <PawPrint className="w-4 h-4 md:w-5 md:h-5 text-white" />
             </div>
-            <span className="text-lg md:text-xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "#0D47A1" }}>Demonstração</span>
+            <span className="text-lg md:text-xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-gray)" }}>Demonstração</span>
           </a>
 
           <nav className="hidden md:flex items-center gap-7">
@@ -59,9 +59,9 @@ const Header = () => {
           </nav>
 
           <div className="hidden md:flex items-center gap-2.5">
-            <a href="https://wa.me/5569992216764" className="rounded-xl px-5 py-2 text-xs font-bold tracking-wider border-2 transition-all" style={{ borderColor: "#1E88E5", color: "#1E88E5" }}
-              onMouseEnter={e => { e.currentTarget.style.background = "#1E88E5"; e.currentTarget.style.color = "#fff"; }}
-              onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#1E88E5"; }}
+            <a href="https://wa.me/5569992216764" className="rounded-xl px-5 py-2 text-xs font-bold tracking-wider border-2 transition-all" style={{ borderColor: "var(--pet-action)", color: "var(--pet-action)" }}
+              onMouseEnter={e => { e.currentTarget.style.background = "var(--pet-action)"; e.currentTarget.style.color = "#fff"; }}
+              onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--pet-action)"; }}
             >WHATSAPP</a>
             <a href="https://wa.me/5569992216764" className="rounded-xl px-5 py-2.5 text-xs font-extrabold tracking-wider text-white hover:-translate-y-0.5 transition-all flex items-center gap-1.5" style={{ background: "#F5851F", boxShadow: "0 4px 14px rgba(245,133,31,0.3)" }}><PawPrint className="w-3.5 h-3.5" /> AGENDAR</a>
           </div>
@@ -108,7 +108,7 @@ const Header = () => {
                   <PawPrint className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <span className="text-base font-extrabold block leading-none" style={{ fontFamily: "'Baloo 2', cursive", color: "#0D47A1" }}>Menu</span>
+                  <span className="text-base font-extrabold block leading-none" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-gray)" }}>Menu</span>
                   <span className="text-[10px] font-medium" style={{ color: "#999" }}>Navegação</span>
                 </div>
               </div>
@@ -141,12 +141,12 @@ const Header = () => {
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{
-                      background: "rgba(30,136,229,0.08)",
+                      background: "rgba(245,133,31,0.08)",
                       backdropFilter: "blur(4px)",
-                      border: "1px solid rgba(30,136,229,0.1)",
+                      border: "1px solid rgba(245,133,31,0.1)",
                     }}
                   >
-                    <l.icon className="w-[18px] h-[18px]" style={{ color: "#1E88E5" }} />
+                    <l.icon className="w-[18px] h-[18px]" style={{ color: "var(--pet-action)" }} />
                   </div>
                   <span className="flex-1">{l.label}</span>
                   <ChevronRight className="w-3.5 h-3.5" style={{ color: "#ccc" }} />
@@ -164,9 +164,9 @@ const Header = () => {
                   href="https://wa.me/5569992216764"
                   className="flex items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-bold text-white active:scale-[0.97] transition-all"
                   style={{
-                    background: "rgba(30,136,229,0.9)",
+                    background: "#25d366",
                     backdropFilter: "blur(8px)",
-                    boxShadow: "0 8px 24px rgba(30,136,229,0.25), inset 0 1px 0 rgba(255,255,255,0.2)",
+                    boxShadow: "0 8px 24px rgba(37,211,102,0.25), inset 0 1px 0 rgba(255,255,255,0.2)",
                   }}
                 >
                   <MessageSquare className="w-4 h-4" /> WhatsApp

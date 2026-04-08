@@ -11,13 +11,13 @@ const Services = () => {
       <div className={`max-w-[1100px] mx-auto scroll-fade-up ${visible ? "visible" : ""}`}>
         <div className="text-center mb-8 sm:mb-12">
           <span className="inline-block text-[10px] font-extrabold uppercase tracking-[0.15em] mb-2 px-4 py-1.5 rounded-full" style={{ background: "#FFF3E8", color: "#F5851F" }}>Nossos Serviços</span>
-          <h2 className="text-[22px] sm:text-3xl lg:text-4xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "#1a3a5c" }}>
+          <h2 className="text-[22px] sm:text-3xl lg:text-4xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>
             Tudo pro seu pet em um só lugar
           </h2>
         </div>
 
         {/* Main card */}
-        <div className="rounded-[20px] p-6 sm:p-8 lg:p-10 mb-4 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 group" style={{ background: "linear-gradient(135deg, #F5851F 0%, #E06B0A 100%)", boxShadow: "0 16px 48px rgba(245,133,31,0.25)" }}>
+        <div className="rounded-[20px] p-6 sm:p-8 lg:p-10 mb-4 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 group" style={{ background: "var(--pet-action)", boxShadow: "0 16px 48px var(--pet-action-glow)" }}>
           <span className="absolute top-3 right-3 text-[9px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-white/20 text-white">⭐ Mais pedido</span>
           <div className="flex flex-col sm:flex-row sm:items-center gap-5">
             <div className="flex-1">
@@ -48,7 +48,7 @@ const Services = () => {
                   <c.icon className="w-5 h-5" style={{ color: c.iconColor }} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-[15px] font-extrabold mb-0.5" style={{ fontFamily: "'Baloo 2', cursive", color: "#1a3a5c" }}>{c.title}</h3>
+                  <h3 className="text-[15px] font-extrabold mb-0.5" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>{c.title}</h3>
                   <p className="text-xs text-gray-500 mb-1.5">{c.desc}</p>
                   {c.price && <p className="text-xs font-bold mb-1" style={{ color: c.iconColor }}>A partir de {c.price}</p>}
                   <a href={c.link || WA} target={c.link ? undefined : "_blank"} rel="noopener noreferrer" className="text-xs font-bold inline-flex items-center gap-1 group-hover/card:gap-2 transition-all" style={{ color: "#F5851F" }}>
@@ -61,7 +61,7 @@ const Services = () => {
         </div>
 
         <div className="mt-8 sm:mt-10 text-center">
-          <a href={WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm font-extrabold text-white transition-all hover:-translate-y-0.5 active:scale-95" style={{ background: "#1565C0", boxShadow: "0 8px 28px rgba(21,101,192,0.3)" }}>
+          <a href={WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm font-extrabold text-white transition-all hover:-translate-y-0.5 active:scale-95" style={{ background: "var(--pet-action)", boxShadow: "0 8px 28px var(--pet-action-glow)" }}>
             <MessageCircle className="w-5 h-5" /> Agende pelo WhatsApp
           </a>
         </div>

@@ -24,6 +24,12 @@
   --pet-gray-border: #E8E8E8;
   --pet-bg: #FAFCFF;
   --pet-bg-alt: #F5F8FC;
+  --pet-navy: #0D1B2A;
+  --pet-action: #F5851F;
+  --pet-action-dark: #E06B0A;
+  --pet-action-glow: rgba(245,133,31,0.30);
+  --pet-green-cta: #22A66E;
+  --pet-topbar: #0D47A1;
 
   --background: 0 0% 100%;
   --foreground: 0 0% 20%;

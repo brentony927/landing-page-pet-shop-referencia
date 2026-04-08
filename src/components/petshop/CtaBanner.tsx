@@ -8,7 +8,7 @@ const CtaBanner = () => {
 
   return (
     <section className="py-4 sm:py-8 px-4" ref={ref}>
-      <div className={`max-w-[1100px] mx-auto rounded-[20px] px-6 sm:px-10 lg:px-14 py-8 sm:py-12 text-white relative overflow-hidden scroll-scale-in ${visible ? "visible" : ""}`} style={{ background: "linear-gradient(135deg, #0D47A1 0%, #1565C0 50%, #1E88E5 100%)" }}>
+      <div className={`max-w-[1100px] mx-auto rounded-[20px] px-6 sm:px-10 lg:px-14 py-8 sm:py-12 text-white relative overflow-hidden scroll-scale-in ${visible ? "visible" : ""}`} style={{ background: "var(--pet-navy)" }}>
         <div className="relative z-10 text-center sm:text-left max-w-lg mx-auto sm:mx-0">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold mb-2 leading-tight" style={{ fontFamily: "'Baloo 2', cursive" }}>
             Agende hoje e ganhe 10% off no próximo serviço

@@ -8,7 +8,7 @@ const PromoSection = () => {
 
   return (
     <section className="py-4 sm:py-8 px-4" ref={ref}>
-      <div className={`max-w-[1100px] mx-auto rounded-[20px] px-6 sm:px-10 lg:px-14 py-8 sm:py-10 relative overflow-hidden scroll-scale-in ${visible ? "visible" : ""}`} style={{ background: "linear-gradient(135deg, #FFB300 0%, #F5851F 100%)" }}>
+      <div className={`max-w-[1100px] mx-auto rounded-[20px] px-6 sm:px-10 lg:px-14 py-8 sm:py-10 relative overflow-hidden scroll-scale-in ${visible ? "visible" : ""}`} style={{ background: "var(--pet-action)", boxShadow: "0 20px 60px rgba(245,133,31,0.22)" }}>
         <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left">
             <div className="flex items-center gap-1.5 mb-1.5 justify-center sm:justify-start">
