@@ -19,7 +19,7 @@ const Testimonials = () => {
       <div className={`max-w-[1100px] mx-auto scroll-fade-up ${visible ? "visible" : ""}`}>
         <div className="text-center mb-8 sm:mb-10">
           <span className="inline-block text-[10px] font-extrabold uppercase tracking-[0.15em] mb-2 px-4 py-1.5 rounded-full" style={{ background: "#FFF3E8", color: "#F5851F" }}>Depoimentos</span>
-          <h2 className="text-[22px] sm:text-3xl lg:text-4xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "#1a3a5c" }}>Quem já veio, voltou</h2>
+          <h2 className="text-[22px] sm:text-3xl lg:text-4xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>Quem já veio, voltou</h2>
         </div>
 
         <div ref={scrollRef} className={`flex gap-4 overflow-x-auto sm:grid sm:grid-cols-3 sm:overflow-visible pb-4 sm:pb-0 snap-x snap-mandatory scrollbar-hide stagger-children ${visible ? "visible" : ""}`}>
@@ -33,7 +33,7 @@ const Testimonials = () => {
               <div className="flex items-center gap-2.5 pt-3" style={{ borderTop: "1px solid #f0f0f0" }}>
                 <img src={t.img} alt={t.name} className="w-9 h-9 rounded-full object-cover ring-2 ring-orange-200" />
                 <div>
-                  <p className="text-[13px] font-extrabold" style={{ color: "#1a3a5c", fontFamily: "'Baloo 2', cursive" }}>{t.name}</p>
+                  <p className="text-[13px] font-extrabold" style={{ color: "var(--pet-navy)", fontFamily: "'Baloo 2', cursive" }}>{t.name}</p>
                   <p className="text-[11px]" style={{ color: "#999" }}>{t.role}</p>
                 </div>
               </div>
