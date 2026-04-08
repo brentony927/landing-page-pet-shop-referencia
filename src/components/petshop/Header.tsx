@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, Phone, PawPrint, Home, Scissors, Info, MessageSquare, ChevronRight, ShoppingBag } from "lucide-react";
 
 const navLinks = [
@@ -13,6 +14,30 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [closing, setClosing] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollToHash = useCallback((hash: string) => {
+    const el = document.querySelector(hash);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);
+
+  const handleNavClick = useCallback((e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    if (href.startsWith("/#")) {
+      const hash = href.replace("/", "");
+      if (location.pathname === "/") {
+        scrollToHash(hash);
+      } else {
+        navigate("/");
+        setTimeout(() => scrollToHash(hash), 300);
+      }
+    } else {
+      navigate(href);
+    }
+  }, [location.pathname, navigate, scrollToHash]);
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 20);
@@ -42,7 +67,7 @@ const Header = () => {
       {/* Main bar */}
       <div className="h-14 md:h-16 transition-all duration-300" style={{ background: scrolled ? "rgba(255,255,255,0.98)" : "rgba(255,255,255,0.96)", backdropFilter: "blur(16px)", boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.06)" : "none" }}>
         <div className="max-w-[1100px] mx-auto flex items-center justify-between h-full px-4">
-          <a href="/" className="flex items-center gap-2">
+          <a href="/" onClick={e => handleNavClick(e, "/")} className="flex items-center gap-2">
             <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center" style={{ background: "#F5851F" }}>
               <PawPrint className="w-4 h-4 md:w-5 md:h-5 text-white" />
             </div>
@@ -51,7 +76,7 @@ const Header = () => {
 
           <nav className="hidden md:flex items-center gap-7">
             {navLinks.map(l => (
-              <a key={l.href} href={l.href} className="relative text-[13px] font-bold tracking-wider uppercase group" style={{ color: "#444" }}>
+              <a key={l.href} href={l.href} onClick={e => handleNavClick(e, l.href)} className="relative text-[13px] font-bold tracking-wider uppercase group cursor-pointer" style={{ color: "#444" }}>
                 {l.label}
                 <span className="absolute -bottom-1 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-300" style={{ background: "#F5851F" }} />
               </a>
@@ -136,7 +161,7 @@ const Header = () => {
                     animationDelay: `${i * 40}ms`,
                     animation: closing ? "none" : `fadeInItem 0.3s ease ${i * 40}ms both`,
                   }}
-                  onClick={closeSidebar}
+                  onClick={e => { handleNavClick(e, l.href); closeSidebar(); }}
                 >
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"

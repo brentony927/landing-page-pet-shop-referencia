@@ -14,6 +14,7 @@ import goldenFilhotesImg from "@/assets/catalog/golden-filhotes.jpg";
 import Header from "@/components/petshop/Header";
 import Footer from "@/components/petshop/Footer";
 import WhatsAppButton from "@/components/petshop/WhatsAppButton";
+import ScrollToTop from "@/components/petshop/ScrollToTop";
 
 const categories = [
   { label: "Todos", icon: Star, key: "all" },
@@ -721,6 +722,7 @@ const CatalogPage = () => {
       {selectedProduct && <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />}
       <Footer />
       <WhatsAppButton />
+      <ScrollToTop />
     </div>
   );
 };
