@@ -37,7 +37,7 @@ const WhyUs = () => {
   const { ref, visible } = useInView(0.25);
 
   return (
-    <section ref={ref} style={{ background: "linear-gradient(135deg, #1565C0 0%, #0D47A1 100%)" }}>
+    <section ref={ref} style={{ background: "var(--pet-navy)" }}>
       <div className={`max-w-[1100px] mx-auto px-5 py-8 sm:py-10 lg:py-12 scroll-fade-up ${visible ? "visible" : ""}`}>
         <div className="grid grid-cols-3 gap-2 sm:gap-8">
           {stats.map(s => (

@@ -504,13 +504,13 @@ const ProductModal = ({ product, onClose }: { product: Product; onClose: () => v
           <div className="p-5 sm:p-6">
             {/* Brand + weight */}
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: "#E3F2FD", color: "#1565C0" }}>{product.brand}</span>
+              <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: "var(--pet-orange-light)", color: "var(--pet-action)" }}>{product.brand}</span>
               <span className="text-[10px] font-medium flex items-center gap-1" style={{ color: "#888" }}>
                 <Package className="w-3 h-3" /> {product.weight}
               </span>
             </div>
 
-            <h2 className="text-lg font-extrabold mb-1 leading-tight" style={{ color: "#1a3a5c", fontFamily: "'Baloo 2', cursive" }}>{product.name}</h2>
+            <h2 className="text-lg font-extrabold mb-1 leading-tight" style={{ color: "var(--pet-navy)", fontFamily: "'Baloo 2', cursive" }}>{product.name}</h2>
 
             {/* Rating */}
             <div className="flex items-center gap-1 mb-3">
@@ -536,11 +536,11 @@ const ProductModal = ({ product, onClose }: { product: Product; onClose: () => v
                   <p className="text-[11px] font-medium" style={{ color: "#4A148C" }}>{product.age}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-2 p-3 rounded-xl" style={{ background: "#E3F2FD" }}>
-                <Ruler className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "#1565C0" }} />
+              <div className="flex items-start gap-2 p-3 rounded-xl" style={{ background: "var(--pet-orange-light)" }}>
+                <Ruler className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "var(--pet-action)" }} />
                 <div>
-                  <p className="text-[10px] font-bold" style={{ color: "#1565C0" }}>Porte</p>
-                  <p className="text-[11px] font-medium" style={{ color: "#0D47A1" }}>{product.size}</p>
+                  <p className="text-[10px] font-bold" style={{ color: "var(--pet-action)" }}>Porte</p>
+                  <p className="text-[11px] font-medium" style={{ color: "var(--pet-action-dark)" }}>{product.size}</p>
                 </div>
               </div>
             </div>
@@ -620,24 +620,24 @@ const ProductCard = ({ product: p, onSelect }: { product: Product; onSelect: () 
           </div>
         )}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-          <span className="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full text-[11px] font-bold flex items-center gap-1.5 shadow-lg" style={{ color: "#1565C0" }}>
+          <span className="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full text-[11px] font-bold flex items-center gap-1.5 shadow-lg" style={{ color: "var(--pet-action)" }}>
             <Eye className="w-3.5 h-3.5" /> Ver detalhes
           </span>
         </div>
       </div>
       <div className="p-3 sm:p-4">
-        <span className="text-[9px] font-bold px-2 py-0.5 rounded-full mb-1.5 inline-block" style={{ background: "#E3F2FD", color: "#1565C0" }}>{p.brand}</span>
+        <span className="text-[9px] font-bold px-2 py-0.5 rounded-full mb-1.5 inline-block" style={{ background: "var(--pet-orange-light)", color: "var(--pet-action)" }}>{p.brand}</span>
         <div className="flex items-center gap-0.5 mb-1">
           {Array.from({ length: 5 }, (_, j) => (
             <Star key={j} className="w-2.5 h-2.5" style={{ color: j < Math.floor(p.rating) ? "#FFB300" : "#e0e0e0", fill: j < Math.floor(p.rating) ? "#FFB300" : "#e0e0e0" }} />
           ))}
           <span className="text-[9px] ml-1" style={{ color: "#999" }}>{p.rating}</span>
         </div>
-        <h3 className="text-[12px] sm:text-[13px] font-bold mb-0.5 leading-tight" style={{ color: "#1a3a5c" }}>{p.name}</h3>
+        <h3 className="text-[12px] sm:text-[13px] font-bold mb-0.5 leading-tight" style={{ color: "var(--pet-navy)" }}>{p.name}</h3>
         <p className="text-[10px] mb-1" style={{ color: "#aaa" }}>{p.weight}</p>
         <p className="text-sm font-extrabold mb-3" style={{ color: "#E65100" }}>{p.price}</p>
         <div className="flex gap-2">
-          <button onClick={onSelect} className="flex-1 flex items-center justify-center gap-1 rounded-xl py-2 text-[11px] font-bold transition-all hover:-translate-y-0.5 active:scale-95" style={{ background: "#E3F2FD", color: "#1565C0" }}>
+          <button onClick={onSelect} className="flex-1 flex items-center justify-center gap-1 rounded-xl py-2 text-[11px] font-bold transition-all hover:-translate-y-0.5 active:scale-95" style={{ background: "var(--pet-orange-light)", color: "var(--pet-action)" }}>
             <Eye className="w-3 h-3" /> Detalhes
           </button>
           <a href={`${WA}?text=${encodeURIComponent(`Oi, quero comprar: ${p.name} ${p.weight}`)}`} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-1 rounded-xl py-2 text-[11px] font-bold text-white transition-all hover:-translate-y-0.5 active:scale-95" style={{ background: "#F5851F" }}>
@@ -663,7 +663,7 @@ const CatalogPage = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <div className="pt-14 md:pt-[92px]">
-        <section className="py-8 sm:py-12 px-4" style={{ background: "linear-gradient(135deg, #0D47A1 0%, #1565C0 100%)" }}>
+        <section className="py-8 sm:py-12 px-4" style={{ background: "var(--pet-navy)" }}>
           <div className="max-w-[1100px] mx-auto">
             <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium mb-5 text-white/70 hover:text-white transition-colors">
               <ArrowLeft className="w-4 h-4" /> Voltar ao início
@@ -710,7 +710,7 @@ const CatalogPage = () => {
             </div>
             {filtered.length === 0 && (
               <div className="text-center py-16">
-                <p className="text-lg font-bold mb-2" style={{ color: "#1a3a5c" }}>Nenhum produto encontrado</p>
+                <p className="text-lg font-bold mb-2" style={{ color: "var(--pet-navy)" }}>Nenhum produto encontrado</p>
                 <p className="text-sm" style={{ color: "#999" }}>Tente outro termo ou fale pelo WhatsApp.</p>
               </div>
             )}

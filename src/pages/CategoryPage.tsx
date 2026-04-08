@@ -28,7 +28,7 @@ const CategoryPage = () => {
       <div className="min-h-screen bg-white">
         <Header />
         <div className="pt-32 text-center px-4">
-          <h1 className="text-2xl font-extrabold mb-4" style={{ fontFamily: "'Baloo 2', cursive", color: "#1a3a5c" }}>Categoria não encontrada</h1>
+          <h1 className="text-2xl font-extrabold mb-4" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>Categoria não encontrada</h1>
           <Link to="/" className="text-sm font-bold" style={{ color: "#F5851F" }}>← Voltar ao início</Link>
         </div>
         <Footer />
@@ -43,7 +43,7 @@ const CategoryPage = () => {
       <Header />
       <div className="pt-14 md:pt-[92px]">
         {/* Hero */}
-        <section className="py-10 sm:py-14 px-4" style={{ background: "linear-gradient(135deg, #0D47A1 0%, #1565C0 100%)" }}>
+        <section className="py-10 sm:py-14 px-4" style={{ background: "var(--pet-navy)" }}>
           <div className="max-w-[1100px] mx-auto">
             <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium mb-5 text-white/70 hover:text-white transition-colors">
               <ArrowLeft className="w-4 h-4" /> Voltar ao início
@@ -61,11 +61,11 @@ const CategoryPage = () => {
         {/* Grid */}
         <section className="py-10 sm:py-14 px-4">
           <div className="max-w-[1100px] mx-auto">
-            <h2 className="text-xl font-extrabold mb-6" style={{ fontFamily: "'Baloo 2', cursive", color: "#1a3a5c" }}>Navegue por subcategoria</h2>
+            <h2 className="text-xl font-extrabold mb-6" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>Navegue por subcategoria</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
               {data.items.map(item => (
                 <a key={item} href={`${WA}?text=${encodeURIComponent(`Oi, quero saber sobre: ${item} - ${data.title}`)}`} target="_blank" rel="noopener noreferrer" className="rounded-[16px] p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group" style={{ border: "1.5px solid #f0f0f0", boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
-                  <span className="text-sm font-bold block mb-1" style={{ color: "#1a3a5c" }}>{item}</span>
+                  <span className="text-sm font-bold block mb-1" style={{ color: "var(--pet-navy)" }}>{item}</span>
                   <span className="text-xs font-bold group-hover:gap-2 transition-all inline-flex items-center gap-1" style={{ color: "#F5851F" }}>Consultar →</span>
                 </a>
               ))}
