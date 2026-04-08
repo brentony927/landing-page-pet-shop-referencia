@@ -130,7 +130,7 @@ const HeroCarousel = () => {
       `}</style>
 
       {/* Carousel — responsive like Petz */}
-      <div className="relative w-full h-[75vw] min-h-[320px] max-h-[480px] sm:h-[55vw] sm:max-h-[600px] md:h-[42vw] md:max-h-[560px] lg:max-h-[620px]">
+      <div className="relative w-full h-[85vw] min-h-[360px] max-h-[520px] sm:h-[55vw] sm:max-h-[600px] md:h-[42vw] md:max-h-[560px] lg:max-h-[620px]">
         
         {slides.map((s, i) => (
           <div
@@ -146,20 +146,19 @@ const HeroCarousel = () => {
               src={s.img}
               alt={s.title}
               className={`w-full h-full object-cover ${i === cur ? "ken-burns" : ""}`}
-              style={{ objectPosition: "center 30%" }}
+              style={{ objectPosition: "center 40%" }}
               loading={i === 0 ? "eager" : "lazy"}
               width={1920}
               height={800}
             />
             <div className="absolute inset-0" style={{
-              background: `linear-gradient(135deg, rgba(13,27,42,0.72) 0%, rgba(0,0,0,0.25) 45%, transparent 70%),
-                           linear-gradient(to top, rgba(13,27,42,0.75) 0%, rgba(0,0,0,0.15) 55%, transparent 100%)`
+              background: `linear-gradient(180deg, rgba(13,27,42,0.15) 0%, rgba(13,27,42,0.4) 40%, rgba(13,27,42,0.85) 75%, rgba(13,27,42,0.95) 100%)`
             }} />
           </div>
         ))}
 
         {/* Content */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-end px-4 pb-4 sm:pb-10 md:pb-14 lg:pb-16 sm:px-8 md:px-12 lg:px-16">
+        <div className="absolute inset-0 z-10 flex flex-col justify-center px-5 pt-8 sm:justify-end sm:pb-10 md:pb-14 lg:pb-16 sm:px-8 md:px-12 lg:px-16">
           <div className="max-w-3xl" key={cur}>
             {/* Slide badge — gatilho de prova social */}
             <div className="hero-text-in hero-d1 mb-2 sm:mb-3 inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[9px] sm:text-xs font-bold text-white/95 border border-white/15" style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(12px)" }}>
@@ -168,13 +167,13 @@ const HeroCarousel = () => {
             </div>
 
             <h1
-              className="hero-text-in hero-d2 text-white text-[20px] sm:text-3xl md:text-4xl lg:text-[48px] font-extrabold leading-[1.12] mb-1.5 sm:mb-3"
+              className="hero-text-in hero-d2 text-white text-[24px] sm:text-3xl md:text-4xl lg:text-[48px] font-extrabold leading-[1.1] mb-2 sm:mb-3"
               style={{ fontFamily: "'Baloo 2', cursive", textShadow: "0 2px 30px rgba(0,0,0,0.5)" }}
             >
               {slides[cur].title}
             </h1>
 
-            <p className="hero-text-in hero-d3 text-white/80 text-[12px] sm:text-base md:text-lg mb-3 sm:mb-5 max-w-lg leading-relaxed">
+            <p className="hero-text-in hero-d3 text-white/85 text-[13px] sm:text-base md:text-lg mb-4 sm:mb-5 max-w-lg leading-relaxed">
               {slides[cur].sub}
             </p>
 
@@ -184,7 +183,7 @@ const HeroCarousel = () => {
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-2xl px-5 py-2.5 sm:px-8 sm:py-3.5 text-[12px] sm:text-sm font-extrabold text-white transition-all duration-200 active:scale-95 hover:-translate-y-0.5 inline-flex items-center gap-2"
+                className="rounded-2xl px-6 py-3 sm:px-8 sm:py-3.5 text-[13px] sm:text-sm font-extrabold text-white transition-all duration-200 active:scale-95 hover:-translate-y-0.5 inline-flex items-center gap-2"
                 style={{
                   background: slides[cur].accent,
                   boxShadow: `0 8px 28px ${slides[cur].accent}55`,
