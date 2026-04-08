@@ -67,7 +67,7 @@ const Header = () => {
       {/* Main bar */}
       <div className="h-14 md:h-16 transition-all duration-300" style={{ background: scrolled ? "rgba(255,255,255,0.98)" : "rgba(255,255,255,0.96)", backdropFilter: "blur(16px)", boxShadow: scrolled ? "0 1px 12px rgba(0,0,0,0.06)" : "none" }}>
         <div className="max-w-[1100px] mx-auto flex items-center justify-between h-full px-4">
-          <a href="/" className="flex items-center gap-2">
+          <a href="/" onClick={e => handleNavClick(e, "/")} className="flex items-center gap-2">
             <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center" style={{ background: "#F5851F" }}>
               <PawPrint className="w-4 h-4 md:w-5 md:h-5 text-white" />
             </div>
@@ -76,7 +76,7 @@ const Header = () => {
 
           <nav className="hidden md:flex items-center gap-7">
             {navLinks.map(l => (
-              <a key={l.href} href={l.href} className="relative text-[13px] font-bold tracking-wider uppercase group" style={{ color: "#444" }}>
+              <a key={l.href} href={l.href} onClick={e => handleNavClick(e, l.href)} className="relative text-[13px] font-bold tracking-wider uppercase group cursor-pointer" style={{ color: "#444" }}>
                 {l.label}
                 <span className="absolute -bottom-1 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-300" style={{ background: "#F5851F" }} />
               </a>
