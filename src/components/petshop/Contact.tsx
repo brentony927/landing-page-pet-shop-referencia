@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Clock, Phone, MapPin, Send } from "lucide-react";
+import { Clock, Phone, MapPin, Send, Shield, CheckCircle } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const Contact = () => {
@@ -19,17 +19,18 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contato" className="py-12 sm:py-16 lg:py-20 px-4" style={{ background: "#F8FAFD" }} ref={ref}>
+    <section id="contato" className="py-14 sm:py-18 lg:py-24 px-4" style={{ background: "var(--pet-bg-alt)" }} ref={ref}>
       <div className={`max-w-[1100px] mx-auto scroll-fade-up ${visible ? "visible" : ""}`}>
-        <div className="text-center mb-8">
-          <span className="inline-block text-[10px] font-extrabold uppercase tracking-[0.15em] mb-2 px-4 py-1.5 rounded-full" style={{ background: "var(--pet-orange-light)", color: "var(--pet-action)" }}>Contato</span>
-          <h2 className="text-[22px] sm:text-3xl lg:text-4xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>Fale com a gente</h2>
+        <div className="text-center mb-10">
+          <span className="inline-block text-[10px] font-extrabold uppercase tracking-[0.18em] mb-2.5 px-4 py-1.5 rounded-full" style={{ background: "var(--pet-orange-light)", color: "var(--pet-action)" }}>Contato</span>
+          <h2 className="text-[24px] sm:text-3xl lg:text-[40px] font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>Fale com a gente</h2>
+          <p className="text-sm text-gray-400 mt-2">Resposta em menos de 5 minutos pelo WhatsApp</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-8">
           <div className="space-y-3">
             {infos.map(c => (
-              <div key={c.title} className="flex items-center gap-3 rounded-2xl p-4 bg-white hover:shadow-md transition-all" style={{ border: "1.5px solid #f0f0f0" }}>
+              <div key={c.title} className="flex items-center gap-3.5 rounded-2xl p-4 bg-white hover:shadow-md transition-all duration-300 hover:-translate-y-0.5" style={{ border: "1.5px solid #f0f0f0" }}>
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "var(--pet-orange-light)" }}>
                   <c.icon className="w-4 h-4" style={{ color: "var(--pet-action)" }} />
                 </div>
@@ -40,7 +41,7 @@ const Contact = () => {
                   ) : (
                     <p className="text-[13px] truncate" style={{ color: "#666" }}>{c.info}</p>
                   )}
-                  {c.mapHref && <a href={c.mapHref} target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold" style={{ color: "#F5851F" }}>Ver no Maps →</a>}
+                  {c.mapHref && <a href={c.mapHref} target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold" style={{ color: "var(--pet-action)" }}>Ver no Maps →</a>}
                 </div>
               </div>
             ))}
@@ -49,26 +50,31 @@ const Contact = () => {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="rounded-[20px] p-6 sm:p-7 bg-white" style={{ border: "1.5px solid #f0f0f0", boxShadow: "0 4px 24px rgba(0,0,0,0.04)" }}>
-            <h3 className="text-lg font-extrabold mb-5" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>Agendar serviço</h3>
-            <div className="space-y-3">
+          <form onSubmit={handleSubmit} className="rounded-[22px] p-6 sm:p-7 bg-white relative" style={{ border: "1.5px solid #f0f0f0", boxShadow: "0 4px 24px rgba(0,0,0,0.04)" }}>
+            <h3 className="text-lg font-extrabold mb-1" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>Agendar serviço</h3>
+            {/* Gatilho de segurança */}
+            <div className="flex items-center gap-1.5 mb-5">
+              <Shield className="w-3 h-3" style={{ color: "var(--pet-green)" }} />
+              <span className="text-[10px] font-semibold text-gray-400">Seus dados são enviados apenas pelo WhatsApp</span>
+            </div>
+            <div className="space-y-3.5">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold mb-1" style={{ color: "#888" }}>Nome</label>
-                  <input className="w-full rounded-xl px-3.5 py-2.5 text-sm outline-none transition-all focus:ring-2 focus:ring-orange-100 bg-gray-50" style={{ border: "1.5px solid #eee", color: "#333" }} placeholder="Seu nome" value={form.nome} onChange={e => setForm({ ...form, nome: e.target.value })} required />
+                  <label className="block text-[11px] font-bold mb-1.5" style={{ color: "#888" }}>Nome</label>
+                  <input className="w-full rounded-xl px-3.5 py-2.5 text-sm outline-none transition-all duration-200 focus:ring-2 bg-gray-50/80" style={{ border: "1.5px solid #eee", color: "#333", "--tw-ring-color": "var(--pet-orange-light)" } as React.CSSProperties} placeholder="Seu nome" value={form.nome} onChange={e => setForm({ ...form, nome: e.target.value })} required />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-bold mb-1" style={{ color: "#888" }}>Telefone</label>
-                  <input className="w-full rounded-xl px-3.5 py-2.5 text-sm outline-none transition-all focus:ring-2 focus:ring-orange-100 bg-gray-50" style={{ border: "1.5px solid #eee", color: "#333" }} placeholder="(69) 99999-0000" value={form.telefone} onChange={e => setForm({ ...form, telefone: e.target.value })} required />
+                  <label className="block text-[11px] font-bold mb-1.5" style={{ color: "#888" }}>Telefone</label>
+                  <input className="w-full rounded-xl px-3.5 py-2.5 text-sm outline-none transition-all duration-200 focus:ring-2 bg-gray-50/80" style={{ border: "1.5px solid #eee", color: "#333", "--tw-ring-color": "var(--pet-orange-light)" } as React.CSSProperties} placeholder="(69) 99999-0000" value={form.telefone} onChange={e => setForm({ ...form, telefone: e.target.value })} required />
                 </div>
               </div>
               <div>
-                <label className="block text-[11px] font-bold mb-1" style={{ color: "#888" }}>Nome do pet</label>
-                <input className="w-full rounded-xl px-3.5 py-2.5 text-sm outline-none transition-all focus:ring-2 focus:ring-orange-100 bg-gray-50" style={{ border: "1.5px solid #eee", color: "#333" }} placeholder="Como chama o bichinho?" value={form.pet} onChange={e => setForm({ ...form, pet: e.target.value })} />
+                <label className="block text-[11px] font-bold mb-1.5" style={{ color: "#888" }}>Nome do pet</label>
+                <input className="w-full rounded-xl px-3.5 py-2.5 text-sm outline-none transition-all duration-200 focus:ring-2 bg-gray-50/80" style={{ border: "1.5px solid #eee", color: "#333", "--tw-ring-color": "var(--pet-orange-light)" } as React.CSSProperties} placeholder="Como chama o bichinho?" value={form.pet} onChange={e => setForm({ ...form, pet: e.target.value })} />
               </div>
               <div>
-                <label className="block text-[11px] font-bold mb-1" style={{ color: "#888" }}>Serviço</label>
-                <select className="w-full rounded-xl px-3.5 py-2.5 text-sm outline-none transition-all focus:ring-2 focus:ring-orange-100 bg-gray-50 appearance-auto" style={{ border: "1.5px solid #eee", color: "#333" }} value={form.servico} onChange={e => setForm({ ...form, servico: e.target.value })}>
+                <label className="block text-[11px] font-bold mb-1.5" style={{ color: "#888" }}>Serviço</label>
+                <select className="w-full rounded-xl px-3.5 py-2.5 text-sm outline-none transition-all duration-200 focus:ring-2 bg-gray-50/80 appearance-auto" style={{ border: "1.5px solid #eee", color: "#333", "--tw-ring-color": "var(--pet-orange-light)" } as React.CSSProperties} value={form.servico} onChange={e => setForm({ ...form, servico: e.target.value })}>
                   <option>Banho & Tosa</option>
                   <option>Tosa Higiênica</option>
                   <option>Rações & Petiscos</option>
@@ -76,9 +82,14 @@ const Contact = () => {
                 </select>
               </div>
             </div>
-            <button type="submit" className="w-full rounded-xl py-3 text-sm font-extrabold text-white mt-5 transition-all hover:-translate-y-0.5 active:scale-[0.98] inline-flex items-center justify-center gap-2" style={{ background: "#F5851F", boxShadow: "0 6px 20px rgba(245,133,31,0.3)" }}>
+            <button type="submit" className="w-full rounded-2xl py-3.5 text-sm font-extrabold text-white mt-5 transition-all hover:-translate-y-0.5 active:scale-[0.98] inline-flex items-center justify-center gap-2" style={{ background: "var(--pet-action)", boxShadow: "0 6px 24px var(--pet-action-glow)" }}>
               <Send className="w-4 h-4" /> ENVIAR PELO WHATSAPP
             </button>
+            {/* Micro prova social */}
+            <div className="flex items-center justify-center gap-1.5 mt-3">
+              <CheckCircle className="w-3 h-3" style={{ color: "var(--pet-green)" }} />
+              <span className="text-[10px] font-semibold text-gray-400">23 agendamentos hoje</span>
+            </div>
           </form>
         </div>
       </div>
