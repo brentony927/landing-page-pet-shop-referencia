@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Menu, X, Phone, PawPrint, Home, Scissors, Info, MessageSquare, ChevronRight, ShoppingBag } from "lucide-react";
+import { Menu, X, Phone, PawPrint, Home, Scissors, Info, MessageSquare, ChevronRight, ShoppingBag, Circle } from "lucide-react";
+import { useOpenStatus } from "@/hooks/useOpenStatus";
 
 const navLinks = [
   { label: "Início", href: "/", icon: Home },
@@ -16,6 +17,7 @@ const Header = () => {
   const [closing, setClosing] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const status = useOpenStatus();
 
   const scrollToHash = useCallback((hash: string) => {
     const el = document.querySelector(hash);
@@ -59,7 +61,12 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Top bar */}
       <div className="hidden md:flex items-center justify-center gap-6 py-1.5 text-xs font-semibold text-white" style={{ background: "#0D47A1" }}>
-        <span className="flex items-center gap-1"><PawPrint className="w-3 h-3" /> Seg–Sex: 8h–19h | Sáb: 8h–16h</span>
+        <span className="flex items-center gap-1.5">
+          <Circle className="w-2 h-2" style={{ fill: status.isOpen ? "#4ADE80" : "#F87171", color: status.isOpen ? "#4ADE80" : "#F87171" }} />
+          <span className={status.isOpen ? "text-green-300" : "text-red-300"}>{status.label}</span>
+          <span className="text-white/50">·</span>
+          Seg–Sex: 8h–19h | Sáb: 8h–16h
+        </span>
         <a href="https://wa.me/5569992216764" className="flex items-center gap-1 hover:underline"><Phone className="w-3 h-3" /> (69) 99221-6764</a>
         <span className="text-white/60">Pix · Cartão · Dinheiro</span>
       </div>

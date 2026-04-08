@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Clock, Phone, MapPin, Send, Shield, CheckCircle } from "lucide-react";
+import { Clock, Phone, MapPin, Send, Shield, CheckCircle, Circle } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { useOpenStatus } from "@/hooks/useOpenStatus";
 
 const Contact = () => {
   const [form, setForm] = useState({ nome: "", telefone: "", pet: "", servico: "Banho & Tosa" });
   const { ref, visible } = useInView(0.1);
+  const status = useOpenStatus();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ const Contact = () => {
   };
 
   const infos = [
-    { icon: Clock, title: "Horário", info: "Seg–Sex: 8h–19h · Sáb: 8h–16h" },
+    { icon: Clock, title: "Horário", info: "Seg–Sex: 8h–19h · Sáb: 8h–16h", statusBadge: true },
     { icon: Phone, title: "WhatsApp", info: "(69) 99221-6764", href: "https://wa.me/5569992216764" },
     { icon: MapPin, title: "Local", info: "Av. Marechal Rondon, 1200 — Centro", mapHref: "https://maps.google.com/?q=Pet+Shop+Amazonia+Ji-Parana+RO" },
   ];
@@ -35,7 +37,15 @@ const Contact = () => {
                   <c.icon className="w-4 h-4" style={{ color: "var(--pet-action)" }} />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm font-extrabold" style={{ color: "var(--pet-navy)" }}>{c.title}</p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-sm font-extrabold" style={{ color: "var(--pet-navy)" }}>{c.title}</p>
+                    {(c as any).statusBadge && (
+                      <span className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold" style={{ background: status.isOpen ? "#DCFCE7" : "#FEE2E2", color: status.isOpen ? "#16A34A" : "#DC2626" }}>
+                        <Circle className="w-1.5 h-1.5" style={{ fill: "currentColor", color: "currentColor" }} />
+                        {status.label}
+                      </span>
+                    )}
+                  </div>
                   {c.href ? (
                     <a href={c.href} className="text-sm font-bold" style={{ color: "var(--pet-action)" }}>{c.info}</a>
                   ) : (
