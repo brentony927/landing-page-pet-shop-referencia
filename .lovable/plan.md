@@ -1,125 +1,65 @@
 
 
-# Landing Page de Alta Conversão — Foco em WhatsApp
+# Correção de Identidade Visual — Comando Supremo V2
 
-## Resumo
-
-Transformar a página atual em uma landing page focada 100% em conversão para WhatsApp. Remover seções que distraem, reordenar componentes, melhorar copy e adicionar CTAs a cada 1-2 seções.
+Documento analisado com precisão. São 7 correções cirúrgicas para eliminar azul onde não deve existir e padronizar a paleta.
 
 ---
 
-## 1. Reordenar e Limpar — `Index.tsx`
+## Resumo das Mudanças
 
-**Remover:** PetTips, Brands, FoodProducts, FeaturedProducts, Categories, AnimatedStrip
-**Nova ordem:**
-```
-Header → HeroCarousel → WhyUs → Services → PromoSection (novo) → Gallery (3 fotos) → Testimonials → CtaBanner → FAQ (3 perguntas) → Contact → Footer → WhatsAppButton
-```
+Problema central: azul (#1565C0, #1E88E5, #0D47A1, #1a3a5c) está espalhado como cor principal em locais que deveriam usar laranja ou navy. Gradientes desnecessários em vários componentes.
 
 ---
 
-## 2. Hero — `HeroCarousel.tsx`
+## 1. index.css — Adicionar variáveis que faltam no :root
 
-- Reduzir para 1 slide fixo (sem carousel) para foco total
-- Headline: **"Banho e tosa com qualidade profissional por preço justo"**
-- Sub: **"Deixe seu pet limpo, cheiroso e bem cuidado em menos de 1 hora"**
-- CTA primário: botão amarelo `#FFC107` com ícone WhatsApp (MessageCircle) — "Agendar agora no WhatsApp"
-- Link pre-filled: `?text=Oi, quero agendar um banho pro meu pet`
-- Trust badges embaixo: "500+ pets atendidos" · "Nota 5.0 no Google" · "12 anos no bairro"
-- Manter imagem do pet à direita
+Adicionar após as variáveis existentes:
+- `--pet-navy: #0D1B2A` (títulos de seção)
+- `--pet-action: #F5851F` (cor de ação única)
+- `--pet-action-dark: #E06B0A` (hover CTAs)
+- `--pet-action-glow: rgba(245,133,31,0.30)` (sombra CTAs)
+- `--pet-green-cta: #22A66E` (apenas hero slides)
+- `--pet-topbar: #0D47A1` (apenas top bar)
 
----
+## 2. Services.tsx — 3 correções
 
-## 3. WhyUs — `WhyUs.tsx`
+- **Botão CTA final** (linha 64): `#1565C0` → `var(--pet-action)`, sombra → `var(--pet-action-glow)`
+- **Card Banho & Tosa** (linha 20): remover `linear-gradient(135deg, #F5851F, #E06B0A)` → `var(--pet-action)` sólido com sombra melhorada
+- **Títulos h2** (linhas 14, 51): `#1a3a5c` → `var(--pet-navy)`
 
-- Manter como está (números animados). Sem mudanças significativas.
+## 3. Header.tsx — 4 correções
 
----
+- **Nome da marca** (linha 49): `color: "#0D47A1"` → `var(--pet-gray)`
+- **Botão WhatsApp outline desktop** (linhas 62-65): `#1E88E5` → `var(--pet-action)` em border, color e hover
+- **Ícones sidebar mobile** (linhas 142-149): `rgba(30,136,229,...)` → `rgba(245,133,31,...)` no wrapper, ícone `#1E88E5` → `var(--pet-action)`
+- **Botão WhatsApp sidebar** (linhas 166-170): `rgba(30,136,229,0.9)` → `#25d366` (verde WhatsApp real)
+- **Texto "Menu" sidebar** (linha 111): `#0D47A1` → `var(--pet-gray)`
 
-## 4. Services — `Services.tsx`
+## 4. CtaBanner.tsx — Trocar gradiente azul por navy sólido
 
-- Reescrever copy para foco em benefícios:
-  - Banho & Tosa: "Seu pet sai cheiroso em menos de 1 hora" — a partir de R$35
-  - Tosa Higiênica: "Áreas sensíveis limpas com cuidado" — a partir de R$20
-  - Entrega de ração: "Chega na sua porta no mesmo dia"
-- Todos os botões amarelos (#FFC107) com link WhatsApp pre-filled
-- Adicionar CTA ao final: "Agende pelo WhatsApp agora"
+- Linha 11: `linear-gradient(135deg, #0D47A1, #1565C0, #1E88E5)` → `var(--pet-navy)` sólido
+- Botão AGENDAR já está correto — não mexer
 
----
+## 5. PromoSection.tsx — Trocar gradiente por sólido
 
-## 5. Novo Componente — `PromoSection.tsx`
+- Linha 11: `linear-gradient(135deg, #FFB300, #F5851F)` → `var(--pet-action)` sólido com sombra `0 20px 60px rgba(245,133,31,0.22)`
 
-- Fundo amarelo (#FFC107)
-- Título: **"Promoção da semana: Banho + Tosa com desconto"**
-- Urgência: **"Vagas limitadas hoje"**
-- Botão laranja grande com ícone WhatsApp
-- Seção simples, compacta, alto impacto
+## 6. Testimonials.tsx — Cor do título
 
----
-
-## 6. Gallery — `Gallery.tsx`
-
-- Reduzir de 6 para 3 fotos (Antes, Depois, Nossa loja)
-- Adicionar CTA abaixo: "Quer ver seu pet assim? Agende agora"
-
----
-
-## 7. Testimonials — `Testimonials.tsx`
-
-- Manter 3 depoimentos, reescrever para ser mais emocional:
-  - Maria: "Meu Bob chega puxando a coleira de tanta vontade de entrar. Nunca vi ele tão feliz em outro lugar."
-  - João: "O Mingau é difícil, mas aqui eles têm paciência. Voltou ronronando. Não troco por nada."
-  - Renata: "Testei 3 pet shops antes. Aqui a Luna volta feliz e cheirosa. Virei cliente fiel."
-- Todas com 5 estrelas
-- CTA após seção: "Quer o mesmo resultado? Agende agora"
-
----
-
-## 8. CtaBanner — `CtaBanner.tsx`
-
-- Manter estrutura, trocar botões para amarelo (#FFC107)
-- Copy: "Agende hoje e ganhe 10% off no próximo serviço"
-
----
-
-## 9. FAQ — `FAQ.tsx`
-
-- Reduzir de 6 para 3 perguntas:
-  1. "Preciso agendar com antecedência?" 
-  2. "Aceitam Pix e cartão?"
-  3. "Vocês entregam ração?"
-
----
-
-## 10. WhatsAppButton — `WhatsAppButton.tsx`
-
-- Aumentar tamanho: w-16 h-16
-- Link com mensagem pre-filled
-- Bubble aparece após 15s (não 30s)
-- Texto: "Agende agora pelo WhatsApp!"
-
----
-
-## 11. Estilos Globais
-
-- Botões CTA: background `#FFC107`, hover `#FFB300`, texto escuro (#333)
-- Mais border-radius (rounded-3xl nos cards)
-- Soft shadows nos cards: `0 8px 32px rgba(0,0,0,0.06)`
-- Mais espaçamento entre seções
+- Linha 22: `#1a3a5c` → `var(--pet-navy)` no h2
+- Linha 36: `#1a3a5c` → `var(--pet-navy)` nos nomes dos depoimentos
 
 ---
 
 ## Arquivos Modificados
 
-| Arquivo | Ação |
-|---------|------|
-| `Index.tsx` | Remover 5 imports, reordenar, adicionar PromoSection |
-| `HeroCarousel.tsx` | Reescrever para hero fixo focado em conversão |
-| `Services.tsx` | Reescrever copy, botões amarelos |
-| `PromoSection.tsx` | **Criar novo** — banner de promoção amarelo |
-| `Gallery.tsx` | Reduzir para 3 fotos + CTA |
-| `Testimonials.tsx` | Reescrever depoimentos, todas 5 estrelas, CTA |
-| `FAQ.tsx` | Reduzir para 3 perguntas |
-| `WhatsAppButton.tsx` | Maior, mais visível, bubble mais rápida |
-| `CtaBanner.tsx` | Botões amarelos |
+| Arquivo | Alterações |
+|---------|-----------|
+| `src/index.css` | +6 variáveis CSS |
+| `src/components/petshop/Services.tsx` | 4 substituições de cor |
+| `src/components/petshop/Header.tsx` | 6 substituições de cor |
+| `src/components/petshop/CtaBanner.tsx` | 1 substituição (gradiente → sólido) |
+| `src/components/petshop/PromoSection.tsx` | 1 substituição (gradiente → sólido) |
+| `src/components/petshop/Testimonials.tsx` | 2 substituições de cor |
 
