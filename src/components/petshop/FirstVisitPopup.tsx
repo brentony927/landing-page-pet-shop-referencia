@@ -11,7 +11,7 @@ const FirstVisitPopup = () => {
   useEffect(() => {
     const visited = localStorage.getItem("pet_visited");
     if (!visited) {
-      const timer = setTimeout(() => setShow(true), 4000);
+      const timer = setTimeout(() => setShow(true), 10000);
       return () => clearTimeout(timer);
     }
   }, []);
