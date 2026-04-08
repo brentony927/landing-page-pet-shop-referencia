@@ -722,6 +722,7 @@ const CatalogPage = () => {
       {selectedProduct && <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />}
       <Footer />
       <WhatsAppButton />
+      <ScrollToTop />
     </div>
   );
 };
