@@ -37,7 +37,15 @@ const Contact = () => {
                   <c.icon className="w-4 h-4" style={{ color: "var(--pet-action)" }} />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm font-extrabold" style={{ color: "var(--pet-navy)" }}>{c.title}</p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-sm font-extrabold" style={{ color: "var(--pet-navy)" }}>{c.title}</p>
+                    {(c as any).statusBadge && (
+                      <span className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold" style={{ background: status.isOpen ? "#DCFCE7" : "#FEE2E2", color: status.isOpen ? "#16A34A" : "#DC2626" }}>
+                        <Circle className="w-1.5 h-1.5" style={{ fill: "currentColor", color: "currentColor" }} />
+                        {status.label}
+                      </span>
+                    )}
+                  </div>
                   {c.href ? (
                     <a href={c.href} className="text-sm font-bold" style={{ color: "var(--pet-action)" }}>{c.info}</a>
                   ) : (
