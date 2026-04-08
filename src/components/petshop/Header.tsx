@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, Phone, PawPrint, Home, Scissors, Info, MessageSquare, ChevronRight, ShoppingBag } from "lucide-react";
 
 const navLinks = [
@@ -13,6 +14,30 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [closing, setClosing] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollToHash = useCallback((hash: string) => {
+    const el = document.querySelector(hash);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);
+
+  const handleNavClick = useCallback((e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    if (href.startsWith("/#")) {
+      const hash = href.replace("/", "");
+      if (location.pathname === "/") {
+        scrollToHash(hash);
+      } else {
+        navigate("/");
+        setTimeout(() => scrollToHash(hash), 300);
+      }
+    } else {
+      navigate(href);
+    }
+  }, [location.pathname, navigate, scrollToHash]);
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 20);
