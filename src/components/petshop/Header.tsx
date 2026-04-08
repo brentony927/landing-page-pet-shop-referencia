@@ -161,7 +161,7 @@ const Header = () => {
                     animationDelay: `${i * 40}ms`,
                     animation: closing ? "none" : `fadeInItem 0.3s ease ${i * 40}ms both`,
                   }}
-                  onClick={closeSidebar}
+                  onClick={e => { handleNavClick(e, l.href); closeSidebar(); }}
                 >
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
