@@ -46,7 +46,7 @@ const Footer = () => (
       {/* Bottom */}
       <div className="pt-6 text-center" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <p className="text-[11px] text-white/20 flex items-center justify-center gap-1 flex-wrap">
-          © 2025 Demonstração — Feito com <Heart className="w-3 h-3 inline" style={{ color: "var(--pet-action)" }} /> ·{" "}
+          © 2025 Demonstração ·{" "}
           <a href="/privacidade" className="underline hover:text-white/40 transition-colors">Privacidade</a> ·{" "}
           <a href="/termos" className="underline hover:text-white/40 transition-colors">Termos</a>
         </p>
