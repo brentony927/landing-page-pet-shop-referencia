@@ -9,8 +9,8 @@ const benefits = [
 ];
 
 const timeline = [
-  { year: "2013", text: "Começamos com 1 mesa de banho e muito sabão 🧼" },
-  { year: "2016", text: "Primeiro funcionário contratado 👋" },
+  { year: "2013", text: "Começamos com 1 mesa de banho e muito sabão" },
+  { year: "2016", text: "Primeiro funcionário contratado" },
   { year: "2019", text: "Expandimos para entrega de ração no bairro" },
   { year: "2024", text: "500+ pets atendidos por ano, nota 5.0 no Google" },
 ];

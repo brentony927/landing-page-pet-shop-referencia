@@ -4,11 +4,11 @@ import { useInView } from "@/hooks/useInView";
 import { Link } from "react-router-dom";
 
 const categories = [
-  { label: "🐕 Cães", icon: Dog, key: "dogs" },
-  { label: "🐱 Gatos", icon: Cat, key: "cats" },
-  { label: "🐾 Filhotes", icon: PawPrint, key: "puppies" },
-  { label: "🐦 Pássaros", icon: Bird, key: "birds" },
-  { label: "🐠 Peixes", icon: Fish, key: "fish" },
+  { label: "Cães", icon: Dog, key: "dogs" },
+  { label: "Gatos", icon: Cat, key: "cats" },
+  { label: "Filhotes", icon: PawPrint, key: "puppies" },
+  { label: "Pássaros", icon: Bird, key: "birds" },
+  { label: "Peixes", icon: Fish, key: "fish" },
 ];
 
 const products: Record<string, Array<{ name: string; rating: number; popular?: boolean }>> = {
@@ -60,7 +60,7 @@ const FoodProducts = () => {
       <div className="max-w-[1100px] mx-auto">
         <div className="flex items-end justify-between mb-10">
           <h2 className="text-2xl md:text-[2rem] font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "#333" }}>
-            🦴 Rações e petiscos
+            Rações e petiscos
           </h2>
           <Link to="/catalogo" className="hidden md:block text-sm font-bold hover:underline" style={{ color: "var(--pet-green)" }}>
             Ver catálogo completo →
@@ -101,7 +101,7 @@ const FoodProducts = () => {
               >
                 {p.popular && (
                   <span className="absolute top-2 left-2 text-white font-extrabold text-[10px] z-10 px-2.5 py-1 rounded-full" style={{ background: isFirst ? "var(--pet-green)" : "var(--pet-orange)" }}>
-                    {isFirst ? "⭐ Queridinho" : "🔥 Popular"}
+                    {isFirst ? "Queridinho" : "Popular"}
                   </span>
                 )}
                 <div className={`w-full flex items-center justify-center ${isFirst ? "h-40 sm:h-52" : "h-28 sm:h-36"}`} style={{ background: "var(--pet-bg-alt)" }}>

@@ -60,7 +60,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Top bar */}
-      <div className="hidden md:flex items-center justify-center gap-6 py-1.5 text-xs font-semibold text-white" style={{ background: "#0D47A1" }}>
+      <div className="hidden md:flex items-center justify-center gap-6 py-1.5 text-xs font-semibold text-white" style={{ background: "var(--pet-navy)" }}>
         <span className="flex items-center gap-1.5">
           <Circle className="w-2 h-2" style={{ fill: status.isOpen ? "#4ADE80" : "#F87171", color: status.isOpen ? "#4ADE80" : "#F87171" }} />
           <span className={status.isOpen ? "text-green-300" : "text-red-300"}>{status.label}</span>
