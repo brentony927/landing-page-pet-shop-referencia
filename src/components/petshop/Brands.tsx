@@ -22,8 +22,8 @@ const Brands = () => {
   return (
     <section className="py-12 overflow-hidden bg-white">
       <div className="max-w-[1100px] mx-auto px-4 mb-8">
-        <h2 className="text-xl md:text-2xl font-extrabold text-center" style={{ fontFamily: "'Baloo 2', cursive", color: "#333" }}>
-          🏷️ Marcas que trabalhamos
+        <h2 className="text-xl md:text-2xl font-extrabold text-center" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>
+          Marcas que trabalhamos
         </h2>
       </div>
 

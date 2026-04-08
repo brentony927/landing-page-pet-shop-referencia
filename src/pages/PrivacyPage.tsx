@@ -8,7 +8,7 @@ const PrivacyPage = () => (
     <Header />
     <div className="pt-14 md:pt-[92px]">
       {/* Hero */}
-      <section className="py-8 sm:py-10 px-4" style={{ background: "linear-gradient(135deg, #0D47A1 0%, #1565C0 100%)" }}>
+      <section className="py-8 sm:py-10 px-4" style={{ background: "var(--pet-navy)" }}>
         <div className="max-w-[800px] mx-auto">
           <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium mb-4 text-white/70 hover:text-white transition-colors">
             <ArrowLeft className="w-4 h-4" /> Voltar ao início
@@ -36,7 +36,7 @@ const PrivacyPage = () => (
             { t: "7. Alterações", c: "Esta política pode ser atualizada periodicamente. Recomendamos que você revise esta página regularmente." },
           ].map(s => (
             <section key={s.t} className="rounded-[16px] p-5" style={{ background: "#F8FAFD", border: "1px solid #f0f0f0" }}>
-              <h2 className="text-base font-extrabold mb-2" style={{ fontFamily: "'Baloo 2', cursive", color: "#1a3a5c" }}>{s.t}</h2>
+              <h2 className="text-base font-extrabold mb-2" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>{s.t}</h2>
               <p>{s.c}</p>
             </section>
           ))}

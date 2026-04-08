@@ -16,8 +16,8 @@ const Gallery = () => {
     <section className="py-12 sm:py-16 lg:py-20 px-4 bg-white" ref={ref}>
       <div className={`max-w-[1100px] mx-auto scroll-fade-up ${visible ? "visible" : ""}`}>
         <div className="text-center mb-8">
-          <span className="inline-block text-[10px] font-extrabold uppercase tracking-[0.15em] mb-2 px-4 py-1.5 rounded-full" style={{ background: "#E3F2FD", color: "#1E88E5" }}>Resultados</span>
-          <h2 className="text-[22px] sm:text-3xl lg:text-4xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "#1a3a5c" }}>Antes e depois</h2>
+          <span className="inline-block text-[10px] font-extrabold uppercase tracking-[0.15em] mb-2 px-4 py-1.5 rounded-full" style={{ background: "var(--pet-orange-light)", color: "var(--pet-action)" }}>Resultados</span>
+          <h2 className="text-[22px] sm:text-3xl lg:text-4xl font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>Antes e depois</h2>
         </div>
 
         <div className={`grid grid-cols-3 gap-2.5 sm:gap-4 stagger-children ${visible ? "visible" : ""}`}>

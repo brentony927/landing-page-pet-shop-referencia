@@ -15,8 +15,8 @@ const PetTips = () => {
   return (
     <section className="py-16 md:py-20 px-4 bg-white" ref={ref}>
       <div className="max-w-[1100px] mx-auto">
-        <h2 className="text-2xl md:text-[2rem] font-extrabold mb-10" style={{ fontFamily: "'Baloo 2', cursive", color: "#333" }}>
-          💡 Dicas rápidas
+        <h2 className="text-2xl md:text-[2rem] font-extrabold mb-10" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>
+          Dicas rápidas
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

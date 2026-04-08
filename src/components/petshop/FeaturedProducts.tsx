@@ -17,8 +17,8 @@ const FeaturedProducts = () => {
     <section className="py-16 md:py-20 px-4" style={{ background: "var(--pet-blue-light)" }} ref={ref}>
       <div className="max-w-[1100px] mx-auto">
         <div className="flex items-end justify-between mb-10">
-          <h2 className="text-2xl md:text-[2rem] font-extrabold leading-tight" style={{ fontFamily: "'Baloo 2', cursive", color: "#333" }}>
-            ⭐ Destaques da semana
+          <h2 className="text-2xl md:text-[2rem] font-extrabold leading-tight" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>
+            Destaques da semana
           </h2>
           <a href="https://wa.me/5569992216764" className="hidden md:block text-sm font-bold hover:underline" style={{ color: "var(--pet-green)" }}>
             Ver todos →
