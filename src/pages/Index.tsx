@@ -11,6 +11,7 @@ import FAQ from "@/components/petshop/FAQ";
 import Contact from "@/components/petshop/Contact";
 import Footer from "@/components/petshop/Footer";
 import WhatsAppButton from "@/components/petshop/WhatsAppButton";
+import ScrollToTop from "@/components/petshop/ScrollToTop";
 
 const Index = () => {
   return (
@@ -27,6 +28,7 @@ const Index = () => {
       <Contact />
       <Footer />
       <WhatsAppButton />
+      <ScrollToTop />
     </div>
   );
 };
