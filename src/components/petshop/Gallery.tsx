@@ -13,7 +13,7 @@ const Gallery = () => {
   const { ref, visible } = useInView(0.1);
 
   return (
-    <section className="py-14 sm:py-18 lg:py-24 px-4 bg-white" ref={ref}>
+    <section className="py-10 sm:py-18 lg:py-24 px-4 bg-white" ref={ref}>
       <div className={`max-w-[1100px] mx-auto scroll-fade-up ${visible ? "visible" : ""}`}>
         <div className="text-center mb-10">
           <span className="inline-block text-[10px] font-extrabold uppercase tracking-[0.18em] mb-2.5 px-4 py-1.5 rounded-full" style={{ background: "var(--pet-orange-light)", color: "var(--pet-action)" }}>Resultados</span>

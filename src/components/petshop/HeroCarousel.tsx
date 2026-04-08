@@ -98,7 +98,7 @@ const HeroCarousel = () => {
     <section
       id="inicio"
       className="relative w-full overflow-hidden"
-      style={{ marginTop: 56 }}
+      style={{ marginTop: 52 }}
       onMouseEnter={pause}
       onMouseLeave={resume}
       onTouchStart={e => { tx.current = e.touches[0].clientX; te.current = tx.current; pause(); }}
@@ -130,7 +130,7 @@ const HeroCarousel = () => {
       `}</style>
 
       {/* Carousel — responsive like Petz */}
-      <div className="relative w-full h-[55vw] min-h-[280px] max-h-[600px] md:h-[42vw] md:max-h-[560px] lg:max-h-[620px]">
+      <div className="relative w-full h-[75vw] min-h-[320px] max-h-[480px] sm:h-[55vw] sm:max-h-[600px] md:h-[42vw] md:max-h-[560px] lg:max-h-[620px]">
         
         {slides.map((s, i) => (
           <div
@@ -159,22 +159,22 @@ const HeroCarousel = () => {
         ))}
 
         {/* Content */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-end px-5 pb-6 sm:pb-10 md:pb-14 lg:pb-16 sm:px-8 md:px-12 lg:px-16">
+        <div className="absolute inset-0 z-10 flex flex-col justify-end px-4 pb-4 sm:pb-10 md:pb-14 lg:pb-16 sm:px-8 md:px-12 lg:px-16">
           <div className="max-w-3xl" key={cur}>
             {/* Slide badge — gatilho de prova social */}
-            <div className="hero-text-in hero-d1 mb-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[10px] sm:text-xs font-bold text-white/95 border border-white/15" style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(12px)" }}>
-              <Sparkles className="w-3 h-3" style={{ color: slides[cur].accent }} />
+            <div className="hero-text-in hero-d1 mb-2 sm:mb-3 inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[9px] sm:text-xs font-bold text-white/95 border border-white/15" style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(12px)" }}>
+              <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3" style={{ color: slides[cur].accent }} />
               {slides[cur].badge}
             </div>
 
             <h1
-              className="hero-text-in hero-d2 text-white text-[22px] sm:text-3xl md:text-4xl lg:text-[48px] font-extrabold leading-[1.08] mb-2.5 sm:mb-3"
-              style={{ fontFamily: "'Baloo 2', cursive", textShadow: "0 2px 40px rgba(0,0,0,0.4)" }}
+              className="hero-text-in hero-d2 text-white text-[20px] sm:text-3xl md:text-4xl lg:text-[48px] font-extrabold leading-[1.12] mb-1.5 sm:mb-3"
+              style={{ fontFamily: "'Baloo 2', cursive", textShadow: "0 2px 30px rgba(0,0,0,0.5)" }}
             >
               {slides[cur].title}
             </h1>
 
-            <p className="hero-text-in hero-d3 text-white/80 text-[13px] sm:text-base md:text-lg mb-5 max-w-lg leading-relaxed">
+            <p className="hero-text-in hero-d3 text-white/80 text-[12px] sm:text-base md:text-lg mb-3 sm:mb-5 max-w-lg leading-relaxed">
               {slides[cur].sub}
             </p>
 
@@ -184,7 +184,7 @@ const HeroCarousel = () => {
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-2xl px-6 py-3 sm:px-8 sm:py-3.5 text-[13px] sm:text-sm font-extrabold text-white transition-all duration-200 active:scale-95 hover:-translate-y-0.5 inline-flex items-center gap-2.5"
+                className="rounded-2xl px-5 py-2.5 sm:px-8 sm:py-3.5 text-[12px] sm:text-sm font-extrabold text-white transition-all duration-200 active:scale-95 hover:-translate-y-0.5 inline-flex items-center gap-2"
                 style={{
                   background: slides[cur].accent,
                   boxShadow: `0 8px 28px ${slides[cur].accent}55`,
@@ -201,8 +201,8 @@ const HeroCarousel = () => {
           </div>
 
           {/* Trust badges + dots */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-6 gap-4">
-            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-3 sm:mt-6 gap-3 sm:gap-4">
+            <div className="hidden sm:flex flex-wrap gap-1.5 sm:gap-2">
               {trustBadges.map((b, i) => (
                 <span
                   key={i}

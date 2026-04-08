@@ -12,10 +12,10 @@ const WhatsAppButton = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-6 right-6 z-[999]">
+    <div className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-[999]">
       {showBubble && (
         <div
-          className="absolute bottom-20 right-0 bg-white rounded-2xl rounded-br-sm px-4 py-3 text-sm font-bold"
+          className="absolute bottom-16 sm:bottom-20 right-0 bg-white rounded-2xl rounded-br-sm px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-bold"
           style={{
             color: "#333",
             border: "1.5px solid var(--pet-gray-border)",
@@ -38,11 +38,11 @@ const WhatsAppButton = () => {
         href={WA_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-16 h-16 rounded-full flex items-center justify-center animate-pulse-ring transition-transform duration-200 hover:scale-110"
+        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center animate-pulse-ring transition-transform duration-200 hover:scale-110 active:scale-95"
         style={{ background: "#25d366", boxShadow: "0 6px 24px rgba(37,211,102,0.5)" }}
         aria-label="Chamar no WhatsApp"
       >
-        <MessageCircle className="w-7 h-7 text-white" />
+        <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
       </a>
     </div>
   );
