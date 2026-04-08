@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Clock, Phone, MapPin, Send, Shield, CheckCircle } from "lucide-react";
+import { Clock, Phone, MapPin, Send, Shield, CheckCircle, Circle } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { useOpenStatus } from "@/hooks/useOpenStatus";
 
 const Contact = () => {
   const [form, setForm] = useState({ nome: "", telefone: "", pet: "", servico: "Banho & Tosa" });
   const { ref, visible } = useInView(0.1);
+  const status = useOpenStatus();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ const Contact = () => {
   };
 
   const infos = [
-    { icon: Clock, title: "Horário", info: "Seg–Sex: 8h–19h · Sáb: 8h–16h" },
+    { icon: Clock, title: "Horário", info: "Seg–Sex: 8h–19h · Sáb: 8h–16h", statusBadge: true },
     { icon: Phone, title: "WhatsApp", info: "(69) 99221-6764", href: "https://wa.me/5569992216764" },
     { icon: MapPin, title: "Local", info: "Av. Marechal Rondon, 1200 — Centro", mapHref: "https://maps.google.com/?q=Pet+Shop+Amazonia+Ji-Parana+RO" },
   ];
