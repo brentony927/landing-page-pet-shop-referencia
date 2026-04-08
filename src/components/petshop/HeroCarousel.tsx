@@ -129,8 +129,8 @@ const HeroCarousel = () => {
         .ken-burns { animation: kenBurns 6s ease-out forwards; }
       `}</style>
 
-      {/* Carousel — responsive like Petz */}
-      <div className="relative w-full h-[85vw] min-h-[360px] max-h-[520px] sm:h-[55vw] sm:max-h-[600px] md:h-[42vw] md:max-h-[560px] lg:max-h-[620px]">
+      {/* Carousel container */}
+      <div className="relative w-full aspect-[3/4] sm:aspect-[16/9] max-h-[560px] sm:max-h-[600px] md:max-h-[560px] lg:max-h-[620px]">
         
         {slides.map((s, i) => (
           <div
@@ -146,44 +146,45 @@ const HeroCarousel = () => {
               src={s.img}
               alt={s.title}
               className={`w-full h-full object-cover ${i === cur ? "ken-burns" : ""}`}
-              style={{ objectPosition: "center 40%" }}
+              style={{ objectPosition: "center 35%" }}
               loading={i === 0 ? "eager" : "lazy"}
               width={1920}
               height={800}
             />
+            {/* Gradiente mobile: mais suave em cima, escurece embaixo */}
             <div className="absolute inset-0" style={{
-              background: `linear-gradient(180deg, rgba(13,27,42,0.15) 0%, rgba(13,27,42,0.4) 40%, rgba(13,27,42,0.85) 75%, rgba(13,27,42,0.95) 100%)`
+              background: `linear-gradient(180deg, rgba(13,27,42,0.1) 0%, rgba(13,27,42,0.25) 30%, rgba(13,27,42,0.7) 65%, rgba(13,27,42,0.92) 100%)`
             }} />
           </div>
         ))}
 
-        {/* Content */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-center px-5 pt-8 sm:justify-end sm:pb-10 md:pb-14 lg:pb-16 sm:px-8 md:px-12 lg:px-16">
+        {/* Content — centered on mobile, bottom on desktop */}
+        <div className="absolute inset-0 z-10 flex flex-col justify-end px-5 pb-14 sm:pb-10 md:pb-14 lg:pb-16 sm:px-8 md:px-12 lg:px-16">
           <div className="max-w-3xl" key={cur}>
-            {/* Slide badge — gatilho de prova social */}
-            <div className="hero-text-in hero-d1 mb-2 sm:mb-3 inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[9px] sm:text-xs font-bold text-white/95 border border-white/15" style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(12px)" }}>
-              <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3" style={{ color: slides[cur].accent }} />
+            {/* Badge */}
+            <div className="hero-text-in hero-d1 mb-2.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold text-white border border-white/20" style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(12px)" }}>
+              <Sparkles className="w-3 h-3" style={{ color: slides[cur].accent }} />
               {slides[cur].badge}
             </div>
 
             <h1
-              className="hero-text-in hero-d2 text-white text-[24px] sm:text-3xl md:text-4xl lg:text-[48px] font-extrabold leading-[1.1] mb-2 sm:mb-3"
-              style={{ fontFamily: "'Baloo 2', cursive", textShadow: "0 2px 30px rgba(0,0,0,0.5)" }}
+              className="hero-text-in hero-d2 text-white text-[26px] sm:text-3xl md:text-4xl lg:text-[48px] font-extrabold leading-[1.08] mb-2 sm:mb-3"
+              style={{ fontFamily: "'Baloo 2', cursive", textShadow: "0 2px 20px rgba(0,0,0,0.6)" }}
             >
               {slides[cur].title}
             </h1>
 
-            <p className="hero-text-in hero-d3 text-white/85 text-[13px] sm:text-base md:text-lg mb-4 sm:mb-5 max-w-lg leading-relaxed">
+            <p className="hero-text-in hero-d3 text-white/85 text-[13px] sm:text-base md:text-lg mb-4 sm:mb-5 max-w-md leading-relaxed" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.3)" }}>
               {slides[cur].sub}
             </p>
 
-            {/* CTA com gatilho de urgência */}
+            {/* CTA */}
             <div className="hero-text-in hero-d4 flex flex-wrap items-center gap-3">
               <a
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-2xl px-6 py-3 sm:px-8 sm:py-3.5 text-[13px] sm:text-sm font-extrabold text-white transition-all duration-200 active:scale-95 hover:-translate-y-0.5 inline-flex items-center gap-2"
+                className="rounded-2xl px-7 py-3 sm:px-8 sm:py-3.5 text-[13px] sm:text-sm font-extrabold text-white transition-all duration-200 active:scale-95 hover:-translate-y-0.5 inline-flex items-center gap-2"
                 style={{
                   background: slides[cur].accent,
                   boxShadow: `0 8px 28px ${slides[cur].accent}55`,
@@ -192,47 +193,46 @@ const HeroCarousel = () => {
                 <MessageCircle className="w-[18px] h-[18px]" />
                 {slides[cur].cta}
               </a>
-              <span className="flex items-center gap-1.5 text-[10px] sm:text-xs font-semibold text-white/50">
+              <span className="flex items-center gap-1.5 text-[10px] sm:text-xs font-semibold text-white/55">
                 <Clock className="w-3 h-3" />
                 Vagas limitadas hoje
               </span>
             </div>
           </div>
 
-          {/* Trust badges + dots */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-3 sm:mt-6 gap-3 sm:gap-4">
-            <div className="hidden sm:flex flex-wrap gap-1.5 sm:gap-2">
-              {trustBadges.map((b, i) => (
-                <span
-                  key={i}
-                  className="hero-badge-in flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full text-[9px] sm:text-[11px] font-bold text-white/90 border border-white/10 transition-all hover:bg-white/15"
-                  style={{ background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)", animationDelay: `${0.5 + i * 0.08}s`, opacity: 0 }}
-                >
-                  <b.icon className="w-3 h-3 flex-shrink-0" style={{ color: "#FFB300" }} />
-                  <span className="whitespace-nowrap">{b.label}</span>
-                </span>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-1.5">
-              {slides.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => goTo(i)}
-                  className="relative h-[4px] rounded-full overflow-hidden transition-all duration-500"
-                  style={{ width: i === cur ? 36 : 12, background: i === cur ? "transparent" : "rgba(255,255,255,0.25)" }}
-                  aria-label={`Slide ${i + 1}`}
-                >
-                  {i === cur && (
-                    <>
-                      <span className="absolute inset-0 rounded-full" style={{ background: "rgba(255,255,255,0.2)" }} />
-                      <span className="absolute inset-0 rounded-full origin-left" style={{ background: slides[cur].accent, animation: "progressFill 5.5s linear forwards" }} />
-                    </>
-                  )}
-                </button>
-              ))}
-            </div>
+          {/* Trust badges — desktop only */}
+          <div className="hidden sm:flex flex-wrap gap-2 mt-5">
+            {trustBadges.map((b, i) => (
+              <span
+                key={i}
+                className="hero-badge-in flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-bold text-white/90 border border-white/10 transition-all hover:bg-white/15"
+                style={{ background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)", animationDelay: `${0.5 + i * 0.08}s`, opacity: 0 }}
+              >
+                <b.icon className="w-3 h-3 flex-shrink-0" style={{ color: "#FFB300" }} />
+                <span className="whitespace-nowrap">{b.label}</span>
+              </span>
+            ))}
           </div>
+        </div>
+
+        {/* Dots — posicionados absolutamente no fundo */}
+        <div className="absolute bottom-4 left-5 sm:bottom-5 sm:left-auto sm:right-5 z-20 flex items-center gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className="relative h-[5px] rounded-full overflow-hidden transition-all duration-500"
+              style={{ width: i === cur ? 32 : 10, background: i === cur ? "transparent" : "rgba(255,255,255,0.35)" }}
+              aria-label={`Slide ${i + 1}`}
+            >
+              {i === cur && (
+                <>
+                  <span className="absolute inset-0 rounded-full" style={{ background: "rgba(255,255,255,0.25)" }} />
+                  <span className="absolute inset-0 rounded-full origin-left" style={{ background: slides[cur].accent, animation: "progressFill 5.5s linear forwards" }} />
+                </>
+              )}
+            </button>
+          ))}
         </div>
 
         {/* Arrows — desktop */}
