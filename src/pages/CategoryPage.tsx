@@ -17,7 +17,7 @@ const categoryData: Record<string, { title: string; icon: typeof Dog; descriptio
   servicos: { title: "Serviços", icon: Sparkles, description: "Cuidado e bem-estar para o seu pet.", items: ["Banho & Tosa", "Veterinário", "Táxi Pet", "Hotel Pet", "Tosa Higiênica"] },
 };
 
-const WA = "https://wa.me/5569992216764";
+const WA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de informações sobre produtos para meu pet");
 
 const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();

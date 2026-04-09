@@ -32,12 +32,12 @@ const Footer = () => (
           <h4 className="text-[10px] uppercase tracking-widest mb-3.5 font-bold text-white/40">Atendimento</h4>
           <p className="text-sm text-white/30 mb-1">Seg–Sex: 8h–19h</p>
           <p className="text-sm text-white/30 mb-3">Sáb: 8h–16h</p>
-          <a href="https://wa.me/5569992216764" className="text-sm font-extrabold" style={{ color: "#FFB300" }}>(69) 99221-6764</a>
+          <a href={"https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de informações sobre os serviços do pet shop")} target="_blank" rel="noopener noreferrer" className="text-sm font-extrabold" style={{ color: "#FFB300" }}>(69) 99221-6764</a>
         </div>
         <div className="col-span-2 sm:col-span-1">
           <h4 className="text-[10px] uppercase tracking-widest mb-3.5 font-bold text-white/40">Agendar</h4>
           <p className="text-sm text-white/30 mb-4">Pelo WhatsApp é mais rápido.</p>
-          <a href="https://wa.me/5569992216764" className="inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-2.5 text-sm font-extrabold text-white transition-all hover:-translate-y-0.5 active:scale-[0.98]" style={{ background: "var(--pet-action)", boxShadow: "0 4px 14px var(--pet-action-glow)" }}>
+          <a href={"https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de agendar um serviço para o meu pet. Quais horários estão disponíveis?")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-2.5 text-sm font-extrabold text-white transition-all hover:-translate-y-0.5 active:scale-[0.98]" style={{ background: "var(--pet-action)", boxShadow: "0 4px 14px var(--pet-action-glow)" }}>
             AGENDAR
           </a>
         </div>
