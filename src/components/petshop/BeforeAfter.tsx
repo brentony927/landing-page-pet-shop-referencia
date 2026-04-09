@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useInView } from "@/hooks/useInView";
 import { Sparkles, Camera, ImagePlus } from "lucide-react";
 
-const WA = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20um%20banho%20pro%20meu%20pet";
+const WA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Vi as transformações no site e quero agendar um banho e tosa para o meu pet!");
 
 const transformations = [
   { name: "Thor", breed: "Golden Retriever", service: "Banho + Tosa completa" },

@@ -1,7 +1,7 @@
 import { MessageCircle, Clock, Sparkles, PawPrint, AlertCircle } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
-const WA = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20banho%20%2B%20tosa%20com%20desconto";
+const WA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Vi a promoção de Banho + Tosa no site e quero aproveitar! Quais horários estão disponíveis?");
 
 const PromoSection = () => {
   const { ref, visible } = useInView(0.2);
