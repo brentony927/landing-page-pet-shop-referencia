@@ -5,9 +5,9 @@ import { useRef } from "react";
 const WA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Vi os depoimentos dos clientes e gostaria de agendar um serviço para o meu pet!");
 
 const testimonials = [
-  { name: "Maria Aparecida", role: "Cliente há 4 anos", img: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=80&q=80", text: "Meu Bob chega puxando a coleira de tanta vontade de entrar. Nunca vi ele tão feliz em outro lugar.", verified: true },
-  { name: "João Carlos", role: "Tutor do Mingau", img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=80&q=80", text: "O Mingau é difícil, mas aqui eles têm paciência. Voltou ronronando. Não troco por nada.", verified: true },
-  { name: "Renata Silva", role: "Tutora da Luna", img: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=80&q=80", text: "Testei 3 pet shops antes. Aqui a Luna volta feliz e cheirosa. Virei cliente fiel.", verified: true },
+  { name: "Maria Aparecida", role: "Cliente há 4 anos", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80", text: "Meu Bob chega puxando a coleira de tanta vontade de entrar. Nunca vi ele tão feliz em outro lugar.", verified: true },
+  { name: "João Carlos", role: "Tutor do Mingau", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80", text: "O Mingau é difícil, mas aqui eles têm paciência. Voltou ronronando. Não troco por nada.", verified: true },
+  { name: "Renata Silva", role: "Tutora da Luna", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80", text: "Testei 3 pet shops antes. Aqui a Luna volta feliz e cheirosa. Virei cliente fiel.", verified: true },
 ];
 
 const Testimonials = () => {

@@ -3,7 +3,7 @@ import { useInView } from "@/hooks/useInView";
 import { Bath, Home, Star, TrendingUp } from "lucide-react";
 
 const stats = [
-  { target: 5000, suffix: "+", label: "banhos por ano", Icon: Bath },
+  { target: 5000, suffix: "+", label: "pets atendidos", Icon: Bath },
   { target: 12, suffix: " anos", label: "no bairro", Icon: Home },
   { target: 4.8, suffix: "", label: "no Google", Icon: Star },
 ];

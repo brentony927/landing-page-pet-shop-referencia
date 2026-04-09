@@ -7,7 +7,7 @@ const NotFound = () => {
   useEffect(() => { console.error("404:", location.pathname); }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4" style={{ background: "linear-gradient(135deg, #0D47A1 0%, #1565C0 100%)" }}>
+    <div className="flex min-h-screen items-center justify-center px-4" style={{ background: "var(--pet-navy)" }}>
       <div className="text-center">
         <div className="w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6" style={{ background: "rgba(255,179,0,0.2)" }}>
           <PawPrint className="w-10 h-10" style={{ color: "#FFB300" }} />
