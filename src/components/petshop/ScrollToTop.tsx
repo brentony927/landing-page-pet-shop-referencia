@@ -15,7 +15,7 @@ const ScrollToTop = () => {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed bottom-36 sm:bottom-24 right-5 z-40 w-11 h-11 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl active:scale-90"
+      className="fixed bottom-20 sm:bottom-6 left-4 sm:left-auto sm:right-24 z-[998] w-11 h-11 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl active:scale-90"
       style={{
         background: "var(--pet-navy)",
         boxShadow: "0 4px 20px rgba(13,27,42,0.3)",
