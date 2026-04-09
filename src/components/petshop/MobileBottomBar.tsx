@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { MessageCircle, Phone } from "lucide-react";
 
-const WA_LINK = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20um%20banho%20pro%20meu%20pet";
+const WA_LINK = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de agendar um serviço para o meu pet. Quais horários estão disponíveis?");
 
 const MobileBottomBar = () => {
   const [show, setShow] = useState(false);

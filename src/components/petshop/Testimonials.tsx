@@ -2,7 +2,7 @@ import { useInView } from "@/hooks/useInView";
 import { MessageCircle, Quote, Star, CheckCircle } from "lucide-react";
 import { useRef } from "react";
 
-const WA = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20um%20banho%20pro%20meu%20pet";
+const WA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Vi os depoimentos dos clientes e gostaria de agendar um serviço para o meu pet!");
 
 const testimonials = [
   { name: "Maria Aparecida", role: "Cliente há 4 anos", img: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=80&q=80", text: "Meu Bob chega puxando a coleira de tanta vontade de entrar. Nunca vi ele tão feliz em outro lugar.", verified: true },

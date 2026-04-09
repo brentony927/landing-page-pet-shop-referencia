@@ -115,7 +115,7 @@ const FoodProducts = () => {
                     <span className="text-[10px] ml-1" style={{ color: "var(--pet-gray-light)" }}>{p.rating}</span>
                   </div>
                   <h3 className={`font-extrabold mb-3 leading-tight ${isFirst ? "text-base sm:text-lg" : "text-xs sm:text-sm"}`} style={{ color: "#333" }}>{p.name}</h3>
-                  <a href="https://wa.me/5569992216764" className={`font-bold hover:underline ${isFirst ? "text-sm" : "text-xs"}`} style={{ color: "var(--pet-green)" }}>
+                  <a href={`https://wa.me/5569992216764?text=${encodeURIComponent(`Olá! Gostaria de saber o preço da ração: *${p.name}*`)}`} target="_blank" rel="noopener noreferrer" className={`font-bold hover:underline ${isFirst ? "text-sm" : "text-xs"}`} style={{ color: "var(--pet-green)" }}>
                     Consultar preço →
                   </a>
                 </div>

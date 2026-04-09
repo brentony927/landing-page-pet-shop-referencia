@@ -2,12 +2,14 @@ import { Bath, Scissors, Bone, Truck, MessageCircle, ArrowRight, Users, Zap } fr
 import { useInView } from "@/hooks/useInView";
 import { Link } from "react-router-dom";
 
-const WA = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20um%20banho%20pro%20meu%20pet";
+const WA_BANHO = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de agendar um *Banho & Tosa* para o meu pet. Podem me informar os horários disponíveis?");
+const WA_TOSA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de agendar uma *Tosa Higiênica* para o meu pet. Quais horários têm disponíveis?");
+const WA_ENTREGA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de saber sobre a *entrega de ração*. Vocês entregam na minha região?");
 
 const secondaryCards = [
-  { icon: Scissors, title: "Tosa Higiênica", desc: "Áreas sensíveis com cuidado total", price: "R$ 20", bg: "var(--pet-orange-light)", iconColor: "var(--pet-action)" },
+  { icon: Scissors, title: "Tosa Higiênica", desc: "Áreas sensíveis com cuidado total", price: "R$ 20", bg: "var(--pet-orange-light)", iconColor: "var(--pet-action)", wa: WA_TOSA },
   { icon: Bone, title: "Rações & Petiscos", desc: "Marcas líderes com entrega grátis", price: null, bg: "var(--pet-yellow-light)", iconColor: "var(--pet-yellow)", link: "/catalogo", linkText: "Ver catálogo" },
-  { icon: Truck, title: "Entrega Rápida", desc: "No mesmo dia, sem taxa mínima", price: null, bg: "var(--pet-green-light)", iconColor: "var(--pet-green)" },
+  { icon: Truck, title: "Entrega Rápida", desc: "No mesmo dia, sem taxa mínima", price: null, bg: "var(--pet-green-light)", iconColor: "var(--pet-green)", wa: WA_ENTREGA },
 ];
 
 const Services = () => {
@@ -41,7 +43,7 @@ const Services = () => {
                 <span className="flex items-center gap-1 text-[10px] font-bold text-white/60"><Users className="w-3 h-3" /> 127 esta semana</span>
               </div>
               <div className="flex flex-wrap items-center gap-2.5">
-                <a href={WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl px-6 py-2.5 sm:py-3 text-[13px] sm:text-sm font-extrabold bg-white transition-all hover:-translate-y-0.5 active:scale-95" style={{ color: "var(--pet-action-dark)", boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }}>
+                <a href={WA_BANHO} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl px-6 py-2.5 sm:py-3 text-[13px] sm:text-sm font-extrabold bg-white transition-all hover:-translate-y-0.5 active:scale-95" style={{ color: "var(--pet-action-dark)", boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }}>
                   <MessageCircle className="w-4 h-4" /> Agendar agora
                 </a>
                 <Link to="/precos" className="inline-flex items-center gap-1.5 rounded-2xl px-5 py-2.5 sm:py-3 text-[12px] sm:text-sm font-bold text-white/90 border border-white/25 transition-all hover:bg-white/10 hover:-translate-y-0.5 active:scale-95">
@@ -63,7 +65,7 @@ const Services = () => {
               <h3 className="text-[15px] font-extrabold mb-0.5" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>{c.title}</h3>
               <p className="text-xs text-gray-400 mb-2">{c.desc}</p>
               {c.price && <p className="text-xs font-bold mb-2" style={{ color: c.iconColor }}>A partir de {c.price}</p>}
-              <a href={c.link || WA} target={c.link ? undefined : "_blank"} rel="noopener noreferrer" className="text-xs font-bold inline-flex items-center gap-1 group-hover/card:gap-2 transition-all" style={{ color: "var(--pet-action)" }}>
+              <a href={c.link || (c as any).wa || WA_BANHO} target={c.link ? undefined : "_blank"} rel="noopener noreferrer" className="text-xs font-bold inline-flex items-center gap-1 group-hover/card:gap-2 transition-all" style={{ color: "var(--pet-action)" }}>
                 {c.linkText || "Agendar"} <ArrowRight className="w-3 h-3" />
               </a>
             </div>
@@ -71,7 +73,7 @@ const Services = () => {
         </div>
 
         <div className="mt-8 sm:mt-12 text-center px-4">
-          <a href={WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl px-7 py-3.5 text-sm font-extrabold text-white transition-all hover:-translate-y-0.5 active:scale-95" style={{ background: "var(--pet-action)", boxShadow: "0 8px 28px var(--pet-action-glow)" }}>
+          <a href={WA_BANHO} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl px-7 py-3.5 text-sm font-extrabold text-white transition-all hover:-translate-y-0.5 active:scale-95" style={{ background: "var(--pet-action)", boxShadow: "0 8px 28px var(--pet-action-glow)" }}>
             <MessageCircle className="w-5 h-5" /> Agende pelo WhatsApp
           </a>
         </div>

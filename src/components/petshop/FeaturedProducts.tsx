@@ -20,7 +20,7 @@ const FeaturedProducts = () => {
           <h2 className="text-2xl md:text-[2rem] font-extrabold leading-tight" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>
             Destaques da semana
           </h2>
-          <a href="https://wa.me/5569992216764" className="hidden md:block text-sm font-bold hover:underline" style={{ color: "var(--pet-green)" }}>
+          <a href={"https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de ver todos os produtos em destaque. Podem me enviar o catálogo?")} target="_blank" rel="noopener noreferrer" className="hidden md:block text-sm font-bold hover:underline" style={{ color: "var(--pet-green)" }}>
             Ver todos →
           </a>
         </div>
@@ -39,7 +39,7 @@ const FeaturedProducts = () => {
                 {f.title}
               </h3>
               <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--pet-gray)" }}>{f.desc}</p>
-              <a href="https://wa.me/5569992216764" className="text-sm font-bold hover:underline" style={{ color: "var(--pet-green)" }}>
+              <a href={`https://wa.me/5569992216764?text=${encodeURIComponent(`Olá! Gostaria de saber o preço e disponibilidade do produto: *${f.title}*`)}`} target="_blank" rel="noopener noreferrer" className="text-sm font-bold hover:underline" style={{ color: "var(--pet-green)" }}>
                 Pergunte no WhatsApp →
               </a>
             </div>

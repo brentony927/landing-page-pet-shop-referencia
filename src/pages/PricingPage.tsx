@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/petshop/Header";
 import Footer from "@/components/petshop/Footer";
 
-const WA = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20um%20banho%20pro%20meu%20pet";
+const WA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Vi a tabela de preços e gostaria de agendar um serviço. Quais horários estão disponíveis?");
 
 const services = [
   { icon: Bath, name: "Banho Simples", size: "Pequeno", price: "R$ 35", popular: false },

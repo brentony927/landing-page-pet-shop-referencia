@@ -457,7 +457,7 @@ const allProducts: Product[] = [
   },
 ];
 
-const WA = "https://wa.me/5569992216764";
+const WA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Vi um produto no catálogo e gostaria de saber o preço e disponibilidade");
 
 /* ─── Product Detail Modal ─── */
 const ProductModal = ({ product, onClose }: { product: Product; onClose: () => void }) => {

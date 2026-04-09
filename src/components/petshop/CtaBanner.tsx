@@ -1,7 +1,7 @@
 import { Calendar, MessageCircle, PawPrint, Clock, Zap } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
-const WA = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20e%20ganhar%20desconto";
+const WA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de agendar um serviço e aproveitar o desconto. Quais horários têm disponíveis?");
 
 const CtaBanner = () => {
   const { ref, visible } = useInView(0.2);
