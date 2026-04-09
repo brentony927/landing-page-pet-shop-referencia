@@ -3,9 +3,10 @@ import Header from "@/components/petshop/Header";
 import HeroCarousel from "@/components/petshop/HeroCarousel";
 import WhyUs from "@/components/petshop/WhyUs";
 import Services from "@/components/petshop/Services";
+import PricingTable from "@/components/petshop/PricingTable";
 import PromoSection from "@/components/petshop/PromoSection";
 import ValueBanner from "@/components/petshop/ValueBanner";
-import Gallery from "@/components/petshop/Gallery";
+import BeforeAfter from "@/components/petshop/BeforeAfter";
 import Testimonials from "@/components/petshop/Testimonials";
 import CtaBanner from "@/components/petshop/CtaBanner";
 import FAQ from "@/components/petshop/FAQ";
@@ -14,6 +15,7 @@ import Footer from "@/components/petshop/Footer";
 import WhatsAppButton from "@/components/petshop/WhatsAppButton";
 import ScrollToTop from "@/components/petshop/ScrollToTop";
 import FirstVisitPopup from "@/components/petshop/FirstVisitPopup";
+import MobileBottomBar from "@/components/petshop/MobileBottomBar";
 
 const Index = () => {
   return (
@@ -22,9 +24,10 @@ const Index = () => {
       <HeroCarousel />
       <WhyUs />
       <Services />
+      <PricingTable />
       <ValueBanner />
       <PromoSection />
-      <Gallery />
+      <BeforeAfter />
       <Testimonials />
       <CtaBanner />
       <FAQ />
@@ -33,6 +36,7 @@ const Index = () => {
       <WhatsAppButton />
       <ScrollToTop />
       <FirstVisitPopup />
+      <MobileBottomBar />
     </div>
   );
 };
