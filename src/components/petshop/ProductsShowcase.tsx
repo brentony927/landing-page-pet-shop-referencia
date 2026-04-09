@@ -20,10 +20,7 @@ const products = [
   { name: "Golden Gatos Castrados", brand: "Golden", rating: 4.9, price: "R$ 189,90", weight: "10.1kg", cat: "cats", popular: true, img: "https://cobasi.vteximg.com.br/arquivos/ids/278723/GOLDEN-GATOS-CASTR-SALMAO-101-KG.jpg?v=638799905443270000", tag: "Super Premium" },
   { name: "Temptations Anti Bola", brand: "Whiskas", rating: 4.9, price: "R$ 12,90", weight: "80g", cat: "cats", popular: false, img: "https://cobasi.vteximg.com.br/arquivos/ids/1042487/Petiscos-Anti-bola-de-pelo-Whiskas-40g.jpg?v=638753893779770000" },
   { name: "Ração Pedigree Filhotes", brand: "Pedigree", rating: 4.8, price: "R$ 119,90", weight: "10.1kg", cat: "puppies", popular: true, img: "https://cobasi.vteximg.com.br/arquivos/ids/1058781/Racao-Pedigree-Caes-Adultos-Racas-Medias-e-Grandes-Carne-e-Vegetais-20kg.png?v=638887169798770000", tag: "DHA incluso" },
-  { name: "Golden Seleção Natural", brand: "Golden", rating: 4.8, price: "R$ 81,90", weight: "3kg", cat: "puppies", popular: true, img: "https://cobasi.vteximg.com.br/arquivos/ids/819537/racao-golden-formula-caes-adultos-racas-pequenas-carne-arroz-mini-bits-1kg.jpg?v=637667907205070000", tag: "Natural" },
   { name: "Ração Canários Alcon", brand: "Alcon", rating: 4.8, price: "R$ 39,90", weight: "325g", cat: "birds", popular: false, img: "https://images.unsplash.com/photo-1522926193341-e9ffd686c60f?w=300&q=80" },
-  { name: "Ração Curió Alcon", brand: "Alcon", rating: 4.9, price: "R$ 39,90", weight: "325g", cat: "birds", popular: true, img: "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=300&q=80", tag: "Para canto" },
-  { name: "Colorbits Tetra", brand: "Tetra", rating: 4.8, price: "R$ 12,90", weight: "15g", cat: "fish", popular: true, img: "https://images.unsplash.com/photo-1520302519878-3cbfba1b1678?w=300&q=80", tag: "Realça cores" },
   { name: "Bettamix Alcon", brand: "Alcon", rating: 5.0, price: "R$ 19,90", weight: "10g", cat: "fish", popular: false, img: "https://images.unsplash.com/photo-1504472478235-9bc48ba4d60f?w=300&q=80" },
 ];
 
