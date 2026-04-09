@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Clock, Phone, MapPin, Send, Shield, CheckCircle, Circle } from "lucide-react";
+import { Clock, Phone, MapPin, Send, Shield, CheckCircle, Circle, Star } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { useOpenStatus } from "@/hooks/useOpenStatus";
 
@@ -27,6 +27,17 @@ const Contact = () => {
           <span className="inline-block text-[10px] font-extrabold uppercase tracking-[0.18em] mb-2.5 px-4 py-1.5 rounded-full" style={{ background: "var(--pet-orange-light)", color: "var(--pet-action)" }}>Contato</span>
           <h2 className="text-[24px] sm:text-3xl lg:text-[40px] font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>Fale com a gente</h2>
           <p className="text-sm text-gray-400 mt-2">Resposta em menos de 5 minutos pelo WhatsApp</p>
+          <div className="flex items-center justify-center gap-2 mt-3">
+            <div className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-white" style={{ border: "1.5px solid #f0f0f0", boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+              <Star className="w-3.5 h-3.5" style={{ color: "#FBBC04", fill: "#FBBC04" }} />
+              <Star className="w-3.5 h-3.5" style={{ color: "#FBBC04", fill: "#FBBC04" }} />
+              <Star className="w-3.5 h-3.5" style={{ color: "#FBBC04", fill: "#FBBC04" }} />
+              <Star className="w-3.5 h-3.5" style={{ color: "#FBBC04", fill: "#FBBC04" }} />
+              <Star className="w-3.5 h-3.5" style={{ color: "#FBBC04", fill: "#FBBC04" }} />
+              <span className="text-xs font-extrabold ml-1" style={{ color: "var(--pet-navy)" }}>5.0</span>
+              <span className="text-[10px] text-gray-400 font-bold">no Google</span>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-8">

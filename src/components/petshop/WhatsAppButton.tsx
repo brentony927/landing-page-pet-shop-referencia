@@ -12,7 +12,7 @@ const WhatsAppButton = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-[999]">
+    <div className="fixed bottom-20 sm:bottom-5 right-4 sm:right-6 z-[999]">
       {showBubble && (
         <div
           className="absolute bottom-16 sm:bottom-20 right-0 bg-white rounded-2xl rounded-br-sm px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-bold"
