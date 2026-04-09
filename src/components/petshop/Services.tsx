@@ -1,5 +1,6 @@
 import { Bath, Scissors, Bone, Truck, MessageCircle, ArrowRight, Users, Zap } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { Link } from "react-router-dom";
 
 const WA = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20um%20banho%20pro%20meu%20pet";
 
@@ -23,7 +24,7 @@ const Services = () => {
           <p className="text-sm text-gray-400 mt-2 max-w-md mx-auto">Serviço completo com qualidade e carinho. Mais de 5.000 pets atendidos por ano.</p>
         </div>
 
-        {/* Main card — gatilho de prova social */}
+        {/* Main card */}
         <div className="mx-4 rounded-[22px] p-6 sm:p-8 lg:p-10 mb-4 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 group" style={{ background: "var(--pet-action)", boxShadow: "0 20px 50px var(--pet-action-glow)" }}>
           <div className="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-[9px] font-extrabold uppercase tracking-wider">
             <Zap className="w-3 h-3" /> Mais pedido
@@ -39,15 +40,20 @@ const Services = () => {
                 <p className="text-sm font-extrabold text-white/90">A partir de <span className="text-xl text-white">R$ 35</span></p>
                 <span className="flex items-center gap-1 text-[10px] font-bold text-white/60"><Users className="w-3 h-3" /> 127 esta semana</span>
               </div>
-              <a href={WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl px-6 py-2.5 sm:py-3 text-[13px] sm:text-sm font-extrabold bg-white transition-all hover:-translate-y-0.5 active:scale-95" style={{ color: "var(--pet-action-dark)", boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }}>
-                <MessageCircle className="w-4 h-4" /> Agendar agora
-              </a>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <a href={WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl px-6 py-2.5 sm:py-3 text-[13px] sm:text-sm font-extrabold bg-white transition-all hover:-translate-y-0.5 active:scale-95" style={{ color: "var(--pet-action-dark)", boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }}>
+                  <MessageCircle className="w-4 h-4" /> Agendar agora
+                </a>
+                <Link to="/precos" className="inline-flex items-center gap-1.5 rounded-2xl px-5 py-2.5 sm:py-3 text-[12px] sm:text-sm font-bold text-white/90 border border-white/25 transition-all hover:bg-white/10 hover:-translate-y-0.5 active:scale-95">
+                  Ver todos os preços <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
           </div>
           <div className="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-white/5" />
         </div>
 
-        {/* Secondary cards — horizontal scroll no mobile, grid no desktop */}
+        {/* Secondary cards */}
         <div className="flex sm:grid sm:grid-cols-3 gap-3 overflow-x-auto sm:overflow-visible pb-3 sm:pb-0 snap-x snap-mandatory scrollbar-hide pl-4 sm:pl-0 pr-4 sm:pr-0 sm:mx-4">
           {secondaryCards.map(c => (
             <div key={c.title} className="rounded-[18px] p-4 sm:p-5 bg-white flex-shrink-0 w-[260px] sm:w-auto snap-start transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg group/card" style={{ border: "1.5px solid #f0f0f0", boxShadow: "0 2px 12px rgba(0,0,0,0.03)" }}>
