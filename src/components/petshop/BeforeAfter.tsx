@@ -1,16 +1,20 @@
 import { useState, useRef } from "react";
 import { useInView } from "@/hooks/useInView";
-import { Sparkles, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import ba1 from "@/assets/before-after-1.jpg";
-import ba2 from "@/assets/before-after-2.jpg";
-import ba3 from "@/assets/before-after-3.jpg";
+import { Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+
+import dogBefore1 from "@/assets/dog-before-1.jpg";
+import dogAfter1 from "@/assets/dog-after-1.jpg";
+import dogBefore2 from "@/assets/dog-before-2.jpg";
+import dogAfter2 from "@/assets/dog-after-2.jpg";
+import dogBefore3 from "@/assets/dog-before-3.jpg";
+import dogAfter3 from "@/assets/dog-after-3.jpg";
 
 const WA = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20um%20banho%20pro%20meu%20pet";
 
 const transformations = [
-  { img: ba1, name: "Thor", breed: "Cocker Spaniel", service: "Banho + Tosa completa" },
-  { img: ba2, name: "Luna", breed: "Maltês", service: "Banho + Hidratação" },
-  { img: ba3, name: "Bob", breed: "Golden Retriever", service: "Banho + Tosa" },
+  { before: dogBefore1, after: dogAfter1, name: "Thor", breed: "Golden Retriever", service: "Banho + Tosa completa" },
+  { before: dogBefore2, after: dogAfter2, name: "Luna", breed: "Labrador", service: "Banho + Hidratação" },
+  { before: dogBefore3, after: dogAfter3, name: "Bob", breed: "Golden Retriever", service: "Tosa + Banho" },
 ];
 
 const BeforeAfter = () => {
@@ -54,21 +58,21 @@ const BeforeAfter = () => {
             onMouseMove={(e) => e.buttons === 1 && handleMove(e)}
             onTouchMove={(e) => handleMove(e)}
           >
-            {/* After (full) */}
-            <img src={t.img} alt={`${t.name} depois`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" width={1024} height={1024} />
+            {/* After (full background) */}
+            <img src={t.after} alt={`${t.name} depois`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" width={512} height={768} />
 
-            {/* Before (clipped left) */}
+            {/* Before (clipped left side) */}
             <div className="absolute inset-0 overflow-hidden" style={{ width: `${sliderPos}%` }}>
               <img
-                src={t.img}
+                src={t.before}
                 alt={`${t.name} antes`}
-                className="absolute inset-0 h-full object-cover brightness-[0.6] contrast-[1.1] saturate-[0.3] sepia-[0.15]"
+                className="absolute inset-0 h-full object-cover"
                 style={{ width: `${containerRef.current?.offsetWidth || 800}px`, maxWidth: "none" }}
                 loading="lazy"
               />
             </div>
 
-            {/* Divider */}
+            {/* Divider line */}
             <div className="absolute top-0 bottom-0 z-10" style={{ left: `${sliderPos}%`, transform: "translateX(-50%)" }}>
               <div className="w-[2px] h-full bg-white/90" style={{ boxShadow: "0 0 8px rgba(0,0,0,0.3)" }} />
               <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white flex items-center justify-center" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.3)" }}>
@@ -122,7 +126,7 @@ const BeforeAfter = () => {
                 boxShadow: i === activeIdx ? "0 4px 16px var(--pet-action-glow)" : "none",
               }}
             >
-              <img src={tr.img} alt={tr.name} className="w-full h-full object-cover" loading="lazy" />
+              <img src={tr.after} alt={tr.name} className="w-full h-full object-cover" loading="lazy" />
             </button>
           ))}
         </div>
