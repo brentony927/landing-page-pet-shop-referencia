@@ -38,7 +38,7 @@ const Contact = () => {
   const infos = [
     { icon: Clock, title: "Horário", info: "Seg–Sex: 8h–19h · Sáb: 8h–16h", statusBadge: true },
     { icon: Phone, title: "WhatsApp", info: "(69) 99221-6764", href: "https://wa.me/5569992216764?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os%20do%20pet%20shop" },
-    { icon: MapPin, title: "Local", info: "Av. Marechal Rondon, 1200 — Centro", mapHref: "https://maps.google.com/?q=Pet+Shop+Amazonia+Ji-Parana+RO" },
+    { icon: MapPin, title: "Local", info: "Av. Marechal Rondon, 1200 — Centro", mapHref: "https://maps.google.com/?q=Pet+Shop+Demonstracao+Ji-Parana+RO" },
   ];
 
   return (
