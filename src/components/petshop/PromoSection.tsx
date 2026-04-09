@@ -24,7 +24,7 @@ const PromoSection = () => {
                 <Clock className="w-3.5 h-3.5 text-white/60" /> Só hoje
               </span>
               <span className="flex items-center gap-1 text-xs font-bold text-white/70">
-                <AlertCircle className="w-3 h-3" /> Últimas 3 vagas
+                <AlertCircle className="w-3 h-3" /> Vagas limitadas
               </span>
             </div>
           </div>
