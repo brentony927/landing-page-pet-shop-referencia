@@ -26,6 +26,7 @@ const Index = () => {
       <Services />
       <ValueBanner />
       <PromoSection />
+      <AboutUs />
       <BeforeAfter />
       <Testimonials />
       <CtaBanner />
