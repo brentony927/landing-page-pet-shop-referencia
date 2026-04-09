@@ -5,6 +5,7 @@ import WhyUs from "@/components/petshop/WhyUs";
 import Services from "@/components/petshop/Services";
 import PromoSection from "@/components/petshop/PromoSection";
 import ValueBanner from "@/components/petshop/ValueBanner";
+import AboutUs from "@/components/petshop/AboutUs";
 import BeforeAfter from "@/components/petshop/BeforeAfter";
 import Testimonials from "@/components/petshop/Testimonials";
 import CtaBanner from "@/components/petshop/CtaBanner";
@@ -25,6 +26,7 @@ const Index = () => {
       <Services />
       <ValueBanner />
       <PromoSection />
+      <AboutUs />
       <BeforeAfter />
       <Testimonials />
       <CtaBanner />
