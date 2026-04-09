@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Clock, Phone, MapPin, Send, Shield, CheckCircle, Circle } from "lucide-react";
+import { Clock, Phone, MapPin, Send, Shield, CheckCircle, Circle, Star } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { useOpenStatus } from "@/hooks/useOpenStatus";
 
