@@ -3,7 +3,6 @@ import Header from "@/components/petshop/Header";
 import HeroCarousel from "@/components/petshop/HeroCarousel";
 import WhyUs from "@/components/petshop/WhyUs";
 import Services from "@/components/petshop/Services";
-import PricingTable from "@/components/petshop/PricingTable";
 import PromoSection from "@/components/petshop/PromoSection";
 import ValueBanner from "@/components/petshop/ValueBanner";
 import BeforeAfter from "@/components/petshop/BeforeAfter";
@@ -24,7 +23,6 @@ const Index = () => {
       <HeroCarousel />
       <WhyUs />
       <Services />
-      <PricingTable />
       <ValueBanner />
       <PromoSection />
       <BeforeAfter />
