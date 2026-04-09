@@ -1,39 +1,18 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useInView } from "@/hooks/useInView";
-import { Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
-
-import dogBefore1 from "@/assets/dog-before-1.jpg";
-import dogAfter1 from "@/assets/dog-after-1.jpg";
-import dogBefore2 from "@/assets/dog-before-2.jpg";
-import dogAfter2 from "@/assets/dog-after-2.jpg";
-import dogBefore3 from "@/assets/dog-before-3.jpg";
-import dogAfter3 from "@/assets/dog-after-3.jpg";
+import { Sparkles, Camera, ImagePlus } from "lucide-react";
 
 const WA = "https://wa.me/5569992216764?text=Oi%2C%20quero%20agendar%20um%20banho%20pro%20meu%20pet";
 
 const transformations = [
-  { before: dogBefore1, after: dogAfter1, name: "Thor", breed: "Golden Retriever", service: "Banho + Tosa completa" },
-  { before: dogBefore2, after: dogAfter2, name: "Luna", breed: "Labrador", service: "Banho + Hidratação" },
-  { before: dogBefore3, after: dogAfter3, name: "Bob", breed: "Golden Retriever", service: "Tosa + Banho" },
+  { name: "Thor", breed: "Golden Retriever", service: "Banho + Tosa completa" },
+  { name: "Luna", breed: "Poodle", service: "Banho + Hidratação" },
+  { name: "Bob", breed: "Shih Tzu", service: "Tosa higiênica" },
 ];
 
 const BeforeAfter = () => {
   const { ref, visible } = useInView(0.08);
   const [activeIdx, setActiveIdx] = useState(0);
-  const [sliderPos, setSliderPos] = useState(50);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const handleMove = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-    const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
-    const clientX = "touches" in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
-    const x = Math.max(8, Math.min(92, ((clientX - rect.left) / rect.width) * 100));
-    setSliderPos(x);
-  };
-
-  const goTo = (idx: number) => {
-    setActiveIdx(idx);
-    setSliderPos(50);
-  };
 
   const t = transformations[activeIdx];
 
@@ -47,45 +26,29 @@ const BeforeAfter = () => {
           <h2 className="text-[24px] sm:text-3xl lg:text-[40px] font-extrabold" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>
             Antes e depois
           </h2>
-          <p className="text-sm text-gray-400 mt-2">Arraste para ver a transformação</p>
+          <p className="text-sm text-gray-400 mt-2">Resultados reais dos nossos clientes</p>
         </div>
 
-        {/* Main slider */}
-        <div className="rounded-[22px] overflow-hidden relative" style={{ border: "2px solid #f0f0f0", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
-          <div
-            ref={containerRef}
-            className="relative aspect-[4/3] sm:aspect-[16/10] cursor-col-resize select-none"
-            onMouseMove={(e) => e.buttons === 1 && handleMove(e)}
-            onTouchMove={(e) => handleMove(e)}
-          >
-            {/* After (full background) */}
-            <img src={t.after} alt={`${t.name} depois`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" width={512} height={768} />
-
-            {/* Before (clipped left side) */}
-            <div className="absolute inset-0 overflow-hidden" style={{ width: `${sliderPos}%` }}>
-              <img
-                src={t.before}
-                alt={`${t.name} antes`}
-                className="absolute inset-0 h-full object-cover"
-                style={{ width: `${containerRef.current?.offsetWidth || 800}px`, maxWidth: "none" }}
-                loading="lazy"
-              />
-            </div>
-
-            {/* Divider line */}
-            <div className="absolute top-0 bottom-0 z-10" style={{ left: `${sliderPos}%`, transform: "translateX(-50%)" }}>
-              <div className="w-[2px] h-full bg-white/90" style={{ boxShadow: "0 0 8px rgba(0,0,0,0.3)" }} />
-              <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white flex items-center justify-center" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.3)" }}>
-                <div className="flex items-center gap-0.5">
-                  <ChevronLeft className="w-3.5 h-3.5" style={{ color: "var(--pet-action)" }} />
-                  <ChevronRight className="w-3.5 h-3.5" style={{ color: "var(--pet-action)" }} />
-                </div>
+        {/* Main card */}
+        <div className="rounded-[22px] overflow-hidden" style={{ border: "2px solid #f0f0f0", boxShadow: "0 8px 32px rgba(0,0,0,0.06)" }}>
+          <div className="grid grid-cols-2">
+            {/* Antes */}
+            <div className="relative aspect-[3/4] sm:aspect-[4/3] flex flex-col items-center justify-center" style={{ background: "linear-gradient(180deg, #f8f0ea 0%, #f0e4d8 100%)" }}>
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-3" style={{ background: "rgba(245,133,31,0.1)" }}>
+                <Camera className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: "var(--pet-action)", opacity: 0.5 }} />
               </div>
+              <p className="text-xs sm:text-sm font-bold" style={{ color: "var(--pet-action)", opacity: 0.6 }}>Foto real em breve</p>
+              <span className="absolute top-3 left-3 sm:top-4 sm:left-4 text-[9px] sm:text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full text-white" style={{ background: "rgba(0,0,0,0.4)", backdropFilter: "blur(8px)" }}>Antes</span>
             </div>
 
-            {/* Labels */}
-            <span className="absolute top-4 left-4 text-[10px] sm:text-xs font-extrabold uppercase px-3 py-1 rounded-full text-white backdrop-blur-md z-20" style={{ background: "rgba(0,0,0,0.5)" }}>Antes</span>
-            <span className="absolute top-4 right-4 text-[10px] sm:text-xs font-extrabold uppercase px-3 py-1 rounded-full text-white backdrop-blur-md z-20" style={{ background: "var(--pet-green-cta)" }}>Depois</span>
+            {/* Depois */}
+            <div className="relative aspect-[3/4] sm:aspect-[4/3] flex flex-col items-center justify-center" style={{ background: "linear-gradient(180deg, #e8f5e9 0%, #c8e6c9 100%)" }}>
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-3" style={{ background: "rgba(34,166,110,0.1)" }}>
+                <ImagePlus className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: "var(--pet-green-cta)", opacity: 0.5 }} />
+              </div>
+              <p className="text-xs sm:text-sm font-bold" style={{ color: "var(--pet-green-cta)", opacity: 0.6 }}>Foto real em breve</p>
+              <span className="absolute top-3 right-3 sm:top-4 sm:right-4 text-[9px] sm:text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full text-white" style={{ background: "var(--pet-green-cta)" }}>Depois</span>
+            </div>
           </div>
 
           {/* Info bar */}
@@ -100,7 +63,7 @@ const BeforeAfter = () => {
               {transformations.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => goTo(i)}
+                  onClick={() => setActiveIdx(i)}
                   className="w-2.5 h-2.5 rounded-full transition-all duration-300"
                   style={{
                     background: i === activeIdx ? "var(--pet-action)" : "#e0e0e0",
@@ -118,15 +81,15 @@ const BeforeAfter = () => {
           {transformations.map((tr, i) => (
             <button
               key={i}
-              onClick={() => goTo(i)}
-              className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden transition-all duration-300 hover:scale-105"
+              onClick={() => setActiveIdx(i)}
+              className="rounded-xl px-4 py-2 text-xs font-bold transition-all duration-300"
               style={{
-                border: i === activeIdx ? "2.5px solid var(--pet-action)" : "2px solid #e8e8e8",
-                opacity: i === activeIdx ? 1 : 0.5,
-                boxShadow: i === activeIdx ? "0 4px 16px var(--pet-action-glow)" : "none",
+                border: i === activeIdx ? "2px solid var(--pet-action)" : "2px solid #e8e8e8",
+                background: i === activeIdx ? "var(--pet-orange-light)" : "white",
+                color: i === activeIdx ? "var(--pet-action)" : "#999",
               }}
             >
-              <img src={tr.after} alt={tr.name} className="w-full h-full object-cover" loading="lazy" />
+              {tr.name}
             </button>
           ))}
         </div>
