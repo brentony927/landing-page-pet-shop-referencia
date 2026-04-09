@@ -20,7 +20,7 @@ const ValueBanner = () => {
           </span>
           <h2
             className="text-[32px] sm:text-4xl md:text-5xl lg:text-[56px] font-extrabold text-white leading-[1.05]"
-            style={{ fontFamily: "'Fredoka', cursive" }}
+            style={{ fontFamily: "'Baloo 2', cursive" }}
           >
             Não é preço,{" "}
             <span className="relative inline-block">
