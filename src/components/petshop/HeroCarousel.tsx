@@ -175,7 +175,7 @@ const HeroCarousel = () => {
                 <MessageCircle className="w-[18px] h-[18px]" />
                 {slides[cur].cta}
               </a>
-              <span className="flex items-center gap-1.5 text-[10px] sm:text-xs font-semibold text-white/80 px-3 py-1.5 rounded-full border border-white/15" style={{ background: "rgba(220,38,38,0.15)", backdropFilter: "blur(8px)" }}>
+              <span className="flex items-center gap-1.5 text-[10px] sm:text-xs font-semibold text-white/80 px-3 py-1.5 rounded-full border border-white/15" style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)" }}>
                 <Clock className="w-3 h-3" />
                 Agende pelo WhatsApp
               </span>
