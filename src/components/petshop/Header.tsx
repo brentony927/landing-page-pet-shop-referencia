@@ -7,6 +7,7 @@ const navLinks = [
   { label: "Início", href: "/", icon: Home },
   { label: "Serviços", href: "/#servicos", icon: Scissors },
   { label: "Produtos", href: "/#produtos", icon: ShoppingBag },
+  { label: "Preços", href: "/precos", icon: Scissors },
   { label: "Catálogo", href: "/catalogo", icon: ShoppingBag },
   { label: "Sobre", href: "/#sobre", icon: Info },
   { label: "Contato", href: "/#contato", icon: MessageSquare },

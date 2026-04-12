@@ -13,6 +13,7 @@ import Testimonials from "@/components/petshop/Testimonials";
 import CtaBanner from "@/components/petshop/CtaBanner";
 import FAQ from "@/components/petshop/FAQ";
 import Contact from "@/components/petshop/Contact";
+import FoodProducts from "@/components/petshop/FoodProducts";
 import Footer from "@/components/petshop/Footer";
 import WhatsAppButton from "@/components/petshop/WhatsAppButton";
 import ScrollToTop from "@/components/petshop/ScrollToTop";
@@ -30,6 +31,7 @@ const Index = () => {
       <PromoSection />
       <ProductsShowcase />
       <Brands />
+      <FoodProducts />
       <AboutUs />
       <BeforeAfter />
       <Testimonials />

@@ -27,6 +27,7 @@ const Footer = () => (
           {["Banho & Tosa", "Tosa Higiênica", "Rações", "Entrega"].map(l => (
             <a key={l} href="#servicos" className="block text-sm mb-2.5 text-white/30 hover:text-white/70 transition-colors duration-200">{l}</a>
           ))}
+          <a href="/precos" className="block text-sm mb-2.5 text-white/30 hover:text-white/70 transition-colors duration-200">Tabela de Preços</a>
         </div>
         <div>
           <h4 className="text-[10px] uppercase tracking-widest mb-3.5 font-bold text-white/40">Atendimento</h4>
