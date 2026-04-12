@@ -31,13 +31,13 @@ const Brands = () => {
         <div className="absolute left-0 top-0 bottom-0 w-20 z-10" style={{ background: "linear-gradient(to right, white, transparent)" }} />
         <div className="absolute right-0 top-0 bottom-0 w-20 z-10" style={{ background: "linear-gradient(to left, white, transparent)" }} />
 
-        <div className="flex animate-marquee gap-8 w-max">
+        <div className="flex animate-marquee gap-6 sm:gap-8 w-max">
           {[...brands, ...brands, ...brands].map((b, i) => (
             <div key={i} className="flex-shrink-0 group">
-              <div className="w-36 h-20 rounded-xl bg-white flex items-center justify-center px-4 transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1" style={{ border: "1.5px solid var(--pet-gray-border)" }}>
-                <img src={b.logo} alt={b.name} className="h-12 w-auto max-w-[110px] object-contain grayscale group-hover:grayscale-0 transition-all duration-300" loading="lazy" width={110} height={48} />
+              <div className="w-28 h-16 sm:w-36 sm:h-20 rounded-xl bg-white flex items-center justify-center px-3 sm:px-4 transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1" style={{ border: "1.5px solid var(--pet-gray-border)" }}>
+                <img src={b.logo} alt={b.name} className="h-10 sm:h-12 w-auto max-w-[90px] sm:max-w-[110px] object-contain grayscale-0 sm:grayscale sm:group-hover:grayscale-0 transition-all duration-300" loading="lazy" width={110} height={48} />
               </div>
-              <p className="text-center text-[11px] font-bold mt-2" style={{ color: "var(--pet-gray-light)" }}>{b.name}</p>
+              <p className="text-center text-[10px] sm:text-[11px] font-bold mt-1.5 sm:mt-2" style={{ color: "var(--pet-gray-light)" }}>{b.name}</p>
             </div>
           ))}
         </div>
