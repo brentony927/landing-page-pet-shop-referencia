@@ -37,7 +37,7 @@ const BeforeAfter = () => {
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-3" style={{ background: "rgba(245,133,31,0.1)" }}>
                 <Camera className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: "var(--pet-action)", opacity: 0.5 }} />
               </div>
-              <p className="text-xs sm:text-sm font-bold" style={{ color: "var(--pet-action)", opacity: 0.6 }}>Foto real em breve</p>
+              <p className="text-xs sm:text-sm font-bold" style={{ color: "var(--pet-action)", opacity: 0.6 }}>Sua foto aqui</p>
               <span className="absolute top-3 left-3 sm:top-4 sm:left-4 text-[9px] sm:text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full text-white" style={{ background: "rgba(0,0,0,0.4)", backdropFilter: "blur(8px)" }}>Antes</span>
             </div>
 
@@ -46,7 +46,7 @@ const BeforeAfter = () => {
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-3" style={{ background: "rgba(34,166,110,0.1)" }}>
                 <ImagePlus className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: "var(--pet-green-cta)", opacity: 0.5 }} />
               </div>
-              <p className="text-xs sm:text-sm font-bold" style={{ color: "var(--pet-green-cta)", opacity: 0.6 }}>Foto real em breve</p>
+              <p className="text-xs sm:text-sm font-bold" style={{ color: "var(--pet-green-cta)", opacity: 0.6 }}>Sua foto aqui</p>
               <span className="absolute top-3 right-3 sm:top-4 sm:right-4 text-[9px] sm:text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full text-white" style={{ background: "var(--pet-green-cta)" }}>Depois</span>
             </div>
           </div>
