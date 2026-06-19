@@ -1,65 +1,56 @@
+## O que vou fazer
 
+### 1. Ícones "feitos à mão" no lugar dos genéricos
+O componente `Icon3D.tsx` existe mas **não é usado em lugar nenhum** (código morto). Vou:
+- Substituí-lo por um novo componente `HandDrawnIcon.tsx` com SVGs desenhados à mão (traço irregular, preenchimento imperfeito, estilo rabisco/marker).
+- Catálogo inicial de ícones hand-drawn: pata, banho/chuveiro, tesoura, osso, caminhão, casinha, estrela, coração, balão de mensagem, ração — todos como SVG inline com `stroke-linecap="round"`, paths levemente trêmulos e cor herdada via `currentColor`.
+- Aplicar nos pontos onde os ícones têm peso visual e parecem "stock de IA":
+  - **WhyUs**: trocar `Bath`, `Home`, `Star` pelos hand-drawn equivalentes.
+  - **Services**: trocar `Bath`, `Scissors`, `Bone`, `Truck` (mantém ícones pequenos de UI como `ArrowRight`, `MessageCircle` que não parecem genéricos).
+  - **BeforeAfter**: trocar `Camera` e `ImagePlus` por um ícone "câmera desenhada" único.
+- Deletar `Icon3D.tsx` (órfão).
 
-# Correção de Identidade Visual — Comando Supremo V2
+Ícones pequenos de interface (setas, X, menu, telefone) **continuam Lucide** — trocar tudo deixaria o site inconsistente.
 
-Documento analisado com precisão. São 7 correções cirúrgicas para eliminar azul onde não deve existir e padronizar a paleta.
+### 2. Correção de erros e bugs
 
----
+**Bug em `Header.tsx`:**
+- Link "Serviços" aponta para `/#servicos` ✅ e "Produtos" para `/#produtos` — mas **não existe seção com id="produtos"** em nenhum lugar. Vou adicionar `id="produtos"` no `ProductsShowcase` (ou `FoodProducts`) para o link funcionar.
+- Menu tem dois itens com ícone `Scissors` (Serviços e Preços) e dois com `ShoppingBag` (Produtos e Catálogo) — visual confuso no mobile. Vou diferenciar (`Tag` para Preços, `BookOpen` para Catálogo).
 
-## Resumo das Mudanças
+**Console warnings React Router v7:** adicionar `future={{ v7_startTransition: true, v7_relativeSplatPath: true }}` no `BrowserRouter` em `App.tsx` para silenciar os 2 avisos.
 
-Problema central: azul (#1565C0, #1E88E5, #0D47A1, #1a3a5c) está espalhado como cor principal em locais que deveriam usar laranja ou navy. Gradientes desnecessários em vários componentes.
+**Acessibilidade rápida:**
+- Botões só de ícone sem `aria-label` (botão fechar sidebar, dots do BeforeAfter já tem, social do Footer não tem) — adicionar.
+- `<a>` de redes sociais no Footer apontando todos para WhatsApp — adicionar `aria-label` por rede.
 
----
+**SEO/links órfãos:** verificar `/privacidade` e `/termos` (Footer aponta para eles) — confirmar rotas em `App.tsx` e ajustar se faltarem.
 
-## 1. index.css — Adicionar variáveis que faltam no :root
+### 3. Melhorias de experiência mobile
 
-Adicionar após as variáveis existentes:
-- `--pet-navy: #0D1B2A` (títulos de seção)
-- `--pet-action: #F5851F` (cor de ação única)
-- `--pet-action-dark: #E06B0A` (hover CTAs)
-- `--pet-action-glow: rgba(245,133,31,0.30)` (sombra CTAs)
-- `--pet-green-cta: #22A66E` (apenas hero slides)
-- `--pet-topbar: #0D47A1` (apenas top bar)
+**Seções pesadas (foco principal):**
+- **HeroCarousel**: reduzir altura no mobile, swipe nativo mais responsivo (touch-action), indicadores maiores (tap target 44px).
+- **Brands** (carrossel infinito): garantir que a animação pause no `prefers-reduced-motion` e suavizar velocidade no mobile.
+- **BeforeAfter**: aumentar área tocável dos thumbnails (Thor/Luna/Bob) — hoje são 32px de altura, levar pra 40px+; trocar os dots redundantes pelo título do pet só.
+- **ProductsShowcase / FoodProducts**: confirmar scroll horizontal com `snap-x snap-mandatory` e `scrollbar-hide`, padding lateral consistente, e cards com `min-height` igual pra não ficar pulando.
+- **Testimonials**: cards já são scroll-x — adicionar dots indicadores embaixo para sinalizar que há mais.
 
-## 2. Services.tsx — 3 correções
+**Polimento geral mobile:**
+- Padding lateral consistente (16px) entre todas as seções — hoje algumas usam 20px, outras 16px.
+- `MobileBottomBar` fica em cima do `WhatsAppButton` flutuante quando ambos aparecem — reposicionar o WhatsAppButton mais alto ou esconder no mobile quando o bottom bar aparece.
+- Espaçamento entre seções menor no mobile (`py-10` ao invés de `py-12`).
+- Aumentar `font-size` de textos secundários que ficaram pequenos demais (`text-[10px]`, `text-[11px]`) para mínimo `text-xs` (12px) em legendas críticas.
 
-- **Botão CTA final** (linha 64): `#1565C0` → `var(--pet-action)`, sombra → `var(--pet-action-glow)`
-- **Card Banho & Tosa** (linha 20): remover `linear-gradient(135deg, #F5851F, #E06B0A)` → `var(--pet-action)` sólido com sombra melhorada
-- **Títulos h2** (linhas 14, 51): `#1a3a5c` → `var(--pet-navy)`
+### 4. Validação
+- Build automático do harness.
+- Playwright mobile (390x844): testar scroll, clique nos links do header, swipe no BeforeAfter e Brands, capturar screenshots de antes/depois.
 
-## 3. Header.tsx — 4 correções
+## Arquivos afetados
+- Novo: `src/components/petshop/HandDrawnIcon.tsx`
+- Deletar: `src/components/petshop/Icon3D.tsx`
+- Editar: `WhyUs.tsx`, `Services.tsx`, `BeforeAfter.tsx`, `Header.tsx`, `Footer.tsx`, `App.tsx`, `ProductsShowcase.tsx` (ou `FoodProducts.tsx` para `id="produtos"`), `HeroCarousel.tsx`, `Brands.tsx`, `Testimonials.tsx`, `MobileBottomBar.tsx`, `WhatsAppButton.tsx`, `index.css` (padding consistente se necessário).
 
-- **Nome da marca** (linha 49): `color: "#0D47A1"` → `var(--pet-gray)`
-- **Botão WhatsApp outline desktop** (linhas 62-65): `#1E88E5` → `var(--pet-action)` em border, color e hover
-- **Ícones sidebar mobile** (linhas 142-149): `rgba(30,136,229,...)` → `rgba(245,133,31,...)` no wrapper, ícone `#1E88E5` → `var(--pet-action)`
-- **Botão WhatsApp sidebar** (linhas 166-170): `rgba(30,136,229,0.9)` → `#25d366` (verde WhatsApp real)
-- **Texto "Menu" sidebar** (linha 111): `#0D47A1` → `var(--pet-gray)`
-
-## 4. CtaBanner.tsx — Trocar gradiente azul por navy sólido
-
-- Linha 11: `linear-gradient(135deg, #0D47A1, #1565C0, #1E88E5)` → `var(--pet-navy)` sólido
-- Botão AGENDAR já está correto — não mexer
-
-## 5. PromoSection.tsx — Trocar gradiente por sólido
-
-- Linha 11: `linear-gradient(135deg, #FFB300, #F5851F)` → `var(--pet-action)` sólido com sombra `0 20px 60px rgba(245,133,31,0.22)`
-
-## 6. Testimonials.tsx — Cor do título
-
-- Linha 22: `#1a3a5c` → `var(--pet-navy)` no h2
-- Linha 36: `#1a3a5c` → `var(--pet-navy)` nos nomes dos depoimentos
-
----
-
-## Arquivos Modificados
-
-| Arquivo | Alterações |
-|---------|-----------|
-| `src/index.css` | +6 variáveis CSS |
-| `src/components/petshop/Services.tsx` | 4 substituições de cor |
-| `src/components/petshop/Header.tsx` | 6 substituições de cor |
-| `src/components/petshop/CtaBanner.tsx` | 1 substituição (gradiente → sólido) |
-| `src/components/petshop/PromoSection.tsx` | 1 substituição (gradiente → sólido) |
-| `src/components/petshop/Testimonials.tsx` | 2 substituições de cor |
-
+## Fora do escopo
+- Não vou trocar ícones de UI (setas, X, telefone, menu) por hand-drawn — ficaria inconsistente.
+- Não vou mexer em conteúdo de texto nem em cores da paleta.
+- Não vou adicionar backend nem novas páginas.
