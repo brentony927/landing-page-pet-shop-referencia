@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useInView } from "@/hooks/useInView";
-import { Sparkles, Camera, ImagePlus } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import HandDrawnIcon from "./HandDrawnIcon";
 
 const WA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Vi as transformações no site e quero agendar um banho e tosa para o meu pet!");
 
@@ -34,8 +35,8 @@ const BeforeAfter = () => {
           <div className="grid grid-cols-2">
             {/* Antes */}
             <div className="relative aspect-[3/4] sm:aspect-[4/3] flex flex-col items-center justify-center" style={{ background: "linear-gradient(180deg, #f8f0ea 0%, #f0e4d8 100%)" }}>
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-3" style={{ background: "rgba(245,133,31,0.1)" }}>
-                <Camera className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: "var(--pet-action)", opacity: 0.5 }} />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-3" style={{ background: "rgba(245,133,31,0.1)", color: "var(--pet-action)", opacity: 0.7 }}>
+                <HandDrawnIcon name="camera" size={30} strokeWidth={2.2} />
               </div>
               <p className="text-xs sm:text-sm font-bold" style={{ color: "var(--pet-action)", opacity: 0.6 }}>Sua foto aqui</p>
               <span className="absolute top-3 left-3 sm:top-4 sm:left-4 text-[9px] sm:text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full text-white" style={{ background: "rgba(0,0,0,0.4)", backdropFilter: "blur(8px)" }}>Antes</span>
@@ -43,8 +44,8 @@ const BeforeAfter = () => {
 
             {/* Depois */}
             <div className="relative aspect-[3/4] sm:aspect-[4/3] flex flex-col items-center justify-center" style={{ background: "linear-gradient(180deg, #e8f5e9 0%, #c8e6c9 100%)" }}>
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-3" style={{ background: "rgba(34,166,110,0.1)" }}>
-                <ImagePlus className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: "var(--pet-green-cta)", opacity: 0.5 }} />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-3" style={{ background: "rgba(34,166,110,0.1)", color: "var(--pet-green-cta)", opacity: 0.7 }}>
+                <HandDrawnIcon name="sparkle" size={30} strokeWidth={2.2} />
               </div>
               <p className="text-xs sm:text-sm font-bold" style={{ color: "var(--pet-green-cta)", opacity: 0.6 }}>Sua foto aqui</p>
               <span className="absolute top-3 right-3 sm:top-4 sm:right-4 text-[9px] sm:text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full text-white" style={{ background: "var(--pet-green-cta)" }}>Depois</span>
@@ -82,7 +83,7 @@ const BeforeAfter = () => {
             <button
               key={i}
               onClick={() => setActiveIdx(i)}
-              className="rounded-xl px-4 py-2 text-xs font-bold transition-all duration-300"
+              className="rounded-xl px-5 py-2.5 min-h-[44px] text-sm font-bold transition-all duration-300 active:scale-95"
               style={{
                 border: i === activeIdx ? "2px solid var(--pet-action)" : "2px solid #e8e8e8",
                 background: i === activeIdx ? "var(--pet-orange-light)" : "white",

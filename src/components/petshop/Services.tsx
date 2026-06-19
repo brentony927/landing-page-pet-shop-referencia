@@ -1,15 +1,16 @@
-import { Bath, Scissors, Bone, Truck, MessageCircle, ArrowRight, Users, Zap } from "lucide-react";
+import { MessageCircle, ArrowRight, Users, Zap } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { Link } from "react-router-dom";
+import HandDrawnIcon from "./HandDrawnIcon";
 
 const WA_BANHO = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de agendar um *Banho & Tosa* para o meu pet. Podem me informar os horários disponíveis?");
 const WA_TOSA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de agendar uma *Tosa Higiênica* para o meu pet. Quais horários têm disponíveis?");
 const WA_ENTREGA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de saber sobre a *entrega de ração*. Vocês entregam na minha região?");
 
 const secondaryCards = [
-  { icon: Scissors, title: "Tosa Higiênica", desc: "Áreas sensíveis com cuidado total", price: "R$ 20", bg: "var(--pet-orange-light)", iconColor: "var(--pet-action)", wa: WA_TOSA },
-  { icon: Bone, title: "Rações & Petiscos", desc: "Marcas líderes com entrega grátis", price: null, bg: "var(--pet-yellow-light)", iconColor: "var(--pet-yellow)", link: "/catalogo", linkText: "Ver catálogo" },
-  { icon: Truck, title: "Entrega Rápida", desc: "No mesmo dia, sem taxa mínima", price: null, bg: "var(--pet-green-light)", iconColor: "var(--pet-green)", wa: WA_ENTREGA },
+  { iconName: "scissors" as const, title: "Tosa Higiênica", desc: "Áreas sensíveis com cuidado total", price: "R$ 20", bg: "var(--pet-orange-light)", iconColor: "var(--pet-action)", wa: WA_TOSA },
+  { iconName: "bone" as const, title: "Rações & Petiscos", desc: "Marcas líderes com entrega grátis", price: null, bg: "var(--pet-yellow-light)", iconColor: "var(--pet-yellow)", link: "/catalogo", linkText: "Ver catálogo" },
+  { iconName: "truck" as const, title: "Entrega Rápida", desc: "No mesmo dia, sem taxa mínima", price: null, bg: "var(--pet-green-light)", iconColor: "var(--pet-green)", wa: WA_ENTREGA },
 ];
 
 const Services = () => {
@@ -33,8 +34,8 @@ const Services = () => {
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center gap-5">
             <div className="flex-1">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center mb-3 sm:mb-4 bg-white/15 backdrop-blur-sm">
-                <Bath className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center mb-3 sm:mb-4 bg-white/15 backdrop-blur-sm text-white">
+                <HandDrawnIcon name="bath" size={28} strokeWidth={2.4} />
               </div>
               <h3 className="text-xl sm:text-3xl font-extrabold text-white mb-1" style={{ fontFamily: "'Baloo 2', cursive" }}>Banho & Tosa</h3>
               <p className="text-[13px] sm:text-sm text-white/80 mb-1 max-w-sm leading-relaxed">Seu pet sai cheiroso em menos de 1 hora.</p>
@@ -59,8 +60,8 @@ const Services = () => {
         <div className="flex sm:grid sm:grid-cols-3 gap-3 overflow-x-auto sm:overflow-visible pb-3 sm:pb-0 snap-x snap-mandatory scrollbar-hide pl-4 sm:pl-0 pr-4 sm:pr-0 sm:mx-4">
           {secondaryCards.map(c => (
             <div key={c.title} className="rounded-[18px] p-4 sm:p-5 bg-white flex-shrink-0 w-[260px] sm:w-auto snap-start transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg group/card" style={{ border: "1.5px solid #f0f0f0", boxShadow: "0 2px 12px rgba(0,0,0,0.03)" }}>
-              <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover/card:scale-110" style={{ background: c.bg }}>
-                <c.icon className="w-5 h-5" style={{ color: c.iconColor }} />
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover/card:scale-110" style={{ background: c.bg, color: c.iconColor }}>
+                <HandDrawnIcon name={c.iconName} size={22} strokeWidth={2.4} />
               </div>
               <h3 className="text-[15px] font-extrabold mb-0.5" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>{c.title}</h3>
               <p className="text-xs text-gray-400 mb-2">{c.desc}</p>

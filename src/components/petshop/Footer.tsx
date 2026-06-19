@@ -12,8 +12,12 @@ const Footer = () => (
           <span className="text-lg font-extrabold text-white" style={{ fontFamily: "'Baloo 2', cursive" }}>Demonstração</span>
         </div>
         <div className="flex gap-2">
-          {[Instagram, Facebook, MessageCircle].map((Icon, i) => (
-            <a key={i} href="https://wa.me/5569992216764" className="w-9 h-9 rounded-xl flex items-center justify-center text-white/30 hover:text-white hover:bg-white/10 transition-all duration-200">
+          {[
+            { Icon: Instagram, label: "Instagram" },
+            { Icon: Facebook, label: "Facebook" },
+            { Icon: MessageCircle, label: "WhatsApp" },
+          ].map(({ Icon, label }) => (
+            <a key={label} href="https://wa.me/5569992216764" aria-label={label} className="w-10 h-10 rounded-xl flex items-center justify-center text-white/30 hover:text-white hover:bg-white/10 transition-all duration-200">
               <Icon className="w-4 h-4" />
             </a>
           ))}
