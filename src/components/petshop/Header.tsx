@@ -1,14 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Menu, X, Phone, PawPrint, Home, Scissors, Info, MessageSquare, ChevronRight, ShoppingBag, Circle } from "lucide-react";
+import { Menu, X, Phone, PawPrint, Home, Scissors, Info, MessageSquare, ChevronRight, ShoppingBag, Circle, Tag, BookOpen } from "lucide-react";
 import { useOpenStatus } from "@/hooks/useOpenStatus";
 
 const navLinks = [
   { label: "Início", href: "/", icon: Home },
   { label: "Serviços", href: "/#servicos", icon: Scissors },
   { label: "Produtos", href: "/#produtos", icon: ShoppingBag },
-  { label: "Preços", href: "/precos", icon: Scissors },
-  { label: "Catálogo", href: "/catalogo", icon: ShoppingBag },
+  { label: "Preços", href: "/precos", icon: Tag },
+  { label: "Catálogo", href: "/catalogo", icon: BookOpen },
   { label: "Sobre", href: "/#sobre", icon: Info },
   { label: "Contato", href: "/#contato", icon: MessageSquare },
 ];

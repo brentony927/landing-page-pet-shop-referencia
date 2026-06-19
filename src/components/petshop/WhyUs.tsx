@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useInView } from "@/hooks/useInView";
-import { Bath, Home, Star, TrendingUp } from "lucide-react";
+import { TrendingUp } from "lucide-react";
+import HandDrawnIcon from "./HandDrawnIcon";
 
 const stats = [
-  { target: 5000, suffix: "+", label: "pets atendidos", Icon: Bath },
-  { target: 12, suffix: " anos", label: "no bairro", Icon: Home },
-  { target: 4.8, suffix: "", label: "no Google", Icon: Star },
+  { target: 5000, suffix: "+", label: "pets atendidos", iconName: "bath" as const },
+  { target: 12, suffix: " anos", label: "no bairro", iconName: "house" as const },
+  { target: 4.8, suffix: "", label: "no Google", iconName: "star" as const },
 ];
 
 const Counter = ({ target, suffix, go }: { target: number; suffix: string; go: boolean }) => {
@@ -47,8 +48,8 @@ const WhyUs = () => {
         <div className="grid grid-cols-3 gap-2 sm:gap-8">
           {stats.map((s, i) => (
             <div key={s.label} className="flex flex-col items-center text-center gap-2" style={{ animationDelay: `${i * 100}ms` }}>
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-transform duration-300 hover:scale-110" style={{ background: "rgba(255,179,0,0.12)" }}>
-                <s.Icon className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: "#FFB300" }} />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-transform duration-300 hover:scale-110" style={{ background: "rgba(255,179,0,0.12)", color: "#FFB300" }}>
+                <HandDrawnIcon name={s.iconName} size={26} strokeWidth={2.4} />
               </div>
               <Counter target={s.target} suffix={s.suffix} go={visible} />
               <p className="text-[11px] sm:text-sm font-medium text-white/50">{s.label}</p>
