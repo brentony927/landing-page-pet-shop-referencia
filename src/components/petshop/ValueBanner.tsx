@@ -16,31 +16,31 @@ const ValueBanner = () => {
             className="block text-[13px] sm:text-sm font-bold tracking-[0.2em] uppercase mb-3"
             style={{ color: "var(--pet-action)", fontFamily: "'Nunito', sans-serif" }}
           >
-            Nossa filosofia
+            Como a gente trabalha
           </span>
           <h2
             className="text-[32px] sm:text-4xl md:text-5xl lg:text-[56px] font-extrabold text-white leading-[1.05]"
             style={{ fontFamily: "'Baloo 2', cursive" }}
           >
-            Não é preço,{" "}
+            A gente faz como se{" "}
             <span className="relative inline-block">
-              é <span style={{ color: "var(--pet-action)" }}>valor</span>
+              fosse <span style={{ color: "var(--pet-action)" }}>nosso</span>
               <svg className="absolute -bottom-1.5 left-0 w-full" viewBox="0 0 120 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 6C30 2 90 2 118 6" stroke="var(--pet-action)" strokeWidth="3" strokeLinecap="round" opacity="0.5" />
               </svg>
             </span>
           </h2>
           <p className="mt-4 text-white/60 text-sm sm:text-base max-w-lg mx-auto leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
-            Cada banho, cada ração, cada consulta — feitos com o cuidado que seu pet merece de verdade.
+            Cada pet que entra aqui é tratado pelo nome. Nada de senha, nada de fila.
           </p>
         </div>
 
         {/* 3 pillars */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mt-6">
           {[
-            { icon: Heart, text: "Amor em cada detalhe" },
-            { icon: ShieldCheck, text: "12 anos de confiança" },
-            { icon: Sparkles, text: "Produtos selecionados a dedo" },
+            { icon: Heart, text: "Tratado pelo nome" },
+            { icon: ShieldCheck, text: "12 anos no bairro" },
+            { icon: Sparkles, text: "Ração que a gente testa" },
           ].map((item, i) => (
             <div key={i} className="flex items-center gap-2.5 text-white/80">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: "rgba(255,255,255,0.08)" }}>
