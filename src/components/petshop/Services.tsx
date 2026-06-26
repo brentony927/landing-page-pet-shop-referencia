@@ -8,9 +8,9 @@ const WA_TOSA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! 
 const WA_ENTREGA = "https://wa.me/5569992216764?text=" + encodeURIComponent("Olá! Gostaria de saber sobre a *entrega de ração*. Vocês entregam na minha região?");
 
 const secondaryCards = [
-  { iconName: "scissors" as const, title: "Tosa Higiênica", desc: "Áreas sensíveis com cuidado total", price: "R$ 20", bg: "var(--pet-orange-light)", iconColor: "var(--pet-action)", wa: WA_TOSA },
-  { iconName: "bone" as const, title: "Rações & Petiscos", desc: "Marcas líderes com entrega grátis", price: null, bg: "var(--pet-yellow-light)", iconColor: "var(--pet-yellow)", link: "/catalogo", linkText: "Ver catálogo" },
-  { iconName: "truck" as const, title: "Entrega Rápida", desc: "No mesmo dia, sem taxa mínima", price: null, bg: "var(--pet-green-light)", iconColor: "var(--pet-green)", wa: WA_ENTREGA },
+  { iconName: "scissors" as const, title: "Tosa Higiênica", desc: "Rapidinha, sem deixar o bicho nervoso", price: "R$ 20", bg: "var(--pet-orange-light)", iconColor: "var(--pet-action)", wa: WA_TOSA },
+  { iconName: "bone" as const, title: "Rações & Petiscos", desc: "As marcas que a gente recomenda mesmo", price: null, bg: "var(--pet-yellow-light)", iconColor: "var(--pet-yellow)", link: "/catalogo", linkText: "Ver catálogo" },
+  { iconName: "truck" as const, title: "Entrega Rápida", desc: "Saco pesado? A gente leva até a porta", price: null, bg: "var(--pet-green-light)", iconColor: "var(--pet-green)", wa: WA_ENTREGA },
 ];
 
 const Services = () => {
@@ -24,7 +24,7 @@ const Services = () => {
           <h2 className="text-[24px] sm:text-3xl lg:text-[40px] font-extrabold leading-tight" style={{ fontFamily: "'Baloo 2', cursive", color: "var(--pet-navy)" }}>
             Tudo pro seu pet em um só lugar
           </h2>
-          <p className="text-sm text-gray-400 mt-2 max-w-md mx-auto">Serviço completo com qualidade e carinho. Mais de 5.000 pets atendidos por ano.</p>
+          <p className="text-sm text-gray-400 mt-2 max-w-md mx-auto">Banho, tosa, ração e entrega. Sem complicação, do jeito que o bairro gosta.</p>
         </div>
 
         {/* Main card */}
